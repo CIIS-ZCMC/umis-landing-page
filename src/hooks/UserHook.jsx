@@ -10,9 +10,10 @@ const useUserHook = create((set) => ({
       .post("/sign-in", form)
       .then((res) => validateStatusOk(res))
       .then((res) => {
-        const { user, message } = res;
+        const { data, message } = res;
 
-        set(() => ({ user: user }));
+        console.log(data);
+        set(() => ({ user: data }));
         callBack(200, message);
       })
       .catch((err) => callBack(...handleFailedStatus(err)));
@@ -46,9 +47,9 @@ const useUserHook = create((set) => ({
       .post("re-authenticate")
       .then((res) => validateStatusOk(res))
       .then((res) => {
-        const { user, message } = res;
+        const { data, message } = res;
 
-        set(() => ({ user: user }));
+        set(() => ({ user: data }));
         callBack(200, message);
       })
       .catch((err) => callBack(...handleFailedStatus(err)));

@@ -25,7 +25,7 @@ import {
 
 const Landing = () => {
   const navigate = useNavigate();
-  const { newPassword, signIn } = useUserHook();
+  const { test, newPassword, signIn } = useUserHook();
   const [open, setOpen] = useState(false);
 
   const [employeeID, setEmployeeID] = useState(null);

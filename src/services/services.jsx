@@ -1,14 +1,18 @@
 import axios from "axios";
 
-let baseURL = "https://umis.zcmc.online/api/";
+const BASE_URL = {
+  production: "https://umis.zcmc.online",
+  development: "http://localhost:8000/api/",
+};
 
 const umis = new axios.create({
-  baseURL: baseURL,
+  baseURL: BASE_URL.development,
   withCredentials: true,
   crossDomain: true,
   headers: {
     Accept: "application/json",
     "content-type": "application/json",
+    Origin: "http://localhost:3001",
   },
 });
 

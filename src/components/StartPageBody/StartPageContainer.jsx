@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { config, getSystemUrlByCode } from "../../utils/RetrieveSystemURL";
 import announcmentIcon from "../../assets/megaphone-loud.svg";
+import useUserHook from "../../hooks/UserHook";
 
 const StartPageContainer = () => {
-  const [isVisible, setIsVisible] = useState(true);
+  const { user } = useUserHook();
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleDismiss = () => {
     setIsVisible(false);
@@ -12,10 +15,6 @@ const StartPageContainer = () => {
     event.stopPropagation(); // Prevents the event from bubbling up
     setIsVisible(true);
   };
-
-  function handleNavigateToSystem(url) {
-    window.location.href = url;
-  }
 
   return (
     <div className="start-page-container">
@@ -33,7 +32,11 @@ const StartPageContainer = () => {
           <div className="cta-container">
             <a
               className="CTA"
-              href="https://portal.zcmc.online"
+              href={
+                user !== null
+                  ? getSystemUrlByCode(user.side_bar_details.system, "UMIS")
+                  : config.development.umis
+              }
               rel="noopener noreferrer"
             >
               Go to UMIS
