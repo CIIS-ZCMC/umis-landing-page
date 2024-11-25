@@ -7,13 +7,13 @@ const BASE_URL = {
 };
 
 const umis = new axios.create({
-  baseURL: BASE_URL.development,
+  baseURL: BASE_URL.local,
   withCredentials: true,
   crossDomain: true,
   headers: {
     Accept: "application/json",
     "content-type": "application/json",
-    Origin: "http://192.168.5.1:5170",
+    Origin: "https://zcmc.online",
   },
 });
 
