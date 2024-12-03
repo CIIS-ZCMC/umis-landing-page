@@ -90,8 +90,6 @@ const Landing = () => {
 
           return console.log(message);
         }
-
-        console.log(message);
       });
     }
 

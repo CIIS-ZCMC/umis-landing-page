@@ -18,18 +18,6 @@ const useUserHook = create((set) => ({
       })
       .catch((err) => callBack(...handleFailedStatus(err)));
   },
-  signUp: (form, callBack) => {
-    umis
-      .post("/sign-up", { body: form })
-      .then((res) => validateStatusOk(res))
-      .then((res) => {
-        const { user, message } = res;
-
-        set(() => ({ user: user }));
-        callBack(200, message);
-      })
-      .catch((err) => console.log(err));
-  },
   newPassword: (form, callBack) => {
     umis
       .post("/new-password", form)
