@@ -1,0 +1,116 @@
+/* General styles - end */
+/* General button styles - start */
+.landing-page-desktop .CTA,
+.landing-page-desktop .secondary-CTA,
+.start-page-header .secondary-CTA,
+#mcc-secondary-CTA {
+  padding: 14px 16px;
+  border-radius: 8px;
+  line-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-style: normal
+}
+
+.landing-page-desktop .CTA {
+  background: var(--color-systembase-colorsbrand-green-500-0f5721)
+}
+
+.CTA,
+.secondary-CTA:hover {
+  color: var(--color-systembase-colorsbg-light-100-f9fafb)
+}
+
+.secondary-CTA {
+  border: 1px solid var(--color-systembase-colorsbrand-green-500-0f5721);
+  color: var(--color-systembase-colorsbrand-green-500-0f5721)
+}
+
+.start-page-header .secondary-CTA {
+  border: 1px solid #fff;
+  color: var(--color-systembase-colorsbg-white-100-ffffff)
+}
+
+#mcc-secondary-CTA {
+  border: 1px solid var(--color-systembase-colorsbg-white-100-ffffff);
+  background: none;
+  color: var(--color-systembase-colorsbg-white-100-ffffff)
+}
+
+.landing-page-desktop .CTA:hover,
+.secondary-CTA:hover {
+  background: var(--color-systembase-colorsbrand-green-500-0f5721)
+}
+
+.landing-page-desktop .CTA:hover {
+  cursor: pointer
+}
+
+
+
+
+
+/* General button styles - end */
+/* Responsive button styles - start */
+@media only screen and (max-width: 768px) {
+
+  .landing-page-desktop .CTA,
+  .landing-page-desktop .secondary-CTA,
+  #mcc-secondary-CTA {
+    font-size: 16px;
+    font-weight: 400;
+    width: 100%
+  }
+
+  .landing-page-desktop .CTA {
+    gap: 4px
+  }
+
+  .landing-page-desktop .CTA:hover {
+    transform: scale(1.05)
+  }
+}
+
+@media only screen and (min-width: 1366px),
+(min-width: 1530px),
+(min-width: 1920px) {
+
+  .landing-page-desktop .CTA,
+  .landing-page-desktop .secondary-CTA,
+  #mcc-secondary-CTA {
+    font-size: 16px;
+    font-weight: 400;
+    gap: 8px;
+    border-radius: 8px;
+    line-height: 16px
+  }
+
+  .landing-page-desktop .CTA {
+    padding: 14px 16px
+  }
+
+  .landing-page-desktop .secondary-CTA {
+    border: 1px solid var(--color-systembase-colorsbrand-green-500-0f5721)
+  }
+
+  .start-page-header .secondary-CTA {
+    border: 1px solid #fff
+  }
+
+  #mcc-secondary-CTA {
+    border: 1px solid var(--color-systembase-colorsbg-white-100-ffffff)
+  }
+
+  .landing-page-desktop .CTA:hover {
+    transform: scale(1.05)
+  }
+
+  .secondary-CTA:hover {
+    background: var(--color-systembase-colorsbrand-green-500-0f5721);
+    font-weight: 400;
+    border: 1px solid var(--color-systembase-colorsbrand-green-500-0f5721)
+  }
+}
+
+/* Responsive button styles - end */

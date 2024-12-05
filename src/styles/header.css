@@ -1,0 +1,620 @@
+.menu-title,
+.menu-title-sm {
+  cursor: pointer;
+  display: flex;
+  color: #FFF;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration-line: none
+}
+
+
+/* Responsive header styles - start */
+@media only screen and (max-width: 768px) {
+
+  /* General header elements - start */
+  .header-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    align-self: stretch;
+    width: auto;
+    flex: 0 0 auto;
+    z-index: 7
+  }
+
+  .header,
+  .start-page-header {
+    display: flex;
+    width: 100vw;
+    padding: 0 16px;
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    z-index: 999;
+    background: #0A3E30;
+    box-shadow: 0 4px 32px 0 #0d0d0d1a;
+    backdrop-filter: blur(6px);
+    position: fixed !important
+  }
+
+  .icon,
+  .icon-label-container {
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto
+  }
+
+  .icon {
+    align-items: center;
+    gap: 8px;
+    color: var(--color-systemneutralsneutrals-950-0d0d0d)
+  }
+
+  .icon:hover {
+    cursor: pointer
+  }
+
+  .icon-label-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px
+  }
+
+  .caption,
+  .title,
+  .card-title,
+  .address {
+    position: relative;
+    align-self: stretch;
+    margin: 0;
+    line-height: normal
+  }
+
+  .caption::before {
+    content: "Republic of the Philippines";
+    display: none
+  }
+
+  .caption::after {
+    content: ""
+  }
+
+  .title {
+    height: 18px;
+    font-weight: 700;
+    color: var(--color-systembase-colorsbg-white-100-ffffff);
+    font-size: 18px;
+    white-space: nowrap
+  }
+
+  .segmented-button-body .card-title {
+    font-weight: 600;
+    color: #1a1a1a;
+    font-size: 14px;
+    line-height: 150%;
+    text-decoration: none;
+  }
+
+  .segmented-button-body.card-title {
+    text-wrap: wrap !important;
+    width: 100% !important;
+  }
+
+  .title::before {
+    content: "Zamboanga City Medical Center";
+    display: none
+  }
+
+  .title::after {
+    content: "ZCMC"
+  }
+
+  .address::before {
+    content: "Dr. Evangelista St., Sta. Catalina, Zamboanga City, Philippines 7000";
+    display: none
+  }
+
+  .address::after {
+    content: ""
+  }
+
+  .zcmc-logo {
+    width: 24.24px;
+    height: 32px;
+    object-fit: cover
+  }
+
+  .icon-label-container .header-divider {
+    display: none
+  }
+
+  .start-page-desktop .start-page-header .div,
+  .landing-page-desktop .div {
+    display: inline-flex;
+    position: relative
+  }
+
+  .start-page-desktop .start-page-header .div {
+    gap: 16px
+  }
+
+  .start-page-sm {
+    width: 100vw !important;
+    overflow: hidden;
+  }
+
+  .landing-page-desktop .div {
+    gap: 8px
+  }
+
+  .search-sm {
+    display: none !important
+  }
+
+  .navbar-sm {
+    display: none
+  }
+
+  .divider {
+    background: #ffffff52 !important
+  }
+
+  .nav-panel-sm {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    position: fixed;
+    display: none;
+
+    height: calc(100vh - 80px);
+    max-height: calc(100vh - 80px);
+    width: 100vw;
+
+    top: 80px;
+    left: 0;
+    padding: 16px 16px 24px;
+    z-index: 9999;
+    opacity: 0;
+    
+    transform: scale(0.95);
+    transition: opacity 0.25s, transform .25s;
+  }
+
+  .nav-panel-sm.active {
+    opacity: 1;
+    display: block;
+    transform: scale(1);
+    background: #0A3E30;
+  }
+
+  
+
+  .nav-panel-content-sm.navigation-sm {
+    overflow: hidden;
+  }
+
+  .nav-panel-content-sm:not(.nav-panel-content-sm.navigation-sm) {
+    height: fit-content !important;
+  }
+
+  .mega-menu {
+    display: none
+  }
+
+  .nav-panel-link,
+  .header-link,
+  .header-link-1,
+  .header-link-2,
+  .header-link-2-sm,
+  .header-link-3 {
+    gap: 4px;
+    padding: 8px 0;
+    font-weight: 400;
+    color: var(--color-systembase-colorsbg-white-100-ffffff);
+    font-size: 14px !important;
+    line-height: 14px;
+    height: 24px;
+  }
+
+  .header-link-2-sm {
+    width: 100%;
+    padding: 0
+  }
+
+  .header-link {
+    cursor: pointer;
+    overflow: hidden
+  }
+
+  .header-link-icon {
+    transition: transform .25s ease
+  }
+
+  .header-link:hover,
+  .header-link-1:hover,
+  .header-link-2:hover,
+  .header-link-3:hover {
+    border-bottom: 2px solid var(--color-systembase-colorsbg-white-100-ffffff)
+  }
+
+  .header-link-icon path {
+    fill: var(--color-systembase-colorsbg-white-100-ffffff)
+  }
+
+  .header-link:hover .header-link-icon,
+  .header-link-1:hover .header-link-icon,
+  .header-link-2-sm:hover .header-link-icon,
+  .header-link-2:hover .header-link-icon,
+  .header-link-3:hover .header-link-icon {
+    transform: rotate(180deg);
+    cursor: pointer
+  }
+
+  .account-used-container-sm {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    width: fit-content;
+  }
+
+  .account-used-sm {
+    display: flex;
+    padding: 8px;
+    width: calc(100vw - 32px * 32%);
+    gap: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--color-system-neutrals-neutrals-300-e-6-e-6-e-6, #E6E6E6);
+    max-width: 200px;
+  }
+
+  .account-used-CTA-sm {
+    display: none !important;
+  }
+
+  .user-avatar-sm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .avatar-sm {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px !important;
+    border: 2px solid #F9FAFB;
+  }
+
+  .user-sm {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-values-value-4px, 4px);
+  }
+
+  .account-name-sm {
+    color: var(--color-system-base-colors-bg-white-100-ffffff, #FFF);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.28px;
+  }
+
+  .job-position-sm {
+    color: var(--color-system-base-colors-bg-white-100-ffffff, #FFF);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0.24px;
+  }
+
+  .account-name-sm,
+  .job-position-sm {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    /* Clamp to 1 line */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  /* General header elements - end */
+}
+
+@media only screen and (min-width: 1366px),
+(min-width: 1530px),
+(min-width: 1920px) {
+
+  /* General header elements - start */
+  .header-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    align-self: stretch;
+    width: auto;
+    flex: 0 0 auto;
+    z-index: 7
+  }
+
+  .header,
+  .start-page-header {
+    display: flex;
+    width: 100vw;
+    padding: 0 96px;
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    z-index: 999;
+    background: #0a3e30bd;
+    box-shadow: 0 4px 32px 0 #0d0d0d1a;
+    backdrop-filter: blur(6px);
+    position: fixed
+  }
+
+  .icon,
+  .icon-label-container {
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto
+  }
+
+  .icon {
+    align-items: center;
+    gap: 14px;
+    color: var(--color-systemneutralsneutrals-950-0d0d0d)
+  }
+
+  .icon:hover {
+    cursor: pointer
+  }
+
+  .icon-label-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px
+  }
+
+  .caption,
+  .title,
+  .address {
+    position: relative;
+    align-self: stretch;
+    margin: 0;
+    line-height: normal
+  }
+
+  .caption {
+    height: 10px;
+    font-weight: 500;
+    color: var(--color-systembase-colorsbg-white-100-ffffff);
+    font-size: 8px
+  }
+
+  .title {
+    height: 16px;
+    font-weight: 700;
+    color: var(--color-systembase-colorsbg-white-100-ffffff);
+    font-size: 16px;
+    white-space: nowrap
+  }
+
+  .address {
+    height: 10px;
+    font-family: Raleway;
+    font-size: 8px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--color-system-base-colors-bg-white-100-ffffff, #FFF)
+  }
+
+  .zcmc-logo {
+    width: 42.42px;
+    height: 56px;
+    object-fit: cover
+  }
+
+  .divider,
+  .icon-label-container .header-divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-systemneutralsneutrals-200-f0f0f0);
+    margin: 0;
+    border: none;
+    display: block
+  }
+
+  .icon-label-container .header-divider {
+    border-top: 1px solid #fff;
+    object-fit: cover
+  }
+
+  .start-page-desktop .start-page-header .div,
+  .landing-page-desktop .div {
+    display: inline-flex;
+    position: relative
+  }
+
+  .start-page-desktop .start-page-header .div {
+    gap: 16px
+  }
+
+  .landing-page-desktop .div {
+    gap: 8px
+  }
+
+  .search {
+    display: flex;
+    width: 200px;
+    align-items: center;
+    gap: 8px;
+    height: 44px;
+    padding: 10px 16px;
+    position: relative;
+    background-color: var(--color-systembase-colorsbg-light-100-f9fafb);
+    border-radius: 8px;
+    border: 1px solid;
+    border-color: var(--color-systemneutralsneutrals-25-fafafa);
+    box-shadow: var(--box-shadow-shadow-lg)
+  }
+
+  .nav-panel-sm {
+    display: none
+  }
+
+  .navbar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 auto
+  }
+
+  .caption::after {
+    content: "Republic of the Philippines"
+  }
+
+  .title::after {
+    content: "Zamboanga City Medical Center"
+  }
+
+  .address::after {
+    content: "Dr. Evangelista St., Sta. Catalina, Zamboanga City, Philippines 7000"
+  }
+
+  .header-link,
+  .header-link-1,
+  .header-link-2,
+  .header-link-2-sm,
+  .header-link-3 {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 8px;
+    height: 80px;
+    font-weight: 400;
+    color: var(--color-systembase-colorsbg-white-100-ffffff);
+    font-size: 14px;
+    line-height: 14px;
+    text-decoration-line: none
+  }
+
+  .header-link {
+    cursor: pointer;
+    overflow: hidden
+  }
+
+  .header-link-icon {
+    transition: transform .25s ease
+  }
+
+  .header-link:hover,
+  .header-link-1:hover,
+  .header-link-2:hover,
+  .header-link-3:hover {
+    border-bottom: 2px solid var(--color-systembase-colorsbg-white-100-ffffff)
+  }
+
+  .header-link-icon path {
+    fill: var(--color-systembase-colorsbg-white-100-ffffff)
+  }
+
+  .header-link:hover .header-link-icon,
+  .header-link-1:hover .header-link-icon,
+  .header-link-2:hover .header-link-icon,
+  .header-link-2-sm:hover .header-link-icon,
+  .header-link-3:hover .header-link-icon {
+    transform: rotate(180deg);
+    cursor: pointer
+  }
+
+  .mega-menu-sm {
+    display: none
+  }
+
+  .account-used-container {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    width: fit-content;
+  }
+
+  .account-used {
+    display: flex;
+    padding: 8px;
+    width: calc(100vw - 32px * 32%);
+    gap: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--color-system-neutrals-neutrals-300-e-6-e-6-e-6, #E6E6E6);
+    max-width: 200px;
+  }
+
+  .user-avatar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px !important;
+    border: 2px solid #F9FAFB;
+  }
+
+  .user {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-values-value-4px, 4px);
+  }
+
+  .account-name {
+    color: var(--color-system-base-colors-bg-white-100-ffffff, #FFF);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.28px;
+  }
+
+  .job-position {
+    color: var(--color-system-base-colors-bg-white-100-ffffff, #FFF);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0.24px;
+  }
+
+  .account-name,
+  .job-position {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-clamp: 1;
+    -webkit-line-clamp: 1;
+    /* Clamp to 1 line */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  .logout-sm {
+    display: none;
+  }
+
+  /* General header elements - end */
+}
+
+/* Responsive header styles - end */

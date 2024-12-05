@@ -19,19 +19,21 @@ const StartPageContainer = () => {
         <div className="start-page-content">
           <div className="heading">
             <p className="subheading">Welcome to One ZCMC</p>
-            <p className="text-wrapper-5">All you need, in one portal</p>
+            {/* <p className="text-wrapper-5">All you need, in one portal</p>
             <p className="start-page-heading-description">
               Get access to all information systems and applications, information and resources
               readily available for you.
-            </p>
+            </p> */}
           </div>
 
           <div className="cta-container">
-            <a className="CTA" href="http://192.168.5.1:8080/login" rel="noopener noreferrer">
+            <a className="CTA start-page-CTA" href="http://192.168.5.1:8080/login" rel="noopener noreferrer">
               Go to UMIS
+              <br/>
+              User Management Information System 
             </a>
             <button className="secondary-CTA" id="read-announcement" onClick={handleReadAnnouncement}>
-              Read announcement
+              Read announcements
             </button>
           </div>
 

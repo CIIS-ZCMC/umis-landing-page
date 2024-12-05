@@ -18,6 +18,7 @@ const News = () => {
                         Stay in the loop with our fresh updates! Discover the latest trends, insights, and highlights on ZCMC. Don’t miss out on what’s happening now.
                     </p>
                 </div>
+
                 <div className="news-container">
                     <div className="highlighted-item">
                         <img className="highlighted-item-image" src={env} alt="" />

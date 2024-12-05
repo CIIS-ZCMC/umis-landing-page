@@ -17,7 +17,7 @@ const MoreInfo = () => {
 
     {
       title: 'Procurement services',
-      description: 'See how sourcing, acquiring, and paying for hospital goods and services are processed.',
+      description: 'See how sourcing, acquiring, and paying for hospital goods and services are processed by ZCMC.',
       linkText: 'See procurement services',
       linkIcon: openIcon,
       icon: procurementIcon

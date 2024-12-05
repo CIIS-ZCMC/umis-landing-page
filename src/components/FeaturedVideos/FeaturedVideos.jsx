@@ -3,9 +3,9 @@ import React from "react";
 const FeaturedVideos = () => {
   return (
     <div className="videos">
-      <div className="arrow-down"></div>
+      <div className="arrow-down arrow-down-videos"></div>
       <div className="videos-heading">
-        <div className="text-wrapper-15">Featured videos</div>
+        <div className="videos-title">Featured videos</div>
         <p className="videos-heading-description">
           Explore our featured videos at ZCMC, where we showcase expert insights, events, patient stories,
           and innovative healthcare practices that highlight our commitment and dedication.

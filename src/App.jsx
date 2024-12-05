@@ -4,7 +4,14 @@ import StartPage from './StartPage.jsx';
 
 import './styles/globals.css';
 import './styles/style.css';
+import './styles/buttons.css';
+import './styles/header.css';
 import './styles/slideshow.css';
+import './styles/arrow.css';
+import './styles/mega-menu.css';
+import './styles/start-page.css';
+import './styles/connected-systems.css';
+import './styles/tooltip.css';
 
 import GovComponent from './components/GovComponent/GovComponent.jsx';
 import Agency from './components/Agency/Agency.jsx';

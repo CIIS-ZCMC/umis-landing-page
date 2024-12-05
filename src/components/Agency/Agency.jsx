@@ -5,7 +5,7 @@ const Agency = () => {
   return (
     <div className="agency">
       <div className="icon-brand">
-        <img className="agency-icon" src={zcmcLogo} alt="Zamboanga City Medical Center" />
+        <img className="agency-icon agency-icon-sm" src={zcmcLogo} alt="Zamboanga City Medical Center" />
         <div className="agency-heading">
           <div className="heading-title">
             Zamboanga City Medical Center
