@@ -1,9 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import StartPageContainer from './StartPageContainer';
+import { Link } from 'react-router-dom';
 
 import SegmentedButton from '../SegmentedButton/SegmentedButton.jsx';
-import logo from '../../assets/zcmc-logo-1.png';
+import ContactUs from './ContactUs.jsx';
+import StartPageFooterSm from './StartPageFooterSm.jsx';
+import Paragraph from "../Paragraph/Paragraph";
 
 const StartPage = () => {
   const medicalContent = [
@@ -17,7 +19,7 @@ const StartPage = () => {
     },
     {
       title: "Infection Control",
-      description: "See the ZCMC's current total Purchase Requests and the percentage of Purchase Request over allocated budget.",
+      description: "Pending desccription.",
       link: "",
       icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM19 11C19 15.52 16.02 19.69 12 20.93C7.98 19.69 5 15.52 5 11V6.3L12 3.19L19 6.3V11ZM7.41 11.59L6 13L10 17L18 9L16.59 7.58L10 14.17L7.41 11.59Z" fill="#0F5721"/>
@@ -26,14 +28,14 @@ const StartPage = () => {
     {
       title: "Hemodialysis",
       description: "Submit a hemodialysis notification form for patients who require hemodialysis, which are subject to be scheduled if condition warrants.",
-      link: "",
+      link: "Pending desccription.",
       icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M19 3H5C3.9 3 3.01 3.9 3.01 5L3 19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM10.5 17H13.5V13.5H17V10.5H13.5V7H10.5V10.5H7V13.5H10.5V17Z" fill="#0F5721"/>
 </svg>`
     },
     {
       title: "Safety and Environment",
-      description: "See the ZCMC's current total Purchase Requests and the percentage of Purchase Request over allocated budget.",
+      description: "Pending desccription.",
       link: "",
       icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M10.9504 2.05443L10.9454 2.04712L10.9317 2.05639C5.91116 2.58957 2 6.83804 2 12C2 14.3123 2.78484 16.4414 4.10267 18.1353L4.10219 18.1374L4.10476 18.1379C5.74689 20.2472 8.21571 21.6811 11.0245 21.953C11.0718 21.4769 11.1878 20.9788 11.3624 20.4764C9.13727 20.3114 7.15058 19.2898 5.73091 17.7402L5.7312 17.7388C5.78569 17.4994 5.81046 17.2205 5.83044 16.9782L5.83998 16.8611C5.85774 16.6415 5.87492 16.4291 5.90349 16.2149C5.97367 15.6885 6.09385 15.3362 6.28005 15.1368C6.51992 14.8798 6.76621 14.8364 7.28108 14.7458L7.37405 14.7294C7.63794 14.6826 7.99065 14.6123 8.3312 14.4267C8.69375 14.2292 9.00059 13.9264 9.23208 13.4822C9.46544 13.0344 9.44753 12.5711 9.38413 12.2067C9.33316 11.9138 9.2354 11.6023 9.15429 11.3439C9.13805 11.2922 9.12248 11.2426 9.10809 11.1957C8.90333 10.5284 8.87773 10.2026 9.04671 9.9461C9.23081 9.6666 9.48319 9.60154 10.1395 9.43235L10.2242 9.41051C10.8896 9.23859 11.7917 8.95068 12.3143 7.83787C12.8802 6.6329 12.5613 5.27352 12.2144 4.35179C12.0949 4.0343 11.9632 3.74566 11.8406 3.50146C11.8936 3.50049 11.9468 3.5 12 3.5C13.6672 3.5 15.2224 3.98001 16.5347 4.80938C16.3434 5.06476 16.0864 5.40123 15.7988 5.76036C15.169 6.54683 14.4588 7.35683 13.9754 7.7194C13.7535 7.88589 13.5825 8.10363 13.4889 8.36839C13.3974 8.62694 13.3968 8.88146 13.4339 9.10184C13.5039 9.51768 13.7252 9.90761 13.921 10.206C14.0842 10.4548 14.2762 10.7064 14.4373 10.9176C14.4757 10.968 14.5124 11.0161 14.5465 11.0613C14.6404 11.1857 14.7162 11.2894 14.7742 11.3777C14.8026 11.421 14.8235 11.4555 14.8382 11.4825C14.8518 11.5073 14.8568 11.5195 14.8574 11.5209C14.8984 11.6318 14.941 11.8103 14.9915 12.0601C14.9984 12.0943 15.0055 12.13 15.0128 12.1669C15.457 11.9691 15.9385 11.8162 16.4535 11.722C16.4057 11.4885 16.346 11.2219 16.2646 11.0014C16.155 10.7047 15.9161 10.386 15.7437 10.1576C15.7003 10.1001 15.657 10.0432 15.6146 9.98759C15.4565 9.78014 15.3061 9.58275 15.1751 9.38298C15.0204 9.14727 14.9455 8.98427 14.9201 8.88539C15.5703 8.38281 16.3679 7.44937 16.9696 6.69797C17.2658 6.32814 17.5298 5.98266 17.7274 5.71921C19.3248 7.17671 20.3642 9.23546 20.4876 11.5375C21.067 11.5829 21.567 11.6594 21.9969 11.7482C21.8633 6.34169 17.4387 2 12 2C11.6455 2 11.2953 2.01845 10.9504 2.05443ZM4.43592 15.8814C3.83767 14.7178 3.5 13.3984 3.5 12C3.5 7.91193 6.38597 4.49793 10.2317 3.68419C10.2651 3.74015 10.3046 3.80813 10.3481 3.88653C10.4866 4.13625 10.6615 4.48421 10.8105 4.88019C11.1249 5.71532 11.2519 6.57127 10.9566 7.20026C10.7322 7.67794 10.4119 7.81276 9.84895 7.9582C9.7992 7.97106 9.74506 7.98412 9.68731 7.99806C9.1547 8.12658 8.31568 8.32904 7.79404 9.12099C7.19301 10.0335 7.48894 11.0324 7.67409 11.6357C7.69481 11.7033 7.71482 11.7674 7.73358 11.8276C7.81312 12.0826 7.87391 12.2775 7.90633 12.4638C7.94419 12.6815 7.91674 12.7605 7.90187 12.789C7.8014 12.9818 7.70209 13.0613 7.61358 13.1095C7.50307 13.1697 7.35983 13.2085 7.11215 13.2525C7.07175 13.2596 7.02795 13.2668 6.98167 13.2744C6.51915 13.3501 5.78336 13.4706 5.18354 14.1132C4.69795 14.6334 4.52081 15.324 4.43592 15.8814ZM12.0073 22.205C12.0661 21.2397 12.5021 20.063 13.2404 18.9537C13.4788 18.548 13.7742 18.1368 14.126 17.7362C15.1916 16.5225 16.7309 15.4577 18.6215 14.9851C18.8894 14.9181 19.0523 14.6466 18.9853 14.3787C18.9183 14.1108 18.6469 13.948 18.379 14.0149C16.2696 14.5423 14.5589 15.7275 13.3745 17.0764C13.1067 17.3814 12.8636 17.6975 12.6477 18.0191C12.558 17.7179 12.5003 17.3773 12.5002 17C12.5002 16.083 12.9669 15.0867 13.7071 14.2972C14.4617 13.4923 15.5534 12.8419 16.9018 12.6634C19.7027 12.2925 21.4401 12.6025 22.4647 12.8905C22.747 12.9699 22.9572 13.2065 23.0027 13.4962C23.0482 13.7859 22.9206 14.0756 22.6762 14.2376C22.6189 14.2757 22.5271 14.3675 22.416 14.5778C22.3062 14.7855 22.2031 15.0589 22.0966 15.4028C22.0085 15.687 21.9255 15.9943 21.8353 16.3282L21.778 16.5399C21.6667 16.9497 21.5438 17.3898 21.396 17.826C21.1039 18.6883 20.692 19.6078 19.9993 20.3139C19.2801 21.0471 18.304 21.5037 17.0002 21.5037C15.6712 21.5037 14.7428 20.9653 14.1499 20.3453C13.7462 21.0852 13.5358 21.7821 13.5045 22.2963C13.4793 22.7097 13.1237 23.0244 12.7102 22.9992C12.2968 22.974 11.9821 22.6184 12.0073 22.205Z" fill="#0F5721"/>
@@ -41,7 +43,7 @@ const StartPage = () => {
     },
     {
       title: "Sentinel Events",
-      description: "See the ZCMC's current total Purchase Requests and the percentage of Purchase Request over allocated budget.",
+      description: "See patient safety incident(s) that requires immediate investigation and response.",
       link: "",
       icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M19 3H18V1H16V3H8V1H6V3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V9H19V19ZM5 7V5H19V7H5ZM7 11H17V13H7V11ZM7 15H14V17H7V15Z" fill="#0F5721"/>
@@ -61,15 +63,15 @@ const StartPage = () => {
     },
     {
       title: "Supplies Requisition",
-      description: "The process of staffing and human resources management.",
-      link: "https://example.com/hr",
+      description: "Pending desccription.",
+      link: "",
       icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M10.5 3C11.7426 3 12.75 4.00736 12.75 5.25V11.25H18.75C19.9926 11.25 21 12.2574 21 13.5V18.75C21 19.9926 19.9926 21 18.75 21H5.25C4.00736 21 3 19.9926 3 18.75V5.25C3 4.00736 4.00736 3 5.25 3H10.5ZM11.25 12.75H4.5V18.75C4.5 19.1642 4.83579 19.5 5.25 19.5H11.249L11.25 12.75ZM18.75 12.75H12.749V19.5H18.75C19.1642 19.5 19.5 19.1642 19.5 18.75V13.5C19.5 13.0858 19.1642 12.75 18.75 12.75ZM10.5 4.5H5.25C4.83579 4.5 4.5 4.83579 4.5 5.25V11.25H11.25V5.25C11.25 4.83579 10.9142 4.5 10.5 4.5ZM17.8982 2.00685L18 2C18.3797 2 18.6935 2.28215 18.7432 2.64823L18.75 2.75V5.25H21.25C21.6297 5.25 21.9435 5.53215 21.9932 5.89823L22 6C22 6.3797 21.7178 6.69349 21.3518 6.74315L21.25 6.75H18.75V9.25C18.75 9.6297 18.4678 9.94349 18.1018 9.99315L18 10C17.6203 10 17.3065 9.71785 17.2568 9.35177L17.25 9.25V6.75H14.75C14.3703 6.75 14.0565 6.46785 14.0068 6.10177L14 6C14 5.6203 14.2822 5.30651 14.6482 5.25685L14.75 5.25H17.25V2.75C17.25 2.3703 17.5322 2.05651 17.8982 2.00685Z" fill="#0F5721"/>
 </svg>`
     },
     {
       title: "Supplies Inventory Management",
-      description: "Understanding the handling and management of medical equipment.",
+      description: "Receive and release items, generate reports and see how stocks have moved on your inventory.",
       link: "",
       icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M14.22 3.73716C14.7234 3.55115 15.2766 3.55115 15.78 3.73716L20.0867 5.32875C20.1848 5.36503 20.25 5.4586 20.25 5.56325V12.4756C20.9384 13.1176 21.462 13.9341 21.75 14.8547V5.56325C21.75 4.83071 21.2937 4.17569 20.6066 3.92175L16.2999 2.33017C15.461 2.02015 14.539 2.02015 13.7001 2.33017L9.39337 3.92175C8.70625 4.17569 8.25 4.83071 8.25 5.56325V8.35645C8.7468 8.27702 9.25319 8.27702 9.75 8.35645V5.56325C9.75 5.4586 9.81518 5.36503 9.91334 5.32875L14.22 3.73716ZM14.8707 11.2444C14.7872 11.1965 14.699 11.1551 14.6066 11.121L10.2999 9.52939C9.46103 9.21937 8.53897 9.21937 7.70008 9.52939L3.39337 11.121C2.70625 11.3749 2.25 12.0299 2.25 12.7625V18.4325C2.25 19.165 2.70625 19.8201 3.39337 20.074L7.70008 21.6656C8.53897 21.9756 9.46103 21.9756 10.2999 21.6656L12.9386 20.6904C12.5294 20.3424 12.1719 19.9355 11.879 19.4829L9.77995 20.2586C9.27662 20.4446 8.72338 20.4446 8.22005 20.2586L3.91334 18.667C3.81518 18.6307 3.75 18.5371 3.75 18.4325V12.7625C3.75 12.6578 3.81518 12.5642 3.91334 12.528L8.22005 10.9364C8.72338 10.7504 9.27662 10.7504 9.77995 10.9364L13.1106 12.1672C13.6302 11.76 14.225 11.4443 14.8707 11.2444ZM12.0866 13.2164C11.9711 13.1993 11.8498 13.209 11.7318 13.2499L8.99959 14.1966L6.25925 13.2494C5.86776 13.114 5.4407 13.3217 5.30538 13.7132C5.17006 14.1047 5.37772 14.5317 5.76921 14.6671L8.24989 15.5245V18.2234C8.24989 18.6376 8.58567 18.9734 8.99989 18.9734C9.4141 18.9734 9.74989 18.6376 9.74989 18.2234V15.5241L11.2008 15.0214C11.3844 14.3614 11.688 13.7514 12.0866 13.2164ZM11.3054 6.71319C11.1701 7.10468 11.3777 7.53174 11.7692 7.66706L14.4278 8.58602C14.7986 8.7142 15.2017 8.71404 15.5725 8.58558L18.2229 7.66718C18.6143 7.53157 18.8216 7.10435 18.686 6.71297C18.5504 6.32158 18.1232 6.11424 17.7318 6.24986L15.0813 7.16826C15.0284 7.18661 14.9708 7.18663 14.9178 7.16832L12.2593 6.24936C11.8678 6.11404 11.4407 6.32171 11.3054 6.71319ZM20.1681 19.1064C20.6919 18.3708 21 17.4709 21 16.499C21 14.0137 18.9853 11.999 16.5 11.999C14.0147 11.999 12 14.0137 12 16.499C12 18.9843 14.0147 20.999 16.5 20.999C17.4719 20.999 18.3718 20.6909 19.1074 20.1671L21.7197 22.7794C22.0126 23.0722 22.4874 23.0722 22.7803 22.7794C23.0732 22.4865 23.0732 22.0116 22.7803 21.7187L20.1681 19.1064ZM19.5 16.499C19.5 18.1559 18.1569 19.499 16.5 19.499C14.8431 19.499 13.5 18.1559 13.5 16.499C13.5 14.8422 14.8431 13.499 16.5 13.499C18.1569 13.499 19.5 14.8422 19.5 16.499Z" fill="#0F5721"/>
@@ -77,7 +79,7 @@ const StartPage = () => {
     },
     {
       title: "Equipment Inventory Management",
-      description: "Understanding the handling and management of medical equipment.",
+      description: "Oversee your inventory of medical equipment and ensure sufficient stock levels with on-demand tools.",
       link: "",
       icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M18 20.5H12.987C12.9251 21.0917 12.6459 21.6188 12.2307 22H18C19.104 22 20 21.104 20 20V9.828C20 9.298 19.789 8.789 19.414 8.414L13.585 2.586C13.57 2.57105 13.5531 2.55808 13.5363 2.5452C13.5238 2.53567 13.5115 2.5262 13.5 2.516C13.429 2.452 13.359 2.389 13.281 2.336C13.2557 2.31894 13.2281 2.30548 13.2005 2.29207C13.1845 2.28426 13.1685 2.27647 13.153 2.268C13.1363 2.25859 13.1197 2.24897 13.103 2.23933C13.0488 2.20797 12.9944 2.17648 12.937 2.152C12.74 2.07 12.528 2.029 12.313 2.014C12.2933 2.01274 12.2738 2.01008 12.2542 2.00741C12.2271 2.00371 12.1999 2 12.172 2H6C4.896 2 4 2.896 4 4V11H5.5V4C5.5 3.725 5.724 3.5 6 3.5H12V8C12 9.104 12.896 10 14 10H18.5V20C18.5 20.275 18.276 20.5 18 20.5ZM17.378 8.5H14C13.724 8.5 13.5 8.275 13.5 8V4.621L17.378 8.5ZM13 17.5V19H15.25C16.2165 19 17 18.2165 17 17.25V13.25C17 12.2835 16.2165 11.5 15.25 11.5H9.18062C9.64557 11.8397 9.99369 12.3297 10.1534 12.8986C10.69 13.0271 11.1674 13.3396 11.5 13.783V13H15.25C15.3881 13 15.5 13.1119 15.5 13.25V14.5H11.9013L12.6513 16H15.5V17.25C15.5 17.3881 15.3881 17.5 15.25 17.5H13ZM2.60417 12C1.71821 12 1 12.7182 1 13.6042V20.0208C1 20.6714 1.38729 21.2316 1.9439 21.4833C2.09389 22.3449 2.84544 23 3.75 23C4.60426 23 5.32206 22.4157 5.52558 21.625H6.55776C6.76128 22.4157 7.47907 23 8.33333 23C9.18759 23 9.90539 22.4157 10.1089 21.625H10.625C11.3844 21.625 12 21.0094 12 20.25V17.2581C12 17.0446 11.9503 16.8341 11.8548 16.6431L10.83 14.5934C10.5971 14.1276 10.1209 13.8333 9.60014 13.8333H9.25015V13.6042C9.25015 12.7182 8.53194 12 7.64598 12H2.60417ZM9.25015 16.5833V14.75H9.60014C9.77374 14.75 9.93244 14.8481 10.0101 15.0034L10.8001 16.5833H9.25015ZM2.83333 21.1667C2.83333 20.6604 3.24374 20.25 3.75 20.25C4.25626 20.25 4.66667 20.6604 4.66667 21.1667C4.66667 21.6729 4.25626 22.0833 3.75 22.0833C3.24374 22.0833 2.83333 21.6729 2.83333 21.1667ZM8.33333 22.0833C7.82707 22.0833 7.41667 21.6729 7.41667 21.1667C7.41667 20.6604 7.82707 20.25 8.33333 20.25C8.83959 20.25 9.25 20.6604 9.25 21.1667C9.25 21.6729 8.83959 22.0833 8.33333 22.0833Z" fill="#0F5721"/>
@@ -85,7 +87,7 @@ const StartPage = () => {
     },
     {
       title: "Document Tracking",
-      description: "Understanding the handling and management of medical equipment.",
+      description: "Seamlessly track documents recognized by Zamboanga City Medical Center.",
       link: "",
       icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M4 4C4 2.89543 4.89543 2 6 2H12.1722C12.7027 2 13.2114 2.21071 13.5864 2.58579L19.4142 8.41355C19.7893 8.78863 20 9.29733 20 9.82777V20C20 21.1046 19.1046 22 18 22H13.9822C13.9303 21.6387 13.7654 21.2905 13.4874 21.0126L12.9749 20.5H18C18.2761 20.5 18.5 20.2761 18.5 20V10H14C12.8954 10 12 9.10457 12 8V3.5H6C5.72386 3.5 5.5 3.72386 5.5 4V11.0907C4.96945 11.1881 4.46553 11.3617 4 11.5997V4ZM14 8.5H17.3793L13.5 4.62066V8C13.5 8.27614 13.7239 8.5 14 8.5ZM6.5 21C7.47187 21 8.37179 20.6919 9.1074 20.1681L11.7197 22.7803C12.0126 23.0732 12.4874 23.0732 12.7803 22.7803C13.0732 22.4874 13.0732 22.0126 12.7803 21.7197L10.1681 19.1074C10.6919 18.3718 11 17.4719 11 16.5C11 14.0147 8.98528 12 6.5 12C4.01472 12 2 14.0147 2 16.5C2 18.9853 4.01472 21 6.5 21ZM6.5 19.5C4.84315 19.5 3.5 18.1569 3.5 16.5C3.5 14.8431 4.84315 13.5 6.5 13.5C8.15685 13.5 9.5 14.8431 9.5 16.5C9.5 18.1569 8.15685 19.5 6.5 19.5Z" fill="#0F5721"/>
@@ -97,12 +99,12 @@ const StartPage = () => {
     <div className='start-page-sm'>
       <StartPageContainer />
 
-      <div class="start-page">
-        <div class="arrow-down-start-page arrow-down-start-page-sm"></div>
+      <div className="start-page">
+        <div className="arrow-down-start-page arrow-down-start-page-sm"></div>
 
-        <div class="connected-systems">
+        <div className="connected-systems">
           <div className='connected-systems-heading connected-systems-heading-sm'>
-            <h5 class="label">
+            <h5 className="label">
               Connected Systems
             </h5>
           </div>
@@ -114,14 +116,12 @@ const StartPage = () => {
           <div className='row connected-systems-lg'>
             <div className='column column-1'>
               {medicalContent.map((item, index) => (
-                <a href={item.link} className="card" key={index}>
-                  <span class="system-icon">
+                <Link to={item.link} className="card" key={index} rel="noopener noreferrer" >
+                  <span className="system-icon">
                     <div className="icon" dangerouslySetInnerHTML={{ __html: item.icon }} />
                   </span>
-                  <div class="card-content">
-                    <p class="card-title">
-                      {item.title}
-                    </p>
+                  <div className="card-content">
+                    <Paragraph text={item.title} className="card-title" />
 
                     <div className="tooltip">
                       <svg className='Icon' xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" fill="none">
@@ -132,20 +132,18 @@ const StartPage = () => {
                       </span>
                     </div>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
 
             <div className='column column-2'>
               {adminContent.map((item, index) => (
-                <a href={item.link} className="card" key={index}>
-                  <span class="system-icon">
+                <Link to={item.link} className="card" key={index} rel="noopener noreferrer" >
+                  <span className="system-icon">
                     <div className="icon" dangerouslySetInnerHTML={{ __html: item.icon }} />
                   </span>
-                  <div class="card-content">
-                    <p class="card-title">
-                      {item.title}
-                    </p>
+                  <div className="card-content">
+                    <Paragraph text={item.title} className="card-title" />
 
                     <div className="tooltip">
                       <svg className='Icon' xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 16 16" fill="none">
@@ -156,7 +154,7 @@ const StartPage = () => {
                       </span>
                     </div>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -164,80 +162,8 @@ const StartPage = () => {
 
         <hr className="start-page-divider section-divider" />
 
-        <div className='contact-us contact-us-sm'>
-          <p className='contact-caption contact-caption-sm'>
-            Contact us:
-          </p>
-          <div className='contact-us-body contact-us-body-sm'>
-            <div className='contact-us-heading contact-us-heading-sm'>
-              <h4 className='contact-us-title contact-us-title-sm'>
-                Innovations and Information Systems Unit
-              </h4>
-              <p className='contact-us-description contact-us-description-sm'>
-                Office of the Medical Center Chief
-              </p>
-            </div>
-            <hr className="start-page-divider start-page-divider-sm" />
-            <div className='contact-us-details contact-us-details-sm'>
-              <span className='contact-us-details-container contact-us-details-container-sm'>
-                <p className='contact-us-label contact-us-label-sm'>
-                  Email:
-                </p>
-                <a href='mailto:innovations@zcmc.doh.gov.ph' className='contact-us-content contact-us-content-sm'>
-                  innovations@zcmc.doh.gov.ph
-                </a>
-              </span>
-              <span className='contact-us-details-container contact-us-details-container-sm'>
-                <p className='contact-us-label contact-us-label-sm'>
-                  Telephone:
-                </p>
-                <p className='contact-us-content contact-us-content-sm'>
-                  ext 276 or 262
-                </p>
-              </span>
-            </div>
-            <hr className="start-page-divider" />
-            <div className='contact-us-report contact-us-report-sm'>
-              <p className='contact-us-report-label contact-us-report-label-sm'>
-                Report an issue on:
-              </p>
-              <Link to="https://forms.google/report-an-issue/" className='contact-us-link contact-us-link-sm' rel="noopener noreferrer" >
-                https://forms.google/report-an-issue/
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className='start-page-footer start-page-footer-sm'>
-          <div className='start-page-footer-links'>
-            <p className='start-page-footer-links-label'>
-              Helpful links
-            </p>
-
-            <ul className='start-page-links-list'>
-              <Link to="/" className="link" rel="noopener noreferrer" >
-                Privacy notice
-              </Link>
-              <Link to="/" className="link" rel="noopener noreferrer" >
-                Transparency seal
-              </Link>
-            </ul>
-          </div>
-
-          <hr className='start-page-divider' />
-
-          <div className='start-page-footer-copyright'>
-            <div className='start-page-footer-agency'>
-              <img className='agency-icon' src={logo} alt="" />
-              <p className='start-page-agency'>
-                Zamboanga City Medical Center
-              </p>
-            </div>
-            <small className='agency-copyright'>
-              © 2024 ZCMC. All rights reserved.
-            </small>
-          </div>
-        </div>
+        <ContactUs />
+        <StartPageFooterSm />
 
       </div>
     </div>

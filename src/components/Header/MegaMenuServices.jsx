@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import Paragraph from "../Paragraph/Paragraph";
 
 const MegaMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -24,19 +27,21 @@ const MegaMenu = () => {
             {isOpen && (
                 <div className="mega-menu-container-1">
                     <div className="mega-menu-heading">
-                        <p className="mega-menu-title">Services offered</p>
-                        <p className="mega-menu-description">Learn more about the services offered by the ZCMC.</p>
+                        <Paragraph text="Services offered" className="mega-menu-title" />
+                        <Paragraph text="Learn more about the services offered by the ZCMC." className="mega-menu-description" />
                     </div>
                     <div className="mega-menu-content">
                         <div className="mega-menu-left">
-                            <p className="mega-menu-label">Medical</p>
+                            <Paragraph text="Medical" className="mega-menu-label" />
                             <hr id="mega-menu-divider" />
                             <div className="mega-menu-group-1">
                                 <div className="mega-menu-left-1">
                                     <ul className="mega-menu-list">
                                         {["Internal Medicine", "Surgery", "Pediatrics", "Laboratory medicine", "Rehabilitation", "Out patient", "Nuclear medicine"].map((service, index) => (
                                             <li key={index} className="mega-menu-list-item">
-                                                <a className="mega-menu-link" href="#">{service}</a>
+                                                <Link to="/" className="mega-menu-link" rel="noopener noreferrer" >
+                                                    {service}
+                                                </Link>
                                             </li>
                                         ))}
                                     </ul>
@@ -53,13 +58,15 @@ const MegaMenu = () => {
                             </div>
                         </div>
                         <div className="mega-menu-right">
-                            <p className="mega-menu-label">Other services</p>
+                            <Paragraph text="Other services" className="mega-menu-label" />
                             <hr id="mega-menu-divider" />
                             <div className="mega-menu-right-1">
                                 <ul className="mega-menu-list">
                                     {["Hemodialysis", "Help emergency management staff", "Toxicology unit", "TB Dots clinic", "Multiple drug resistant (MDR) treatment center"].map((service, index) => (
                                         <li key={index} className="mega-menu-list-item">
-                                            <a className="mega-menu-link" href="#">{service}</a>
+                                            <Link to="/" className="mega-menu-link" rel="noopener noreferrer" >
+                                                {service}
+                                            </Link>
                                         </li>
                                     ))}
                                 </ul>

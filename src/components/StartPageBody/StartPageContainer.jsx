@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import announcmentIcon from '../../assets/megaphone-loud.svg';
+
+import Paragraph from "../Paragraph/Paragraph";
 
 const StartPageContainer = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -14,11 +18,11 @@ const StartPageContainer = () => {
   };
 
   return (
-    <div className="start-page-container"> 
+    <div className="start-page-container">
       <div className="start-page-intro">
         <div className="start-page-content">
           <div className="heading">
-            <p className="subheading">Welcome to One ZCMC</p>
+            <Paragraph text="Welcome to One ZCMC" className="subheading" />
             {/* <p className="text-wrapper-5">All you need, in one portal</p>
             <p className="start-page-heading-description">
               Get access to all information systems and applications, information and resources
@@ -27,20 +31,18 @@ const StartPageContainer = () => {
           </div>
 
           <div className="cta-container">
-            <a className="CTA start-page-CTA" href="http://192.168.5.1:8080/login" rel="noopener noreferrer">
+            <Link to="http://192.168.5.1:8080/login" className='CTA start-page-CTA' rel="noopener noreferrer" >
               Go to UMIS
-              <br/>
-              User Management Information System 
-            </a>
+              <br />
+              User Management Information System
+            </Link>
             <button className="secondary-CTA" id="read-announcement" onClick={handleReadAnnouncement}>
               Read announcements
             </button>
           </div>
 
           <div className='announcement-date-container'>
-            <p className='announcement-date'>
-              Announcements last updated on: August 10, 2023
-            </p>
+            <Paragraph text="Announcements last updated on: August 10, 2023" className="announcement-date" />
           </div>
         </div>
       </div>
@@ -51,7 +53,7 @@ const StartPageContainer = () => {
             <div className="content">
               <div className="announcement-heading">
                 <div className="label-with-trailing-icon">
-                  <p className="announcement-label">Announcement</p>
+                  <Paragraph text="Announcement" className="announcement-label" />
                   <img src={announcmentIcon} alt="" />
                 </div>
                 <small className="announcement-publish-date">

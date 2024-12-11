@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+
 import mccImg1 from '../../assets/mcc-corner/1.png';
 import mccImg2 from '../../assets/mcc-corner/2.png';
 import mccImg3 from '../../assets/mcc-corner/3.png';
@@ -10,6 +12,8 @@ import mccImg8 from '../../assets/mcc-corner/8.png';
 import mccImg9 from '../../assets/mcc-corner/9.png';
 import mccImg10 from '../../assets/mcc-corner/10.png';
 
+import Paragraph from "../Paragraph/Paragraph";
+
 const MccCorner = () => {
     return (
         <div className="mcc-corner">
@@ -17,17 +21,15 @@ const MccCorner = () => {
             <div id="container">
                 <div className="col-left">
                     <div className="mcc-corner-heading">
-                        <small className="subheading">ZCMC is here to serve you</small>
-                        <p className="heading">A medical facility you can trust</p>
-                        <p className="description">
-                            For 106 years and counting, the Zamboanga City Medical Center has been serving the community with
+                        <Paragraph text="ZCMC is here to serve you" className="subheading" />
+                        <Paragraph text="A medical facility you can trust" className="heading" />
+                        <Paragraph text="For 106 years and counting, the Zamboanga City Medical Center has been serving the community with
                             dedication, compassion, professionalism, and commitment to safety, ensuring that the hospital only brings
-                            out the best services for patients and clients.
-                        </p>
+                            out the best services for patients and clients." className="description" />
                     </div>
-                    <a id="mcc-secondary-CTA" href="#" rel="noopener noreferrer">
+                    <Link to="/" id="mcc-secondary-CTA" rel="noopener noreferrer" >
                         Read more about ZCMC
-                    </a>
+                    </Link>
                 </div>
 
                 <div className="col-right">
@@ -50,7 +52,7 @@ const MccCorner = () => {
                         </div>
                     </div>
                     <div className="certs-accreditations">
-                        <p className="label">Our certifications and accreditations</p>
+                        <Paragraph text="Our certifications and accreditations" className="label" />
                         <div className="image-group">
                             <img src={mccImg8} alt="" className="mcc-img-8" />
                             <img src={mccImg9} alt="" className="mcc-img-9" />

@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import Paragraph from "../Paragraph/Paragraph";
 
 const SegmentedButton = ({ medicalContent, adminContent }) => {
     const [selected, setSelected] = useState('medical'); // Default selection: 'medical'
@@ -21,17 +24,15 @@ const SegmentedButton = ({ medicalContent, adminContent }) => {
             {/* Content Display */}
             <div className="segmented-button-body">
                 {selected === 'medical' && (
-                    <div class="row">
+                    <div className="row">
                         {medicalContent.map((item, index) => (
-                            <a href={item.link} className="card" key={index}>
-                                <span class="system-icon">
+                            <Link to={item.link} className='card' key={index} rel="noopener noreferrer" >
+                                <span className="system-icon">
                                     <div className="icon" dangerouslySetInnerHTML={{ __html: item.icon }} />
                                 </span>
-                                <div class="card-content">
-                                    <div class="card-heading">
-                                        <p class="card-title">
-                                            {item.title}
-                                        </p>
+                                <div className="card-content">
+                                    <div className="card-heading">
+                                        <Paragraph text={item.title} className="card-title" />
 
                                         <div className="tooltip">
                                             <svg className='Icon' xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -43,23 +44,21 @@ const SegmentedButton = ({ medicalContent, adminContent }) => {
                                         </div>
                                     </div>
                                 </div>
-                            </a>
+                            </Link>
                         ))}
                     </div>
                 )}
 
                 {selected === 'administrative' && (
-                    <div class="row">
+                    <div className="row">
                         {adminContent.map((item, index) => (
-                            <a href={item.link} className="card" key={index}>
-                                <span class="system-icon">
+                            <Link to={item.link} className='card' key={index} rel="noopener noreferrer" >
+                                <span className="system-icon">
                                     <div className="icon" dangerouslySetInnerHTML={{ __html: item.icon }} />
                                 </span>
-                                <div class="card-content">
-                                    <div class="card-heading">
-                                        <p class="card-title">
-                                            {item.title}
-                                        </p>
+                                <div className="card-content">
+                                    <div className="card-heading">
+                                        <Paragraph text={item.title} className="card-title" />
 
                                         <div className="tooltip">
                                             <svg className='Icon' xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -71,12 +70,12 @@ const SegmentedButton = ({ medicalContent, adminContent }) => {
                                         </div>
                                     </div>
                                 </div>
-                            </a>
+                            </Link>
                         ))}
                     </div>
                 )}
             </div>
-        </div>
+        </div >
     );
 };
 

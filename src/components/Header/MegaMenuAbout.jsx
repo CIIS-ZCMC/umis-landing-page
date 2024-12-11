@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import Paragraph from "../Paragraph/Paragraph";
 
 const AboutMegaMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -23,19 +26,21 @@ const AboutMegaMenu = () => {
                 {isOpen && (
                     <div className="mega-menu-container-2">
                         <div className="mega-menu-heading">
-                            <p className="mega-menu-title">About us</p>
-                            <p className="mega-menu-description">See more background and compliance information about us.</p>
+                            <Paragraph text="About us" className="mega-menu-title" />
+                            <Paragraph text="See more background and compliance information about us." className="mega-menu-description" />
                         </div>
                         <div className="mega-menu-content">
                             <div className="mega-menu-left">
-                                <p className="mega-menu-label">Our story</p>
+                                <Paragraph text="Our story" className="mega-menu-label" />
                                 <hr id="mega-menu-divider" />
                                 <div className="mega-menu-group-1">
                                     <div className="mega-menu-left-1">
                                         <ul className="mega-menu-list">
                                             {["ZCMC Profile", "Organizational chart", "Strategy map 2018", "Performance Governance System"].map((item, index) => (
                                                 <li key={index} className="mega-menu-list-item">
-                                                    <a className="mega-menu-link" href="#" rel="noopener noreferrer">{item}</a>
+                                                    <Link to="/" className="mega-menu-link" rel="noopener noreferrer" >
+                                                        {item}
+                                                    </Link>
                                                 </li>
                                             ))}
                                         </ul>
@@ -43,13 +48,15 @@ const AboutMegaMenu = () => {
                                 </div>
                             </div>
                             <div className="mega-menu-right">
-                                <p className="mega-menu-label">More information</p>
+                                <Paragraph text="More information" className="mega-menu-label" />
                                 <hr id="mega-menu-divider" />
                                 <div className="mega-menu-right-1">
                                     <ul className="mega-menu-list">
                                         {["Transparency seal", "Data privacy statement", "Registration statement", "Job opportunities"].map((item, index) => (
                                             <li key={index} className="mega-menu-list-item">
-                                                <a className="mega-menu-link" href="#" rel="noopener noreferrer">{item}</a>
+                                                <Link to="/" className="mega-menu-link" rel="noopener noreferrer" >
+                                                    {item}
+                                                </Link>
                                             </li>
                                         ))}
                                     </ul>
@@ -73,7 +80,9 @@ const AboutMegaMenu = () => {
                         <ul className="mega-menu-list">
                             {["ZCMC Profile", "Organizational chart", "Strategy map 2018", "Performance Governance System", "Transparency seal", "Data privacy statement", "Registration statement", "Job opportunities"].map((item, index) => (
                                 <li key={index} className="mega-menu-list-item">
-                                    <a className="mega-menu-link" href="#" rel="noopener noreferrer">{item}</a>
+                                    <Link to="/" className="mega-menu-link" rel="noopener noreferrer" >
+                                        {item}
+                                    </Link>
                                 </li>
                             ))}
                         </ul>

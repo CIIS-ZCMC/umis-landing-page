@@ -1,50 +1,50 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import StartPage from './StartPage.jsx';
+
+import HeaderHero from './components/HeaderHero/HeaderHero.jsx';
+import Header from './components/Header/Header.jsx';
+
+const GovComponent = React.lazy(() => import('./components/GovComponent/GovComponent.jsx'));
+const Agency = React.lazy(() => import('./components/Agency/Agency.jsx'));
+const Careers = React.lazy(() => import('./components/Careers/Careers.jsx'));
+const FeaturedVideos = React.lazy(() => import('./components/FeaturedVideos/FeaturedVideos.jsx'));
+const MoreInfo = React.lazy(() => import('./components/MoreInfo/MoreInfo.jsx'));
+const Contact = React.lazy(() => import('./components/Contact/Contact.jsx'));
+const MccCorner = React.lazy(() => import('./components/MccCorner/MccCorner.jsx'));
+const News = React.lazy(() => import('./components/News/News.jsx'));
+const StartPage = React.lazy(() => import('./StartPage.jsx'));
 
 import './styles/globals.css';
 import './styles/style.css';
+import './styles/text.css';
 import './styles/buttons.css';
 import './styles/header.css';
 import './styles/slideshow.css';
 import './styles/arrow.css';
-import './styles/mega-menu.css';
-import './styles/start-page.css';
-import './styles/connected-systems.css';
-import './styles/tooltip.css';
-
-import GovComponent from './components/GovComponent/GovComponent.jsx';
-import Agency from './components/Agency/Agency.jsx';
-import Careers from './components/Careers/Careers.jsx';
-import FeaturedVideos from './components/FeaturedVideos/FeaturedVideos.jsx';
-import MoreInfo from './components/MoreInfo/MoreInfo.jsx';
-import HeaderHero from './components/HeaderHero/HeaderHero.jsx';
-import Header from './components/Header/Header.jsx';
-import Contact from './components/Contact/Contact.jsx';
-import MccCorner from './components/MccCorner/MccCorner.jsx';
-import News from './components/News/News.jsx';
 
 const App = () => {
     return (
         <Router>
             <div className="landing-page-desktop">
-                <Routes>
-                    <Route path="/" element={
-                        <>
-                            <Header />
-                            <HeaderHero />
-                            <News />
-                            <FeaturedVideos />
-                            <MoreInfo />
-                            <Careers />
-                            <MccCorner />
-                            <Contact />
-                            <Agency />
-                            <GovComponent />
-                        </>
-                    } />
-                    <Route path="/StartPage" element={<StartPage />} />
-                </Routes>
+                <Suspense fallback={<></>}>
+                    <Routes>
+                        <Route path="/" element={
+                            <>
+                                <Header />
+                                <HeaderHero />
+                                <News />
+                                <FeaturedVideos />
+                                <MoreInfo />
+                                <Careers />
+                                <MccCorner />
+                                <Contact />
+                                <Agency />
+                                <GovComponent />
+                            </>
+                        } />
+                        <Route path="/StartPage" element={<StartPage />} />
+                    </Routes>
+                </Suspense>
             </div>
         </Router>
     );
