@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import Paragraph from "../Paragraph/Paragraph";
+
 const AnnouncementBackdrop = () => {
 
   return (
@@ -11,7 +13,7 @@ const AnnouncementBackdrop = () => {
             <div className="content">
               <div className="announcement-heading">
                 <div className="label-with-trailing-icon">
-                  <p className="announcement-label">Announcement</p>
+                  <Paragraph text="Announcement" className="announcement-label" />
                   <img src="./img/megaphone-loud.svg" alt="" />
                 </div>
                 <small className="announcement-publish-date">

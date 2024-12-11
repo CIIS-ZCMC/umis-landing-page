@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { config, getSystemUrlByCode } from "../../utils/RetrieveSystemURL";
+import { Link } from "react-router-dom";
 import announcmentIcon from "../../assets/megaphone-loud.svg";
-import useUserHook from "../../hooks/UserHook";
+import Paragraph from "../Paragraph/Paragraph";
 
 const StartPageContainer = () => {
-  const { user } = useUserHook();
   const [isVisible, setIsVisible] = useState(false);
 
   const handleDismiss = () => {
@@ -21,39 +20,38 @@ const StartPageContainer = () => {
       <div className="start-page-intro">
         <div className="start-page-content">
           <div className="heading">
-            <p className="subheading">Welcome to One ZCMC</p>
-            <p className="text-wrapper-5">All you need, in one portal</p>
+            <Paragraph text="Welcome to One ZCMC" className="subheading" />
+            {/* <p className="text-wrapper-5">All you need, in one portal</p>
             <p className="start-page-heading-description">
-              Get access to all information systems and applications,
-              information and resources readily available for you.
-            </p>
+              Get access to all information systems and applications, information and resources
+              readily available for you.
+            </p> */}
           </div>
 
           <div className="cta-container">
-            <a
-              className="CTA"
-              href={
-                user !== null
-                  ? getSystemUrlByCode(user.side_bar_details.system, "UMIS")
-                  : config.production.umis
-              }
+            <Link
+              to="http://192.168.5.1:8080/login"
+              className="CTA start-page-CTA"
               rel="noopener noreferrer"
             >
               Go to UMIS
-            </a>
+              <br />
+              User Management Information System
+            </Link>
             <button
               className="secondary-CTA"
               id="read-announcement"
               onClick={handleReadAnnouncement}
             >
-              Read announcement
+              Read announcements
             </button>
           </div>
 
           <div className="announcement-date-container">
-            <p className="announcement-date">
-              Announcements last updated on: August 10, 2023
-            </p>
+            <Paragraph
+              text="Announcements last updated on: August 10, 2023"
+              className="announcement-date"
+            />
           </div>
         </div>
       </div>
@@ -67,7 +65,10 @@ const StartPageContainer = () => {
             <div className="content">
               <div className="announcement-heading">
                 <div className="label-with-trailing-icon">
-                  <p className="announcement-label">Announcement</p>
+                  <Paragraph
+                    text="Announcement"
+                    className="announcement-label"
+                  />
                   <img src={announcmentIcon} alt="" />
                 </div>
                 <small className="announcement-publish-date">

@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
+
+import Paragraph from "../Paragraph/Paragraph";
 import newsImg from '../../assets/news/sample-news-img.png';
 
 const newsItems = [
@@ -33,7 +36,7 @@ const NewsItem = () => {
     return (
         <div className="list">
             <div className="list-heading">
-                <div className="text-wrapper-9">Recent news</div>
+                <Paragraph text="Recent news" className="text-wrapper-9" />
                 <div className="frame-2">
                     <button className={`img-wrapper ${isPreviousDisabled ? 'disabled' : ''}`} onClick={handlePrevious} disabled={isPreviousDisabled}>
                         <svg className={`img img-previous ${isPreviousDisabled ? 'disabled' : ''}`} width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -55,16 +58,19 @@ const NewsItem = () => {
                             <img className="recent-news-list-item" src={item.image} alt="" />
                             <div className="frame-4">
                                 <div className="div-4">
-                                    <p className="text-wrapper-10">Published {item.date}</p>
-                                    <p className="text-wrapper-11">{item.title}</p>
+                                    <div className="publish-date-container">
+                                        <Paragraph text="Published" className="text-wrapper-7" />
+                                        <Paragraph text={item.date} className="text-wrapper-7" />
+                                    </div>
+                                    <Paragraph text={item.title} className="text-wrapper-8" />
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
-                <a className="secondary-CTA" href="#" rel="noopener noreferrer">
+                <Link to="/" className="secondary-CTA" rel="noopener noreferrer" >
                     All recent news (+{newsItems.length - (currentIndex + itemsPerPage)} more)
-                </a>
+                </Link>
             </div>
         </div>
     );

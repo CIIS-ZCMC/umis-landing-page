@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+
 import phoneIcon from '../../assets/contact/phone-1.svg';
 import emailIcon from '../../assets/contact/mail-1.svg';
 
@@ -8,6 +10,8 @@ import img21 from '../../assets/contact/image-21.png';
 import img22 from '../../assets/contact/image-22.png';
 import img23 from '../../assets/contact/image-23.png';
 
+import Paragraph from "../Paragraph/Paragraph";
+
 const Contact = () => {
     return (
         <div className="contact">
@@ -15,12 +19,10 @@ const Contact = () => {
 
             <div className="div-2">
                 <div className="div-6">
-                    <p className="subheading">We’d love to hear from you</p>
-                    <div className="heading-4">Contact and visit us</div>
+                    <Paragraph text="We’d love to hear from you" className="subheading" />
+                    <Paragraph text="Contact and visit us" className="heading-4" />
                 </div>
-                <p className="contact-heading-description">
-                    We are open anytime from Monday to Sunday including holidays.
-                </p>
+                <Paragraph text="We are open anytime from Monday to Sunday including holidays." className="contact-heading-description" />
             </div>
 
             <div className="content-3">
@@ -32,20 +34,26 @@ const Contact = () => {
                         <div className="content-2">
                             <div className="div-7">
                                 <div className="text-2">Call us</div>
-                                <p className="supporting-text">Anytime from Monday - Sunday.</p>
+                                <Paragraph text="Anytime from Monday - Sunday." className="supporting-text" />
                             </div>
                             <div className="div-7">
                                 <div className="link-container">
-                                    <div className="text-wrapper-21">Direct line:</div>
-                                    <a className="tel-numbers" href="tel:0629912934">062 9912934</a>
+                                    <Paragraph text="Direct line:" className="text-wrapper-21" />
+                                    <Link to="tel:0629912934" className="tel-numbers" rel="noopener noreferrer" >
+                                        062 9912934
+                                    </Link>
                                 </div>
                                 <div className="link-container">
-                                    <div className="text-wrapper-21">Via Globe call:</div>
-                                    <a className="tel-numbers" href="tel:09155365583">09155365583</a>
+                                    <Paragraph text="Via Globe call:" className="text-wrapper-21" />
+                                    <Link to="tel:09155365583" className="tel-numbers" rel="noopener noreferrer" >
+                                        09155365583
+                                    </Link>
                                 </div>
                                 <div className="link-container">
-                                    <div className="text-wrapper-21">Fax number:</div>
-                                    <a className="tel-numbers" href="tel:0629910573">062 9910573</a>
+                                    <Paragraph text="Fax number:" className="text-wrapper-21" />
+                                    <Link to="tel:0629910573" className="tel-numbers" rel="noopener noreferrer" >
+                                        062 9910573
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -65,17 +73,21 @@ const Contact = () => {
                         </div>
                         <div className="content-2">
                             <div>
-                                <p className="text-2">Email us</p>
-                                <p className="supporting-text">Our team is here to help.</p>
+                                <Paragraph text="Email us" className="text-2" />
+                                <Paragraph text="Our team is here to help." className="supporting-text" />
                             </div>
 
                             <div>
-                                <p className="text-wrapper-25">Email address:</p>
+                                <Paragraph text="Email address:" className="text-wrapper-25" />
                                 <div className="link-container">
-                                    <a className="email" href="mailto:mc-chief@zcmc.doh.gov.ph">mc-chief@zcmc.doh.gov.ph</a>
+                                    <Link to="mailto:mc-chief@zcmc.doh.gov.ph" className="email" rel="noopener noreferrer" >
+                                        mc-chief@zcmc.doh.gov.ph
+                                    </Link>
                                 </div>
                                 <div className="link-container">
-                                    <a className="email" href="mailto:doh9_zcmc@yahoo.com">doh9_zcmc@yahoo.com</a>
+                                    <Link to="mailto:doh9_zcmc@yahoo.com" className="email" rel="noopener noreferrer" >
+                                        doh9_zcmc@yahoo.com
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -84,29 +96,31 @@ const Contact = () => {
 
                 <div className="container-10">
                     <hr className="light-divider" />
-                    <p className="supporting-text-2">
-                        Zamboanga City Medical Center - Dr. Evangelista St., Sta. Catalina, Zamboanga City, Philippines, 7000
-                    </p>
+                    <Paragraph text="Zamboanga City Medical Center - Dr. Evangelista St., Sta. Catalina, Zamboanga City, Philippines, 7000" className="supporting-text-2" />
                 </div>
 
                 <div className="pages">
-                    <div className="supporting-text-3">Official Facebook Pages:</div>
+                    <Paragraph text="Official Facebook Pages:" className="supporting-text-3" />
                     <div className="div">
-                        <a className="fb-link" href="https://www.facebook.com/zcmcdoh9" rel="noopener noreferrer">
+                        <Link to="https://www.facebook.com/zcmcdoh9" className="fb-link" rel="noopener noreferrer" >
                             <img className="image-7" src={img18} alt="Facebook 1" />
-                        </a>
-                        <a className="fb-link" href="https://www.facebook.com/paccu.zcmc" rel="noopener noreferrer">
+                        </Link>
+
+                        <Link to="https://www.facebook.com/paccu.zcmc" className="fb-link" rel="noopener noreferrer" >
                             <img className="image-8" src={img19} alt="Facebook 2" />
-                        </a>
-                        <a className="fb-link" href="https://www.facebook.com/zcmcphu" rel="noopener noreferrer">
+                        </Link>
+
+                        <Link to="https://www.facebook.com/zcmcphu" className="fb-link" rel="noopener noreferrer" >
                             <img className="image-8" src={img21} alt="Facebook 3" />
-                        </a>
-                        <a className="fb-link" href="https://www.facebook.com/people/Zcmc-Petro/pfbid0wXwNGYGNJZHhjyuL4wLGZMC77d3985PXXdFEfVSPSqF3e14RX9XjsjEknkFpkX33l/" rel="noopener noreferrer">
+                        </Link>
+
+                        <Link to="https://www.facebook.com/people/Zcmc-Petro/pfbid0wXwNGYGNJZHhjyuL4wLGZMC77d3985PXXdFEfVSPSqF3e14RX9XjsjEknkFpkX33l/" className="fb-link" rel="noopener noreferrer" >
                             <img className="image-9" src={img22} alt="Facebook 4" />
-                        </a>
-                        <a className="fb-link" href="https://www.facebook.com/zcmcSafEU" rel="noopener noreferrer">
+                        </Link>
+
+                        <Link to="https://www.facebook.com/zcmcSafEU" className="fb-link" rel="noopener noreferrer" >
                             <img className="image-8" src={img23} alt="Facebook 5" />
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
