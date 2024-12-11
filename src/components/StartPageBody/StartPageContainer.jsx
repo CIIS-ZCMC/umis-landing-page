@@ -35,7 +35,7 @@ const StartPageContainer = () => {
               href={
                 user !== null
                   ? getSystemUrlByCode(user.side_bar_details.system, "UMIS")
-                  : config.development.umis
+                  : config.production.umis
               }
               rel="noopener noreferrer"
             >
