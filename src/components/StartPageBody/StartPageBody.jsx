@@ -1,5 +1,10 @@
 import React from "react";
 import StartPageContainer from "./StartPageContainer";
+import SegmentedButton from "../SegmentedButton/SegmentedButton";
+import { Link } from "@mui/material";
+import Paragraph from "../Paragraph/Paragraph";
+import Contact from "../Contact/Contact";
+import StartPageFooterSm from "./StartPageFooterSm";
 
 const StartPage = () => {
   const medicalContent = [
@@ -196,7 +201,7 @@ const StartPage = () => {
 
         <hr className="start-page-divider section-divider" />
 
-        <ContactUs />
+        <Contact />
         <StartPageFooterSm />
       </div>
     </div>

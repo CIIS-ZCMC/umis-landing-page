@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import heroImage1 from '../../assets/slideshow/hero.png';
-import heroImage2 from '../../assets/slideshow/hero-bg.png';
-import heroImage3 from '../../assets/slideshow/lp-bg.jpg';
+import React, { useState } from "react";
+import heroImage1 from "../../assets/slideshow/hero.png";
+import heroImage2 from "../../assets/slideshow/hero-bg.png";
+import heroImage3 from "../../assets/slideshow/lp-bg.jpg";
 
 const HeaderHero = () => {
   const [slideIndex, setSlideIndex] = useState(1);
@@ -22,10 +22,9 @@ const HeaderHero = () => {
 
   return (
     <div className="header-hero">
-      <div className='container' style={{background:"#0A3E30"}}>
+      <div className="container" style={{ background: "#0A3E30" }}>
         <div className="slideshow-container">
           <div className="slideshow-bg">
-
             <div className="slideshow-content">
               <a className="prev" onClick={() => plusSlides(-1)}>
                 &#10094;
@@ -37,7 +36,9 @@ const HeaderHero = () => {
                     className="slideshow-img"
                     src={slide}
                     alt={`Slide ${index + 1}`}
-                    style={{ display: slideIndex === index + 1 ? 'block' : 'none' }}
+                    style={{
+                      display: slideIndex === index + 1 ? "block" : "none",
+                    }}
                   />
                 ))}
               </div>
@@ -52,11 +53,15 @@ const HeaderHero = () => {
                   key={index}
                   className="slider-dot"
                   onClick={() => currentSlide(index + 1)}
-                  style={{ backgroundColor: slideIndex === index + 1 ? '#0F5721' : 'rgba(15, 87, 33, 0.24)' }}
+                  style={{
+                    backgroundColor:
+                      slideIndex === index + 1
+                        ? "#0F5721"
+                        : "rgba(15, 87, 33, 0.24)",
+                  }}
                 ></span>
               ))}
             </div>
-            
           </div>
         </div>
       </div>

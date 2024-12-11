@@ -10,8 +10,10 @@ import MegaMenuAbout from "./MegaMenuAbout";
 import MegaMenuRates from "./MegaMenuRates";
 import Accordion from "../Accordion/Accordion";
 import Paragraph from "../Paragraph/Paragraph";
+import { Button, Typography } from "@mui/material";
+import PropTypes from "prop-types";
 
-const Header = (props) => {
+const Header = ({ onClick }) => {
   const [menuVisible, setMenuVisible] = useState({
     services: false,
     about: false,
@@ -120,7 +122,12 @@ const Header = (props) => {
         <div className="nav-panel-content-sm cta-group">
           <div className="cta-group-sm">
             <div className="cta-buttons">
-              <Link to="/StartPage" className="CTA" rel="noopener noreferrer">
+              <Link
+                to="/StartPage"
+                // onClick={() => props.onClick()}
+                className="CTA"
+                rel="noopener noreferrer"
+              >
                 Log on to One ZCMC
               </Link>
               <Link
@@ -153,18 +160,27 @@ const Header = (props) => {
             id="search"
             className="search"
             placeholder="Search"
-            type="search"
+            type="se rch"
             maxLength="100"
           />
         </form>
         <div id="error-message" style={{ color: "red" }}></div>
 
-        <Link to="/StartPage" className="CTA" rel="noopener noreferrer">
+        <Button
+          className="CTA"
+          rel="noopener noreferrer"
+          style={{ color: "white", textTransform: "none" }}
+          onClick={() => onClick()}
+        >
           Log on to One ZCMC
-        </Link>
+        </Button>
       </div>
     </header>
   );
+};
+
+Header.propTypes = {
+  onClick: PropTypes.func,
 };
 
 export default Header;

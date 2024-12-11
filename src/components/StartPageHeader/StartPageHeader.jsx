@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import avatar from "../../assets/avatar-icon.png";
 import logo from "../../assets/zcmc-logo-1.png";
 
 import Paragraph from "../Paragraph/Paragraph";
+import useUserHook from "../../hooks/UserHook";
 
 const StartPageHeader = () => {
   const navigate = useNavigate();

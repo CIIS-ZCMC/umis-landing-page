@@ -10,10 +10,11 @@ import "../styles/globals.css";
 import "../styles/style.css";
 import "../styles/slideshow.css";
 import Landing from "../page/landing";
-import Dashboard from "../page/dashboard";
 import useUserHook from "../hooks/UserHook";
-import { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import LoadingScreen from "../page/loading_screen";
+
+const StartPage = React.lazy(() => import("../StartPage.jsx"));
 
 /**
  * Protected Routes
@@ -71,16 +72,24 @@ const AnimatedRoutes = () => {
       <Suspense fallback={<LoadingScreen />}>
         <div className="landing-page-desktop">
           <Routes>
-            <Route path="/login" element={<Landing />} />
+            <Route path="/" element={<Landing />} />
 
             <Route
+              path="/StartPage"
+              element={
+                <ProtectedRoutes>
+                  <StartPage />
+                </ProtectedRoutes>
+              }
+            />
+            {/* <Route
               path="/"
               element={
                 <ProtectedRoutes>
                   <Dashboard />
                 </ProtectedRoutes>
               }
-            />
+            /> */}
           </Routes>
         </div>
       </Suspense>
