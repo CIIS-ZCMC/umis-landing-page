@@ -12,6 +12,7 @@ import Accordion from "../Accordion/Accordion";
 import Paragraph from "../Paragraph/Paragraph";
 import { Button, Typography } from "@mui/material";
 import PropTypes from "prop-types";
+import { ACTION_SIGN_IN } from "../../utils/config";
 
 const Header = ({ onClick }) => {
   const [menuVisible, setMenuVisible] = useState({
@@ -123,8 +124,7 @@ const Header = ({ onClick }) => {
           <div className="cta-group-sm">
             <div className="cta-buttons">
               <Link
-                to="/StartPage"
-                // onClick={() => props.onClick()}
+                to={`/${ACTION_SIGN_IN}`}
                 className="CTA"
                 rel="noopener noreferrer"
               >

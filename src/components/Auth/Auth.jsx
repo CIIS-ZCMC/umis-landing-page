@@ -18,6 +18,8 @@ import {
   ACTION_INPUT_OTP,
   ACTION_SIGN_IN,
 } from "../../utils/config";
+import ForgotPassword from "./ForgotPassword/ForgotPassword";
+import Container from "./Container/Container";
 
 const CloseModal = (props) => {
   return (
@@ -27,164 +29,6 @@ const CloseModal = (props) => {
     >
       <CloseIcon />
     </IconButton>
-  );
-};
-
-const Container = ({ open, handleClose, children }) => {
-  return (
-    <Modal open={open} onClose={handleClose}>
-      <Box
-        sx={{
-          // position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: 400,
-          bgcolor: "background.paper",
-          boxShadow: 24,
-          p: 4,
-          borderRadius: "10px",
-          position: "relative",
-        }}
-      >
-        {children}
-      </Box>
-    </Modal>
-  );
-};
-
-const Timer = ({ initialSeconds = 60, setIsOTPExpired = false }) => {
-  const [seconds, setSeconds] = useState(initialSeconds);
-
-  useEffect(() => {
-    if (seconds > 0) {
-      const timerId = setInterval(() => {
-        setSeconds((prevSeconds) => prevSeconds - 1);
-      }, 1000);
-
-      return () => clearInterval(timerId); // Cleanup the interval on component unmount
-    } else {
-      setIsOTPExpired(true);
-    }
-  }, [seconds]);
-
-  const formatTime = (secs) => {
-    const minutes = Math.floor(secs / 60);
-    const remainingSeconds = secs % 60;
-    return `${String(minutes).padStart(2, "0")}:${String(
-      remainingSeconds
-    ).padStart(2, "0")}`;
-  };
-
-  return (
-    <Typography variant="h6" color={seconds > 10 ? "textPrimary" : "error"}>
-      {seconds > 0 ? ` ${formatTime(seconds)}` : "Time's up!"}
-    </Typography>
-  );
-};
-
-const ForgotPassword = ({ open, handleClose, children }) => {
-  const [loading, setLoading] = useState(false);
-  const [otp, setOtp] = useState(new Array(6).fill(""));
-  const [isOTPExpired, setIsOTPExpired] = useState(false);
-
-  const handleChange = (e, index) => {
-    const value = e.target.value;
-
-    if (isNaN(value)) return; // Only allow numeric input
-
-    const newOtp = [...otp];
-    newOtp[index] = value;
-    setOtp(newOtp);
-
-    // Move to the next input field if available
-    // if (value && index < otp.length - 1) {
-    document.getElementById(`otp-${index + 1}`).focus();
-    // }
-  };
-
-  const handleFocus = (index) => {
-    if (!otp[index]) {
-      document.getElementById(`otp-${index}`).focus();
-    }
-  };
-
-  const handleKeyDown = (e, index) => {
-    console.log(`VALUE: ${e.target.value} INDEX: ${index}`);
-    document.getElementById(`otp-${index + 1}`).focus();
-    // if (e.key === "Backspace" && !otp[index] && index > 0) {
-    //   document.getElementById(`otp-${index - 1}`).focus();
-    // }
-  };
-
-  const handlePaste = (e) => {
-    e.preventDefault();
-    const pasteData = e.clipboardData.getData("text").slice(0, 6);
-    const newOtp = otp.map((_, i) => pasteData[i] || "");
-    setOtp(newOtp);
-    // Autofocus each input field
-    newOtp.forEach((_, i) => {
-      const nextInput = document.getElementById(`otp-${i}`);
-      if (nextInput) nextInput.value = newOtp[i];
-    });
-  };
-
-  return (
-    <Container open={open} handleClose={handleClose}>
-      {children}
-      <Typography variant="h6" component="h2" marginBottom="1rem" gutterBottom>
-        Sign In
-      </Typography>
-      <Typography fontSize={12} marginBottom="1rem">
-        {`
-        A OTP has been sent to your email. Please check your inbox.
-            If you didn't receive an email click resend.
-        `}
-      </Typography>
-
-      <Box display="flex" justifyContent="space-between">
-        <Typography>One Time Password</Typography>
-        <Timer initialSeconds={90} setIsOTPExpired={setIsOTPExpired} />
-      </Box>
-      <Box display="flex" justifyContent="center" gap={1}>
-        {otp.map((value, index) => (
-          <TextField
-            key={index}
-            id={`otp-${index}`}
-            value={value}
-            onChange={(e) => handleChange(e, index)}
-            onFocus={() => handleFocus(index)}
-            onPaste={handlePaste}
-            inputProps={{
-              maxLength: 1,
-              style: {
-                textAlign: "center",
-                fontSize: "1.5rem",
-                width: "2.5rem",
-              },
-            }}
-            autoComplete="off"
-          />
-        ))}
-      </Box>
-      <Box display="flex" justifyContent="end" marginTop="0.5rem">
-        <Typography fontSize={12} color="blue">
-          Resend OTP
-        </Typography>
-      </Box>
-      <Button
-        variant="contained"
-        type="submit"
-        fullWidth
-        sx={{ mt: 2, backgroundColor: "rgba(15, 87, 33, 1)" }}
-        disabled={loading || isOTPExpired}
-        startIcon={
-          loading ? <CircularProgress size={20} color="inherit" /> : null
-        }
-      >
-        {loading ? "Processing" : "Send OTP"}
-      </Button>
-    </Container>
   );
 };
 
@@ -265,9 +109,14 @@ const Auth = (props) => {
     handleSignIn(false);
   }
 
+  function handleClose() {
+    setAction(ACTION_SIGN_IN);
+    props.handleClose();
+  }
+
   if (action === ACTION_FORGOT_PASSWORD) {
     return (
-      <ForgotPassword open={props.open} handleClose={props.handleClose}>
+      <ForgotPassword open={props.open} handleClose={handleClose}>
         <CloseModal handleClose={props.handleClose} />
       </ForgotPassword>
     );

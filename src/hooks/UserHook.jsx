@@ -12,7 +12,6 @@ const useUserHook = create((set) => ({
       .then((res) => {
         const { data, message } = res;
 
-        console.log(data);
         set(() => ({ user: data }));
         callBack(200, message);
       })
