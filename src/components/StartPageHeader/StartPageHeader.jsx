@@ -6,6 +6,7 @@ import logo from "../../assets/zcmc-logo-1.png";
 
 import Paragraph from "../Paragraph/Paragraph";
 import useUserHook from "../../hooks/UserHook";
+import { Button } from "@mui/material";
 
 const StartPageHeader = () => {
   const navigate = useNavigate();
@@ -58,7 +59,11 @@ const StartPageHeader = () => {
               Medical Officer II
             </small>
           </div>
-          <Link to="/" className="" rel="noopener noreferrer">
+          <Button
+            className=""
+            rel="noopener noreferrer"
+            onClick={handleSignout}
+          >
             <svg
               className="logout-sm"
               xmlns="http://www.w3.org/2000/svg"
@@ -72,16 +77,16 @@ const StartPageHeader = () => {
                 fill="white"
               />
             </svg>
-          </Link>
+          </Button>
         </div>
 
-        <Link
-          to="/"
+        <Button
           className="secondary-CTA account-used-CTA-sm"
           rel="noopener noreferrer"
+          onClick={handleSignout}
         >
           Logout
-        </Link>
+        </Button>
       </div>
     </header>
   );

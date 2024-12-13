@@ -19,80 +19,34 @@ import { useState } from "react";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
-  const { newPassword, signIn } = useUserHook();
+  const { verifyEmailAndSendOTP } = useUserHook();
 
-  const [employeeID, setEmployeeID] = useState(null);
-  const [password, setPassword] = useState(null);
-  const [confirmPassword, setConfirmPassword] = useState(null);
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const [error, setError] = useState(false);
-
-  const [changePassword, setChangePassword] = useState(false);
+  const [email, setEmail] = useState(null);
 
   const [loading, setLoading] = useState(false);
 
-  function handleSignIn(persistPassword) {
+  function submit(e) {
+    e.preventDefault();
+
     let form = new FormData();
-    form.append("employee_id", employeeID);
-    form.append("password", password);
+    form.append("email", email);
 
-    if (persistPassword) {
-      form.append("persist_password", 1);
-    }
-
-    signIn(form, (status, message) => {
+    verifyEmailAndSendOTP(form, (status, message) => {
       if (!(status >= 200 && status < 300)) {
         if (status === 307) {
+          setPassword(null);
           setConfirmPassword(null);
           setLoading(false);
           return setChangePassword(true);
         }
 
-        if (status === 403) {
-          setPassword(null);
-          return setError(true);
-        }
-
+        setLoading(false);
         return console.log(message);
       }
 
       setLoading(false);
-      navigate("/");
+      navigate(`/${ACTION_INPUT_OTP}`);
     });
-  }
-
-  function submit(e) {
-    e.preventDefault();
-
-    navigate(`/${ACTION_INPUT_OTP}`);
-
-    /**
-     * If password is expired.
-     */
-    // if (changePassword) {
-    //   if (password !== confirmPassword) {
-    //     setLoading(false);
-    //     return console.log("Password doesn't match.");
-    //   }
-
-    //   newPassword(form, (status, message) => {
-    //     if (!(status >= 200 && status < 300)) {
-    //       if (status === 307) {
-    //         setPassword(null);
-    //         setConfirmPassword(null);
-    //         setLoading(false);
-    //         return setChangePassword(true);
-    //       }
-
-    //       setLoading(false);
-    //       return console.log(message);
-    //     }
-    //   });
-    // }
-
-    // handleSignIn(false);
   }
 
   return (
@@ -123,7 +77,7 @@ const ForgotPassword = () => {
         <form method="POST" onSubmit={submit}>
           <TextField
             label="Email address"
-            type="text"
+            type="email"
             fullWidth
             sx={{
               fontSize: "14px",
@@ -139,8 +93,8 @@ const ForgotPassword = () => {
               },
             }}
             color="success"
-            value={employeeID}
-            onChange={(e) => setEmployeeID(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
 

@@ -11,29 +11,25 @@ import {
 import {
   ACTION_ASSIGN_NEW_PASSWORD,
   ACTION_FORGOT_PASSWORD,
+  ACTION_INPUT_OTP,
   ACTION_SIGN_IN,
+  ACTION_SIGNIN_OTP,
 } from "../../utils/config";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useUserHook from "../../hooks/UserHook";
 import { useState } from "react";
 import Timer from "../../components/Auth/Timer/Timer";
 
 const OTPVerification = () => {
   const navigate = useNavigate();
-  const { newPassword, signIn } = useUserHook();
+  const location = useLocation();
+  const { verifyOTP, resendOTP, signInWithOTP } = useUserHook();
 
+  const [initialTime, setInitialTime] = useState(120);
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const [isOTPExpired, setIsOTPExpired] = useState(false);
-  const [employeeID, setEmployeeID] = useState(null);
-  const [password, setPassword] = useState(null);
-  const [confirmPassword, setConfirmPassword] = useState(null);
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const [error, setError] = useState(false);
-
-  const [changePassword, setChangePassword] = useState(false);
-
+  const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e, index) => {
@@ -77,34 +73,61 @@ const OTPVerification = () => {
     });
   };
 
+  function handleResendOTP() {
+    resendOTP((status, message) => {
+      if (!(status >= 200 && status < 300)) {
+        if (status === 307) {
+          setErrorMessage(message);
+          return setLoading(false);
+        }
+
+        setErrorMessage(message);
+        return console.log(message);
+      }
+      setInitialTime(90);
+      setLoading(false);
+    });
+  }
+
   function submit(e) {
     e.preventDefault();
 
-    /**
-     * If password is expired.
-     */
-    if (changePassword) {
-      if (password !== confirmPassword) {
-        setLoading(false);
-        return console.log("Password doesn't match.");
-      }
+    let form = new FormData();
+    form.append("otp", otp.join(""));
 
-      newPassword(form, (status, message) => {
+    const is2fa = location.pathname.includes(ACTION_SIGNIN_OTP);
+
+    if (is2fa) {
+      signInWithOTP(form, (status, message) => {
         if (!(status >= 200 && status < 300)) {
           if (status === 307) {
-            setPassword(null);
-            setConfirmPassword(null);
-            setLoading(false);
-            return setChangePassword(true);
+            setErrorMessage(message);
+            return setLoading(false);
           }
 
-          setLoading(false);
+          setErrorMessage(message);
           return console.log(message);
         }
+
+        navigate("/");
+        setLoading(false);
       });
     }
 
-    handleSignIn(false);
+    verifyOTP(form, (status, message) => {
+      if (!(status >= 200 && status < 300)) {
+        if (status === 307) {
+          setErrorMessage(message);
+          return setLoading(false);
+        }
+
+        setErrorMessage(message);
+        return console.log(message);
+      }
+
+      navigate(`/${ACTION_ASSIGN_NEW_PASSWORD}`);
+      setLoading(false);
+    });
   }
 
   return (
@@ -128,9 +151,17 @@ const OTPVerification = () => {
           Verify One-time Pin
         </Typography>
 
-        <Typography sx={{ mb: 2, fontSize: 12, color: "rgba(128,128,128,1)" }}>
-          Please type in the code that we sent to your email to help us confirm
-          it’s you. The code is valid for 3 minutes only.
+        <Typography
+          sx={{
+            mb: 2,
+            fontSize: 12,
+            color: errorMessage !== null ? "darkred" : "rgba(128,128,128,1)",
+          }}
+        >
+          {errorMessage !== null
+            ? errorMessage
+            : `Please type in the code that we sent to your email to help us confirm
+          it’s you. The code is valid for 3 minutes only.`}
         </Typography>
 
         <Typography
@@ -170,7 +201,10 @@ const OTPVerification = () => {
           <Typography sx={{ fontSize: 12, color: "rgba(128,128,128,1)" }}>
             One-time pin expires in:
           </Typography>
-          <Timer initialSeconds={90} setIsOTPExpired={setIsOTPExpired} />
+          <Timer
+            initialSeconds={initialTime}
+            setIsOTPExpired={setIsOTPExpired}
+          />
         </Box>
         <Button
           variant="contained"
@@ -187,11 +221,11 @@ const OTPVerification = () => {
             },
             fontFamily: "var(--roboto-font-family)",
           }}
-          disabled={loading}
+          disabled={loading || isOTPExpired}
           startIcon={
             loading ? <CircularProgress size={20} color="inherit" /> : null
           }
-          onClick={() => navigate(`/${ACTION_ASSIGN_NEW_PASSWORD}`)}
+          onClick={submit}
         >
           {loading ? "Saving" : "Continue"}
         </Button>
@@ -233,6 +267,7 @@ const OTPVerification = () => {
                 fontFamily: "var(--roboto-font-family)",
                 fontWeight: 500,
               }}
+              onClick={handleResendOTP}
             >
               Send me a new OTP
             </Typography>

@@ -8,7 +8,13 @@ import {
   InputAdornment,
   CircularProgress,
 } from "@mui/material";
-import { ACTION_FORGOT_PASSWORD } from "../../utils/config";
+import {
+  ACTION_ASSIGN_NEW_PASSWORD,
+  ACTION_FORGOT_PASSWORD,
+  ACTION_INPUT_OTP,
+  ACTION_NEW_ACCOUNT,
+  ACTION_SIGNIN_OTP,
+} from "../../utils/config";
 import { useNavigate } from "react-router-dom";
 import useUserHook from "../../hooks/UserHook";
 import mccImg5 from "../../assets/mcc-corner/5.png";
@@ -42,9 +48,17 @@ const Login = () => {
 
     signIn(form, (status, message) => {
       if (!(status >= 200 && status < 300)) {
+        if (status === 302) {
+          setEmployeeID(null);
+          setPassword(null);
+          setLoading(false);
+          return navigate(`/${ACTION_SIGNIN_OTP}`);
+        }
+
         if (status === 307) {
           setConfirmPassword(null);
           setLoading(false);
+          navigate(`/${ACTION_NEW_ACCOUNT}`);
           return setChangePassword(true);
         }
 

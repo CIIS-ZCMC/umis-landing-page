@@ -18,7 +18,9 @@ import {
   ACTION_ASSIGN_NEW_PASSWORD,
   ACTION_FORGOT_PASSWORD,
   ACTION_INPUT_OTP,
+  ACTION_NEW_ACCOUNT,
   ACTION_SIGN_IN,
+  ACTION_SIGNIN_OTP,
 } from "../utils/config.jsx";
 import ForgotPassword from "../page/Auth/ForgotPassword.jsx";
 import OTPVerification from "../page/Auth/OTPVerification.jsx";
@@ -93,9 +95,14 @@ const AnimatedRoutes = () => {
               element={<OTPVerification />}
             />
             <Route
+              path={`/${ACTION_SIGNIN_OTP}`}
+              element={<OTPVerification />}
+            />
+            <Route
               path={`/${ACTION_ASSIGN_NEW_PASSWORD}`}
               element={<NewPassword />}
             />
+            <Route path={`/${ACTION_NEW_ACCOUNT}`} element={<NewPassword />} />
 
             <Route
               path="/"
