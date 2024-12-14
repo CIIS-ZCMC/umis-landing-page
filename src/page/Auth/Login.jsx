@@ -153,7 +153,7 @@ const Login = () => {
           {!changePassword && (
             <TextField
               label="Employee ID"
-              type="text"
+              type="number"
               fullWidth
               sx={{
                 fontSize: "14px",

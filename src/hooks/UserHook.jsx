@@ -77,6 +77,18 @@ const useUserHook = create((set) => ({
       })
       .catch((err) => callBack(...handleFailedStatus(err)));
   },
+  skipForNow: (callBack) => {
+    umis
+      .post("/skip-for-now")
+      .then((res) => validateStatusOk(res))
+      .then((res) => {
+        const { user, message } = res;
+
+        set(() => ({ user: user }));
+        callBack(200, message);
+      })
+      .catch((err) => callBack(...handleFailedStatus(err)));
+  },
   resendOTP: (callBack) => {
     umis
       .post("/resend-otp")

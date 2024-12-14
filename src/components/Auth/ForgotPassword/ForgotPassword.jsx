@@ -6,121 +6,127 @@ import {
   Typography,
   CircularProgress,
 } from "@mui/material";
-import Timer from "../Timer/Timer";
 import Container from "../Container/Container";
+import { useNavigate } from "react-router-dom";
+import useUserHook from "../../../hooks/UserHook";
+import { ACTION_INPUT_OTP, ACTION_SIGN_IN } from "../../../utils/config";
 
-const ForgotPassword = ({ open, handleClose, children }) => {
+const ForgotPassword = ({ open, handleClose, setAction, children }) => {
+  const navigate = useNavigate();
+  const { verifyEmailAndSendOTP } = useUserHook();
+
+  const [email, setEmail] = useState(null);
+
   const [loading, setLoading] = useState(false);
-  const [otp, setOtp] = useState(new Array(6).fill(""));
-  const [isOTPExpired, setIsOTPExpired] = useState(false);
 
-  const handleChange = (e, index) => {
-    const value = e.target.value;
-
-    if (isNaN(value)) return; // Only allow numeric input
-
-    const newOtp = [...otp];
-    newOtp[index] = value;
-    setOtp(newOtp);
-
-    // Move to the next input field if available
-    // if (value && index < otp.length - 1) {
-    document.getElementById(`otp-${index + 1}`).focus();
-    // }
-  };
-
-  const handleFocus = (index) => {
-    if (!otp[index]) {
-      document.getElementById(`otp-${index}`).focus();
-    }
-  };
-
-  const handleKeyDown = (e, index) => {
-    console.log(`VALUE: ${e.target.value} INDEX: ${index}`);
-    document.getElementById(`otp-${index + 1}`).focus();
-    // if (e.key === "Backspace" && !otp[index] && index > 0) {
-    //   document.getElementById(`otp-${index - 1}`).focus();
-    // }
-  };
-
-  const handlePaste = (e) => {
+  function submit(e) {
     e.preventDefault();
-    const pasteData = e.clipboardData.getData("text").slice(0, 6);
-    const newOtp = otp.map((_, i) => pasteData[i] || "");
-    setOtp(newOtp);
-    // Autofocus each input field
-    newOtp.forEach((_, i) => {
-      const nextInput = document.getElementById(`otp-${i}`);
-      if (nextInput) nextInput.value = newOtp[i];
+
+    let form = new FormData();
+    form.append("email", email);
+
+    verifyEmailAndSendOTP(form, (status, message) => {
+      if (!(status >= 200 && status < 300)) {
+        if (status === 307) {
+          setPassword(null);
+          setConfirmPassword(null);
+          setLoading(false);
+          return setChangePassword(true);
+        }
+
+        setLoading(false);
+        return console.log(message);
+      }
+
+      setLoading(false);
+      setAction(ACTION_INPUT_OTP);
     });
-  };
+  }
 
   return (
     <Container open={open} handleClose={handleClose}>
       {children}
-      <Typography variant="h6" component="h2" marginBottom="1rem" gutterBottom>
-        Sign In
-      </Typography>
-      <Typography fontSize={12} marginBottom="2rem">
-        {`
-          A OTP has been sent to your email. Please check your inbox.
-              If you didn't receive an email click resend.
-          `}
+      <Typography
+        variant="h5"
+        component="h2"
+        color="rgba(15, 87, 33, 1)"
+        fontWeight="500"
+        gutterBottom
+      >
+        Let us know it’s you!
       </Typography>
 
-      <Box display="flex" justifyContent="space-between">
-        <Typography>One Time Password</Typography>
-        <Timer initialSeconds={90} setIsOTPExpired={setIsOTPExpired} />
-      </Box>
-      <Box display="flex" justifyContent="center" gap={1} marginTop="5px">
-        {otp.map((value, index) => (
-          <TextField
-            key={index}
-            id={`otp-${index}`}
-            value={value}
-            onChange={(e) => handleChange(e, index)}
-            onFocus={() => handleFocus(index)}
-            onPaste={handlePaste}
-            inputProps={{
-              maxLength: 1,
-              style: {
-                textAlign: "center",
-                fontSize: "1rem",
-                width: "2.5rem",
+      <Typography sx={{ mb: 2, fontSize: 12, color: "rgba(128,128,128,1)" }}>
+        Please verify your email to continue. We will send you a code with
+        instructions to create a new password.
+      </Typography>
+      <form method="POST" onSubmit={submit}>
+        <TextField
+          label="Email address"
+          type="email"
+          fullWidth
+          sx={{
+            fontSize: "14px",
+            margin: "normal",
+            backgroundColor: "white",
+            borderRadius: "10px",
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "10px",
+              "& input:-webkit-autofill": {
+                WebkitBoxShadow: "0 0 0 100px white inset",
+                WebkitTextFillColor: "inherit",
               },
-            }}
-            autoComplete="off"
-          />
-        ))}
-      </Box>
-      <Box display="flex" justifyContent="end" marginTop="0.5rem">
-        <Typography fontSize={12} color="blue">
-          Resend OTP
-        </Typography>
-      </Box>
+            },
+          }}
+          color="success"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+
+        <Button
+          variant="contained"
+          type="submit"
+          fullWidth
+          sx={{
+            mt: 4,
+            backgroundColor: "rgba(15, 87, 33, 1)",
+            height: "3rem",
+            textTransform: "none",
+            borderRadius: "10px",
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "10px",
+            },
+            fontSize: "var(--roboto-font-family)",
+          }}
+          disabled={loading}
+          startIcon={
+            loading ? <CircularProgress size={20} color="inherit" /> : null
+          }
+        >
+          {loading ? "verifying email addres" : "Send one-time code"}
+        </Button>
+      </form>
       <Button
         variant="contained"
-        type="submit"
         fullWidth
         sx={{
+          color: "rgba(15,87,33,1)",
           mt: 2,
-          backgroundColor: "rgba(15, 87, 33, 1)",
-          borderRadius: "8px",
+          boxShadow: "none",
+          textTransform: "none",
+          backgroundColor: "rgba(15,87,33,0.08)",
+          height: "3rem",
+          borderRadius: "10px",
+          "& .MuiOutlinedInput-root": {
+            borderRadius: "10px",
+          },
+          fontFamily: "var(--inter-font-family)",
         }}
-        disabled={loading || isOTPExpired}
-        startIcon={
-          loading ? <CircularProgress size={20} color="inherit" /> : null
-        }
+        onClick={() => setAction(ACTION_SIGN_IN)}
       >
-        {loading ? "Processing" : "Send OTP"}
+        Cancel
       </Button>
-      <Box sx={{ display: "flex", justifyContent: "end", marginTop: "10px" }}>
-        <Button
-          style={{ color: "gray", textTransform: "none", fontWeight: 400 }}
-        >
-          Return Sign In
-        </Button>
-      </Box>
     </Container>
   );
 };

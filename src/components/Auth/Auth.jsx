@@ -1,11 +1,19 @@
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import {
+  ACTION_ASSIGN_NEW_PASSWORD,
+  ACTION_FORGOT_PASSWORD,
+  ACTION_INPUT_OTP,
+  ACTION_NEW_ACCOUNT,
+  ACTION_SIGN_IN,
+  ACTION_SIGNIN_OTP,
+} from "../../utils/config";
+import ForgotPassword from "./ForgotPassword/ForgotPassword";
 import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import useUserHook from "../../hooks/UserHook";
+import Container from "./Container/Container";
+import { useEffect, useState } from "react";
 import {
-  Modal,
-  Box,
   Button,
   TextField,
   Typography,
@@ -13,13 +21,8 @@ import {
   InputAdornment,
   CircularProgress,
 } from "@mui/material";
-import {
-  ACTION_FORGOT_PASSWORD,
-  ACTION_INPUT_OTP,
-  ACTION_SIGN_IN,
-} from "../../utils/config";
-import ForgotPassword from "./ForgotPassword/ForgotPassword";
-import Container from "./Container/Container";
+import OTPVerification from "./OTPVerification/OTPVerification";
+import NewPassword from "./NewPassword/NewPassword";
 
 const CloseModal = (props) => {
   return (
@@ -60,27 +63,43 @@ const Auth = (props) => {
 
     signIn(form, (status, message) => {
       if (!(status >= 200 && status < 300)) {
+        if (status === 302) {
+          setEmployeeID(null);
+          setPassword(null);
+          setLoading(false);
+          return setAction(ACTION_SIGNIN_OTP);
+        }
+
         if (status === 307) {
           setConfirmPassword(null);
           setLoading(false);
-          return setChangePassword(true);
+          setAction(
+            message === "new-account"
+              ? ACTION_NEW_ACCOUNT
+              : ACTION_ASSIGN_NEW_PASSWORD
+          );
+          return setExpiredPasswordMessage(message);
         }
 
         if (status === 403) {
           setPassword(null);
+          setLoading(false);
           return setError(true);
         }
 
+        setLoading(false);
         return console.log(message);
       }
 
       setLoading(false);
+      handleClose();
       navigate("/");
     });
   }
 
   function submit(e) {
     e.preventDefault();
+    setLoading(true);
 
     /**
      * If password is expired.
@@ -116,51 +135,120 @@ const Auth = (props) => {
 
   if (action === ACTION_FORGOT_PASSWORD) {
     return (
-      <ForgotPassword open={props.open} handleClose={handleClose}>
+      <ForgotPassword
+        open={props.open}
+        handleClose={handleClose}
+        setAction={setAction}
+      >
         <CloseModal handleClose={props.handleClose} />
       </ForgotPassword>
+    );
+  }
+
+  if (action === ACTION_INPUT_OTP || action === ACTION_SIGNIN_OTP) {
+    return (
+      <OTPVerification
+        open={props.open}
+        handleClose={handleClose}
+        action={action}
+        setAction={setAction}
+      >
+        <CloseModal handleClose={props.handleClose} />
+      </OTPVerification>
+    );
+  }
+
+  if (action === ACTION_ASSIGN_NEW_PASSWORD || action === ACTION_NEW_ACCOUNT) {
+    return (
+      <NewPassword
+        open={props.open}
+        handleClose={handleClose}
+        action={action}
+        setAction={setAction}
+      >
+        <CloseModal handleClose={props.handleClose} />
+      </NewPassword>
     );
   }
 
   return (
     <Container open={props.open} handleClose={props.handleClose}>
       <CloseModal handleClose={props.handleClose} />
-      <Typography variant="h6" component="h2" gutterBottom>
-        Sign In
+      <Typography
+        variant="h5"
+        component="h2"
+        color="rgba(15, 87, 33, 1)"
+        fontWeight="500"
+        sx={{ mb: "1.5rem" }}
+        gutterBottom
+      >
+        Login to One ZCMC
       </Typography>
 
-      {changePassword && (
-        <Typography fontSize={12} sx={{ mb: 2 }}>
+      {changePassword ? (
+        <Typography fontSize={12} sx={{ mb: 4 }}>
           Your password has been expired, though you can still continue to use
           the password for another 3 months if you press continue.
         </Typography>
+      ) : (
+        <Typography
+          sx={{
+            fontSize: 12,
+            mb: 4,
+            fontFamily: "var(--roboto-font-family)",
+            color: "rgba(38,38,38,1)",
+          }}
+        >
+          Protect your account by keeping your credentials private. Never share
+          them with anyone.
+        </Typography>
       )}
-
       <form method="POST" onSubmit={submit}>
-        {!changePassword && (
-          <TextField
-            label="Employee ID"
-            type="text"
-            fullWidth
-            margin="normal"
-            value={employeeID}
-            onChange={(e) => setEmployeeID(e.target.value)}
-            required
-          />
-        )}
+        <TextField
+          label="Employee ID"
+          type="number"
+          fullWidth
+          sx={{
+            fontSize: "14px",
+            margin: "normal",
+            backgroundColor: "white",
+            borderRadius: "10px",
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "10px",
+              "& input:-webkit-autofill": {
+                WebkitBoxShadow: "0 0 0 100px white inset",
+                WebkitTextFillColor: "inherit",
+              },
+            },
+          }}
+          color="success"
+          value={employeeID}
+          onChange={(e) => setEmployeeID(e.target.value)}
+          required
+        />
         <TextField
           label="Password"
           type={showPassword ? "text" : "password"}
           fullWidth
           margin="normal"
+          color="success"
           autoComplete="new-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           sx={{
-            backgroundColor: "rgb(232,240,254)",
+            fontSize: "14px",
+            margin: "normal",
+            borderRadius: "10px",
+            fontSize: "var(--roboto-font-family)",
+            backgroundColor: "white",
             "& .MuiOutlinedInput-root": {
+              borderRadius: "10px",
               "&.Mui-error": {
                 borderColor: "red",
+              },
+              "& input:-webkit-autofill": {
+                WebkitBoxShadow: "0 0 0 100px white inset",
+                WebkitTextFillColor: "inherit",
               },
             },
           }}
@@ -180,38 +268,17 @@ const Auth = (props) => {
           }}
           required
         />
-        {changePassword && (
-          <TextField
-            label="Confirm Password"
-            type={showPassword ? "text" : "password"}
-            fullWidth
-            margin="normal"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            sx={{
-              backgroundColor: "rgb(232,240,254)",
-            }}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    edge="end"
-                  >
-                    {!showConfirmPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-            required
-          />
-        )}
         <Typography
           variant="body2"
           align="right"
-          color="primary"
-          sx={{ cursor: "pointer", mt: 1, color: "rgba(15, 87, 33, 1)" }}
+          sx={{
+            cursor: "pointer",
+            mt: 1,
+            color: "rgba(15, 87, 33, 1)",
+            fontSize: 11,
+            fontWeight: 600,
+            fontFamily: "var(--roboto-font-family)",
+          }}
           onClick={() => setAction(ACTION_FORGOT_PASSWORD)}
         >
           Forgot Password?
@@ -220,20 +287,42 @@ const Auth = (props) => {
           variant="contained"
           type="submit"
           fullWidth
-          sx={{ mt: 2, backgroundColor: "rgba(15, 87, 33, 1)" }}
+          sx={{
+            mt: 4,
+            backgroundColor: "rgba(15, 87, 33, 1)",
+            height: "3rem",
+            textTransform: "none",
+            borderRadius: "10px",
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "10px",
+            },
+            fontSize: "var(--roboto-font-family)",
+          }}
           disabled={loading}
           startIcon={
             loading ? <CircularProgress size={20} color="inherit" /> : null
           }
         >
-          {loading ? "Signing in" : "Sign In"}
+          {loading ? "Signing in" : "Login"}
         </Button>
       </form>
       {changePassword && (
         <Button
-          variant="normal"
+          variant="contained"
           fullWidth
-          sx={{ mt: 2, backgroundColor: "rgba(15, 87, 33, 1)" }}
+          sx={{
+            color: "rgba(15,87,33,1)",
+            mt: 2,
+            boxShadow: "none",
+            textTransform: "none",
+            backgroundColor: "rgba(15,87,33,0.08)",
+            height: "3rem",
+            borderRadius: "10px",
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "10px",
+            },
+            fontFamily: "var(--inter-font-family)",
+          }}
           onClick={() => handleSignIn(1)}
         >
           Sign in anyway
