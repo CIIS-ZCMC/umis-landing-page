@@ -2,9 +2,20 @@ import { create } from "zustand";
 import { umis } from "../services/services";
 import { handleFailedStatus, validateStatusOk } from "../utils/Validation";
 
-const useUserHook = create((set) => ({
+const useUserHook = create((set, get) => ({
   user: null,
   systems: [],
+  redcap: [],
+  retrieveAdminAccess: (code) => {
+    const adminAccess = get().systems?.find((form) => form.code === code);
+
+    return adminAccess?.link ?? null;
+  },
+  retrieveRedcapAccess: (code) => {
+    const redcapForm = get().redcap?.find((form) => form.code === code);
+
+    return redcapForm?.link ?? null;
+  },
   signIn: (form, callBack) => {
     umis
       .post("/sign-in", form)
@@ -12,7 +23,11 @@ const useUserHook = create((set) => ({
       .then((res) => {
         const { data, message } = res;
 
-        set(() => ({ user: data }));
+        set(() => ({
+          user: data,
+          systems: data.side_bar_details.systems,
+          redcap: data.redcap_forms,
+        }));
         callBack(200, message);
       })
       .catch((err) => callBack(...handleFailedStatus(err)));
@@ -24,7 +39,11 @@ const useUserHook = create((set) => ({
       .then((res) => {
         const { data, message } = res;
 
-        set(() => ({ user: data }));
+        set(() => ({
+          user: data,
+          systems: data.side_bar_details.systems,
+          redcap: data.redcap_forms,
+        }));
         callBack(200, message);
       })
       .catch((err) => callBack(...handleFailedStatus(err)));
@@ -36,7 +55,11 @@ const useUserHook = create((set) => ({
       .then((res) => {
         const { data, message } = res;
 
-        set(() => ({ user: data }));
+        set(() => ({
+          user: user,
+          systems: user.side_bar_details.systems,
+          redcap: user.redcap_forms,
+        }));
         callBack(200, message);
       })
       .catch((err) => callBack(...handleFailedStatus(err)));
@@ -48,7 +71,11 @@ const useUserHook = create((set) => ({
       .then((res) => {
         const { user, message } = res;
 
-        set(() => ({ user: user }));
+        set(() => ({
+          user: user,
+          systems: user.side_bar_details.systems,
+          redcap: user.redcap_forms,
+        }));
         callBack(200, message);
       })
       .catch((err) => callBack(...handleFailedStatus(err)));
@@ -60,7 +87,11 @@ const useUserHook = create((set) => ({
       .then((res) => {
         const { data, message } = res;
 
-        set(() => ({ user: data }));
+        set(() => ({
+          user: data,
+          systems: data.side_bar_details.systems,
+          redcap: data.redcap_forms,
+        }));
         callBack(200, message);
       })
       .catch((err) => callBack(...handleFailedStatus(err)));
@@ -72,7 +103,11 @@ const useUserHook = create((set) => ({
       .then((res) => {
         const { user, message } = res;
 
-        set(() => ({ user: user }));
+        set(() => ({
+          user: user,
+          systems: user.side_bar_details.systems,
+          redcap: user.redcap_forms,
+        }));
         callBack(200, message);
       })
       .catch((err) => callBack(...handleFailedStatus(err)));
@@ -84,7 +119,11 @@ const useUserHook = create((set) => ({
       .then((res) => {
         const { user, message } = res;
 
-        set(() => ({ user: user }));
+        set(() => ({
+          user: user,
+          systems: user.side_bar_details.systems,
+          redcap: user.redcap_forms,
+        }));
         callBack(200, message);
       })
       .catch((err) => callBack(...handleFailedStatus(err)));
@@ -96,7 +135,11 @@ const useUserHook = create((set) => ({
       .then((res) => {
         const { user, message } = res;
 
-        set(() => ({ user: user }));
+        set(() => ({
+          user: user,
+          systems: user.side_bar_details.systems,
+          redcap: user.redcap_forms,
+        }));
         callBack(200, message);
       })
       .catch((err) => callBack(...handleFailedStatus(err)));

@@ -10,7 +10,7 @@ import { Button } from "@mui/material";
 
 const StartPageHeader = () => {
   const navigate = useNavigate();
-  const { signOut } = useUserHook();
+  const { user, signOut } = useUserHook();
 
   function handleSignout() {
     signOut((status, feedback) => {
@@ -52,11 +52,11 @@ const StartPageHeader = () => {
 
           <div className="user user-sm">
             <Paragraph
-              text="Rodel Delos Santos MD"
+              text={user?.name ?? ""}
               className="account-name account-name-sm"
             />
             <small className="job-position job-position-sm">
-              Medical Officer II
+              {user?.designation ?? ""}
             </small>
           </div>
           <Button
