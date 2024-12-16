@@ -266,7 +266,7 @@ const NewPassword = ({ open, handleClose, action, setAction, children }) => {
               fontSize: "14px",
               margin: "normal",
               borderRadius: "10px",
-              fontSize: "var(--roboto-font-family)",
+              fontFamily: "var(--roboto-font-family)",
               backgroundColor: "white",
               "& .MuiOutlinedInput-root": {
                 borderRadius: "10px",
@@ -459,7 +459,7 @@ const NewPassword = ({ open, handleClose, action, setAction, children }) => {
               "& .MuiOutlinedInput-root": {
                 borderRadius: "10px",
               },
-              fontSize: "var(--roboto-font-family)",
+              fontFamily: "var(--roboto-font-family)",
             }}
             disabled={
               loading ||
@@ -519,7 +519,7 @@ const NewPassword = ({ open, handleClose, action, setAction, children }) => {
             fontSize: "14px",
             margin: "normal",
             borderRadius: "10px",
-            fontSize: "var(--roboto-font-family)",
+            fontFamily: "var(--roboto-font-family)",
             backgroundColor: "white",
             "& .MuiOutlinedInput-root": {
               borderRadius: "10px",
@@ -648,7 +648,7 @@ const NewPassword = ({ open, handleClose, action, setAction, children }) => {
             "& .MuiOutlinedInput-root": {
               borderRadius: "10px",
             },
-            fontSize: "var(--roboto-font-family)",
+            fontFamily: "var(--roboto-font-family)",
           }}
           disabled={loading || !(password === confirmPassword)}
           startIcon={

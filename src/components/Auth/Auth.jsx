@@ -239,7 +239,7 @@ const Auth = (props) => {
             fontSize: "14px",
             margin: "normal",
             borderRadius: "10px",
-            fontSize: "var(--roboto-font-family)",
+            fontFamily: "var(--roboto-font-family)",
             backgroundColor: "white",
             "& .MuiOutlinedInput-root": {
               borderRadius: "10px",
@@ -296,7 +296,7 @@ const Auth = (props) => {
             "& .MuiOutlinedInput-root": {
               borderRadius: "10px",
             },
-            fontSize: "var(--roboto-font-family)",
+            fontFamily: "var(--roboto-font-family)",
           }}
           disabled={loading}
           startIcon={

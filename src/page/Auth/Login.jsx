@@ -187,7 +187,7 @@ const Login = () => {
               fontSize: "14px",
               margin: "normal",
               borderRadius: "10px",
-              fontSize: "var(--roboto-font-family)",
+              fontFamily: "var(--roboto-font-family)",
               backgroundColor: "white",
               "& .MuiOutlinedInput-root": {
                 borderRadius: "10px",
@@ -226,7 +226,7 @@ const Login = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
               sx={{
                 backgroundColor: "rgb(232,240,254)",
-                fontSize: "var(--roboto-font-family)",
+                fontFamily: "var(--roboto-font-family)",
               }}
               InputProps={{
                 endAdornment: (
@@ -278,7 +278,7 @@ const Login = () => {
               "& .MuiOutlinedInput-root": {
                 borderRadius: "10px",
               },
-              fontSize: "var(--roboto-font-family)",
+              fontFamily: "var(--roboto-font-family)",
             }}
             disabled={loading}
             startIcon={
@@ -313,7 +313,6 @@ const Login = () => {
             display: "flex",
             marginTop: "2rem",
             backgroundColor: "White",
-            boxShadow: "2px",
             boxShadow: "0px 1px 6px rgba(0, 0, 0, 0.1)",
             padding: "1rem",
             paddingLeft: 0,
