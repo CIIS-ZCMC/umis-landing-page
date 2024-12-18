@@ -7,9 +7,10 @@ const useUserHook = create((set, get) => ({
   systems: [],
   redcap: [],
   retrieveAdminAccess: (code) => {
-    const adminAccess = get().systems?.find((form) => form.code === code);
+    const systems = get().systems;
+    const adminAccess = systems.find((sys) => sys.code === code);
 
-    return adminAccess?.link ?? null;
+    return adminAccess?.url ?? null;
   },
   retrieveRedcapAccess: (code) => {
     const redcapForm = get().redcap?.find((form) => form.code === code);
@@ -25,7 +26,7 @@ const useUserHook = create((set, get) => ({
 
         set(() => ({
           user: data,
-          systems: data.side_bar_details.systems,
+          systems: data.side_bar_details.system,
           redcap: data.redcap_forms,
         }));
         callBack(200, message);
@@ -41,7 +42,7 @@ const useUserHook = create((set, get) => ({
 
         set(() => ({
           user: data,
-          systems: data.side_bar_details.systems,
+          systems: data.side_bar_details.system,
           redcap: data.redcap_forms,
         }));
         callBack(200, message);
@@ -53,13 +54,8 @@ const useUserHook = create((set, get) => ({
       .post("/verify-email-and-send-otp", form)
       .then((res) => validateStatusOk(res))
       .then((res) => {
-        const { data, message } = res;
+        const { message } = res;
 
-        set(() => ({
-          user: user,
-          systems: user.side_bar_details.systems,
-          redcap: user.redcap_forms,
-        }));
         callBack(200, message);
       })
       .catch((err) => callBack(...handleFailedStatus(err)));
@@ -69,12 +65,12 @@ const useUserHook = create((set, get) => ({
       .post("/new-password", form)
       .then((res) => validateStatusOk(res))
       .then((res) => {
-        const { user, message } = res;
+        const { data, message } = res;
 
         set(() => ({
-          user: user,
-          systems: user.side_bar_details.systems,
-          redcap: user.redcap_forms,
+          user: data,
+          systems: data.side_bar_details.system,
+          redcap: data.redcap_forms,
         }));
         callBack(200, message);
       })
@@ -89,7 +85,7 @@ const useUserHook = create((set, get) => ({
 
         set(() => ({
           user: data,
-          systems: data.side_bar_details.systems,
+          systems: data.side_bar_details.system,
           redcap: data.redcap_forms,
         }));
         callBack(200, message);
@@ -102,12 +98,6 @@ const useUserHook = create((set, get) => ({
       .then((res) => validateStatusOk(res))
       .then((res) => {
         const { user, message } = res;
-
-        set(() => ({
-          user: user,
-          systems: user.side_bar_details.systems,
-          redcap: user.redcap_forms,
-        }));
         callBack(200, message);
       })
       .catch((err) => callBack(...handleFailedStatus(err)));

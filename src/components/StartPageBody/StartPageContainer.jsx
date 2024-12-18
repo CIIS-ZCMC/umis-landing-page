@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import announcmentIcon from "../../assets/megaphone-loud.svg";
 import Paragraph from "../Paragraph/Paragraph";
+import useUserHook from "../../hooks/UserHook";
 
 const StartPageContainer = () => {
+  const { retrieveAdminAccess } = useUserHook();
   const [isVisible, setIsVisible] = useState(false);
 
   const handleDismiss = () => {
@@ -30,7 +32,7 @@ const StartPageContainer = () => {
 
           <div className="cta-container">
             <Link
-              to="http://192.168.5.1:8080/login"
+              to={retrieveAdminAccess("UMIS")}
               className="CTA start-page-CTA"
               rel="noopener noreferrer"
             >
