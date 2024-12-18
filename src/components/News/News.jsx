@@ -6,7 +6,7 @@ import env from '../../assets/news/env.jpg';
 import HealthNewsItem from "./HealthNewsItem";
 import NewsItem from "./NewsItem";
 
-
+import '../../styles/news.css';
 
 const News = () => {
     return (
@@ -28,7 +28,7 @@ const News = () => {
                                         <Paragraph text="Published" className="publish-date-text" />
                                         <Paragraph text="August 10, 2023" className="publish-date-text" />
                                     </div>
-                                <Paragraph text="Strategic and Environment Unit achieves 100% of the target strategic deliverables for 2023!" className="text-wrapper-8" />
+                                <Paragraph text="Strategic and Environment Unit achieves 100% of the target strategic deliverables for 2023!" className="news-item-name" />
                             </div>
                             <Paragraph text="ZCMC Hospital Week 2024 Opening Salvo! The excitement kicked off in grand style..." className="description" />
                         </div>

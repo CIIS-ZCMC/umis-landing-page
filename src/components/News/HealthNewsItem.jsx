@@ -161,7 +161,7 @@ const HealthNewsItem = () => {
                     <Paragraph text="Published" className="publish-date-text" />
                     <Paragraph text={item.date} className="publish-date-text" />
                   </div>
-                  <Paragraph text={item.title} className="text-wrapper-8" />
+                  <Paragraph text={item.title} className="news-item-name" />
                 </div>
                 <Paragraph text={item.description} className="description" />
               </div>

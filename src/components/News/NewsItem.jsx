@@ -62,7 +62,7 @@ const NewsItem = () => {
                                         <Paragraph text="Published" className="publish-date-text" />
                                         <Paragraph text={item.date} className="publish-date-text" />
                                     </div>
-                                    <Paragraph text={item.title} className="text-wrapper-8" />
+                                    <Paragraph text={item.title} className="news-item-name news-item-name-md" />
                                 </div>
                             </div>
                         </div>

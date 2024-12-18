@@ -5,6 +5,8 @@ import zcmcLogo from "../../assets/zcmc-logo-1.png";
 
 import Paragraph from "../Paragraph/Paragraph";
 
+import '../../styles/agency-footer.css';
+
 const usefulLinks1 = [
   { link: "/", label: "Our story" },
   { link: "/", label: "Data privacy" },
@@ -56,7 +58,7 @@ const Agency = () => {
           <div className="list-row">
             <ul className="agency-list-group">
               {usefulLinks1.map((item1) => (
-                <li key={item1.label}> {/* Use 'label' as the unique key */}
+                <li key={item1.label}>
                   <Link
                     to={item1.link}
                     className="agency-footer-link"
@@ -70,7 +72,7 @@ const Agency = () => {
 
             <ul className="agency-list-group">
               {usefulLinks2.map((item2) => (
-                <li key={item2.label}> {/* Use 'label' as the unique key */}
+                <li key={item2.label}>
                   <Link
                     to={item2.link}
                     className="agency-footer-link"
@@ -87,7 +89,7 @@ const Agency = () => {
           <Paragraph text="External links" className="agency-list-label" />
           <ul className="agency-list-group">
             {govlinkItems.map((item3) => (
-              <li key={item3.label}> {/* Use 'label' as the unique key */}
+              <li key={item3.label}>
                 <Link
                   to={item3.link}
                   className="agency-footer-link"
