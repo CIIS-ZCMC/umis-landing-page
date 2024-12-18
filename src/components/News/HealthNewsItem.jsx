@@ -158,8 +158,8 @@ const HealthNewsItem = () => {
               <div className="container-4">
                 <div className="div-4">
                   <div className="publish-date-container">
-                    <Paragraph text="Published" className="text-wrapper-7" />
-                    <Paragraph text={item.date} className="text-wrapper-7" />
+                    <Paragraph text="Published" className="publish-date-text" />
+                    <Paragraph text={item.date} className="publish-date-text" />
                   </div>
                   <Paragraph text={item.title} className="text-wrapper-8" />
                 </div>

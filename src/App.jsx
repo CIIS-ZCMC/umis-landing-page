@@ -7,7 +7,6 @@ import "./styles/buttons.css";
 import "./styles/header.css";
 import "./styles/slideshow.css";
 import "./styles/arrow.css";
-import Landing from "./page/landing.jsx";
 import AnimatedRoutes from "./routes/animated_routes.jsx";
 
 const App = () => {

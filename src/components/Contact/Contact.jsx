@@ -28,62 +28,13 @@ const Contact = () => {
         />
       </div>
 
-      <div className="content-3">
-        <div className="container-9">
-          <div className="card-2">
-            <div className="featured-icon">
-              <img className="img-2" src={phoneIcon} alt="Phone Icon" />
-            </div>
-            <div className="content-2">
-              <div className="div-7">
-                <div className="text-2">Call us</div>
-                <Paragraph
-                  text="Anytime from Monday - Sunday."
-                  className="supporting-text"
-                />
-              </div>
-              <div className="div-7">
-                <div className="link-container">
-                  <Paragraph text="Direct line:" className="text-wrapper-21" />
-                  <Link
-                    to="tel:0629912934"
-                    className="tel-numbers"
-                    rel="noopener noreferrer"
-                  >
-                    062 9912934
-                  </Link>
-                </div>
-                <div className="link-container">
-                  <Paragraph
-                    text="Via Globe call:"
-                    className="text-wrapper-21"
-                  />
-                  <Link
-                    to="tel:09155365583"
-                    className="tel-numbers"
-                    rel="noopener noreferrer"
-                  >
-                    09155365583
-                  </Link>
-                </div>
-                <div className="link-container">
-                  <Paragraph text="Fax number:" className="text-wrapper-21" />
-                  <Link
-                    to="tel:0629910573"
-                    className="tel-numbers"
-                    rel="noopener noreferrer"
-                  >
-                    062 9910573
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-
+      <div className="contact-card-list">
+        <div className="contact-card-group">
           <div className="maps">
+            {/* <div className="maps-overlay"></div> */}
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10923.355957798736!2d122.08179530676348!3d6.905315170392774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x325041ffa967f381%3A0xecb19e86dbe0fe31!2sZamboanga%20City%20Medical%20Center!5e1!3m2!1sen!2sph!4v1727676983541!5m2!1sen!2sph"
-              width="600"
+              width="100%"
               height="450"
               allowFullScreen
               loading="lazy"
@@ -91,38 +42,96 @@ const Contact = () => {
             ></iframe>
           </div>
 
-          <div className="card-3">
-            <div className="featured-icon">
-              <img className="img-2" src={emailIcon} alt="Email Icon" />
-            </div>
-            <div className="content-2">
-              <div>
-                <Paragraph text="Email us" className="text-2" />
-                <Paragraph
-                  text="Our team is here to help."
-                  className="supporting-text"
-                />
+          <div className="container-9">
+            <div className="card-2">
+              <div className="featured-icon">
+                <img className="img-2" src={phoneIcon} alt="Phone Icon" />
               </div>
-
-              <div>
-                <Paragraph text="Email address:" className="text-wrapper-25" />
-                <div className="link-container">
-                  <Link
-                    to="mailto:mc-chief@zcmc.doh.gov.ph"
-                    className="email"
-                    rel="noopener noreferrer"
-                  >
-                    mc-chief@zcmc.doh.gov.ph
-                  </Link>
+              <div className="content-2">
+                <div className="div-7">
+                  <div className="text-2">Call us</div>
+                  <Paragraph
+                    text="Anytime from Monday-Sunday."
+                    className="supporting-text"
+                  />
                 </div>
-                <div className="link-container">
-                  <Link
-                    to="mailto:doh9_zcmc@yahoo.com"
-                    className="email"
-                    rel="noopener noreferrer"
-                  >
-                    doh9_zcmc@yahoo.com
-                  </Link>
+                <div className="div-7">
+                  <div className="link-container">
+                    <Paragraph
+                      text="Direct line:"
+                      className="text-wrapper-21"
+                    />
+                    <Link
+                      to="tel:0629912934"
+                      className="tel-numbers"
+                      rel="noopener noreferrer"
+                    >
+                      062 9912934
+                    </Link>
+                  </div>
+                  <div className="link-container">
+                    <Paragraph
+                      text="Via Globe call:"
+                      className="text-wrapper-21"
+                    />
+                    <Link
+                      to="tel:09155365583"
+                      className="tel-numbers"
+                      rel="noopener noreferrer"
+                    >
+                      09155365583
+                    </Link>
+                  </div>
+                  <div className="link-container">
+                    <Paragraph text="Fax number:" className="text-wrapper-21" />
+                    <Link
+                      to="tel:0629910573"
+                      className="tel-numbers"
+                      rel="noopener noreferrer"
+                    >
+                      062 9910573
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="card-3">
+              <div className="featured-icon">
+                <img className="img-2" src={emailIcon} alt="Email Icon" />
+              </div>
+              <div className="content-2">
+                <div>
+                  <Paragraph text="Email us" className="text-2" />
+                  <Paragraph
+                    text="Our team is here to help."
+                    className="supporting-text"
+                  />
+                </div>
+
+                <div>
+                  <Paragraph
+                    text="Email address:"
+                    className="text-wrapper-25"
+                  />
+                  <div className="link-container">
+                    <Link
+                      to="mailto:mc-chief@zcmc.doh.gov.ph"
+                      className="email"
+                      rel="noopener noreferrer"
+                    >
+                      mc-chief@zcmc.doh.gov.ph
+                    </Link>
+                  </div>
+                  <div className="link-container">
+                    <Link
+                      to="mailto:doh9_zcmc@yahoo.com"
+                      className="email"
+                      rel="noopener noreferrer"
+                    >
+                      doh9_zcmc@yahoo.com
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

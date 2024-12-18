@@ -31,14 +31,14 @@ const FeaturedVideos = () => {
         />
       </div>
 
-      <div className="container-5">
-        <div className="container-6">
+      <div className="featured-videos-container">
+        <div className="featured-videos-group">
           {/* Use VideoFrame component for both iframes */}
           <VideoFrame className="featured-video-left" src={videoSrc1} />
           <VideoFrame className="featured-video-right" src={videoSrc2} />
         </div>
 
-        <div className="container-6">
+        <div className="featured-videos-group">
           {/* Reuse VideoFrame component for the second set of iframes */}
           <VideoFrame className="featured-video-left" src={videoSrc1} />
           <VideoFrame className="featured-video-right" src={videoSrc2} />

@@ -10,7 +10,7 @@ import MegaMenuAbout from "./MegaMenuAbout";
 import MegaMenuRates from "./MegaMenuRates";
 import Accordion from "../Accordion/Accordion";
 import Paragraph from "../Paragraph/Paragraph";
-import { Button, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 import PropTypes from "prop-types";
 import { ACTION_SIGN_IN } from "../../utils/config";
 
