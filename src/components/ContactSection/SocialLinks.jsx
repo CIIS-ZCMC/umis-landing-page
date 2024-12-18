@@ -19,42 +19,6 @@ const SocialLinks = () => {
           </a>
         ))}
       </div>
-      <style jsx>{`
-        .social-links {
-          border-radius: 12px;
-          background-color: #f6f6f6;
-          padding: 24px;
-          text-align: center;
-          max-width: 385px;
-          width: 100%;
-        }
-        .social-heading {
-          color: #333;
-          font-size: 20px;
-          font-weight: 400;
-          margin-bottom: 8px;
-        }
-        .social-icons {
-          display: flex;
-          justify-content: center;
-          gap: 8px;
-        }
-        .social-icon-link {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .social-icon {
-          width: 48px;
-          height: 48px;
-          object-fit: contain;
-        }
-        @media (max-width: 991px) {
-          .social-links {
-            padding: 20px;
-          }
-        }
-      `}</style>
     </div>
   );
 };

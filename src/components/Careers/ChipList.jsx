@@ -13,23 +13,6 @@ const ChipList = () => {
       {chips.map((chip, index) => (
         <Chip key={index} {...chip} />
       ))}
-      <style jsx>{`
-        .careers-chip-list {
-          display: flex;
-          margin-top: 20px;
-          align-items: center;
-          gap: 8px;
-          white-space: nowrap;
-          letter-spacing: 0.36px;
-          justify-content: flex-start;
-          font: 12px Roboto, sans-serif;
-        }
-        @media (max-width: 991px) {
-          .careers-chip-list {
-            white-space: initial;
-          }
-        }
-      `}</style>
     </div>
   );
 };

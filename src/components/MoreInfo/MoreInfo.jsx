@@ -1,9 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import usersIcon from '../../assets/more-info/users-1.svg';
 import procurementIcon from '../../assets/more-info/icon.svg';
 import gadIcon from '../../assets/more-info/heart-1.svg';
 import petroIcon from '../../assets/more-info/trending-up-1.svg';
 import openIcon from '../../assets/more-info/open-1.svg';
+
+import Paragraph from "../Paragraph/Paragraph";
 
 const MoreInfo = () => {
   const MoreInfo = [
@@ -17,7 +21,7 @@ const MoreInfo = () => {
 
     {
       title: 'Procurement services',
-      description: 'See how sourcing, acquiring, and paying for hospital goods and services are processed.',
+      description: 'See how sourcing, acquiring, and paying for hospital goods and services are processed by ZCMC.',
       linkText: 'See procurement services',
       linkIcon: openIcon,
       icon: procurementIcon
@@ -43,15 +47,11 @@ const MoreInfo = () => {
   return (
     <div className="more-info">
       <div className="arrow-down-more-info"></div>
-      
+
       <div className="more-info-heading">
         <div className="div-2">
-          <p className="body-caption">
-            More information
-          </p>
-          <div className="text-wrapper-5">
-            Looking for something else?
-          </div>
+          <Paragraph text="More information" className="body-caption" />
+          <Paragraph text="Looking for something else?" className="text-wrapper-5" />
         </div>
       </div>
 
@@ -65,19 +65,14 @@ const MoreInfo = () => {
             </div>
 
             <div className="div-4">
-              <div className="text">
-                {info.title}
-              </div>
-
-              <p className="more-info-card-description">
-                {info.description}
-              </p>
+              <Paragraph text={info.title} className="text" />
+              <Paragraph text={info.description} className="more-info-card-description" />
 
               <div className="more-info-card-action">
-                <a className="more-info-card-link" href="" rel="noopener noreferrer">
+                <Link to="/" className="more-info-card-link" rel="noopener noreferrer" >
                   {info.linkText}
                   <img className="open" src={info.linkIcon} alt="Open" />
-                </a>
+                </Link>
               </div>
             </div>
 
