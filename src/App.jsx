@@ -13,6 +13,7 @@ const Contact = React.lazy(() => import('./components/Contact/Contact.jsx'));
 const MccCorner = React.lazy(() => import('./components/MccCorner/MccCorner.jsx'));
 const News = React.lazy(() => import('./components/News/News.jsx'));
 const StartPage = React.lazy(() => import('./StartPage.jsx'));
+const IMS = React.lazy(() => import('./IMS.jsx'));
 
 import './styles/globals.css';
 import './styles/style.css';
@@ -43,6 +44,7 @@ const App = () => {
                             </>
                         } />
                         <Route path="/StartPage" element={<StartPage />} />
+                        <Route path="/IMS" element={<IMS />} />
                     </Routes>
                 </Suspense>
             </div>

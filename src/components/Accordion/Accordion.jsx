@@ -1,5 +1,191 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+
+const AccordionLinks1 = [
+  {
+    name: "ZCMC Profile",
+    link: "Sample link",
+  },
+
+  {
+    name: "Organizational chart",
+    link: "Sample link",
+  },
+
+  {
+    name: "Strategy map 2018",
+    link: "Sample link",
+  },
+
+  {
+    name: "Performance Governance System",
+    link: "Sample link",
+  },
+
+  {
+    name: "Transparency seal",
+    link: "Sample link",
+  },
+
+  {
+    name: "Data privacy statement",
+    link: "Sample link",
+  },
+
+  {
+    name: "Registration statement",
+    link: "Sample link",
+  },
+
+  {
+    name: "Job opportunities",
+    link: "Sample link",
+  },
+];
+
+const AccordionLinks2 = [
+  {
+    name: "Laboratory",
+    link: "Sample link",
+  },
+
+  {
+    name: "Blood bank",
+    link: "Sample link",
+  },
+
+  {
+    name: "Radiology",
+    link: "Sample link",
+  },
+
+  {
+    name: "Dental",
+    link: "Sample link",
+  },
+
+  {
+    name: "Dialysis",
+    link: "Sample link",
+  },
+
+  {
+    name: "Physical therapy",
+    link: "Sample link",
+  },
+
+  {
+    name: "Rooms and beds",
+    link: "Sample link",
+  },
+
+  {
+    name: "OPD services",
+    link: "Sample link",
+  },
+
+  {
+    name: "Procedures",
+    link: "Sample link",
+  },
+
+  {
+    name: "Other fees",
+    link: "Sample link",
+  },
+];
+
+const AccordionLinks3 = [
+  {
+    name: "Internal Medicine",
+    link: "/IMS",
+  },
+
+  {
+    name: "Surgery",
+    link: "Sample link",
+  },
+
+  {
+    name: "Pediatrics",
+    link: "Sample link",
+  },
+
+  {
+    name: "Laboratory medicine",
+    link: "Sample link",
+  },
+
+  {
+    name: "Rehabilitation",
+    link: "Sample link",
+  },
+
+  {
+    name: "Out patient",
+    link: "Sample link",
+  },
+
+  {
+    name: "Nuclear medicine",
+    link: "Sample link",
+  },
+
+  {
+    name: "OB Gynecology",
+    link: "Sample link",
+  },
+
+  {
+    name: "Radiology",
+    link: "Sample link",
+  },
+
+  {
+    name: "Ophthalmology",
+    link: "Sample link",
+  },
+
+  {
+    name: "Psychiatry services",
+    link: "Sample link",
+  },
+
+  {
+    name: "Kangaroo mother care",
+    link: "Sample link",
+  },
+
+  {
+    name: "Water testing laboratory",
+    link: "Sample link",
+  },
+
+  {
+    name: "Hemodialysis",
+    link: "Sample link",
+  },
+
+  {
+    name: "Help emergency management staff",
+    link: "Sample link",
+  },
+
+  {
+    name: "Toxicology unit",
+    link: "Sample link",
+  },
+
+  {
+    name: "TB Dots clinic",
+    link: "Sample link",
+  },
+
+  {
+    name: "Multiple drug resistant (MDR) treatment center",
+    link: "Sample link",
+  },
+];
 
 const Accordion = () => {
   const [expandedItem, setExpandedItem] = useState(null);
@@ -44,27 +230,21 @@ const Accordion = () => {
               )}
             </span>
           </div>
+
           {expandedItem === 1 && (
             <ul className="accordion-content">
-              {[
-                "ZCMC Profile",
-                "Organizational chart",
-                "Strategy map 2018",
-                "Performance Governance System",
-                "Transparency seal",
-                "Data privacy statement",
-                "Registration statement",
-                "Job opportunities",
-              ].map((item, index) => (
-                <li key={index} className="accordion-list-item">
-                  <Link
-                    to="/"
-                    className="accordion-link"
-                    rel="noopener noreferrer"
-                  >
-                    {item}
-                  </Link>
-                </li>
+              {AccordionLinks3.map((item, index) => (
+                <div className="list-item-2" key={index}>
+                  <li key={index} className="accordion-list-item">
+                    <Link
+                      to={item.link}
+                      className="accordion-link"
+                      rel="noopener noreferrer"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                </div>
               ))}
             </ul>
           )}
@@ -105,27 +285,18 @@ const Accordion = () => {
           </div>
           {expandedItem === 2 && (
             <ul className="accordion-content">
-              {[
-                "Laboratory",
-                "Blood bank",
-                "Radiology",
-                "Dental",
-                "Dialysis",
-                "Physical therapy",
-                "Rooms and beds",
-                "OPD services",
-                "Procedures",
-                "Other fees",
-              ].map((item, index) => (
-                <li key={index} className="accordion-list-item">
-                  <Link
-                    to="/"
-                    className="accordion-link"
-                    rel="noopener noreferrer"
-                  >
-                    {item}
-                  </Link>
-                </li>
+              {AccordionLinks1.map((item, index) => (
+                <div className="list-item-2" key={index}>
+                  <li key={index} className="accordion-list-item">
+                    <Link
+                      to={item.link}
+                      className="accordion-link"
+                      rel="noopener noreferrer"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                </div>
               ))}
             </ul>
           )}
@@ -166,35 +337,18 @@ const Accordion = () => {
           </div>
           {expandedItem === 3 && (
             <ul className="accordion-content">
-              {[
-                "Internal Medicine",
-                "Surgery",
-                "Pediatrics",
-                "Laboratory medicine",
-                "Rehabilitation",
-                "Out patient",
-                "Nuclear medicine",
-                "OB Gynecology",
-                "Radiology",
-                "Ophthalmology",
-                "Psychiatry services",
-                "Kangaroo mother care",
-                "Water testing laboratory",
-                "Hemodialysis",
-                "Help emergency management staff",
-                "Toxicology unit",
-                "TB Dots clinic",
-                "Multiple drug resistant (MDR) treatment center",
-              ].map((service, index) => (
-                <li key={index} className="accordion-list-item">
-                  <Link
-                    to="/"
-                    className="accordion-link"
-                    rel="noopener noreferrer"
-                  >
-                    {service}
-                  </Link>
-                </li>
+              {AccordionLinks2.map((item, index) => (
+                <div className="list-item-2" key={index}>
+                  <li key={index} className="accordion-list-item">
+                    <Link
+                      to={item.link}
+                      className="accordion-link"
+                      rel="noopener noreferrer"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                </div>
               ))}
             </ul>
           )}

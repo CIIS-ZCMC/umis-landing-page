@@ -22,7 +22,7 @@ const HeaderHero = () => {
 
   return (
     <div className="header-hero">
-      <div className='container' style={{background:"#0A3E30"}}>
+      <div className="container" style={{background:"#0A3E30"}}>
         <div className="slideshow-container">
           <div className="slideshow-bg">
 

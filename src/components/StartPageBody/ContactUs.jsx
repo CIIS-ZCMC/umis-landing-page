@@ -31,7 +31,7 @@ const ContactUs = () => {
           </span>
         </div>
 
-        <hr className="start-page-divider" />
+        <hr className="start-page-divider start-page-divider-md" />
         
         <div className='contact-us-report contact-us-report-sm'>
           <Paragraph text="Report an issue on:" className="contact-us-report-label contact-us-report-label-sm" />

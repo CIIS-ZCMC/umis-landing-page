@@ -16,7 +16,7 @@
     display: flex;
     flex: 0 0 auto;
     position: relative;
-    width: auto;
+    width: 100vw;
     z-index: 7
 }
 
@@ -320,7 +320,7 @@
     .header,
     .start-page-header {
         height: 80px;
-        padding: 0 16px;
+        padding: 0 24px;
         width: 100vw
     }
 
@@ -335,6 +335,261 @@
         align-items: center;
         color: var(--color-systemneutralsneutrals-950-0d0d0d);
         gap: 4px
+    }
+
+    .icon:hover {
+        cursor: pointer
+    }
+
+    .icon-label-container {
+        align-items: flex-start
+    }
+
+    .caption,
+    .title,
+    .card-title,
+    .address {
+        align-self: stretch;
+        line-height: normal;
+        margin: 0;
+        position: relative
+    }
+
+    .caption::before {
+        content: "Republic of the Philippines";
+        display: none
+    }
+
+    .title {
+        color: var(--color-systembase-colorsbg-white-100-ffffff);
+        font-size: 18px;
+        font-weight: 700;
+        height: 18px;
+        white-space: nowrap
+    }
+
+    .segmented-button-body .card-title {
+        color: #1a1a1a;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 150%;
+        text-decoration: none
+    }
+
+    .segmented-button-body.card-title {
+        text-wrap: wrap !important;
+        width: 100% !important
+    }
+
+    .title::before {
+        content: "Zamboanga City Medical Center";
+        display: none
+    }
+
+    .title::after {
+        content: "ZCMC"
+    }
+
+    .address::before {
+        content: "Dr. Evangelista St., Sta. Catalina, Zamboanga City, Philippines 7000";
+        display: none
+    }
+
+    .zcmc-logo {
+        height: 32px;
+        object-fit: cover;
+        width: 24.24px
+    }
+
+    .start-page-desktop .start-page-header .div,
+    .landing-page-desktop .div {
+        display: inline-flex;
+        position: relative
+    }
+
+    .start-page-sm {
+        overflow: hidden;
+        width: 100vw !important
+    }
+
+    .divider {
+        background: #ffffff52 !important
+    }
+
+    .nav-panel-sm {
+        animation: stretchDown .1s ease 0s 1 normal none;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        height: calc(100vh - 80px);
+        justify-content: space-between;
+        left: 0;
+        max-height: calc(100vh - 80px);
+        opacity: 0;
+        padding: 16px 16px 24px;
+        position: fixed;
+        top: 80px;
+        transform: scale(0.95);
+        transition: opacity 0.10s, transform .1s;
+        width: 100vw;
+        z-index: -999
+    }
+
+    .nav-panel-sm.active {
+        background: #0A3E30;
+        opacity: 1;
+        transform: scale(1);
+        z-index: 9999
+    }
+
+    @keyframes stretchDown {
+        0% {
+            transform: scaleY(0.8);
+            transform-origin: 100% 0
+        }
+
+        100% {
+            transform: scaleY(1);
+            transform-origin: 100% 0
+        }
+    }
+
+    .nav-panel-content-sm.navigation-sm {
+        height: fit-content;
+        overflow: hidden
+    }
+
+    .nav-panel-link,
+    .header-link,
+    .header-link-1,
+    .header-link-2,
+    .header-link-2-sm,
+    .header-link-3 {
+        font-size: 14px !important;
+        font-weight: 400;
+        height: 24px;
+        line-height: 14px;
+        padding: 8px 0
+    }
+
+    .header-link-2-sm {
+        padding: 0;
+        width: 100%
+    }
+
+    .header-link {
+        cursor: pointer;
+        overflow: hidden
+    }
+
+    .header-link-icon {
+        transition: transform .25s ease
+    }
+
+    .header-link:hover,
+    .header-link-1:hover,
+    .header-link-2:hover,
+    .header-link-3:hover {
+        border-bottom: 2px solid var(--color-systembase-colorsbg-white-100-ffffff)
+    }
+
+    .header-link:hover .header-link-icon,
+    .header-link-1:hover .header-link-icon,
+    .header-link-2-sm:hover .header-link-icon,
+    .header-link-2:hover .header-link-icon,
+    .header-link-3:hover .header-link-icon {
+        cursor: pointer;
+        transform: rotate(180deg)
+    }
+
+    .account-used-container-sm {
+        display: flex;
+        width: fit-content
+    }
+
+    .account-used-sm {
+        align-items: center;
+        border: 1px solid var(--color-system-neutrals-neutrals-300-e-6-e-6-e-6, #E6E6E6);
+        border-radius: 8px;
+        display: flex;
+        gap: 8px;
+        padding: 8px;
+        width: calc(100vw - 32px * 32%)
+    }
+
+    .user-avatar-sm {
+        align-items: center;
+        display: flex;
+        justify-content: center
+    }
+
+    .avatar-sm {
+        border: 2px solid #F9FAFB;
+        border-radius: 100px !important;
+        height: 40px;
+        width: 40px
+    }
+
+    .user-sm {
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        gap: 8px
+    }
+
+    .account-name-sm {
+        font-size: 14px;
+        letter-spacing: .28px
+    }
+
+    .job-position-sm {
+        font-size: 12px;
+        letter-spacing: .24px
+    }
+
+    .caption::after,
+    .address::after {
+        content: ""
+    }
+
+    .icon-label-container .header-divider,
+    .navbar-sm,
+    .mega-menu {
+        display: none
+    }
+
+    .nav-panel-sm:not(.nav-panel-sm.active),
+    .search-sm,
+    .account-used-CTA-sm {
+        display: none !important
+    }
+}
+
+@media only screen and (min-width: 781px) and (max-width: 996px) {
+
+    .header,
+    .start-page-header {
+        height: 80px;
+        padding: 0 16px;
+        width: 100vw
+    }
+
+    .start-page-header .icon {
+        
+        width: calc(100vw - 32px * 32%)
+    }
+
+    .icon,
+    .icon-label-container {
+        display: inline-flex;
+        flex: 0 0 auto;
+        position: relative
+    }
+
+    .icon {
+        align-items: center;
+        color: var(--color-systemneutralsneutrals-950-0d0d0d);
+        gap: 4px;
     }
 
     .icon:hover {
@@ -559,6 +814,14 @@
         display: none
     }
 
+    .navbar {
+        align-items: center;
+        display: inline-flex;
+        gap: 8px;
+        justify-content: center;
+        margin: 0 auto
+    }
+
     .nav-panel-sm:not(.nav-panel-sm.active),
     .search-sm,
     .account-used-CTA-sm {
@@ -566,18 +829,18 @@
     }
 }
 
-@media only screen and (min-width: 781px) and (max-width: 1366px) {
+@media only screen and (min-width: 997px) and (max-width: 1366px) {
 
     .header,
     .start-page-header {
-        background: #0a3e30bd;
         height: 80px;
-        height: 80px;
-        padding: 0 96px;
-        padding: 0 96px;
-        width: 100vw;
-        width: 100vw;
-        z-index: 999
+        padding: 0 16px;
+        width: 100vw
+    }
+
+    .start-page-header .icon {
+        
+        width: calc(100vw - 32px * 32%)
     }
 
     .icon,
@@ -590,7 +853,7 @@
     .icon {
         align-items: center;
         color: var(--color-systemneutralsneutrals-950-0d0d0d);
-        gap: 14px
+        gap: 4px;
     }
 
     .icon:hover {
@@ -598,13 +861,12 @@
     }
 
     .icon-label-container {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 3px
+        align-items: flex-start
     }
 
     .caption,
     .title,
+    .card-title,
     .address {
         align-self: stretch;
         line-height: normal;
@@ -612,49 +874,50 @@
         position: relative
     }
 
-    .caption {
-        color: var(--color-systembase-colorsbg-white-100-ffffff);
-        font-size: 8px;
-        font-weight: 500;
-        height: 10px
+    .caption::before {
+        content: "Republic of the Philippines";
+        display: none
     }
 
     .title {
         color: var(--color-systembase-colorsbg-white-100-ffffff);
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 700;
-        height: 16px;
+        height: 18px;
         white-space: nowrap
     }
 
-    .address {
-        color: var(--color-system-base-colors-bg-white-100-ffffff, #FFF);
-        font-family: Raleway;
-        font-size: 8px;
-        font-style: italic;
-        font-weight: 300;
-        height: 10px
+    .segmented-button-body .card-title {
+        color: #1a1a1a;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 150%;
+        text-decoration: none
+    }
+
+    .segmented-button-body.card-title {
+        text-wrap: wrap !important;
+        width: 100% !important
+    }
+
+    .title::before {
+        content: "Zamboanga City Medical Center";
+        display: none
+    }
+
+    .title::after {
+        content: "ZCMC"
+    }
+
+    .address::before {
+        content: "Dr. Evangelista St., Sta. Catalina, Zamboanga City, Philippines 7000";
+        display: none
     }
 
     .zcmc-logo {
-        height: 56px;
+        height: 32px;
         object-fit: cover;
-        width: 42.42px
-    }
-
-    .divider,
-    .icon-label-container .header-divider {
-        background-color: var(--color-systemneutralsneutrals-200-f0f0f0);
-        border: none;
-        display: block;
-        height: 1px;
-        margin: 0;
-        width: 100%
-    }
-
-    .icon-label-container .header-divider {
-        border-top: 1px solid #fff;
-        object-fit: cover
+        width: 24.24px
     }
 
     .start-page-desktop .start-page-header .div,
@@ -663,54 +926,74 @@
         position: relative
     }
 
-    .start-page-desktop .start-page-header .div {
-        gap: 16px
+    .start-page-sm {
+        overflow: hidden;
+        width: 100vw !important
     }
 
-    .landing-page-desktop .div {
-        gap: 8px
+    .divider {
+        background: #ffffff52 !important
     }
 
-    .search {
-        border-radius: 8px;
-        box-shadow: var(--box-shadow-shadow-lg);
-        gap: 8px;
-        height: 44px;
-        padding: 10px 16px;
-        width: 200px
+    .nav-panel-sm {
+        animation: stretchDown .1s ease 0s 1 normal none;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        height: calc(100vh - 80px);
+        justify-content: space-between;
+        left: 0;
+        max-height: calc(100vh - 80px);
+        opacity: 0;
+        padding: 16px 16px 24px;
+        position: fixed;
+        top: 80px;
+        transform: scale(0.95);
+        transition: opacity 0.10s, transform .1s;
+        width: 100vw;
+        z-index: -999
     }
 
-    .navbar {
-        align-items: center;
-        display: inline-flex;
-        gap: 8px;
-        justify-content: center;
-        margin: 0 auto
+    .nav-panel-sm.active {
+        background: #0A3E30;
+        opacity: 1;
+        transform: scale(1);
+        z-index: 9999
     }
 
-    .caption::after {
-        content: "Republic of the Philippines"
+    @keyframes stretchDown {
+        0% {
+            transform: scaleY(0.8);
+            transform-origin: 100% 0
+        }
+
+        100% {
+            transform: scaleY(1);
+            transform-origin: 100% 0
+        }
     }
 
-    .title::after {
-        content: "Zamboanga City Medical Center"
+    .nav-panel-content-sm.navigation-sm {
+        height: fit-content;
+        overflow: hidden
     }
 
-    .address::after {
-        content: "Dr. Evangelista St., Sta. Catalina, Zamboanga City, Philippines 7000"
-    }
-
+    .nav-panel-link,
     .header-link,
     .header-link-1,
     .header-link-2,
     .header-link-2-sm,
     .header-link-3 {
-        font-size: 14px;
+        font-size: 14px !important;
         font-weight: 400;
-        gap: 4px;
-        height: 80px;
+        height: 24px;
         line-height: 14px;
-        padding: 8px
+        padding: 8px 0
+    }
+
+    .header-link-2-sm {
+        padding: 0;
+        width: 100%
     }
 
     .header-link {
@@ -729,27 +1012,22 @@
         border-bottom: 2px solid var(--color-systembase-colorsbg-white-100-ffffff)
     }
 
-    .header-link-icon path {
-        fill: var(--color-systembase-colorsbg-white-100-ffffff)
-    }
-
     .header-link:hover .header-link-icon,
     .header-link-1:hover .header-link-icon,
-    .header-link-2:hover .header-link-icon,
     .header-link-2-sm:hover .header-link-icon,
+    .header-link-2:hover .header-link-icon,
     .header-link-3:hover .header-link-icon {
         cursor: pointer;
         transform: rotate(180deg)
     }
 
-    .account-used-container {
+    .account-used-container-sm {
         display: flex;
-        flex-direction: row;
-        gap: 8px;
         width: fit-content
     }
 
-    .account-used {
+    .account-used-sm {
+        align-items: center;
         border: 1px solid var(--color-system-neutrals-neutrals-300-e-6-e-6-e-6, #E6E6E6);
         border-radius: 8px;
         display: flex;
@@ -759,51 +1037,63 @@
         width: calc(100vw - 32px * 32%)
     }
 
-    .user-avatar {
+    .user-avatar-sm {
         align-items: center;
         display: flex;
-        flex-direction: column;
         justify-content: center
     }
 
-    .avatar {
+    .avatar-sm {
         border: 2px solid #F9FAFB;
         border-radius: 100px !important;
         height: 40px;
         width: 40px
     }
 
-    .user {
+    .user-sm {
         align-items: flex-start;
         display: flex;
         flex-direction: column;
-        gap: var(--spacing-values-value-4px, 4px)
+        gap: 8px
     }
 
-    .account-name,
-    .job-position {
-        font-weight: 500;
-        line-height: 18px
-    }
-
-    .account-name {
+    .account-name-sm {
         font-size: 14px;
         letter-spacing: .28px
     }
 
-    .job-position {
+    .job-position-sm {
         font-size: 12px;
         letter-spacing: .24px
     }
 
-    .nav-panel-sm,
-    .mega-menu-sm,
-    .logout-sm {
+    .caption::after,
+    .address::after {
+        content: ""
+    }
+
+    .icon-label-container .header-divider,
+    .navbar-sm,
+    .mega-menu {
         display: none
+    }
+
+    .navbar {
+        align-items: center;
+        display: inline-flex;
+        gap: 8px;
+        justify-content: center;
+        margin: 0 auto
+    }
+
+    .nav-panel-sm:not(.nav-panel-sm.active),
+    .search-sm,
+    .account-used-CTA-sm {
+        display: none !important
     }
 }
 
-@media only screen and (min-width: 1530px) and (max-width: 1920px) {
+@media only screen and (min-width: 1367px) and (max-width: 2440px) {
 
     .header,
     .start-page-header {

@@ -25,8 +25,8 @@ const News = () => {
                         <div className="content">
                             <div className="div-2">
                                     <div className="publish-date-container">
-                                        <Paragraph text="Published" className="text-wrapper-7" />
-                                        <Paragraph text="August 10, 2023" className="text-wrapper-7" />
+                                        <Paragraph text="Published" className="publish-date-text" />
+                                        <Paragraph text="August 10, 2023" className="publish-date-text" />
                                     </div>
                                 <Paragraph text="Strategic and Environment Unit achieves 100% of the target strategic deliverables for 2023!" className="text-wrapper-8" />
                             </div>
