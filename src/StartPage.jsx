@@ -5,6 +5,7 @@ import './styles/style.css';
 
 import './styles/start-page.css';
 import './styles/connected-systems.css';
+import './styles/segmented-button-memo.css';
 import './styles/tooltip.css';
 
 import StartPageHeader from './components/StartPageHeader/StartPageHeader.jsx';
