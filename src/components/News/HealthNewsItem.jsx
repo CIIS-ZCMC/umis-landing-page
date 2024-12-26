@@ -94,7 +94,7 @@ const HealthNewsItem = () => {
   const isNextDisabled = currentIndex + itemsPerPage >= HealthNewsItems.length;
 
   return (
-    <div className="content-2">
+    <div className="content">
       <div className="list-heading">
         <Paragraph text="Latest releases" className="text-wrapper-9" />
 
@@ -144,7 +144,7 @@ const HealthNewsItem = () => {
 
       <hr className="divider" />
 
-      <div className="div-3">
+      <div className="list-container">
         <div className="unordered-list">
           {displayedItems.map((item, index) => (
             <div className="list-item-2" key={index}>
@@ -155,7 +155,7 @@ const HealthNewsItem = () => {
                   alt={item.title}
                 />
               </div>
-              <div className="container-4">
+              <div className="health-news-item-content">
                 <div className="div-4">
                   <div className="publish-date-container">
                     <Paragraph text="Published" className="publish-date-text" />
