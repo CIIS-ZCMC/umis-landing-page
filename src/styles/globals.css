@@ -1,1 +1,203 @@
-@import "https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap";@import "https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css";*{-webkit-font-smoothing:antialiased;box-sizing:border-box}html,body{height:100%;margin:0}button:focus-visible{outline:2px solid #4a90e2!important;outline:-webkit-focus-ring-color auto 5px!important}a,.header-link{cursor:pointer;text-decoration-line:none}body{font-family:'Inter','Roboto',sans-serif}:root{--box-shadow-shadow-lg:0 var(--value-4px) calc(var(--value-16px) * 3) 0 #0d0d0d24;--box-shadow-shadow-md:0 var(--value-4px) calc(var(--value-16px) * 2) 0 #0d0d0d1a;--brand-500:#9e77edff;--brand-600:#7f56d9ff;--brand-700:#6941c6ff;--color-systembase-colorsbg-dark-900-f101698:#101618ff;--color-systembase-colorsbg-light-100-f6f6f6:#f6f6f6ff;--color-systembase-colorsbg-light-100-f9fafb:#f9fafbff;--color-systembase-colorsbg-main-500-02a4fd:#02a4fdff;--color-systembase-colorsbg-neutral-f7f7f7:#f6f6f6ff;--color-systembase-colorsbg-white-100-ffffff:#ffff;--color-systembase-colorsbrand-green-500-0f5721:#0f5721ff;--color-systembase-colorshighlight-green-500-34c658:#34c658ff;--color-systemdangererror-100-f6d5d5:#f6d5d5ff;--color-systemdangererror-200-edacac:#edacacff;--color-systemdangererror-25-fdf7f7:#fdf7f7ff;--color-systemdangererror-300-e58282:#e58282ff;--color-systemdangererror-400-dc5959:#dc5959ff;--color-systemdangererror-50-faeaea:#faeaeaff;--color-systemdangererror-500-d32f2f:#d32f2fff;--color-systemdangererror-600-a92626:#a92626ff;--color-systemdangererror-700-7f1c1c:#7f1c1cff;--color-systemdangererror-800-541313:#541313ff;--color-systemdangererror-900-2a0909:#2a0909ff;--color-systemdangererror-950-150505:#150505ff;--color-systeminfoinfo-100-d2e2f2:#d2e2f2ff;--color-systeminfoinfo-200-a5c6e4:#a5c6e4ff;--color-systeminfoinfo-25-f7fafd:#f7fafdff;--color-systeminfoinfo-300-77a9d7:#77a9d7ff;--color-systeminfoinfo-400-4a8dc9:#4a8dc9ff;--color-systeminfoinfo-50-ebf2f9:#ebf2f9ff;--color-systeminfoinfo-500-1d70bc:#1d70bcff;--color-systeminfoinfo-600-175a96:#175a96ff;--color-systeminfoinfo-700-114371:#114371ff;--color-systeminfoinfo-800-0c2d4b:#0c2d4bff;--color-systeminfoinfo-900-061626:#061626ff;--color-systeminfoinfo-950-030d16:#030d16ff;--color-systemneutralsneutrals-100-e6e6e6:#e6e6e6ff;--color-systemneutralsneutrals-200-f0f0f0:#f0f0f0ff;--color-systemneutralsneutrals-25-fafafa:#fafafaff;--color-systemneutralsneutrals-300-e6e6e6:#e6e6e6ff;--color-systemneutralsneutrals-350-d9d9d9:#d9d9d9ff;--color-systemneutralsneutrals-400-999999:#999f;--color-systemneutralsneutrals-50-f2f2f2:#f2f2f2ff;--color-systemneutralsneutrals-500-808080:#808080ff;--color-systemneutralsneutrals-600-666666:#666f;--color-systemneutralsneutrals-700-4d4d4d:#4d4d4dff;--color-systemneutralsneutrals-800-333333:#333f;--color-systemneutralsneutrals-900-1a1a1a:#1a1a1aff;--color-systemneutralsneutrals-950-0d0d0d:#0d0d0dff;--color-systemprimaryprimary-100-ccedff:#ccedffff;--color-systemprimaryprimary-200-9adbfe:#9adbfeff;--color-systemprimaryprimary-25-f5fbff:#f5fbffff;--color-systemprimaryprimary-300-67c8fe:#67c8feff;--color-systemprimaryprimary-400-35b6fd:#35b6fdff;--color-systemprimaryprimary-50-e5f6ff:#e5f6ffff;--color-systemprimaryprimary-500-02a4fd:#02a4fdff;--color-systemprimaryprimary-600-0283ca:#0283caff;--color-systemprimaryprimary-700-016298:#016298ff;--color-systemprimaryprimary-800-014265:#014265ff;--color-systemprimaryprimary-900-002133:#002133ff;--color-systemprimaryprimary-950-00111a:#00111aff;--color-systempurplepurple-100-e4defe:#e4defeff;--color-systempurplepurple-200-cabdfc:#cabdfcff;--color-systempurplepurple-25-f7f5ff:#f7f5ffff;--color-systempurplepurple-300-af9cfb:#af9cfbff;--color-systempurplepurple-400-957bf9:#957bf9ff;--color-systempurplepurple-50-ebe6fe:#ebe6feff;--color-systempurplepurple-500-7a5af8:#7a5af8ff;--color-systempurplepurple-600-6248c6:#6248c6ff;--color-systempurplepurple-700-493695:#493695ff;--color-systempurplepurple-800-312463:#312463ff;--color-systempurplepurple-900-181232:#181232ff;--color-systempurplepurple-950-090713:#090713ff;--color-systemsuccessneutrals-500-388e3c:#388e3cff;--color-systemsuccesssuccess-100-d7e8d8:#d7e8d8ff;--color-systemsuccesssuccess-200-afd2b1:#afd2b1ff;--color-systemsuccesssuccess-25-f9fbf9:#f9fbf9ff;--color-systemsuccesssuccess-300-88bb8a:#88bb8aff;--color-systemsuccesssuccess-400-60a563:#60a563ff;--color-systemsuccesssuccess-50-eff6ef:#eff6efff;--color-systemsuccesssuccess-600-2d7230:#2d7230ff;--color-systemsuccesssuccess-700-225524:#225524ff;--color-systemsuccesssuccess-800-163918:#163918ff;--color-systemsuccesssuccess-900-0b1c0c:#0b1c0cff;--color-systemsuccesssuccess-950-071208:#071208ff;--color-systemwarningwarning-100-fde5cc:#fde5ccff;--color-systemwarningwarning-200-fbcb99:#fbcb99ff;--color-systemwarningwarning-25-fffaf5:#fffaf5ff;--color-systemwarningwarning-300-f9b066:#f9b066ff;--color-systemwarningwarning-400-f79633:#f79633ff;--color-systemwarningwarning-50-fef2e6:#fef2e6ff;--color-systemwarningwarning-500-f57c00:#f57c00ff;--color-systemwarningwarning-600-c46300:#c46300ff;--color-systemwarningwarning-700-934a00:#934a00ff;--color-systemwarningwarning-800-623200:#623200ff;--color-systemwarningwarning-900-311900:#311900ff;--color-systemwarningwarning-950-1a0d00:#1a0d00ff;--display-flex:flex;--flex-direction-column:column;--flex-direction-row:row;--gray-500:#667085ff;--gray-900:#101828ff;--height-100vh:100vh;--height-124vh:124vh;--height-24vh:24vh;--height-32vh:32vh;--height-36vh:36vh;--height-40vh:40vh;--height-44vh:44vh;--height-48vh:48vh;--height-56vh:56vh;--height-64vh:64vh;--height-72vh:72vh;--height-86vh:86vh;--height-96vh:96vh;--inter-font-family:Inter,sans-serif;--lightbg-white-100:#ffff;--primary-50:#f9f5ffff;--primary-600:#7f56d9ff;--primary-700:#6941c6ff;--raleway-font-family:Raleway,sans-serif;--roboto-font-family:Roboto,sans-serif;--shadow-xs:0 1px 2px 0 #1018280d;--success-50:#ecfdf3ff;--success-700:#027a48ff;--value-10px:10px;--value-124px:124px;--value-12px:12px;--value-14px:14px;--value-16px:16px;--value-18px:18px;--value-20px:20px;--value-24px:24px;--value-28px:28px;--value-30px:30px;--value-32px:32px;--value-36px:36px;--value-40px:40px;--value-44px:44px;--value-48px:48px;--value-4px:4px;--value-56px:56px;--value-64px:64px;--value-72px:72px;--value-86px:86px;--value-8px:8px;--value-96px:96px;--white:#ffff;--width-100vw:100vw;--width-124vw:124vw;--width-24vw:24vw;--width-32vw:32vw;--width-36vw:36vw;--width-40vw:40vw;--width-44vw:44vw;--width-48vw:48vw;--width-56vw:56vw;--width-64vw:64vw;--width-72vw:72vw;--width-86vw:86vw;--width-96vw:96vw}
+@import "https://fonts.googleapis.com/css2?family=Raleway:wght@300;500;700&family=Inter:wght@400;500;600;700&family=Roboto:wght@400;500&display=swap";
+@import "https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css";
+
+* {
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0
+}
+
+button:focus-visible {
+    outline: 2px solid #4a90e2 !important;
+    outline: -webkit-focus-ring-color auto 5px !important
+}
+
+a,
+.header-link {
+    cursor: pointer;
+    text-decoration-line: none
+}
+
+body {
+    font-family: 'Inter', 'Roboto', sans-serif
+}
+
+:root {
+    --box-shadow-shadow-lg: 0 var(--value-4px) calc(var(--value-16px) * 3) 0 #0d0d0d24;
+    --box-shadow-shadow-md: 0 var(--value-4px) calc(var(--value-16px) * 2) 0 #0d0d0d1a;
+    --brand-500: #9e77edff;
+    --brand-600: #7f56d9ff;
+    --brand-700: #6941c6ff;
+    --color-systembase-colorsbg-dark-900-f101698: #101618ff;
+    --color-systembase-colorsbg-light-100-f6f6f6: #f6f6f6ff;
+    --color-systembase-colorsbg-light-100-f9fafb: #f9fafbff;
+    --color-systembase-colorsbg-main-500-02a4fd: #02a4fdff;
+    --color-systembase-colorsbg-neutral-f7f7f7: #f6f6f6ff;
+    --color-systembase-colorsbg-white-100-ffffff: #ffff;
+    --color-systembase-colorsbrand-green-500-0f5721: #0f5721ff;
+    --color-systembase-colorshighlight-green-500-34c658: #34c658ff;
+    --color-systemdangererror-100-f6d5d5: #f6d5d5ff;
+    --color-systemdangererror-200-edacac: #edacacff;
+    --color-systemdangererror-25-fdf7f7: #fdf7f7ff;
+    --color-systemdangererror-300-e58282: #e58282ff;
+    --color-systemdangererror-400-dc5959: #dc5959ff;
+    --color-systemdangererror-50-faeaea: #faeaeaff;
+    --color-systemdangererror-500-d32f2f: #d32f2fff;
+    --color-systemdangererror-600-a92626: #a92626ff;
+    --color-systemdangererror-700-7f1c1c: #7f1c1cff;
+    --color-systemdangererror-800-541313: #541313ff;
+    --color-systemdangererror-900-2a0909: #2a0909ff;
+    --color-systemdangererror-950-150505: #150505ff;
+    --color-systeminfoinfo-100-d2e2f2: #d2e2f2ff;
+    --color-systeminfoinfo-200-a5c6e4: #a5c6e4ff;
+    --color-systeminfoinfo-25-f7fafd: #f7fafdff;
+    --color-systeminfoinfo-300-77a9d7: #77a9d7ff;
+    --color-systeminfoinfo-400-4a8dc9: #4a8dc9ff;
+    --color-systeminfoinfo-50-ebf2f9: #ebf2f9ff;
+    --color-systeminfoinfo-500-1d70bc: #1d70bcff;
+    --color-systeminfoinfo-600-175a96: #175a96ff;
+    --color-systeminfoinfo-700-114371: #114371ff;
+    --color-systeminfoinfo-800-0c2d4b: #0c2d4bff;
+    --color-systeminfoinfo-900-061626: #061626ff;
+    --color-systeminfoinfo-950-030d16: #030d16ff;
+    --color-systemneutralsneutrals-100-e6e6e6: #e6e6e6ff;
+    --color-systemneutralsneutrals-200-f0f0f0: #f0f0f0ff;
+    --color-systemneutralsneutrals-25-fafafa: #fafafaff;
+    --color-systemneutralsneutrals-300-e6e6e6: #e6e6e6ff;
+    --color-systemneutralsneutrals-350-d9d9d9: #d9d9d9ff;
+    --color-systemneutralsneutrals-400-999999: #999f;
+    --color-systemneutralsneutrals-50-f2f2f2: #f2f2f2ff;
+    --color-systemneutralsneutrals-500-808080: #808080ff;
+    --color-systemneutralsneutrals-600-666666: #666f;
+    --color-systemneutralsneutrals-700-4d4d4d: #4d4d4dff;
+    --color-systemneutralsneutrals-800-333333: #333f;
+    --color-systemneutralsneutrals-900-1a1a1a: #1a1a1aff;
+    --color-systemneutralsneutrals-950-0d0d0d: #0d0d0dff;
+    --color-systemprimaryprimary-100-ccedff: #ccedffff;
+    --color-systemprimaryprimary-200-9adbfe: #9adbfeff;
+    --color-systemprimaryprimary-25-f5fbff: #f5fbffff;
+    --color-systemprimaryprimary-300-67c8fe: #67c8feff;
+    --color-systemprimaryprimary-400-35b6fd: #35b6fdff;
+    --color-systemprimaryprimary-50-e5f6ff: #e5f6ffff;
+    --color-systemprimaryprimary-500-02a4fd: #02a4fdff;
+    --color-systemprimaryprimary-600-0283ca: #0283caff;
+    --color-systemprimaryprimary-700-016298: #016298ff;
+    --color-systemprimaryprimary-800-014265: #014265ff;
+    --color-systemprimaryprimary-900-002133: #002133ff;
+    --color-systemprimaryprimary-950-00111a: #00111aff;
+    --color-systempurplepurple-100-e4defe: #e4defeff;
+    --color-systempurplepurple-200-cabdfc: #cabdfcff;
+    --color-systempurplepurple-25-f7f5ff: #f7f5ffff;
+    --color-systempurplepurple-300-af9cfb: #af9cfbff;
+    --color-systempurplepurple-400-957bf9: #957bf9ff;
+    --color-systempurplepurple-50-ebe6fe: #ebe6feff;
+    --color-systempurplepurple-500-7a5af8: #7a5af8ff;
+    --color-systempurplepurple-600-6248c6: #6248c6ff;
+    --color-systempurplepurple-700-493695: #493695ff;
+    --color-systempurplepurple-800-312463: #312463ff;
+    --color-systempurplepurple-900-181232: #181232ff;
+    --color-systempurplepurple-950-090713: #090713ff;
+    --color-systemsuccessneutrals-500-388e3c: #388e3cff;
+    --color-systemsuccesssuccess-100-d7e8d8: #d7e8d8ff;
+    --color-systemsuccesssuccess-200-afd2b1: #afd2b1ff;
+    --color-systemsuccesssuccess-25-f9fbf9: #f9fbf9ff;
+    --color-systemsuccesssuccess-300-88bb8a: #88bb8aff;
+    --color-systemsuccesssuccess-400-60a563: #60a563ff;
+    --color-systemsuccesssuccess-50-eff6ef: #eff6efff;
+    --color-systemsuccesssuccess-600-2d7230: #2d7230ff;
+    --color-systemsuccesssuccess-700-225524: #225524ff;
+    --color-systemsuccesssuccess-800-163918: #163918ff;
+    --color-systemsuccesssuccess-900-0b1c0c: #0b1c0cff;
+    --color-systemsuccesssuccess-950-071208: #071208ff;
+    --color-systemwarningwarning-100-fde5cc: #fde5ccff;
+    --color-systemwarningwarning-200-fbcb99: #fbcb99ff;
+    --color-systemwarningwarning-25-fffaf5: #fffaf5ff;
+    --color-systemwarningwarning-300-f9b066: #f9b066ff;
+    --color-systemwarningwarning-400-f79633: #f79633ff;
+    --color-systemwarningwarning-50-fef2e6: #fef2e6ff;
+    --color-systemwarningwarning-500-f57c00: #f57c00ff;
+    --color-systemwarningwarning-600-c46300: #c46300ff;
+    --color-systemwarningwarning-700-934a00: #934a00ff;
+    --color-systemwarningwarning-800-623200: #623200ff;
+    --color-systemwarningwarning-900-311900: #311900ff;
+    --color-systemwarningwarning-950-1a0d00: #1a0d00ff;
+    --display-flex: flex;
+    --flex-direction-column: column;
+    --flex-direction-row: row;
+    --gray-500: #667085ff;
+    --gray-900: #101828ff;
+    --height-100vh: 100vh;
+    --height-124vh: 124vh;
+    --height-12vh: 12vh;
+    --height-14vh: 14vh;
+    --height-16vh: 16vh;
+    --height-18vh: 18vh;
+    --height-20vh: 20vh;
+    --height-24vh: 24vh;
+    --height-32vh: 32vh;
+    --height-36vh: 36vh;
+    --height-40vh: 40vh;
+    --height-44vh: 44vh;
+    --height-48vh: 48vh;
+    --height-56vh: 56vh;
+    --height-64vh: 64vh;
+    --height-72vh: 72vh;
+    --height-86vh: 86vh;
+    --height-96vh: 96vh;
+    --inter-font-family: Inter, sans-serif;
+    --lightbg-white-100: #ffff;
+    --primary-50: #f9f5ffff;
+    --primary-600: #7f56d9ff;
+    --primary-700: #6941c6ff;
+    --raleway-font-family: Raleway, sans-serif;
+    --roboto-font-family: Roboto, sans-serif;
+    --shadow-xs: 0 1px 2px 0 #1018280d;
+    --success-50: #ecfdf3ff;
+    --success-700: #027a48ff;
+    --value-10px: 10px;
+    --value-124px: 124px;
+    --value-12px: 12px;
+    --value-14px: 14px;
+    --value-16px: 16px;
+    --value-18px: 18px;
+    --value-20px: 20px;
+    --value-24px: 24px;
+    --value-28px: 28px;
+    --value-30px: 30px;
+    --value-32px: 32px;
+    --value-36px: 36px;
+    --value-40px: 40px;
+    --value-44px: 44px;
+    --value-48px: 48px;
+    --value-4px: 4px;
+    --value-56px: 56px;
+    --value-64px: 64px;
+    --value-72px: 72px;
+    --value-86px: 86px;
+    --value-8px: 8px;
+    --value-96px: 96px;
+    --white: #ffff;
+    --width-100vw: 100vw;
+    --width-124vw: 124vw;
+    --width-12vw: 12vw;
+    --width-14vw: 14vw;
+    --width-16vw: 16vw;
+    --width-18vw: 18vw;
+    --width-20vw: 20vw;
+    --width-24vw: 24vw;
+    --width-32vw: 32vw;
+    --width-36vw: 36vw;
+    --width-40vw: 40vw;
+    --width-44vw: 44vw;
+    --width-48vw: 48vw;
+    --width-56vw: 56vw;
+    --width-64vw: 64vw;
+    --width-72vw: 72vw;
+    --width-86vw: 86vw;
+    --width-96vw: 96vw
+}
