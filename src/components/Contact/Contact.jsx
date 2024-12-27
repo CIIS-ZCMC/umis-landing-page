@@ -50,7 +50,7 @@ const Contact = () => {
                   <div className="link-container">
                     <Paragraph
                       text="Direct line:"
-                      className="text-wrapper-21"
+                      className="contact-label-text"
                     />
                     <Link
                       to="tel:0629912934"
@@ -63,7 +63,7 @@ const Contact = () => {
                   <div className="link-container">
                     <Paragraph
                       text="Via Globe call:"
-                      className="text-wrapper-21"
+                      className="contact-label-text"
                     />
                     <Link
                       to="tel:09155365583"
@@ -74,7 +74,7 @@ const Contact = () => {
                     </Link>
                   </div>
                   <div className="link-container">
-                    <Paragraph text="Fax number:" className="text-wrapper-21" />
+                    <Paragraph text="Fax number:" className="contact-label-text" />
                     <Link
                       to="tel:0629910573"
                       className="tel-numbers"
@@ -148,7 +148,7 @@ const Contact = () => {
                   <div className="link-container">
                     <Paragraph
                       text="Direct line:"
-                      className="text-wrapper-21"
+                      className="contact-label-text"
                     />
                     <Link
                       to="tel:0629912934"
@@ -161,7 +161,7 @@ const Contact = () => {
                   <div className="link-container">
                     <Paragraph
                       text="Via Globe call:"
-                      className="text-wrapper-21"
+                      className="contact-label-text"
                     />
                     <Link
                       to="tel:09155365583"
@@ -172,7 +172,7 @@ const Contact = () => {
                     </Link>
                   </div>
                   <div className="link-container">
-                    <Paragraph text="Fax number:" className="text-wrapper-21" />
+                    <Paragraph text="Fax number:" className="contact-label-text" />
                     <Link
                       to="tel:0629910573"
                       className="tel-numbers"
@@ -184,7 +184,6 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-
             
           <div className="maps">
             {/* <iframe

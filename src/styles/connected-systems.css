@@ -108,6 +108,14 @@
     }
 
     .connected-systems-heading .label {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: 0;
+        text-align: center;
+        text-wrap: nowrap !important;
+        width: fit-content !important;
+        padding: var(--value-8px) var(--value-12px);
         background: #f0f0f0;
         background: var(--color-system-base-colors-bg-white-100-ffffff, #FFF);
         border: 1px solid var(--color-system-neutrals-neutrals-300-e-6-e-6-e-6, #E6E6E6);
@@ -115,14 +123,7 @@
         color: #1A1A1A !important;
         font-size: var(--value-14px) !important;
         font-weight: 400 !important;
-        left: 50%;
-        margin-top: 0;
-        padding: var(--value-8px) var(--value-12px);
-        position: absolute;
-        text-align: center;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        width: fit-content !important
+        transform: translate(-50%, -50%)
     }
 
     .connected-systems-heading.announcement-divider {
@@ -217,7 +218,7 @@
         flex-direction: var(--flex-direction-column);
         gap: var(--value-32px);
         margin: 0 auto;
-        padding: 0 var(--value-16px) !important;
+        padding: 0 !important;
         width: 100%
     }
 
@@ -361,8 +362,8 @@
         align-items: center;
         display: var(--display-flex);
         flex-direction: var(--flex-direction-column);
-        max-width: var(--width-72vw);
-        min-width: var(--width-64vw)
+        min-width: var(--width-64vw);
+        max-width: var(--width-72vw)
     }
 
     .segmented-button-group {
@@ -884,7 +885,10 @@
         gap: var(--value-48px);
         margin: 0 auto;
         padding-top: var(--value-32px);
-        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 0;
+        width: 100%
     }
 
     .connected-systems .row {
@@ -892,7 +896,7 @@
         flex-direction: var(--flex-direction-row);
         gap: var(--value-16px) !important;
         justify-content: left;
-        margin: 0 auto
+        width: 100%;
     }
 
     .connected-systems .column {
@@ -924,6 +928,7 @@
         flex-direction: var(--flex-direction-row);
         justify-content: space-between;
         padding-top: var(--value-12px);
+        transition: padding 0.3s ease;
         width: 100%
     }
 
