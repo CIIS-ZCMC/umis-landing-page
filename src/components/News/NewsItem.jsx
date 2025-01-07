@@ -51,18 +51,18 @@ const NewsItem = () => {
                 </div>
             </div>
             <hr className="divider" />
-            <div className="div-3">
+            <div className="list-container">
                 <div className="list-group">
                     {displayedItems.map((item, index) => (
                         <div className="list-item" key={currentIndex + index}>
                             <img className="recent-news-list-item" src={item.image} alt="" />
-                            <div className="frame-4">
+                            <div className="list-item-content">
                                 <div className="div-4">
                                     <div className="publish-date-container news-item">
                                         <Paragraph text="Published" className="publish-date-text" />
                                         <Paragraph text={item.date} className="publish-date-text" />
                                     </div>
-                                    <Paragraph text={item.title} className="text-wrapper-8" />
+                                    <Paragraph text={item.title} className="news-item-name news-item-name-md" />
                                 </div>
                             </div>
                         </div>

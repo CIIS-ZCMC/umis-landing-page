@@ -14,6 +14,8 @@ import mccImg10 from '../../assets/mcc-corner/10.png';
 
 import Paragraph from "../Paragraph/Paragraph";
 
+import '../../styles/mcc-corner.css';
+
 const MccCorner = () => {
     return (
         <div className="mcc-corner">

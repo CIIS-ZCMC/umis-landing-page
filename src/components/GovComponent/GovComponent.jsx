@@ -5,6 +5,8 @@ import phLogo from "../../assets/ph-icon.png";
 
 import Paragraph from "../Paragraph/Paragraph";
 
+import '../../styles/gov-footer.css';
+
 const govphlinkItems = [
   { class: "gov-footer-link", link: "http://www.gov.ph/", label: "GOV.PH" },
   {

@@ -6,6 +6,8 @@ import openIcon from '../../assets/careers/open-4.svg';
 
 import Paragraph from "../Paragraph/Paragraph";
 
+import '../../styles/careers.css';
+
 const Careers = () => {
   return (
     <div className="careers">
