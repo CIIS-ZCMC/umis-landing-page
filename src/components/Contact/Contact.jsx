@@ -39,6 +39,7 @@ const Contact = () => {
                 <img className="img-2" src={phoneIcon} alt="Phone Icon" />
               </div>
               <div className="content">
+
                 <div className="card-body">
                   <div className="text-2">Call us</div>
                   <Paragraph
@@ -46,6 +47,7 @@ const Contact = () => {
                     className="supporting-text"
                   />
                 </div>
+
                 <div className="card-body">
                   <div className="link-container">
                     <Paragraph
@@ -84,6 +86,7 @@ const Contact = () => {
                     </Link>
                   </div>
                 </div>
+
               </div>
             </div>
 
@@ -100,10 +103,10 @@ const Contact = () => {
                   />
                 </div>
 
-                <div>
+                <div className="card-body">
                   <Paragraph
                     text="Email address:"
-                    className="text-wrapper-25"
+                    className="contact-label-text"
                   />
                   <div className="link-container">
                     <Link
@@ -124,6 +127,7 @@ const Contact = () => {
                     </Link>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -212,7 +216,7 @@ const Contact = () => {
                 <div>
                   <Paragraph
                     text="Email address:"
-                    className="text-wrapper-25"
+                    className="contact-label-text"
                   />
                   <div className="link-container">
                     <Link

@@ -36,10 +36,7 @@
 
 
 
-
-
-
-
+/* Start page body card order */
 @media only screen and (max-width: 480px) {
     .start-page-body-sm {
         display: var(--display-flex)
@@ -96,6 +93,7 @@
 
 
 
+/* Start page containers sizing */
 @media only screen and (max-width: 480px) {
     .start-page {
         gap: var(--value-24px);
@@ -173,7 +171,7 @@
 
 
 
-
+/* Announcement backdrop */
 @media only screen and (max-width: 480px) {
 
     .announcement-backdrop,
@@ -198,7 +196,6 @@
         padding: var(--value-16px);
         position: fixed;
         top: 0;
-        visibility: hidden;
         width: var(--width-100vw);
         z-index: 1000
     }
@@ -369,13 +366,13 @@
     }
 
     .start-page-container .subheading,
-    .start-page-container .text-wrapper-5,
+    .start-page-container .section-heading-title,
     .start-page-container .start-page-heading-description {
         text-align: center !important;
         width: 100%
     }
 
-    .start-page-container .text-wrapper-5 {
+    .start-page-container .section-heading-title {
         color: var(--color-system-neutrals-neutrals-9001-a-1-a-1-a, #1A1A1A);
         font-size: var(--value-24px);
         font-weight: 600;
@@ -770,12 +767,12 @@
     }
 
     .start-page-container .subheading,
-    .start-page-container .text-wrapper-5,
+    .start-page-container .section-heading-title,
     .start-page-container .start-page-heading-description {
         text-align: center !important
     }
 
-    .start-page-container .text-wrapper-5 {
+    .start-page-container .section-heading-title {
         color: var(--color-system-neutrals-neutrals-9001-a-1-a-1-a, #1A1A1A);
         font-size: var(--value-24px);
         font-weight: 600;
@@ -1179,12 +1176,12 @@
     }
 
     .start-page-container .subheading,
-    .start-page-container .text-wrapper-5,
+    .start-page-container .section-heading-title,
     .start-page-container .start-page-heading-description {
         text-align: center !important
     }
 
-    .start-page-container .text-wrapper-5 {
+    .start-page-container .section-heading-title {
         color: var(--color-system-neutrals-neutrals-9001-a-1-a-1-a, #1A1A1A);
         font-size: var(--value-24px);
         font-weight: 600;
@@ -1569,13 +1566,13 @@
     }
 
     .start-page-container .subheading,
-    .start-page-container .text-wrapper-5,
+    .start-page-container .section-heading-title,
     .start-page-container .start-page-heading-description {
         text-align: center !important;
         width: 100% !important
     }
 
-    .start-page-container .text-wrapper-5 {
+    .start-page-container .section-heading-title {
         color: var(--color-system-neutrals-neutrals-9001-a-1-a-1-a, #1A1A1A);
         font-size: var(--value-24px);
         font-weight: 600;
@@ -1968,13 +1965,13 @@
     }
 
     .start-page-container .subheading,
-    .start-page-container .text-wrapper-5,
+    .start-page-container .section-heading-title,
     .start-page-container .start-page-heading-description {
         text-align: center !important;
         width: 100%
     }
 
-    .start-page-container .text-wrapper-5 {
+    .start-page-container .section-heading-title {
         color: var(--color-system-neutrals-neutrals-9001-a-1-a-1-a, #1A1A1A);
         font-size: var(--value-24px);
         font-weight: 600;
@@ -2202,19 +2199,21 @@
     .announcement {
         background: var(--error-contrast, #FFF);
         border: inset;
-        border-left: var(--value-8px) solid var(--color-system-base-colors-brand-green-5000-f-5721, #0F5721);
         border-radius: 0 var(--value-16px) var(--value-16px) 0;
-        border-top: 0;
+        border-left: var(--value-8px) solid var(--color-system-base-colors-brand-green-5000-f-5721, #0F5721);
+        border-top: none;
+        border-bottom: none;
+        border-right: none;
         box-shadow: 0 var(--value-4px) var(--value-48px) 0 #0d0d0d24;
         display: var(--display-flex);
         flex-shrink: 0;
         gap: var(--value-16px);
         height: 682px;
-        max-height: 56vh;
+        max-height: var(--height-56vh);
         max-width: var(--width-44vw);
         min-height: var(--height-48vh);
         min-width: var(--width-24vw);
-        padding: var(--value-32px)
+        padding: var(--value-24px)
     }
 
     .announcement-divider {
@@ -2255,7 +2254,7 @@
 
     #announcement-description {
         display: block;
-        font-size: var(--value-16px);
+        font-size: var(--value-14px);
         font-weight: 400;
         height: 456px;
         line-height: 150%;
@@ -2366,13 +2365,13 @@
     }
 
     .start-page-container .subheading,
-    .start-page-container .text-wrapper-5,
+    .start-page-container .section-heading-title,
     .start-page-container .start-page-heading-description {
         text-align: center !important;
         width: 100% !important
     }
 
-    .start-page-container .text-wrapper-5 {
+    .start-page-container .section-heading-title {
         color: var(--color-system-neutrals-neutrals-9001-a-1-a-1-a, #1A1A1A);
         font-size: var(--value-24px);
         font-weight: 600;
@@ -2599,14 +2598,16 @@
     .announcement {
         background: var(--error-contrast, #FFF);
         border: inset;
-        border-left: var(--value-8px) solid var(--color-system-base-colors-brand-green-5000-f-5721, #0F5721);
         border-radius: 0 var(--value-16px) var(--value-16px) 0;
-        border-top: 0;
+        border-left: var(--value-8px) solid var(--color-system-base-colors-brand-green-5000-f-5721, #0F5721);
+        border-top: none;
+        border-bottom: none;
+        border-right: none;
         box-shadow: 0 var(--value-4px) var(--value-48px) 0 #0d0d0d24;
         display: var(--display-flex);
         flex-shrink: 0;
         gap: var(--value-16px);
-        max-height: 56vh;
+        max-height: var(--height-56vh);
         max-width: var(--width-44vw);
         min-height: var(--height-48vh);
         min-width: var(--width-24vw);
@@ -2653,7 +2654,7 @@
         display: block;
         font-size: var(--value-16px);
         font-weight: 400;
-        height: 456px;
+        height: 100%;
         line-height: 150%;
         overflow-y: auto
     }
@@ -2761,13 +2762,13 @@
     }
 
     .start-page-container .subheading,
-    .start-page-container .text-wrapper-5,
+    .start-page-container .section-heading-title,
     .start-page-container .start-page-heading-description {
         text-align: center !important;
         width: 100%
     }
 
-    .start-page-container .text-wrapper-5 {
+    .start-page-container .section-heading-title {
         color: var(--color-system-neutrals-neutrals-9001-a-1-a-1-a, #1A1A1A);
         font-size: var(--value-24px);
         font-weight: 600;
@@ -2814,8 +2815,8 @@
         gap: var(--value-8px);
         margin: 0 auto;
         padding: var(--value-24px);
-        min-width: 320px;
-        max-width: 343px;
+        min-width: 343px;
+        max-width: 360px;
     }
 
     .start-page-divider {
@@ -3065,7 +3066,7 @@
         height: var(--height-100vh);
         justify-content: center;
         opacity: 0;
-        padding: 242px 588px 241px;
+        padding: 242px 588px;
         position: fixed;
         top: 0;
         visibility: hidden;
@@ -3081,17 +3082,19 @@
     .announcement {
         background: var(--error-contrast, #FFF);
         border: inset;
-        border-left: var(--value-8px) solid var(--color-system-base-colors-brand-green-5000-f-5721, #0F5721);
         border-radius: 0 var(--value-16px) var(--value-16px) 0;
-        border-top: 0;
+        border-left: var(--value-8px) solid var(--color-system-base-colors-brand-green-5000-f-5721, #0F5721);
+        border-top: none;
+        border-bottom: none;
+        border-right: none;
         box-shadow: 0 var(--value-4px) var(--value-48px) 0 #0d0d0d24;
         display: var(--display-flex);
         flex-shrink: 0;
         gap: var(--value-16px);
-        max-height: 56vh;
-        max-width: var(--width-44vw);
-        min-height: var(--height-48vh);
+        min-height: var(--height-40vh);
+        max-height: var(--height-48vh);
         min-width: var(--width-24vw);
+        max-width: var(--width-32vw);
         padding: var(--value-32px)
     }
 
@@ -3243,13 +3246,13 @@
     }
 
     .start-page-container .subheading,
-    .start-page-container .text-wrapper-5,
+    .start-page-container .section-heading-title,
     .start-page-container .start-page-heading-description {
         text-align: center !important;
         width: 100%
     }
 
-    .start-page-container .text-wrapper-5 {
+    .start-page-container .section-heading-title {
         color: var(--color-system-neutrals-neutrals-9001-a-1-a-1-a, #1A1A1A);
         font-size: var(--value-24px);
         font-weight: 600;

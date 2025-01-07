@@ -15,7 +15,7 @@ const News = () => {
             <div className="latest-news">
                 <div className="heading">
                     <Paragraph text="Fresh updates" className="subheading" />
-                    <Paragraph text="Latest news on ZCMC" className="text-wrapper-5" />
+                    <Paragraph text="Latest news on ZCMC" className="section-heading-title" />
                     <Paragraph text="Stay in the loop with our fresh updates! Discover the latest trends, insights, and highlights on ZCMC. Don’t miss out on what’s happening now." className="news-heading-description" />
                 </div>
 

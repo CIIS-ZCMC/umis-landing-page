@@ -1,3 +1,24 @@
+/* Responsive list items */
+@media only screen and (max-width: 768px) {
+    .content, .list {
+        display: none !important;
+    }
+
+    .content-sm, .list-sm {
+        display: block !important;
+    }
+}
+
+@media only screen and (min-width: 769px) {
+    .content, .list {
+        display: block !important;
+    }
+    
+    .content-sm, .list-sm {
+        display: none !important;
+    }
+}
+
 @media only screen and (max-width: 480px) {
     .landing-page-desktop .news {
         align-items: flex-start;
@@ -217,7 +238,7 @@
         width: 100%
     }
 
-    .landing-page-desktop .text-wrapper-9 {
+    .landing-page-desktop .news-pagination-label {
         color: var(--color-systemneutralsneutrals-900-1a1a1a);
         font-size: var(--value-16px);
         font-weight: 700;
@@ -487,7 +508,7 @@
         align-self: stretch;
         box-sizing: border-box;
         display: var(--display-flex);
-        flex: 0 1 calc(24% - var(--value-16px));
+        flex: 0 1 calc(100% - var(--value-16px));
         flex-direction: var(--flex-direction-column);
         gap: var(--value-16px);
         position: relative;
@@ -540,7 +561,7 @@
 
     .publish-date-container {
         display: var(--display-flex);
-        flex-direction: var(--flex-direction-column);
+        flex-direction: var(--flex-direction-row);
         gap: var(--value-4px);
         justify-content: start;
         width: 100%
@@ -611,7 +632,7 @@
         width: 100%
     }
 
-    .landing-page-desktop .text-wrapper-9 {
+    .landing-page-desktop .news-pagination-label {
         color: var(--color-systemneutralsneutrals-900-1a1a1a);
         font-size: var(--value-16px);
         font-weight: 700;
@@ -1021,7 +1042,7 @@
         width: 100% !important
     }
 
-    .landing-page-desktop .text-wrapper-9 {
+    .landing-page-desktop .news-pagination-label {
         color: var(--color-systemneutralsneutrals-900-1a1a1a);
         font-size: var(--value-16px);
         font-weight: 700;
@@ -1398,7 +1419,7 @@
         width: 100%
     }
 
-    .landing-page-desktop .text-wrapper-9 {
+    .landing-page-desktop .news-pagination-label {
         color: var(--color-systemneutralsneutrals-900-1a1a1a);
         font-size: var(--value-16px);
         font-weight: 700;

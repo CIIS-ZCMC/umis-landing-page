@@ -51,7 +51,7 @@ const MoreInfo = () => {
       <div className="more-info-heading">
         <div className="div-2">
           <Paragraph text="More information" className="body-caption" />
-          <Paragraph text="Looking for something else?" className="text-wrapper-5" />
+          <Paragraph text="Looking for something else?" className="section-heading-title" />
         </div>
       </div>
 
