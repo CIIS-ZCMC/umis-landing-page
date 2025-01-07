@@ -2597,12 +2597,8 @@
 
     .announcement {
         background: var(--error-contrast, #FFF);
-        border: inset;
         border-radius: 0 var(--value-16px) var(--value-16px) 0;
         border-left: var(--value-8px) solid var(--color-system-base-colors-brand-green-5000-f-5721, #0F5721);
-        border-top: none;
-        border-bottom: none;
-        border-right: none;
         box-shadow: 0 var(--value-4px) var(--value-48px) 0 #0d0d0d24;
         display: var(--display-flex);
         flex-shrink: 0;

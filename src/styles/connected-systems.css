@@ -1,4 +1,5 @@
 .connected-systems .row,
+.connected-systems .card,
 .connected-systems .card-content,
 .connected-systems .card-heading,
 .connected-systems .system-icon {
@@ -6,7 +7,7 @@
 }
 
 .connected-systems .card:hover {
-    cursor: pointer;
+    cursor: pointer
 }
 
 @media only screen and (max-width: 480px) {
@@ -883,7 +884,7 @@
     }
 
     .connected-systems {
-        align-items: flex-start;
+        align-items: flex-start; /* Ensures the items align to the start */
         display: var(--display-flex);
         flex-direction: var(--flex-direction-column);
         gap: var(--value-48px);
@@ -892,9 +893,10 @@
         padding-left: 0;
         padding-right: 0;
         padding-bottom: 0;
-        width: 100%
+        width: 100%;
+        height: auto; /* Optional: specify if parent container should have a height */
     }
-
+    
     .connected-systems .row {
         align-self: stretch;
         flex-direction: var(--flex-direction-row);
@@ -902,26 +904,32 @@
         justify-content: left;
         width: 100%;
     }
-
+    
     .connected-systems .column {
         display: var(--display-flex);
         flex-direction: var(--flex-direction-column);
+        align-items: start;
         gap: var(--value-16px);
-        width: 100%
+        width: 100%;
     }
-
+    
     .connected-systems .card {
-        align-items: flex-start;
-        background: var(--error-contrast, #FFF);
+        height: 82px !important; /* Fixed height */
+        width: 100%;
+        align-items: start;
+        gap: var(--value-12px);
+        padding: var(--value-16px);
+        flex-direction: var(--flex-direction-row);
+        background: var(--color-system-base-colors-bg-white-100-ffffff);
         border: 1px solid var(--color-system-neutrals-neutrals-200-f-0-f-0-f-0, #F0F0F0);
         border-radius: var(--value-12px);
         box-shadow: 0 var(--value-4px) var(--value-24px) 0 #0d0d0d0f;
-        flex: 1 0 0;
-        flex-direction: var(--flex-direction-row);
-        gap: var(--value-12px);
-        padding: var(--value-16px);
-        transition: transform .25s ease
+        transition: transform .25s ease;
+        flex-grow: 0; /* Prevents stretching */
+        flex-shrink: 0; /* Prevents shrinking */
+        align-self: flex-start; /* Prevents stretching within flex parent */
     }
+    
 
     .start-page .card {
         cursor: auto
@@ -937,9 +945,15 @@
     }
 
     .connected-systems .card-title {
-        color: var(--color-system-neutrals-neutrals-9001-a-1-a-1-a, #1A1A1A);
         font-size: var(--value-18px);
         font-style: normal;
+        color: var(--color-system-neutrals-neutrals-9001-a-1-a-1-a, #1A1A1A);
+        width: 100%;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
         font-weight: 400;
         line-height: 150%
     }

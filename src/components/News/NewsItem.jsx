@@ -54,7 +54,7 @@ const NewsItem = () => {
 
     return (
         <>
-            <div className="list">
+            <div className="news-content list">
                 <div className="list-heading">
                     <Paragraph text="Recent news" className="news-pagination-label" />
                     <div className="frame-2">
@@ -95,7 +95,7 @@ const NewsItem = () => {
             </div>
 
             
-            <div className="list list-sm">
+            <div className="news-content list list-sm">
                 <div className="list-heading">
                     <Paragraph text="Recent news" className="news-pagination-label" />
                     <div className="frame-2">

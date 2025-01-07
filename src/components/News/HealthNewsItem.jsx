@@ -120,7 +120,7 @@ const HealthNewsItem = () => {
 
   return (
     <>
-    <div className="content">
+    <div className="health-news-content">
       <div className="list-heading">
         <Paragraph text="Latest releases" className="news-pagination-label" />
 
@@ -203,7 +203,7 @@ const HealthNewsItem = () => {
 
 
     
-    <div className="content content-sm">
+    <div className="health-news-content list-sm">
       <div className="list-heading">
         <Paragraph text="Latest releases" className="news-pagination-label" />
 

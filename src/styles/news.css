@@ -99,6 +99,19 @@
         width: 100%
     }
 
+    .landing-page-desktop .health-news-content, .landing-page-desktop .news-item-container {
+        align-items: flex-start;
+        display: var(--display-flex) !important;
+        flex-direction: var(--flex-direction-column);
+        gap: var(--value-14px);
+    }
+
+    .landing-page-desktop .health-news-content {
+        flex: 0 0 auto;
+        position: relative;
+        width: 100% !important
+    }
+
     .landing-page-desktop .list-item {
         position: relative;
         display: var(--display-flex);
@@ -503,6 +516,19 @@
         width: 100%
     }
 
+    .landing-page-desktop .health-news-content, .landing-page-desktop .news-content {
+        display: none;
+    }
+
+    .landing-page-desktop .list-sm:not(.landing-page-desktop .health-news-content), .landing-page-desktop .list-sm:not(.landing-page-desktop .news-content) {
+        position: relative;
+        display: var(--display-flex) !important;
+        flex-direction: var(--flex-direction-column);
+        gap: var(--value-20px);
+        flex: 0 0 auto;
+        align-items: flex-start
+    }
+
     .landing-page-desktop .list-item {
         align-items: flex-start;
         align-self: stretch;
@@ -886,6 +912,15 @@
         justify-content: center;
         min-width: 100%;
         max-width: 1302px
+    }
+
+    .landing-page-desktop .health-news-content:not(.landing-page-desktop .list-sm), .landing-page-desktop .news-content:not(.landing-page-desktop .list-sm) {
+        position: relative;
+        display: var(--display-flex) !important;
+        flex-direction: var(--flex-direction-column);
+        gap: var(--value-20px);
+        flex: 0 0 auto;
+        align-items: flex-start
     }
 
     .landing-page-desktop .list-item {
@@ -1365,14 +1400,13 @@
         width: 100%
     }
 
-    .landing-page-desktop .content {
-        align-items: flex-start;
-        display: var(--display-flex);
-        flex: 0 0 auto;
+    .landing-page-desktop .health-news-content:not(.landing-page-desktop .list-sm), .landing-page-desktop .news-content:not(.landing-page-desktop .list-sm) {
+        position: relative;
+        display: var(--display-flex) !important;
         flex-direction: var(--flex-direction-column);
         gap: var(--value-20px);
-        position: relative;
-        width: 100% !important
+        flex: 0 0 auto;
+        align-items: flex-start
     }
 
     .landing-page-desktop .news-item-name {
@@ -1400,7 +1434,7 @@
         text-overflow: ellipsis
     }
 
-    .landing-page-desktop .list {
+    .landing-page-desktop .news .list {
         align-items: flex-start;
         display: var(--display-flex);
         flex-direction: var(--flex-direction-column);
@@ -1524,18 +1558,6 @@
         line-height: var(--value-30px);
         position: relative;
         width: 720px
-    }
-
-    .landing-page-desktop .content {
-        align-items: flex-start;
-        align-self: stretch;
-        display: var(--display-flex);
-        flex: 0 0 auto;
-        flex-direction: var(--flex-direction-column);
-        gap: var(--value-20px);
-        padding: 0;
-        position: relative;
-        width: 100%
     }
 
     .landing-page-desktop .img-wrapper {

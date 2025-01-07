@@ -59,7 +59,7 @@ const govlinkItems = [
   },
 ];
 
-const GovComponent = () => {
+const GovFooter = () => {
   return (
     <div className="gov">
       <img className="ph-icon" src={phLogo} alt="Philippine Icon" />
@@ -120,4 +120,4 @@ const GovComponent = () => {
   );
 };
 
-export default GovComponent;
+export default GovFooter;

@@ -2517,10 +2517,10 @@
         width: 100%
     }
 
-    .landing-page-desktop .contact-card-group {
-        display: var(--display-flex);
+    .landing-page-desktop .contact-card-group, .landing-page-desktop .contact-card-group .content {
+        display: var(--display-flex) !important;
         flex-direction: var(--flex-direction-column);
-        gap: var(--value-24px);
+        gap: var(--value-20px);
         padding: 0;
         width: 100%
     }
@@ -2536,8 +2536,8 @@
     }
 
     .landing-page-desktop .maps {
-        background: url(../assets/zcmc-map.PNG);
-        background-position: 50% 50%;
+        background: url(../assets/zcmc-map-2-sm.PNG);
+        background-position: center;
         background-color: #f9fafb;
         background-repeat: no-repeat;
         background-size: cover;
@@ -2545,11 +2545,13 @@
         border: 2px solid var(--color-systembase-colorsbg-white-100-ffffff);
         border-radius: var(--value-12px);
         box-shadow: var(--box-shadow-shadow-md);
-        height: auto;
-        margin: 0 auto;
+        height: 360px;
+        max-height: 400px;
         overflow: hidden;
         position: relative;
-        width: 100%
+        width: 100%;
+        max-width: 72vw;
+        margin: 0 auto
     }
 
     .landing-page-desktop .address-container {
