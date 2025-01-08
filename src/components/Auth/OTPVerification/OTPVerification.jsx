@@ -96,9 +96,9 @@ const OTPVerification = ({
     let form = new FormData();
     form.append("otp", otp.join(""));
 
-    const is2fa = action === ACTION_SIGNIN_OTP;
+    const signInOTP = action === ACTION_SIGNIN_OTP;
 
-    if (is2fa) {
+    if (signInOTP) {
       signInWithOTP(form, (status, message) => {
         if (!(status >= 200 && status < 300)) {
           if (status === 307) {
@@ -122,8 +122,7 @@ const OTPVerification = ({
           return setLoading(false);
         }
 
-        setErrorMessage(message);
-        return console.log(message);
+        return setErrorMessage(message);
       }
 
       setAction(ACTION_ASSIGN_NEW_PASSWORD);
