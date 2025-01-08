@@ -5,7 +5,7 @@ import phLogo from "../../assets/ph-icon.png";
 
 import Paragraph from "../Paragraph/Paragraph";
 
-import '../../styles/gov-footer.css';
+import "../../styles/gov-footer.css";
 
 const govphlinkItems = [
   { class: "gov-footer-link", link: "http://www.gov.ph/", label: "GOV.PH" },
@@ -59,7 +59,7 @@ const govlinkItems = [
   },
 ];
 
-const GovFooter = () => {
+const GovComponent = () => {
   return (
     <div className="gov">
       <img className="ph-icon" src={phLogo} alt="Philippine Icon" />
@@ -120,4 +120,4 @@ const GovFooter = () => {
   );
 };
 
-export default GovFooter;
+export default GovComponent;

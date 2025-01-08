@@ -12,7 +12,7 @@ import NestedPagesBody from "./components/NestedPagesBody/NestedPagesBody.jsx";
 const Agency = React.lazy(() => import("./components/Agency/Agency.jsx"));
 const Contact = React.lazy(() => import("./components/Contact/Contact.jsx"));
 const GovFooter = React.lazy(() =>
-  import("./components/GovFooter/GovFooter.jsx")
+  import("./components/GovComponent/GovComponent.jsx")
 );
 
 import "./styles/nested-pages.css";

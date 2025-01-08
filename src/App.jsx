@@ -8,7 +8,7 @@ import HeaderHero from "./components/HeaderHero/HeaderHero.jsx";
 import Header from "./components/Header/Header.jsx";
 
 const GovFooter = React.lazy(() =>
-  import("./components/GovFooter/GovFooter.jsx")
+  import("./components/GovComponent/GovComponent.jsx")
 );
 const Agency = React.lazy(() => import("./components/Agency/Agency.jsx"));
 const Careers = React.lazy(() => import("./components/Careers/Careers.jsx"));
