@@ -3,11 +3,20 @@ import React, { useState, useEffect } from 'react';
 import Paragraph from "../Paragraph/Paragraph";
 
 const AnnouncementBackdrop = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const handleDismiss = () => {
+    setIsVisible(false);
+  };
 
   return (
     <div>
 
-      {isVisible && ( // Conditional rendering based on isVisible state
+      {isVisible && (
         <div className="announcement-backdrop" id="announcement-backdrop">
           <div className="announcement">
             <div className="content">
