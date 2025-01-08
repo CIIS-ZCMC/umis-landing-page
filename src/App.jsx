@@ -7,8 +7,8 @@ import dpo from "./assets/mcc-corner/5.png";
 import HeaderHero from "./components/HeaderHero/HeaderHero.jsx";
 import Header from "./components/Header/Header.jsx";
 
-const GovComponent = React.lazy(() =>
-  import("./components/GovComponent/GovComponent.jsx")
+const GovFooter = React.lazy(() =>
+  import("./components/GovFooter/GovFooter.jsx")
 );
 const Agency = React.lazy(() => import("./components/Agency/Agency.jsx"));
 const Careers = React.lazy(() => import("./components/Careers/Careers.jsx"));

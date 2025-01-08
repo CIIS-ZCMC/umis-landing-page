@@ -19,6 +19,8 @@ const FeaturedVideos = () => {
   // Video URLs
   const videoSrc1 = "";
   const videoSrc2 = "";
+  const videoSrc3 = "";
+  const videoSrc4 = "";
 
   return (
     <div className="videos">
@@ -40,8 +42,8 @@ const FeaturedVideos = () => {
 
         <div className="featured-videos-group">
           {/* Reuse VideoFrame component for the second set of iframes */}
-          <VideoFrame className="featured-video-left" src={videoSrc1} />
-          <VideoFrame className="featured-video-right" src={videoSrc2} />
+          <VideoFrame className="featured-video-left" src={videoSrc3} />
+          <VideoFrame className="featured-video-right" src={videoSrc4} />
         </div>
       </div>
     </div>

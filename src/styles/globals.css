@@ -33,9 +33,6 @@ body {
 :root {
     --box-shadow-shadow-lg: 0 var(--value-4px) calc(var(--value-16px) * 3) 0 #0d0d0d24;
     --box-shadow-shadow-md: 0 var(--value-4px) calc(var(--value-16px) * 2) 0 #0d0d0d1a;
-    --brand-500: #9e77edff;
-    --brand-600: #7f56d9ff;
-    --brand-700: #6941c6ff;
     --color-systembase-colorsbg-dark-900-f101698: #101618ff;
     --color-systembase-colorsbg-light-100-f6f6f6: #f6f6f6ff;
     --color-systembase-colorsbg-light-100-f9fafb: #f9fafbff;
@@ -202,5 +199,14 @@ body {
     --width-64vw: 64vw;
     --width-72vw: 72vw;
     --width-86vw: 86vw;
-    --width-96vw: 96vw
+    --width-96vw: 96vw;
+    --font-weight-100: 100;
+    --font-weight-200: 200;
+    --font-weight-300: 300;
+    --font-weight-400: 400;
+    --font-weight-500: 500;
+    --font-weight-600: 600;
+    --font-weight-700: 700;
+    --font-weight-800: 800;
+    --font-weight-900: 900;
 }

@@ -45,6 +45,7 @@ const Contact = () => {
                     className="supporting-text"
                   />
                 </div>
+
                 <div className="card-body">
                   <div className="link-container">
                     <Paragraph
@@ -102,10 +103,10 @@ const Contact = () => {
                   />
                 </div>
 
-                <div>
+                <div className="card-body">
                   <Paragraph
                     text="Email address:"
-                    className="text-wrapper-25"
+                    className="contact-label-text"
                   />
                   <div className="link-container">
                     <Link
@@ -190,14 +191,14 @@ const Contact = () => {
             </div>
 
             <div className="maps">
-              {/* <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10923.355957798736!2d122.08179530676348!3d6.905315170392774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x325041ffa967f381%3A0xecb19e86dbe0fe31!2sZamboanga%20City%20Medical%20Center!5e1!3m2!1sen!2sph!4v1727676983541!5m2!1sen!2sph"
-              width="100%"
-              height="450"
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe> */}
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10923.355957798736!2d122.08179530676348!3d6.905315170392774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x325041ffa967f381%3A0xecb19e86dbe0fe31!2sZamboanga%20City%20Medical%20Center!5e1!3m2!1sen!2sph!4v1727676983541!5m2!1sen!2sph"
+                width="100%"
+                height="450"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
 
             <div className="card-3">
@@ -216,7 +217,7 @@ const Contact = () => {
                 <div>
                   <Paragraph
                     text="Email address:"
-                    className="text-wrapper-25"
+                    className="contact-label-text"
                   />
                   <div className="link-container">
                     <Link

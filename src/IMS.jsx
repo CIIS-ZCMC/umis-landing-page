@@ -11,8 +11,8 @@ import NestedPagesBody from "./components/NestedPagesBody/NestedPagesBody.jsx";
 
 const Agency = React.lazy(() => import("./components/Agency/Agency.jsx"));
 const Contact = React.lazy(() => import("./components/Contact/Contact.jsx"));
-const GovComponent = React.lazy(() =>
-  import("./components/GovComponent/GovComponent.jsx")
+const GovFooter = React.lazy(() =>
+  import("./components/GovFooter/GovFooter.jsx")
 );
 
 import "./styles/nested-pages.css";
@@ -37,7 +37,7 @@ const IMS = () => {
         <NestedPagesBody />
         <Contact />
         <Agency />
-        <GovComponent />
+        <GovFooter />
       </Suspense>
     </div>
   );

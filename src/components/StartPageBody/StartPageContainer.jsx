@@ -23,7 +23,7 @@ const StartPageContainer = () => {
         <div className="start-page-content">
           <div className="heading">
             <Paragraph text="Welcome to One ZCMC" className="subheading" />
-            {/* <p className="text-wrapper-5">All you need, in one portal</p>
+            {/* <p className="section-heading-title">All you need, in one portal</p>
             <p className="start-page-heading-description">
               Get access to all information systems and applications, information and resources
               readily available for you.
