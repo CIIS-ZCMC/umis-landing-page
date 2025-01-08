@@ -86,6 +86,17 @@ const NewPassword = () => {
     });
   }
 
+  // Calculate the date 3 months from today
+  const getDatePlusThreeMonths = () => {
+    const currentDate = new Date();
+    currentDate.setMonth(currentDate.getMonth() + 3);
+    return currentDate.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
+
   if (isNewPasswordRegistered) {
     return (
       <Box
@@ -166,7 +177,7 @@ const NewPassword = () => {
                   fontWeight: 500,
                 }}
               >
-                January 10, 2023
+                {getDatePlusThreeMonths()}
               </Typography>
             </Typography>
           </Box>
