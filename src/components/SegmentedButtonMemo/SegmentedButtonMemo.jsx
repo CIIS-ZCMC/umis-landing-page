@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import Paragraph from "../Paragraph/Paragraph";
 
+import fileArrowDown from '../../assets/file-arrow-down.svg';
+
 const SegmentedButtonMemo = ({ announcementContent, memorandumContent }) => {
     const [selected, setSelected] = useState('announcement'); // Default selection: 'announcement'
 
@@ -28,11 +30,16 @@ const SegmentedButtonMemo = ({ announcementContent, memorandumContent }) => {
                         <div className='memo-announcement-column'>
                             {announcementContent.map((item, index) => (
                                 <Link to={item.link} className="memo-announcement-card" key={index} rel="noopener noreferrer" >
-                                    <span className="memo-announcement-date-published">
-                                        <Paragraph text={item.date} className="memo-announcement-card-date" />
-                                        <Paragraph text={item.time} className="memo-announcement-card-time" />
-                                    </span>
-                                    <Paragraph text={item.title} className="memo-announcement-card-title" />
+                                    <div className="memo-card-content">
+                                        <span className="memo-announcement-date-published">
+                                            <Paragraph text={item.date} className="memo-announcement-card-date" />
+                                            <Paragraph text={item.time} className="memo-announcement-card-time" />
+                                        </span>
+                                        <Paragraph text={item.title} className="memo-announcement-card-title" />
+                                    </div>
+                                    <div className="memo-file-icon">
+                                        <img src={fileArrowDown} alt="File download icon" />
+                                    </div>
                                 </Link>
                             ))}
                         </div>
@@ -42,11 +49,16 @@ const SegmentedButtonMemo = ({ announcementContent, memorandumContent }) => {
                         <div className='memo-announcement-column'>
                             {memorandumContent.map((item, index) => (
                                 <Link to={item.link} className="memo-announcement-card" key={index} rel="noopener noreferrer" >
-                                    <span className="memo-announcement-date-published">
-                                        <Paragraph text={item.date} className="memo-announcement-card-date" />
-                                        <Paragraph text={item.time} className="memo-announcement-card-time" />
-                                    </span>
-                                    <Paragraph text={item.title} className="memo-announcement-card-title" />
+                                    <div className="memo-card-content">
+                                        <span className="memo-announcement-date-published">
+                                            <Paragraph text={item.date} className="memo-announcement-card-date" />
+                                            <Paragraph text={item.time} className="memo-announcement-card-time" />
+                                        </span>
+                                        <Paragraph text={item.title} className="memo-announcement-card-title" />
+                                    </div>
+                                    <div className="memo-file-icon">
+                                        <img src={fileArrowDown} alt="File download icon" />
+                                    </div>
                                 </Link>
                             ))}
                         </div>

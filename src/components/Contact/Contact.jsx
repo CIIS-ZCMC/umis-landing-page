@@ -30,8 +30,7 @@ const Contact = () => {
 
       <div className="contact-card-container">
         <div className="contact-card-group">
-          <div className="maps">
-          </div>
+          <div className="maps"></div>
 
           <div className="contact-email-group">
             <div className="card-2">
@@ -39,7 +38,6 @@ const Contact = () => {
                 <img className="img-2" src={phoneIcon} alt="Phone Icon" />
               </div>
               <div className="content">
-
                 <div className="card-body">
                   <div className="text-2">Call us</div>
                   <Paragraph
@@ -76,7 +74,10 @@ const Contact = () => {
                     </Link>
                   </div>
                   <div className="link-container">
-                    <Paragraph text="Fax number:" className="contact-label-text" />
+                    <Paragraph
+                      text="Fax number:"
+                      className="contact-label-text"
+                    />
                     <Link
                       to="tel:0629910573"
                       className="tel-numbers"
@@ -86,7 +87,6 @@ const Contact = () => {
                     </Link>
                   </div>
                 </div>
-
               </div>
             </div>
 
@@ -127,14 +127,12 @@ const Contact = () => {
                     </Link>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
         </div>
 
         <div className="contact-card-group-lg">
-
           <div className="contact-email-group">
             <div className="card-2">
               <div className="featured-icon">
@@ -176,7 +174,10 @@ const Contact = () => {
                     </Link>
                   </div>
                   <div className="link-container">
-                    <Paragraph text="Fax number:" className="contact-label-text" />
+                    <Paragraph
+                      text="Fax number:"
+                      className="contact-label-text"
+                    />
                     <Link
                       to="tel:0629910573"
                       className="tel-numbers"
@@ -188,19 +189,17 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-            
-          <div className="maps">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10923.355957798736!2d122.08179530676348!3d6.905315170392774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x325041ffa967f381%3A0xecb19e86dbe0fe31!2sZamboanga%20City%20Medical%20Center!5e1!3m2!1sen!2sph!4v1727676983541!5m2!1sen!2sph"
-              width="100%"
-              height="450"
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            >
-              
-            </iframe>
-          </div>
+
+            <div className="maps">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10923.355957798736!2d122.08179530676348!3d6.905315170392774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x325041ffa967f381%3A0xecb19e86dbe0fe31!2sZamboanga%20City%20Medical%20Center!5e1!3m2!1sen!2sph!4v1727676983541!5m2!1sen!2sph"
+                width="100%"
+                height="450"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
 
             <div className="card-3">
               <div className="featured-icon">

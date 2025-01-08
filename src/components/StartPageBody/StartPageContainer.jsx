@@ -36,14 +36,14 @@ const StartPageContainer = () => {
               <br />
               User Management Information System
             </Link>
-            <button className="secondary-CTA" id="read-announcement" onClick={handleReadAnnouncement}>
+            {/* <button className="secondary-CTA" id="read-announcement" onClick={handleReadAnnouncement}>
               Read announcements
-            </button>
+            </button> */}
           </div>
 
-          <div className='announcement-date-container'>
+          {/* <div className='announcement-date-container'>
             <Paragraph text="Announcements last updated on: August 10, 2023" className="announcement-date" />
-          </div>
+          </div> */}
         </div>
       </div>
 

@@ -15,30 +15,38 @@
     justify-content: left;
     max-height: 280px;
     min-height: 224px;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow: auto;
     width: 100%
-}
-
-@keyframes slide {
-    0% {
-        transform: translateX(0)
-    }
-
-    100% {
-        transform: translateX(4px)
-    }
 }
 
 .memo-announcement .memo-announcement-card {
     align-items: start;
-    animation: slide .25s ease 0s 1 normal none;
+    align-self: flex-start;
     border-bottom: 1px solid #F0F0F0;
     display: var(--display-flex);
-    flex-direction: var(--flex-direction-column);
+    flex-direction: var(--flex-direction-row);
     gap: var(--value-4px);
     padding-bottom: var(--value-12px);
-    width: 100%
+    width: calc(100% - 16px)
+}
+
+.memo-card-content {
+    display: var(--display-flex);
+    flex-direction: var(--flex-direction-column);
+    justify-content: space-between;
+    width: 100%;
+    gap: var(--value-4px);
+}
+
+.memo-file-icon {
+    height: 24px;
+    width: 24px;
+    display: var(--display-flex);
+    justify-content: center;
+    align-self: flex-end;
+    align-items: center;
+    border: 1px solid #e6e6e6;
+    border-radius: var(--value-4px);
 }
 
 .memo-announcement .memo-announcement-card:last-child {
@@ -153,7 +161,11 @@
 }
 
 .memo-announcement .memo-announcement-card:hover {
-    transform: scale(1.025)
+    cursor: pointer;
+
+    .memo-announcement-card-title {
+        color: #225524 !important
+    }
 }
 
 .memo-announcement-feature-icon {
