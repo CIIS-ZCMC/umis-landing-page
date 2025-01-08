@@ -9,11 +9,9 @@ const BASE_URL = {
 const umis = new axios.create({
   baseURL: BASE_URL.production,
   withCredentials: true,
-  crossDomain: true,
   headers: {
     Accept: "application/json",
     "content-type": "application/json",
-    Origin: "https://zcmc.online",
   },
 });
 

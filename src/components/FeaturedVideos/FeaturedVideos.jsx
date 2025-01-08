@@ -1,63 +1,49 @@
 import React from "react";
+import Paragraph from "../Paragraph/Paragraph";
+
+// Reusable VideoFrame component
+const VideoFrame = ({ src, className }) => (
+  <iframe
+    className={className}
+    loading="lazy"
+    src={src}
+    style={{ overflow: "hidden" }}
+    scrolling="no"
+    frameBorder="0"
+    allowFullScreen
+    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+  ></iframe>
+);
 
 const FeaturedVideos = () => {
+  // Video URLs
+  const videoSrc1 = "";
+  const videoSrc2 = "";
+  const videoSrc3 = "";
+  const videoSrc4 = "";
+
   return (
     <div className="videos">
-      <div className="arrow-down"></div>
+      <div className="arrow-down arrow-down-videos"></div>
       <div className="videos-heading">
-        <div className="text-wrapper-15">Featured videos</div>
-        <p className="videos-heading-description">
-          Explore our featured videos at ZCMC, where we showcase expert insights, events, patient stories,
-          and innovative healthcare practices that highlight our commitment and dedication.
-        </p>
+        <Paragraph text="Featured videos" className="videos-title" />
+        <Paragraph
+          text="Explore our featured videos at ZCMC, where we showcase expert insights, events, patient stories, and innovative healthcare practices that highlight our commitment and dedication."
+          className="videos-heading-description"
+        />
       </div>
 
-      <div className="container-5">
-        <div className="container-6">
-          <iframe
-            className="featured-video-left"
-            loading="lazy"
-            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fpaccu.zcmc%2Fvideos%2F1065102648340577%2F&amp;show_text=false"
-            style={{ overflow: "hidden" }}
-            scrolling="no"
-            frameBorder="0"
-            allowFullScreen={true}
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          ></iframe>
-
-          <iframe
-            className="featured-video-right"
-            loading="lazy"
-            src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphu.zcmc%2Fposts%2Fpfbid02CHbGiD6kxtyd7uysq8N6ycBbubMFhTTcEa7urko9UjUgYiTaQMvbW55KXiderQ6pl&amp;show_text=false&amp;"
-            style={{ overflow: "hidden" }}
-            scrolling="no"
-            frameBorder="0"
-            allowFullScreen={true}
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          ></iframe>
+      <div className="featured-videos-container">
+        <div className="featured-videos-group">
+          {/* Use VideoFrame component for both iframes */}
+          <VideoFrame className="featured-video-left" src={videoSrc1} />
+          <VideoFrame className="featured-video-right" src={videoSrc2} />
         </div>
 
-        <div className="container-6">
-          <iframe
-            className="featured-video-left"
-            loading="lazy"
-            src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fpaccu.zcmc%2Fvideos%2F1065102648340577%2F&amp;show_text=false"
-            style={{ overflow: "hidden" }}
-            scrolling="no"
-            frameBorder="0"
-            allowFullScreen={true}
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          ></iframe>
-          <iframe
-            className="featured-video-right"
-            loading="lazy"
-            src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphu.zcmc%2Fposts%2Fpfbid02CHbGiD6kxtyd7uysq8N6ycBbubMFhTTcEa7urko9UjUgYiTaQMvbW55KXiderQ6pl&amp;show_text=false&amp;"
-            style={{ overflow: "hidden" }}
-            scrolling="no"
-            frameBorder="0"
-            allowFullScreen={true}
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          ></iframe>
+        <div className="featured-videos-group">
+          {/* Reuse VideoFrame component for the second set of iframes */}
+          <VideoFrame className="featured-video-left" src={videoSrc3} />
+          <VideoFrame className="featured-video-right" src={videoSrc4} />
         </div>
       </div>
     </div>

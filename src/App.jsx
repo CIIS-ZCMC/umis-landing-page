@@ -1,35 +1,40 @@
-import React from "react";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+import React, { Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import zcmc from "./assets/zcmc-logo-1.png";
+import dpo from "./assets/mcc-corner/5.png";
+
+import HeaderHero from "./components/HeaderHero/HeaderHero.jsx";
+import Header from "./components/Header/Header.jsx";
+
+const GovFooter = React.lazy(() =>
+  import("./components/GovComponent/GovComponent.jsx")
+);
+const Agency = React.lazy(() => import("./components/Agency/Agency.jsx"));
+const Careers = React.lazy(() => import("./components/Careers/Careers.jsx"));
+const FeaturedVideos = React.lazy(() =>
+  import("./components/FeaturedVideos/FeaturedVideos.jsx")
+);
+const MoreInfo = React.lazy(() => import("./components/MoreInfo/MoreInfo.jsx"));
+const Contact = React.lazy(() => import("./components/Contact/Contact.jsx"));
+const MccCorner = React.lazy(() =>
+  import("./components/MccCorner/MccCorner.jsx")
+);
+const News = React.lazy(() => import("./components/News/News.jsx"));
+const StartPage = React.lazy(() => import("./StartPage.jsx"));
+const IMS = React.lazy(() => import("./IMS.jsx"));
 
 import "./styles/globals.css";
 import "./styles/style.css";
+import "./styles/text.css";
+import "./styles/buttons.css";
+import "./styles/header.css";
 import "./styles/slideshow.css";
-import Landing from "./page/landing.jsx";
+import "./styles/arrow.css";
 import AnimatedRoutes from "./routes/animated_routes.jsx";
 
 const App = () => {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "rgba(15, 87, 33, 1)",
-      },
-      secondary: {
-        main: "#d32f2f",
-      },
-      background: {
-        default: "#f5f5f5",
-      },
-    },
-    typography: {
-      fontFamily: "Raleway, Arial",
-    },
-  });
-
-  return (
-    <ThemeProvider theme={theme}>
-      <AnimatedRoutes />
-    </ThemeProvider>
-  );
+  return <AnimatedRoutes />;
 };
 
 export default App;

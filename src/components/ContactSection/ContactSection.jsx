@@ -1,4 +1,6 @@
 import React from 'react';
+
+import Paragraph from "../Paragraph/Paragraph";
 import ContactCard from './ContactCard';
 import MapComponent from './MapComponent';
 import SocialLinks from './SocialLinks';
@@ -29,11 +31,9 @@ const ContactSection = () => {
   return (
     <section className="contact-section">
       <header className="section-header">
-        <h2 className="section-subheading">We'd love to hear from you</h2>
+        <Paragraph text="We'd love to hear from you" className="section-subheading" />
         <h1 className="section-heading">Contact and visit us</h1>
-        <p className="section-description">
-          We are open anytime from Monday to Sunday including holidays.
-        </p>
+        <Paragraph text="We are open anytime from Monday to Sunday including holidays." className="section-description" />
       </header>
       <div className="contact-content">
         <div className="contact-container">
@@ -47,71 +47,6 @@ const ContactSection = () => {
         </address>
         <SocialLinks />
       </div>
-      <style jsx>{`
-        .contact-section {
-          background-color: #fff;
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-start;
-          padding: 96px 245px;
-          font-family: Inter, sans-serif;
-        }
-        @media (max-width: 991px) {
-          .contact-section {
-            padding: 40px 20px;
-          }
-        }
-        .section-header {
-          text-align: center;
-          margin-bottom: 64px;
-        }
-        .section-subheading {
-          color: #0f5721;
-          font-size: 16px;
-          font-weight: 600;
-          margin-bottom: 12px;
-        }
-        .section-heading {
-          color: #101828;
-          font-size: 36px;
-          font-weight: 600;
-          line-height: 1;
-          letter-spacing: -0.72px;
-          margin-bottom: 12px;
-        }
-        .section-description {
-          color: #4d4d4d;
-          font-size: 18px;
-          line-height: 2;
-        }
-        .contact-content {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-        .contact-container {
-          display: flex;
-          width: 100%;
-          justify-content: center;
-          flex-wrap: wrap;
-          gap: 40px 64px;
-          margin-bottom: 32px;
-        }
-        .contact-address {
-          color: #333;
-          font-size: 20px;
-          font-weight: 400;
-          text-align: center;
-          margin-bottom: 32px;
-          font-style: normal;
-        }
-        @media (max-width: 991px) {
-          .contact-container {
-            flex-direction: column;
-            align-items: center;
-          }
-        }
-      `}</style>
     </section>
   );
 };

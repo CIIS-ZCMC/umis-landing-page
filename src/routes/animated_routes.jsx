@@ -10,10 +10,23 @@ import "../styles/globals.css";
 import "../styles/style.css";
 import "../styles/slideshow.css";
 import Landing from "../page/landing";
-import Dashboard from "../page/dashboard";
 import useUserHook from "../hooks/UserHook";
-import { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import LoadingScreen from "../page/loading_screen";
+import Login from "../page/Auth/Login.jsx";
+import {
+  ACTION_ASSIGN_NEW_PASSWORD,
+  ACTION_FORGOT_PASSWORD,
+  ACTION_INPUT_OTP,
+  ACTION_NEW_ACCOUNT,
+  ACTION_SIGN_IN,
+  ACTION_SIGNIN_OTP,
+} from "../utils/config.jsx";
+import ForgotPassword from "../page/Auth/ForgotPassword.jsx";
+import OTPVerification from "../page/Auth/OTPVerification.jsx";
+import NewPassword from "../page/Auth/NewPassword.jsx";
+
+const StartPage = React.lazy(() => import("../StartPage.jsx"));
 
 /**
  * Protected Routes
@@ -72,12 +85,30 @@ const AnimatedRoutes = () => {
         <div className="landing-page-desktop">
           <Routes>
             <Route path="/login" element={<Landing />} />
+            <Route path={`/${ACTION_SIGN_IN}`} element={<Login />} />
+            <Route
+              path={`/${ACTION_FORGOT_PASSWORD}`}
+              element={<ForgotPassword />}
+            />
+            <Route
+              path={`/${ACTION_INPUT_OTP}`}
+              element={<OTPVerification />}
+            />
+            <Route
+              path={`/${ACTION_SIGNIN_OTP}`}
+              element={<OTPVerification />}
+            />
+            <Route
+              path={`/${ACTION_ASSIGN_NEW_PASSWORD}`}
+              element={<NewPassword />}
+            />
+            <Route path={`/${ACTION_NEW_ACCOUNT}`} element={<NewPassword />} />
 
             <Route
               path="/"
               element={
                 <ProtectedRoutes>
-                  <Dashboard />
+                  <StartPage />
                 </ProtectedRoutes>
               }
             />
