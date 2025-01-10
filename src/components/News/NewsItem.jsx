@@ -33,7 +33,6 @@ const NewsItem = () => {
 
 
 
-
     const [currentIndexSm, setCurrentIndexSm] = useState(0);
     const itemsPerPageSm = 3;
 
@@ -47,7 +46,7 @@ const NewsItem = () => {
 
     const displayedItemsSm = newsItems.slice(currentIndexSm, currentIndexSm + itemsPerPageSm);
 
-    const isPreviousDisabledSm = currentIndex === 0;
+    const isPreviousDisabledSm = currentIndexSm === 0;
     const isNextDisabledSm = currentIndexSm + itemsPerPageSm >= newsItems.length;
 
 

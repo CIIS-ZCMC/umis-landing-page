@@ -12,7 +12,80 @@
 
 
 /* Videos styling */
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 360px) {
+
+    .featured-video-left,
+    .featured-video-right {
+        border: var(--value-4px) solid #fff;
+        border-radius: var(--value-8px);
+        box-shadow: 0 var(--value-4px) var(--value-24px) 0 #0d0d0d0f;
+        height: 256px;
+        transition: transform .25s ease;
+        width: 100%
+    }
+
+    .videos-heading,
+    .mcc-corner-heading {
+        margin-bottom: var(--value-32px)
+    }
+
+    .landing-page-desktop .videos-heading,
+    .landing-page-desktop .mcc-corner-heading {
+        align-items: flex-start;
+        display: var(--display-flex);
+        flex: 0 0 auto;
+        flex-direction: var(--flex-direction-column);
+        gap: var(--value-12px);
+        margin-bottom: 0;
+        position: relative;
+        width: 100%
+    }
+
+    .landing-page-desktop .videos-heading-description,
+    .start-page-container .start-page-heading-description,
+    .landing-page-desktop .contact-heading-description {
+        align-self: stretch;
+        color: var(--color-systemneutralsneutrals-700-4d4d4d);
+        font-size: var(--value-16px);
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 150%;
+        position: relative;
+        text-align: center
+    }
+
+    .landing-page-desktop .videos {
+        align-items: center;
+        align-self: stretch;
+        display: var(--display-flex);
+        flex: 0 0 auto;
+        flex-direction: var(--flex-direction-column);
+        gap: var(--value-32px);
+        padding: var(--value-64px) var(--value-16px);
+        position: relative;
+        width: 100%;
+        z-index: 5
+    }
+
+    .landing-page-desktop .videos-title {
+        align-self: stretch;
+        color: var(--color-systemneutralsneutrals-900-1a1a1a);
+        font-size: var(--value-24px);
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 125%;
+        margin-top: -1px;
+        position: relative;
+        text-align: center
+    }
+
+    .featured-video-left:hover,
+    .featured-video-right:hover {
+        border: var(--value-4px) solid #fff
+    }
+}
+
+@media only screen and (min-width: 361px) and (max-width: 480px) {
 
     .featured-video-left,
     .featured-video-right {

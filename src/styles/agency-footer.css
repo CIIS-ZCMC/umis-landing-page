@@ -1,4 +1,144 @@
+/*  */
 @media only screen and (max-width: 480px) {
+    .landing-page-desktop .agency {
+        align-items: flex-start;
+        align-self: stretch;
+        display: var(--display-flex);
+        flex: 0 0 auto;
+        flex-direction: var(--flex-direction-column);
+        gap: var(--value-16px);
+        position: relative;
+        width: 100%;
+        z-index: 1
+    }
+
+    .landing-page-desktop .agency-list-group {
+        align-items: flex-start;
+        align-self: stretch;
+        display: var(--display-flex);
+        flex: 0 0 auto;
+        flex-direction: var(--flex-direction-column);
+        gap: var(--value-8px);
+        position: relative;
+        width: 100%
+    }
+
+    .landing-page-desktop .agency-icon-sm {
+        display: none
+    }
+
+    .landing-page-desktop .agency-heading {
+        align-items: flex-start;
+        display: var(--display-flex);
+        flex-direction: var(--flex-direction-column);
+        gap: var(--value-8px);
+        position: relative;
+        width: 100%
+    }
+
+    .landing-page-desktop .agency-heading p.heading-title {
+        color: var(--color-systemneutralsneutrals-900-1a1a1a);
+        font-size: var(--value-18px);
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: normal;
+        margin-top: -1px;
+        position: relative;
+        white-space: wrap;
+        width: 100%;
+    }
+
+    .landing-page-desktop .heading-description {
+        align-self: stretch;
+        color: #1a1a1a;
+        font-size: var(--value-14px);
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 150%;
+        position: relative;
+        width: 100%
+    }
+
+    .landing-page-desktop .list-row {
+        align-items: flex-start;
+        align-self: stretch;
+        display: var(--display-flex);
+        flex: 0 0 auto;
+        flex-direction: var(--flex-direction-column);
+        gap: auto;
+        justify-content: space-between;
+        position: relative;
+        width: 100%
+    }
+
+    .landing-page-desktop .useful-links {
+        align-items: flex-start;
+        display: var(--display-flex);
+        flex-direction: var(--flex-direction-column);
+        gap: var(--value-16px);
+        width: 100%;
+        position: relative
+    }
+
+    .landing-page-desktop .agency-list-label {
+        color: var(--color-systemneutralsneutrals-800-33333);
+        font-size: var(--value-14px);
+        font-weight: 500;
+        letter-spacing: 0;
+        line-height: var(--value-20px);
+        margin-top: -1px;
+        position: relative;
+        width: 100%
+    }
+
+    .landing-page-desktop .external-links {
+        align-items: flex-start;
+        display: var(--display-flex);
+        flex-direction: var(--flex-direction-column);
+        gap: var(--value-8px);
+        position: relative
+    }
+
+    .landing-page-desktop .agency-footer-link {
+        align-self: stretch;
+        color: var(--color-systemprimaryprimary-700-016298);
+        font-size: var(--value-14px);
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 150%;
+        margin-top: -1px;
+        position: relative;
+        text-decoration: underline;
+        text-wrap: wrap
+    }
+
+    .landing-page-desktop .list-group-container {
+        align-items: flex-start;
+        display: var(--display-flex);
+        flex-direction: var(--flex-direction-column);
+        gap: var(--value-32px);
+        justify-content: space-between;
+        padding: var(--value-24px) 0 0;
+        position: relative;
+        width: 100%
+    }
+
+    .agency-icon {
+        height: var(--value-32px);
+        width: var(--value-24px)
+    }
+
+    .agency-copyright {
+        color: var(--color-system-base-colors-bg-white-100-ffffff, #FFF);
+        font-size: var(--value-14px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: var(--value-24px);
+        text-align: center
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 780px) {
     .landing-page-desktop .agency {
         align-items: flex-start;
         align-self: stretch;
@@ -51,7 +191,7 @@
         align-self: stretch;
         display: var(--display-flex);
         flex: 0 0 auto;
-        flex-direction: var(--flex-direction-column);
+        flex-direction: var(--flex-direction-row);
         gap: auto;
         justify-content: space-between;
         position: relative;
@@ -63,6 +203,7 @@
         display: var(--display-flex);
         flex-direction: var(--flex-direction-column);
         gap: var(--value-16px);
+        width: 100%;
         position: relative
     }
 
@@ -82,7 +223,12 @@
         display: var(--display-flex);
         flex-direction: var(--flex-direction-column);
         gap: var(--value-8px);
+        width: 50%;
         position: relative
+    }
+
+    .landing-page-desktop .external-links .agency-list-group {
+        width: 100%;
     }
 
     .landing-page-desktop .agency-footer-link {
@@ -95,17 +241,21 @@
         margin-top: -1px;
         position: relative;
         text-decoration: underline;
-        text-wrap: nowrap
+        text-wrap: wrap
     }
 
     .landing-page-desktop .list-group-container {
         align-items: flex-start;
         display: var(--display-flex);
-        flex-direction: var(--flex-direction-column);
+        flex-direction: var(--flex-direction-row);
         gap: var(--value-32px);
         justify-content: space-between;
         padding: var(--value-24px) 0 0;
         position: relative;
+        width: 100%
+    }
+
+    .landing-page-desktop .list-group-container .agency-list-group:nth-child() {
         width: 100%
     }
 
@@ -124,7 +274,7 @@
     }
 }
 
-@media only screen and (min-width: 481px) and (max-width: 780px) {
+@media only screen and (min-width: 781px) and (max-width: 1024px) {
     .landing-page-desktop .agency {
         align-items: flex-start;
         align-self: stretch;
@@ -256,7 +406,7 @@
     }
 }
 
-@media only screen and (min-width: 781px) and (max-width: 1366px) {
+@media only screen and (min-width: 1025px) and (max-width: 1366px) {
     .landing-page-desktop .agency {
         align-items: center;
         align-self: stretch;
@@ -368,7 +518,7 @@
     }
 }
 
-@media only screen and (min-width: 1530px) and (max-width: 1840px) {
+@media only screen and (min-width: 1367px) and (max-width: 1840px) {
     .landing-page-desktop .agency {
         align-items: center;
         align-self: stretch;

@@ -94,9 +94,7 @@ const HealthNewsItem = () => {
   const isNextDisabled = currentIndex + itemsPerPage >= HealthNewsItems.length;
 
 
-
-
-
+  
   const [currentIndexSm, setCurrentIndexSm] = useState(0);
   const itemsPerPageSm = 3;
 
@@ -120,7 +118,7 @@ const HealthNewsItem = () => {
 
   return (
     <>
-      <div className="health-news-content">
+      <div className="health-news-content list-lg">
         <div className="list-heading">
           <Paragraph text="Latest releases" className="news-pagination-label" />
 
@@ -166,9 +164,7 @@ const HealthNewsItem = () => {
             </button>
           </div>
         </div>
-
         <hr className="divider" />
-
         <div className="list-container">
           <div className="unordered-list">
             {displayedItems.map((item, index) => (
@@ -199,7 +195,6 @@ const HealthNewsItem = () => {
           </Link>
         </div>
       </div>
-
 
 
       <div className="health-news-content list-sm">
@@ -248,9 +243,7 @@ const HealthNewsItem = () => {
             </button>
           </div>
         </div>
-
         <hr className="divider" />
-
         <div className="list-container">
           <div className="unordered-list">
             {displayedItemsSm.map((item, index) => (
