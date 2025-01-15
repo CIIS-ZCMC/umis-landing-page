@@ -1814,6 +1814,7 @@
     background: var(--color-system-base-colors-bg-white-100-ffffff, #FFF);
     display: var(--display-flex);
     flex-direction: var(--flex-direction-column);
+    height: fit-content;
     margin: 0 auto
 }
 

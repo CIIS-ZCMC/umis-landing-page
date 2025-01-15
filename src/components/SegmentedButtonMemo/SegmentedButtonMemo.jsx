@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Paragraph from "../Paragraph/Paragraph";
 
 import fileArrowDown from '../../assets/file-arrow-down.svg';
+import announcementOpen from '../../assets/open.svg';
 
 const SegmentedButtonMemo = ({ announcementContent, memorandumContent }) => {
     const [selected, setSelected] = useState('announcement'); // Default selection: 'announcement'
@@ -38,7 +39,7 @@ const SegmentedButtonMemo = ({ announcementContent, memorandumContent }) => {
                                         <Paragraph text={item.title} className="memo-announcement-card-title" />
                                     </div>
                                     <div className="memo-file-icon">
-                                        <img src={fileArrowDown} alt="File download icon" />
+                                        <img src={announcementOpen} alt="Open announcement icon" />
                                     </div>
                                 </Link>
                             ))}

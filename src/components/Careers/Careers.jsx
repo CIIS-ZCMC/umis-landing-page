@@ -26,7 +26,7 @@ const Careers = () => {
             <li className="chip chip-success">Administrative</li>
             <li className="chip chip-neutral">Technical</li>
           </ul>
-          <hr className="divider careers-divider" />
+          <hr className="divider" id='careers-divider' />
           <Link to="/" className="CTA" rel="noopener noreferrer" >
             Go to job postings
             <img className="open-2" src={openIcon} alt="Open" />

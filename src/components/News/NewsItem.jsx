@@ -53,7 +53,7 @@ const NewsItem = () => {
 
     return (
         <>
-            <div className="news-content list">
+            <div className="news-content list list-lg">
                 <div className="list-heading">
                     <Paragraph text="Recent news" className="news-pagination-label" />
                     <div className="frame-2">
@@ -135,6 +135,6 @@ const NewsItem = () => {
             </div>
         </>
     );
-};
+}; 
 
 export default NewsItem;
