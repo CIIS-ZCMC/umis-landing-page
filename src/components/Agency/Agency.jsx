@@ -72,10 +72,10 @@ const Agency = () => {
 
             <ul className="agency-list-group">
               {usefulLinks2.map((item2) => (
-                <li key={item2.label}>
+                <li className="agency-list-item" key={item2.label}>
                   <Link
                     to={item2.link}
-                    className="agency-footer-link"
+                    className="agency-footer-link wrap"
                     rel="noopener noreferrer"
                   >
                     {item2.label}
@@ -89,7 +89,7 @@ const Agency = () => {
           <Paragraph text="External links" className="agency-list-label" />
           <ul className="agency-list-group">
             {govlinkItems.map((item3) => (
-              <li key={item3.label}>
+              <li className="" key={item3.label}>
                 <Link
                   to={item3.link}
                   className="agency-footer-link"

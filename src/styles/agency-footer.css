@@ -536,10 +536,13 @@
         align-items: flex-start;
         align-self: stretch;
         display: var(--display-flex);
-        flex: 0 0 auto;
         flex-direction: var(--flex-direction-column);
         gap: var(--value-12px);
         position: relative
+    }
+
+    .landing-page-desktop .list-row:nth-child(2) {
+        width: fit-content;
     }
 
     .landing-page-desktop .agency-icon {
@@ -574,10 +577,14 @@
         align-self: stretch;
         display: var(--display-flex);
         flex: 0 0 auto;
-        gap: var(--value-48px);
+        gap: var(--value-24px);
         justify-content: space-between;
         position: relative;
-        width: fit-content
+        width: fill
+    }
+
+    .landing-page-desktop .agency-list-item {
+        width: 100% !important;
     }
 
     .landing-page-desktop .useful-links {
@@ -585,6 +592,7 @@
         display: var(--display-flex);
         flex-direction: var(--flex-direction-column);
         gap: var(--value-32px);
+        width: fit-content;
         position: relative
     }
 
@@ -616,8 +624,13 @@
         line-height: 27px;
         position: relative;
         text-decoration: underline;
-        white-space: wrap;
+        white-space: nowrap;
         width: fit-content
+    }
+
+    .landing-page-desktop .agency .wrap {
+        width: 100% !important;
+        text-wrap: wrap;
     }
 
     .landing-page-desktop .list-group-container {
@@ -625,6 +638,7 @@
         display: var(--display-flex);
         justify-content: space-between;
         padding: var(--value-24px) 0 0;
+        gap: var(--value-24px);
         position: relative;
         width: 995px
     }
