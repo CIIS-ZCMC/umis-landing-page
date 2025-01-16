@@ -6,21 +6,25 @@ const VideoFrame = ({ src, className }) => (
   <iframe
     className={className}
     loading="lazy"
-    src={src}
+    src={`${src}&show_text=false`}
     style={{ overflow: "hidden" }}
     scrolling="no"
     frameBorder="0"
     allowFullScreen
     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-  ></iframe>
+  />
 );
 
 const FeaturedVideos = () => {
   // Video URLs
-  const videoSrc1 = "";
-  const videoSrc2 = "";
-  const videoSrc3 = "";
-  const videoSrc4 = "";
+  const videoSrc1 =
+    "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/watch/?v=1065102648340577&show_text=false&width=500";
+  const videoSrc2 =
+    "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/watch/?v=1068527114364410&show_text=false&width=500";
+  const videoSrc3 =
+    "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/watch/?v=1662038104367669&show_text=false&width=500";
+  const videoSrc4 =
+    "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/watch/?v=1065102648340577&show_text=false&width=500";
 
   return (
     <div className="videos">
@@ -35,13 +39,11 @@ const FeaturedVideos = () => {
 
       <div className="featured-videos-container">
         <div className="featured-videos-group">
-          {/* Use VideoFrame component for both iframes */}
           <VideoFrame className="featured-video-left" src={videoSrc1} />
           <VideoFrame className="featured-video-right" src={videoSrc2} />
         </div>
 
         <div className="featured-videos-group">
-          {/* Reuse VideoFrame component for the second set of iframes */}
           <VideoFrame className="featured-video-left" src={videoSrc3} />
           <VideoFrame className="featured-video-right" src={videoSrc4} />
         </div>

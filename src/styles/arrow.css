@@ -21,6 +21,8 @@
     align-self: center
 }
 
+
+/* Arrow height */
 @media only screen and (max-width: 480px) {
 
     .arrow-down,
@@ -77,7 +79,7 @@
 }
 
 
-
+/* Arrow width and positioning */
 @media only screen and (max-width: 420px) {
 
     .arrow-down,
