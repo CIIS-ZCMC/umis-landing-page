@@ -1,0 +1,209 @@
+.loader-container {
+    position: absolute;
+    display: var(--display-flex);
+    flex-direction: var(--flex-direction-column);
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background: #0B4636 !important;
+    z-index: 999;
+}
+
+.custom-loader {
+    position: relative;
+    display: block;
+    border-radius: 50%;
+    background: conic-gradient(#0000 10%, #0F5721);
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(1turn)
+    }
+}
+
+.loader-logo-container {
+    display: var(--display-flex);
+    flex-direction: var(--flex-direction-row);
+}
+
+.loader-logo {
+    object-fit: cover;
+}
+
+.dpo {
+    clip-path: ellipse(50% 50% at 50% 50%);
+}
+
+
+
+/* Loader logo */
+@media only screen and (max-width: 420px) {
+    .loader-container {
+        gap: var(--value-24px);
+    }
+
+    .custom-loader {
+        width: var(--value-48px);
+        height: var(--value-48px);
+        animation: spinner 1s infinite linear;
+    }
+
+    .loader-logo-container {
+        gap: var(--value-12px);
+    }
+
+    .loader-logo {
+        height: 56px;
+        width: 42.42px
+    }
+}
+
+@media only screen and (min-width: 421px) and (max-width: 480px) {
+    .loader-container {
+        gap: var(--value-24px);
+    }
+
+    .custom-loader {
+        width: var(--value-48px);
+        height: var(--value-48px);
+        animation: spinner 1s infinite linear;
+    }
+
+    .loader-logo-container {
+        gap: var(--value-12px);
+    }
+
+    .loader-logo {
+        height: 56px;
+        width: 42.42px
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 780px) {
+    .loader-container {
+        gap: var(--value-24px);
+    }
+
+    .custom-loader {
+        width: var(--value-48px);
+        height: var(--value-48px);
+        animation: spinner 1s infinite linear;
+    }
+
+    .loader-logo-container {
+        gap: var(--value-16px);
+    }
+
+    .loader-logo {
+        height: 56px;
+        width: 42.42px
+    }
+}
+
+@media only screen and (min-width: 781px) and (max-width: 1366px) {
+    .loader-container {
+        gap: var(--value-24px);
+    }
+
+    .custom-loader {
+        width: var(--value-48px);
+        height: var(--value-48px);
+        animation: spinner 1s infinite linear;
+    }
+
+    .loader-logo-container {
+        gap: var(--value-16px);
+    }
+
+    .loader-logo {
+        height: 56px;
+        width: 42.42px
+    }
+}
+
+@media only screen and (min-width: 1367px) and (max-width: 1530px) {
+    .loader-container {
+        gap: var(--value-24px);
+    }
+
+    .custom-loader {
+        width: var(--value-48px);
+        height: var(--value-48px);
+        animation: spinner 1s infinite linear;
+    }
+
+    .loader-logo-container {
+        gap: var(--value-20px);
+    }
+
+    .loader-logo {
+        height: 56px;
+        width: 42.42px
+    }
+}
+
+@media only screen and (min-width: 1531px) and (max-width: 1780px) {
+    .loader-container {
+        gap: var(--value-24px);
+    }
+
+    .custom-loader {
+        width: var(--value-48px);
+        height: var(--value-48px);
+        animation: spinner 1s infinite linear;
+    }
+
+    .loader-logo-container {
+        gap: var(--value-20px);
+    }
+
+    .loader-logo {
+        height: 56px;
+        width: 42.42px
+    }
+}
+
+@media only screen and (min-width: 1781px) and (max-width: 1920px) {
+    .loader-container {
+        gap: var(--value-24px);
+    }
+
+    .custom-loader {
+        width: var(--value-64px);
+        height: var(--value-64px);
+        animation: spinner 1s infinite linear;
+    }
+
+    .loader-logo-container {
+        gap: var(--value-24px);
+    }
+
+    .loader-logo {
+        height: 113.95px;
+        width: 86px
+    }
+}
+
+@media only screen and (min-width: 1921px) {
+    .loader-container {
+        gap: var(--value-24px);
+    }
+
+    .custom-loader {
+        width: var(--value-64px);
+        height: var(--value-64px);
+        animation: spinner 1s infinite linear;
+    }
+
+    .loader-logo-container {
+        gap: var(--value-24px);
+    }
+
+    .loader-logo {
+        height: 113.95px;
+        width: 86px
+    }
+}

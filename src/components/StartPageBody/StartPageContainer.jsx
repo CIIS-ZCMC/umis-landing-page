@@ -46,15 +46,13 @@ const StartPageContainer = () => {
               onClick={handleReadAnnouncement}
             >
               Read announcements
-            </button>
+            </button>{" "}
+            */
           </div>
 
-          <div className="announcement-date-container">
-            <Paragraph
-              text="Announcements last updated on: August 10, 2023"
-              className="announcement-date"
-            />
-          </div>
+          {/* <div className='announcement-date-container'>
+            <Paragraph text="Announcements last updated on: August 10, 2023" className="announcement-date" />
+          </div> */}
         </div>
       </div>
 

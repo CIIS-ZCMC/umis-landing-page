@@ -11,9 +11,17 @@
   padding: var(--value-14px) var(--value-16px);
 }
 
+a, link, button:hover {
+    transition: color .16s ease 0s, background-color .16s ease 0s !important
+}
+
 .CTA,
 .secondary-CTA:hover {
+<<<<<<< HEAD
   color: var(--color-systembase-colorsbg-light-100-f9fafb);
+=======
+    color: var(--color-systembase-colorsbg-light-100-f9fafb);
+>>>>>>> revision_ui
 }
 
 .secondary-CTA {
@@ -38,7 +46,11 @@
 .landing-page-desktop .CTA,
 .landing-page-desktop .CTA:hover,
 .secondary-CTA:hover {
+<<<<<<< HEAD
   background: var(--color-systembase-colorsbrand-green-500-0f5721);
+=======
+    background: var(--color-systembase-colorsbrand-green-500-0f5721);
+>>>>>>> revision_ui
 }
 
 @media only screen and (max-width: 480px) {
@@ -102,9 +114,22 @@
     transform: scale(1.05);
   }
 
+<<<<<<< HEAD
   .secondary-CTA:hover {
     background: var(--color-systembase-colorsbrand-green-500-0f5721);
     border: 1px solid var(--color-systembase-colorsbrand-green-500-0f5721);
     font-weight: 400;
   }
 }
+=======
+    .landing-page-desktop .CTA:hover {
+        transform: scale(1.015)
+    }
+
+    .secondary-CTA:hover {
+        background: var(--color-systembase-colorsbrand-green-500-0f5721);
+        border: 1px solid var(--color-systembase-colorsbrand-green-500-0f5721);
+        font-weight: 400
+    }
+}
+>>>>>>> revision_ui

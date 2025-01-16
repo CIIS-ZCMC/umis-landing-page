@@ -21,7 +21,7 @@ const ContactUs = () => {
         <div className='contact-us-details contact-us-details-sm'>
           <span className='contact-us-details-container contact-us-details-container-sm'>
             <Paragraph text="Email:" className="contact-us-label contact-us-label-sm" />
-            <Link to="mailto:innovations@zcmc.doh.gov.ph" className='contact-us-content contact-us-content-sm' rel="noopener noreferrer" >
+            <Link to="mailto:innovations@zcmc.doh.gov.ph" className='email contact-us-content contact-us-content-sm' rel="noopener noreferrer" >
               innovations@zcmc.doh.gov.ph
             </Link>
           </span>
