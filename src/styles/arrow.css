@@ -21,6 +21,8 @@
   align-self: center;
 }
 
+
+/* Arrow height */
 @media only screen and (max-width: 480px) {
   .arrow-down,
   .arrow-down-news,
@@ -77,6 +79,11 @@
   }
 }
 
+<<<<<<< HEAD
+=======
+
+/* Arrow width and positioning */
+>>>>>>> revision_ui
 @media only screen and (max-width: 420px) {
   .arrow-down,
   .arrow-down-news,
@@ -246,6 +253,7 @@
   }
 }
 
+<<<<<<< HEAD
 @media only screen and (min-width: 781px) and (max-width: 1366px) {
   .arrow-down,
   .arrow-down-news,
@@ -257,6 +265,9 @@
     border-left: var(--value-32px) solid transparent;
     border-right: var(--value-32px) solid transparent;
   }
+=======
+@media only screen and (min-width: 781px) and (max-width: 1024x) {
+>>>>>>> revision_ui
 
   .arrow-down-start-page {
     border-left: var(--value-32px) solid transparent;
@@ -299,10 +310,78 @@
     margin-top: -808px !important;
   }
 
+<<<<<<< HEAD
   .arrow-down-contact {
     border-top: var(--value-32px) solid
       var(--color-systemneutralsneutrals-900-1a1a1a);
   }
+=======
+    .arrow-down-mcc-corner {
+        border-top: var(--value-32px) solid var(--color-systembase-colorsbg-light-100-f6f6f6) !important;
+        margin-top: -816px !important
+    }
+
+    .arrow-down-contact {
+        border-top: var(--value-32px) solid var(--color-systemneutralsneutrals-900-1a1a1a)
+    }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1366px) {
+
+    .arrow-down,
+    .arrow-down-news,
+    .arrow-down-more-info,
+    .arrow-down-careers,
+    .arrow-down-mcc-corner,
+    .arrow-down-contact,
+    .arrow-down-start-page {
+        border-left: var(--value-32px) solid transparent;
+        border-right: var(--value-32px) solid transparent
+    }
+
+    .arrow-down-start-page {
+        border-left: var(--value-32px) solid transparent;
+        border-right: var(--value-32px) solid transparent;
+        border-top: var(--value-32px) solid #0A3E30;
+        margin-top: -74px
+    }
+
+    .arrow-down,
+    .arrow-down-careers {
+        border-top: var(--value-32px) solid var(--color-systembase-colorsbg-white-100-ffffff)
+    }
+
+    .arrow-down {
+        margin-top: -96px
+    }
+
+    .arrow-down-news,
+    .arrow-down-more-info,
+    .arrow-down-contact {
+        margin-top: -98px !important
+    }
+
+    .arrow-down-news {
+        border-top: var(--value-32px) solid #0A3E30 !important
+    }
+
+    .arrow-down-more-info {
+        border-top: var(--value-32px) solid #F6F6F6 !important
+    }
+
+    .arrow-down-careers {
+        margin-top: -542px
+    }
+
+    .arrow-down-mcc-corner {
+        border-top: var(--value-32px) solid var(--color-systembase-colorsbg-light-100-f6f6f6) !important;
+        margin-top: -816px !important
+    }
+
+    .arrow-down-contact {
+        border-top: var(--value-32px) solid var(--color-systemneutralsneutrals-900-1a1a1a)
+    }
+>>>>>>> revision_ui
 }
 
 @media only screen and (min-width: 1367px) and (max-width: 1530px) {
@@ -376,12 +455,25 @@
     border-right: var(--value-48px) solid transparent;
   }
 
+<<<<<<< HEAD
   .arrow-down-start-page {
     border-left: var(--value-32px) solid transparent;
     border-right: var(--value-32px) solid transparent;
     border-top: var(--value-32px) solid #0a3e30;
     margin-top: -64px;
   }
+=======
+    .arrow-down,
+    .arrow-down-news,
+    .arrow-down-more-info,
+    .arrow-down-careers,
+    .arrow-down-mcc-corner,
+    .arrow-down-contact,
+    .arrow-down-start-page {
+        border-left: var(--value-32px) solid transparent;
+        border-right: var(--value-32px) solid transparent
+    }
+>>>>>>> revision_ui
 
   .arrow-down,
   .arrow-down-careers {
@@ -389,6 +481,7 @@
       var(--color-systembase-colorsbg-white-100-ffffff);
   }
 
+<<<<<<< HEAD
   .arrow-down {
     margin-top: -96px;
   }
@@ -421,6 +514,48 @@
     border-top: var(--value-48px) solid
       var(--color-systemneutralsneutrals-900-1a1a1a);
   }
+=======
+    .arrow-down,
+    .arrow-down-careers {
+        border-top: var(--value-32px) solid var(--color-systembase-colorsbg-white-100-ffffff)
+    }
+
+    .arrow-down:not(.arrow-down .arrow-down-videos) {
+        margin-top: -96px
+    }
+
+    .videos .arrow-down-videos {
+        margin-top: -72px !important;
+        border-top: var(--value-32px) solid var(--color-systembase-colorsbg-white-100-ffffff) !important
+    }
+
+    .arrow-down-news,
+    .arrow-down-more-info,
+    .arrow-down-contact {
+        margin-top: -74px !important
+    }
+
+    .arrow-down-news {
+        border-top: var(--value-32px) solid #0A3E30 !important
+    }
+
+    .arrow-down-more-info {
+        border-top: var(--value-32px) solid #F6F6F6 !important
+    }
+
+    .arrow-down-careers {
+        margin-top: -498px
+    }
+
+    .arrow-down-mcc-corner {
+        border-top: var(--value-32px) solid var(--color-systembase-colorsbg-light-100-f6f6f6) !important;
+        margin-top: -766px !important
+    }
+
+    .arrow-down-contact {
+        border-top: var(--value-32px) solid var(--color-systemneutralsneutrals-900-1a1a1a)
+    }
+>>>>>>> revision_ui
 }
 
 @media only screen and (min-width: 1781px) and (max-width: 1920px) {
@@ -452,6 +587,7 @@
     margin-top: -96px;
   }
 
+<<<<<<< HEAD
   .arrow-down-news,
   .arrow-down-more-info,
   .arrow-down-contact {
@@ -461,6 +597,22 @@
   .arrow-down-news {
     border-top: var(--value-48px) solid #0a3e30 !important;
   }
+=======
+    .arrow-down:not(.arrow-down .arrow-down-videos) {
+        margin-top: -96px
+    }
+
+    .videos .arrow-down-videos {
+        margin-top: -80px !important;
+        border-top: var(--value-48px) solid var(--color-systembase-colorsbg-white-100-ffffff) !important
+    }
+
+    .arrow-down-news,
+    .arrow-down-more-info,
+    .arrow-down-contact {
+        margin-top: -78px !important
+    }
+>>>>>>> revision_ui
 
   .arrow-down-more-info {
     border-top: var(--value-48px) solid #f6f6f6 !important;
@@ -470,6 +622,7 @@
     margin-top: -530px;
   }
 
+<<<<<<< HEAD
   .arrow-down-mcc-corner {
     border-top: var(--value-48px) solid
       var(--color-systembase-colorsbg-light-100-f6f6f6) !important;
@@ -480,6 +633,20 @@
     border-top: var(--value-48px) solid
       var(--color-systemneutralsneutrals-900-1a1a1a);
   }
+=======
+    .arrow-down-careers {
+        margin-top: -480px
+    }
+
+    .arrow-down-mcc-corner {
+        border-top: var(--value-48px) solid var(--color-systembase-colorsbg-light-100-f6f6f6) !important;
+        margin-top: -748px !important
+    }
+
+    .arrow-down-contact {
+        border-top: var(--value-48px) solid var(--color-systemneutralsneutrals-900-1a1a1a)
+    }
+>>>>>>> revision_ui
 }
 
 @media only screen and (min-width: 1921px) {
