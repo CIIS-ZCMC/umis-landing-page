@@ -74,7 +74,7 @@ const Auth = (props) => {
           setConfirmPassword(null);
           setLoading(false);
           setAction(
-            message === "new-account"
+            message.includes("New account")
               ? ACTION_NEW_ACCOUNT
               : ACTION_ASSIGN_NEW_PASSWORD
           );
