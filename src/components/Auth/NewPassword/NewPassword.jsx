@@ -16,9 +16,12 @@ import { ACTION_NEW_ACCOUNT, ACTION_SIGN_IN } from "../../../utils/config";
 import useUserHook from "../../../hooks/UserHook";
 import Container from "../Container/Container";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import useAuthHook from "../../../hooks/AuthHook";
 
 const NewPassword = ({ open, handleClose, action, setAction, children }) => {
   const { newPassword, skipForNow } = useUserHook();
+  const { isPasswordExpired, mandatoryChangePassword, description } =
+    useAuthHook();
 
   const [authorizationPin, setAuthorizationPin] = useState(null);
   const [password, setPassword] = useState(null);
@@ -518,6 +521,8 @@ const NewPassword = ({ open, handleClose, action, setAction, children }) => {
       >
         {error
           ? errorMessage
+          : description !== null
+          ? description
           : `For security reasons, you are required to create a new, strong password to continue using your account. Please avoid reusing your old or temporary password and refrain from using sequential patterns like "12345" or easily guessable details.`}
       </Typography>
 
@@ -678,26 +683,49 @@ const NewPassword = ({ open, handleClose, action, setAction, children }) => {
           {loading ? "Saving" : "Continue"}
         </Button>
       </form>
-      <Button
-        variant="contained"
-        fullWidth
-        sx={{
-          color: "rgba(15,87,33,1)",
-          mt: 2,
-          boxShadow: "none",
-          textTransform: "none",
-          backgroundColor: "rgba(15,87,33,0.08)",
-          height: "3rem",
-          borderRadius: "10px",
-          "& .MuiOutlinedInput-root": {
+      {isPasswordExpired && !mandatoryChangePassword ? (
+        <Button
+          variant="contained"
+          fullWidth
+          sx={{
+            color: "rgba(15,87,33,1)",
+            mt: 2,
+            boxShadow: "none",
+            textTransform: "none",
+            backgroundColor: "rgba(15,87,33,0.08)",
+            height: "3rem",
             borderRadius: "10px",
-          },
-          fontFamily: "var(--inter-font-family)",
-        }}
-        onClick={() => handleSkip()}
-      >
-        Sign in anyway
-      </Button>
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "10px",
+            },
+            fontFamily: "var(--inter-font-family)",
+          }}
+          onClick={() => handleSkip()}
+        >
+          Sign in anyway
+        </Button>
+      ) : (
+        <Button
+          variant="contained"
+          fullWidth
+          sx={{
+            color: "rgba(15,87,33,1)",
+            mt: 2,
+            boxShadow: "none",
+            textTransform: "none",
+            backgroundColor: "rgba(15,87,33,0.08)",
+            height: "3rem",
+            borderRadius: "10px",
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "10px",
+            },
+            fontFamily: "var(--inter-font-family)",
+          }}
+          onClick={() => setAction(ACTION_SIGN_IN)}
+        >
+          Cancel
+        </Button>
+      )}
     </Container>
   );
 };

@@ -15,6 +15,7 @@ import {
   ACTION_SIGN_IN,
   ACTION_SIGNIN_OTP,
 } from "../../../utils/config";
+import useAuthHook from "../../../hooks/AuthHook";
 
 const OTPVerification = ({
   open,
@@ -24,6 +25,7 @@ const OTPVerification = ({
   children,
 }) => {
   const navigate = useNavigate();
+  const { setIsPasswordExpired } = useAuthHook();
   const { verifyOTP, resendOTP, signInWithOTP } = useUserHook();
 
   const [initialTime, setInitialTime] = useState(120);

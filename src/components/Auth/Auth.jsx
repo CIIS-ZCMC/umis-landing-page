@@ -23,6 +23,8 @@ import {
 } from "@mui/material";
 import OTPVerification from "./OTPVerification/OTPVerification";
 import NewPassword from "./NewPassword/NewPassword";
+import useAuthHook from "../../hooks/AuthHook";
+import { AUTH_TITLE } from "../../constant/AuthConstant";
 
 const CloseModal = (props) => {
   return (
@@ -37,6 +39,13 @@ const CloseModal = (props) => {
 
 const Auth = (props) => {
   const navigate = useNavigate();
+  const {
+    title,
+    setTitle,
+    setDescription,
+    setIsPasswordExpired,
+    setMandatoryChangePassword,
+  } = useAuthHook();
   const { newPassword, signIn } = useUserHook();
   const [action, setAction] = useState(ACTION_SIGN_IN);
 
@@ -44,7 +53,7 @@ const Auth = (props) => {
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [feedback, setFeedback] = useState(null);
 
   const [error, setError] = useState(false);
 
@@ -67,7 +76,20 @@ const Auth = (props) => {
           setEmployeeID(null);
           setPassword(null);
           setLoading(false);
+          setTitle(AUTH_TITLE.SIGN_IN_WITH_OTP);
           return setAction(ACTION_SIGNIN_OTP);
+        }
+
+        if (status === 422) {
+          setTitle(AUTH_TITLE.EXPIRED_PASSWORD);
+          setIsPasswordExpired(true);
+          setAction(ACTION_ASSIGN_NEW_PASSWORD);
+          if (message.includes("mandatory")) {
+            setMandatoryChangePassword(true);
+          }
+          setDescription(message);
+          setLoading(false);
+          return;
         }
 
         if (status === 307) {
@@ -84,11 +106,12 @@ const Auth = (props) => {
         if (status === 403) {
           setPassword(null);
           setLoading(false);
+          setFeedback(message);
           return setError(true);
         }
 
         setLoading(false);
-        return console.log(message);
+        return setFeedback(message);
       }
 
       setLoading(false);
@@ -140,7 +163,7 @@ const Auth = (props) => {
         handleClose={handleClose}
         setAction={setAction}
       >
-        <CloseModal handleClose={props.handleClose} />
+        <CloseModal handleClose={handleClose} />
       </ForgotPassword>
     );
   }
@@ -153,7 +176,7 @@ const Auth = (props) => {
         action={action}
         setAction={setAction}
       >
-        <CloseModal handleClose={props.handleClose} />
+        <CloseModal handleClose={handleClose} />
       </OTPVerification>
     );
   }
@@ -166,14 +189,14 @@ const Auth = (props) => {
         action={action}
         setAction={setAction}
       >
-        <CloseModal handleClose={props.handleClose} />
+        <CloseModal handleClose={handleClose} />
       </NewPassword>
     );
   }
 
   return (
-    <Container open={props.open} handleClose={props.handleClose}>
-      <CloseModal handleClose={props.handleClose} />
+    <Container open={props.open} handleClose={handleClose}>
+      <CloseModal handleClose={handleClose} />
       <Typography
         variant="h5"
         component="h2"
@@ -182,7 +205,7 @@ const Auth = (props) => {
         sx={{ mb: "1.5rem" }}
         gutterBottom
       >
-        Login to One ZCMC
+        {title}
       </Typography>
 
       {changePassword ? (
@@ -199,8 +222,10 @@ const Auth = (props) => {
             color: "rgba(38,38,38,1)",
           }}
         >
-          Protect your account by keeping your credentials private. Never share
-          them with anyone.
+          {feedback !== null
+            ? feedback
+            : `Protect your account by keeping your credentials private. Never share
+          them with anyone.`}
         </Typography>
       )}
       <form method="POST" onSubmit={submit}>
