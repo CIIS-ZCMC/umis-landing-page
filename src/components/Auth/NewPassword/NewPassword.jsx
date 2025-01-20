@@ -12,7 +12,6 @@ import {
   Checkbox,
 } from "@mui/material";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import { useLocation, useNavigate } from "react-router-dom";
 import { ACTION_NEW_ACCOUNT, ACTION_SIGN_IN } from "../../../utils/config";
 import useUserHook from "../../../hooks/UserHook";
 import Container from "../Container/Container";
@@ -87,7 +86,9 @@ const NewPassword = ({ open, handleClose, action, setAction, children }) => {
         return console.log(message);
       }
 
-      setIsNewPasswordRegistered(true);
+      if (ACTION_NEW_ACCOUNT) {
+        setIsNewPasswordRegistered(true);
+      }
       return setLoading(false);
     });
   }
@@ -627,6 +628,10 @@ const NewPassword = ({ open, handleClose, action, setAction, children }) => {
               {
                 label: "Cannot include spaces",
                 status: password?.length > 0 && !/\s/.test(password),
+              },
+              {
+                label: "Must include at least one special character",
+                status: /[!@#$%^&*(),.?":{}|<>]/.test(password),
               },
             ].map((item, index) => (
               <ListItem
