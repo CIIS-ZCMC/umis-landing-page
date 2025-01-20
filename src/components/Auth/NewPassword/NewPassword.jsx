@@ -371,6 +371,10 @@ const NewPassword = ({ open, handleClose, action, setAction, children }) => {
                   label: "Cannot include spaces",
                   status: password?.length > 0 && !/\s/.test(password),
                 },
+                {
+                  label: "Must include at least one special character",
+                  status: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+                },
               ].map((item, index) => (
                 <ListItem
                   key={index}
