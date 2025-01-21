@@ -111,9 +111,10 @@ const useUserHook = create((set, get) => ({
 
         set(() => ({
           user: user,
-          systems: user.side_bar_details.systems,
+          systems: user.side_bar_details.system,
           redcap: user.redcap_forms,
         }));
+
         callBack(200, message);
       })
       .catch((err) => callBack(...handleFailedStatus(err)));

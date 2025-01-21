@@ -17,8 +17,10 @@ import useUserHook from "../../../hooks/UserHook";
 import Container from "../Container/Container";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import useAuthHook from "../../../hooks/AuthHook";
+import { useNavigate } from "react-router-dom";
 
 const NewPassword = ({ open, handleClose, action, setAction, children }) => {
+  const navigate = useNavigate();
   const { newPassword, skipForNow } = useUserHook();
   const { isPasswordExpired, mandatoryChangePassword, description } =
     useAuthHook();
@@ -46,6 +48,7 @@ const NewPassword = ({ open, handleClose, action, setAction, children }) => {
       }
 
       setIsNewPasswordRegistered(true);
+      navigate("/");
       return setLoading(false);
     });
   }
@@ -92,6 +95,7 @@ const NewPassword = ({ open, handleClose, action, setAction, children }) => {
       if (ACTION_NEW_ACCOUNT) {
         setIsNewPasswordRegistered(true);
       }
+
       return setLoading(false);
     });
   }
