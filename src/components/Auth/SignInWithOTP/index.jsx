@@ -17,13 +17,7 @@ import {
 } from "../../../utils/config";
 import useAuthHook from "../../../hooks/AuthHook";
 
-const OTPVerification = ({
-  open,
-  handleClose,
-  action,
-  setAction,
-  children,
-}) => {
+const SignInWithOTP = ({ open, handleClose, action, setAction, children }) => {
   const navigate = useNavigate();
   const { setIsPasswordExpired } = useAuthHook();
   const { verifyOTP, resendOTP, signInWithOTP } = useUserHook();
@@ -87,7 +81,7 @@ const OTPVerification = ({
         setErrorMessage(message);
         return console.log(message);
       }
-      setInitialTime(90);
+      setInitialTime(120);
       setLoading(false);
     });
   }
@@ -126,7 +120,6 @@ const OTPVerification = ({
       >
         Verify One-time Pin
       </Typography>
-
       <Typography
         sx={{
           mb: 2,
@@ -234,6 +227,7 @@ const OTPVerification = ({
               color: "rgba(15, 87, 33, 1)",
               fontFamily: "var(--roboto-font-family)",
               fontWeight: 500,
+              cursor: "pointer",
             }}
             onClick={handleResendOTP}
           >
@@ -246,4 +240,4 @@ const OTPVerification = ({
   );
 };
 
-export default OTPVerification;
+export default SignInWithOTP;

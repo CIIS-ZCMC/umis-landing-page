@@ -198,7 +198,7 @@ const Auth = (props) => {
     );
   }
 
-  if (action === ACTION.SIGNIN_WITH_OTP || action === ACTION_SIGNIN_OTP) {
+  if (action === ACTION.SIGNIN_WITH_OTP) {
     return (
       <SignInWithOTP
         open={props.open}

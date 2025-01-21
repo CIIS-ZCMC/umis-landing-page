@@ -124,13 +124,8 @@ const useUserHook = create((set, get) => ({
       .post("/resend-otp")
       .then((res) => validateStatusOk(res))
       .then((res) => {
-        const { user, message } = res;
+        const { message } = res;
 
-        set(() => ({
-          user: user,
-          systems: user.side_bar_details.systems,
-          redcap: user.redcap_forms,
-        }));
         callBack(200, message);
       })
       .catch((err) => callBack(...handleFailedStatus(err)));
