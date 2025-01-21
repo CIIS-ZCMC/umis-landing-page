@@ -98,36 +98,18 @@ const OTPVerification = ({
     let form = new FormData();
     form.append("otp", otp.join(""));
 
-    const signInOTP = action === ACTION_SIGNIN_OTP;
-
-    if (signInOTP) {
-      signInWithOTP(form, (status, message) => {
-        if (!(status >= 200 && status < 300)) {
-          if (status === 307) {
-            setErrorMessage(message);
-            return setLoading(false);
-          }
-
-          setErrorMessage(message);
-          return console.log(message);
-        }
-
-        navigate("/");
-        setLoading(false);
-      });
-    }
-
-    verifyOTP(form, (status, message) => {
+    signInWithOTP(form, (status, message) => {
       if (!(status >= 200 && status < 300)) {
         if (status === 307) {
           setErrorMessage(message);
           return setLoading(false);
         }
 
-        return setErrorMessage(message);
+        setErrorMessage(message);
+        return console.log(message);
       }
 
-      setAction(ACTION_ASSIGN_NEW_PASSWORD);
+      navigate("/");
       setLoading(false);
     });
   }
