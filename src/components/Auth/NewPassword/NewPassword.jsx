@@ -70,7 +70,7 @@ const NewPassword = ({ open, handleClose, action, setAction, children }) => {
     form.append("password", password);
     form.append("two_factor", is2faActive ? 1 : 0);
     form.append("pin", authorizationPin);
-    form.append("is_recover", action === ACTION_NEW_ACCOUNT ? 0 : 1);
+    form.append("is_recover", 1);
 
     newPassword(form, (status, message) => {
       if (!(status >= 200 && status < 300)) {

@@ -18,6 +18,7 @@ import Container from "../Container/Container";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import useAuthHook from "../../../hooks/AuthHook";
 import { useNavigate } from "react-router-dom";
+import { ACTION } from "../../../constant/AuthModalActions";
 
 const NewAccount = ({ open, handleClose, action, setAction, children }) => {
   const navigate = useNavigate();
@@ -70,7 +71,7 @@ const NewAccount = ({ open, handleClose, action, setAction, children }) => {
     form.append("password", password);
     form.append("two_factor", is2faActive ? 1 : 0);
     form.append("pin", authorizationPin);
-    form.append("is_recover", action === ACTION_NEW_ACCOUNT ? 0 : 1);
+    form.append("is_recover", 0);
 
     newPassword(form, (status, message) => {
       if (!(status >= 200 && status < 300)) {
@@ -96,6 +97,7 @@ const NewAccount = ({ open, handleClose, action, setAction, children }) => {
         setIsNewPasswordRegistered(true);
       }
 
+      setAction(ACTION.SIGN_IN);
       navigate("/");
       return setLoading(false);
     });
