@@ -398,6 +398,10 @@ const NewPassword = () => {
                     label: "Must include at least one special character",
                     status: /[!@#$%^&*(),.?":{}|<>]/.test(password),
                   },
+                  {
+                    label: "Passwords must match",
+                    status: password === confirmPassword,
+                  },
                 ].map((item, index) => (
                   <ListItem
                     key={index}
@@ -666,6 +670,10 @@ const NewPassword = () => {
                 {
                   label: "Must include at least one special character",
                   status: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+                },
+                {
+                  label: "Passwords must match",
+                  status: password === confirmPassword,
                 },
               ].map((item, index) => (
                 <ListItem
