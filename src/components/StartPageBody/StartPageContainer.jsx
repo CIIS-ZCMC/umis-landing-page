@@ -40,9 +40,13 @@ const StartPageContainer = () => {
               <br />
               User Management Information System
             </Link>
-            {/* <button className="secondary-CTA" id="read-announcement" onClick={handleReadAnnouncement}>
+            <button
+              className="secondary-CTA"
+              id="read-announcement"
+              onClick={handleReadAnnouncement}
+            >
               Read announcements
-            </button> */}
+            </button>
           </div>
 
           {/* <div className='announcement-date-container'>

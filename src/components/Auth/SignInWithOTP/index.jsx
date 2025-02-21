@@ -15,15 +15,11 @@ import {
   ACTION_SIGN_IN,
   ACTION_SIGNIN_OTP,
 } from "../../../utils/config";
+import useAuthHook from "../../../hooks/AuthHook";
 
-const OTPVerification = ({
-  open,
-  handleClose,
-  action,
-  setAction,
-  children,
-}) => {
+const SignInWithOTP = ({ open, handleClose, action, setAction, children }) => {
   const navigate = useNavigate();
+  const { setIsPasswordExpired } = useAuthHook();
   const { verifyOTP, resendOTP, signInWithOTP } = useUserHook();
 
   const [initialTime, setInitialTime] = useState(120);
@@ -85,7 +81,7 @@ const OTPVerification = ({
         setErrorMessage(message);
         return console.log(message);
       }
-      setInitialTime(90);
+      setInitialTime(120);
       setLoading(false);
     });
   }
@@ -96,36 +92,18 @@ const OTPVerification = ({
     let form = new FormData();
     form.append("otp", otp.join(""));
 
-    const signInOTP = action === ACTION_SIGNIN_OTP;
-
-    if (signInOTP) {
-      signInWithOTP(form, (status, message) => {
-        if (!(status >= 200 && status < 300)) {
-          if (status === 307) {
-            setErrorMessage(message);
-            return setLoading(false);
-          }
-
-          setErrorMessage(message);
-          return console.log(message);
-        }
-
-        navigate("/");
-        setLoading(false);
-      });
-    }
-
-    verifyOTP(form, (status, message) => {
+    signInWithOTP(form, (status, message) => {
       if (!(status >= 200 && status < 300)) {
         if (status === 307) {
           setErrorMessage(message);
           return setLoading(false);
         }
 
-        return setErrorMessage(message);
+        setErrorMessage(message);
+        return console.log(message);
       }
 
-      setAction(ACTION_ASSIGN_NEW_PASSWORD);
+      navigate("/");
       setLoading(false);
     });
   }
@@ -142,7 +120,6 @@ const OTPVerification = ({
       >
         Verify One-time Pin
       </Typography>
-
       <Typography
         sx={{
           mb: 2,
@@ -250,6 +227,7 @@ const OTPVerification = ({
               color: "rgba(15, 87, 33, 1)",
               fontFamily: "var(--roboto-font-family)",
               fontWeight: 500,
+              cursor: "pointer",
             }}
             onClick={handleResendOTP}
           >
@@ -262,4 +240,4 @@ const OTPVerification = ({
   );
 };
 
-export default OTPVerification;
+export default SignInWithOTP;

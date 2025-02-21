@@ -12,7 +12,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
 import useUserHook from "../../hooks/UserHook";
 import Container from "./Container/Container";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Button,
   TextField,
@@ -21,8 +21,13 @@ import {
   InputAdornment,
   CircularProgress,
 } from "@mui/material";
-import OTPVerification from "./OTPVerification/OTPVerification";
-import NewPassword from "./NewPassword/NewPassword";
+import OTPVerification from "./OTPVerification";
+import useAuthHook from "../../hooks/AuthHook";
+import { AUTH_TITLE } from "../../constant/AuthConstant";
+import NewAccount from "./NewAccount";
+import ExpiredPassword from "./ExpiredPassword";
+import SignInWithOTP from "./SignInWithOTP";
+import { ACTION } from "../../constant/AuthModalActions";
 
 const CloseModal = (props) => {
   return (
@@ -37,14 +42,21 @@ const CloseModal = (props) => {
 
 const Auth = (props) => {
   const navigate = useNavigate();
+  const {
+    title,
+    setTitle,
+    setDescription,
+    setIsPasswordExpired,
+    setMandatoryChangePassword,
+  } = useAuthHook();
   const { newPassword, signIn } = useUserHook();
-  const [action, setAction] = useState(ACTION_SIGN_IN);
+  const { action, setAction } = useAuthHook();
 
   const [employeeID, setEmployeeID] = useState(null);
   const [password, setPassword] = useState(null);
   const [confirmPassword, setConfirmPassword] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [feedback, setFeedback] = useState(null);
 
   const [error, setError] = useState(false);
 
@@ -67,28 +79,42 @@ const Auth = (props) => {
           setEmployeeID(null);
           setPassword(null);
           setLoading(false);
-          return setAction(ACTION_SIGNIN_OTP);
+          setTitle(AUTH_TITLE.SIGN_IN_WITH_OTP);
+          return setAction(ACTION.SIGNIN_WITH_OTP);
+        }
+
+        if (status === 422) {
+          setTitle(AUTH_TITLE.EXPIRED_PASSWORD);
+          setIsPasswordExpired(true);
+          setAction(ACTION.EXPIRED_PASSWORD);
+          if (message.includes("mandatory")) {
+            setMandatoryChangePassword(true);
+          }
+          setDescription(message);
+          setLoading(false);
+          return;
         }
 
         if (status === 307) {
           setConfirmPassword(null);
           setLoading(false);
           setAction(
-            message === "new-account"
-              ? ACTION_NEW_ACCOUNT
-              : ACTION_ASSIGN_NEW_PASSWORD
+            message.includes("New account")
+              ? ACTION.NEW_ACCOUNT
+              : ACTION.EXPIRED_PASSWORD
           );
-          return setExpiredPasswordMessage(message);
+          return;
         }
 
         if (status === 403) {
           setPassword(null);
           setLoading(false);
+          setFeedback(message);
           return setError(true);
         }
 
         setLoading(false);
-        return console.log(message);
+        return setFeedback(message);
       }
 
       setLoading(false);
@@ -129,23 +155,63 @@ const Auth = (props) => {
   }
 
   function handleClose() {
-    setAction(ACTION_SIGN_IN);
+    setAction(ACTION.SIGN_IN);
     props.handleClose();
   }
 
-  if (action === ACTION_FORGOT_PASSWORD) {
+  // New Account
+  if (action === ACTION.NEW_ACCOUNT) {
+    return (
+      <NewAccount
+        open={props.open}
+        handleClose={handleClose}
+        setAction={setAction}
+      >
+        <CloseModal handleClose={handleClose} />
+      </NewAccount>
+    );
+  }
+
+  if (action === ACTION.EXPIRED_PASSWORD) {
+    return (
+      <ExpiredPassword
+        open={props.open}
+        handleClose={handleClose}
+        action={action}
+        setAction={setAction}
+      >
+        <CloseModal handleClose={handleClose} />
+      </ExpiredPassword>
+    );
+  }
+
+  // Verify Email
+  if (action === ACTION.FORGOT_PASSWORD) {
     return (
       <ForgotPassword
         open={props.open}
         handleClose={handleClose}
         setAction={setAction}
       >
-        <CloseModal handleClose={props.handleClose} />
+        <CloseModal handleClose={handleClose} />
       </ForgotPassword>
     );
   }
 
-  if (action === ACTION_INPUT_OTP || action === ACTION_SIGNIN_OTP) {
+  if (action === ACTION.SIGNIN_WITH_OTP) {
+    return (
+      <SignInWithOTP
+        open={props.open}
+        handleClose={handleClose}
+        action={action}
+        setAction={setAction}
+      >
+        <CloseModal handleClose={handleClose} />
+      </SignInWithOTP>
+    );
+  }
+
+  if (action === ACTION.VERIFY_OTP) {
     return (
       <OTPVerification
         open={props.open}
@@ -153,27 +219,14 @@ const Auth = (props) => {
         action={action}
         setAction={setAction}
       >
-        <CloseModal handleClose={props.handleClose} />
+        <CloseModal handleClose={handleClose} />
       </OTPVerification>
     );
   }
 
-  if (action === ACTION_ASSIGN_NEW_PASSWORD || action === ACTION_NEW_ACCOUNT) {
-    return (
-      <NewPassword
-        open={props.open}
-        handleClose={handleClose}
-        action={action}
-        setAction={setAction}
-      >
-        <CloseModal handleClose={props.handleClose} />
-      </NewPassword>
-    );
-  }
-
   return (
-    <Container open={props.open} handleClose={props.handleClose}>
-      <CloseModal handleClose={props.handleClose} />
+    <Container open={props.open} handleClose={handleClose}>
+      <CloseModal handleClose={handleClose} />
       <Typography
         variant="h5"
         component="h2"
@@ -182,7 +235,7 @@ const Auth = (props) => {
         sx={{ mb: "1.5rem" }}
         gutterBottom
       >
-        Login to One ZCMC
+        {title}
       </Typography>
 
       {changePassword ? (
@@ -199,8 +252,10 @@ const Auth = (props) => {
             color: "rgba(38,38,38,1)",
           }}
         >
-          Protect your account by keeping your credentials private. Never share
-          them with anyone.
+          {feedback !== null
+            ? feedback
+            : `Protect your account by keeping your credentials private. Never share
+          them with anyone.`}
         </Typography>
       )}
       <form method="POST" onSubmit={submit}>

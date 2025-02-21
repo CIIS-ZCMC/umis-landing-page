@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import zcmcLogo from "../../assets/zcmc-logo-1.png";
 
 import Paragraph from "../Paragraph/Paragraph";
 
-import '../../styles/agency-footer.css';
+import "../../styles/agency-footer.css";
 
 const usefulLinks1 = [
   { link: "/", label: "Our story" },

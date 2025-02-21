@@ -7,13 +7,14 @@ import {
   CircularProgress,
 } from "@mui/material";
 import Container from "../Container/Container";
-import { useNavigate } from "react-router-dom";
 import useUserHook from "../../../hooks/UserHook";
 import { ACTION_INPUT_OTP, ACTION_SIGN_IN } from "../../../utils/config";
+import useAuthHook from "../../../hooks/AuthHook";
 
 const ForgotPassword = ({ open, handleClose, setAction, children }) => {
-  const navigate = useNavigate();
+  const { setIsPasswordExpired } = useAuthHook();
   const { verifyEmailAndSendOTP } = useUserHook();
+  const [feedback, setFeedback] = useState(null);
 
   const [email, setEmail] = useState(null);
 
@@ -35,9 +36,10 @@ const ForgotPassword = ({ open, handleClose, setAction, children }) => {
         }
 
         setLoading(false);
-        return console.log(message);
+        return setFeedback(message);
       }
 
+      setIsPasswordExpired(false);
       setLoading(false);
       setAction(ACTION_INPUT_OTP);
     });
@@ -56,9 +58,17 @@ const ForgotPassword = ({ open, handleClose, setAction, children }) => {
         Let us know it’s you!
       </Typography>
 
-      <Typography sx={{ mb: 2, fontSize: 12, color: "rgba(128,128,128,1)" }}>
-        Please verify your email to continue. We will send you a code with
-        instructions to create a new password.
+      <Typography
+        sx={{
+          mb: 2,
+          fontSize: 12,
+          color: feedback === null ? "rgba(128,128,128,1)" : "darkred",
+        }}
+      >
+        {feedback !== null
+          ? feedback
+          : ` Please verify your email to continue. We will send you a code with
+        instructions to create a new password.`}
       </Typography>
       <form method="POST" onSubmit={submit}>
         <TextField
