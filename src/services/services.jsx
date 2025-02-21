@@ -7,7 +7,7 @@ const BASE_URL = {
 };
 
 const umis = new axios.create({
-  baseURL: BASE_URL.local,
+  baseURL: BASE_URL.production,
   withCredentials: true,
   headers: {
     Accept: "application/json",
