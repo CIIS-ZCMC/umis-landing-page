@@ -105,7 +105,7 @@ const SegmentedButtonMemo = ({ announcements, memorandums }) => {
             <div className="memo-announcement">
               {selected === "announcement" && (
                 <div className="memo-announcement-column">
-                  {announcementContent.map((item, index) => (
+                  {announcements.map((item, index) => (
                     <Link
                       to={item.link}
                       className="memo-announcement-card"
