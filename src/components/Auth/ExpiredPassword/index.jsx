@@ -395,7 +395,7 @@ const NewPassword = ({ open, handleClose, action, setAction, children }) => {
               },
               {
                 label: "Passwords must match",
-                status: password === confirmPassword,
+                status: password === confirmPassword && password !== null,
               },
             ].map((item, index) => (
               <ListItem

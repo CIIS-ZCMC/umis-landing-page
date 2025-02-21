@@ -400,7 +400,7 @@ const NewPassword = () => {
                   },
                   {
                     label: "Passwords must match",
-                    status: password === confirmPassword,
+                    status: password === confirmPassword && password !== null,
                   },
                 ].map((item, index) => (
                   <ListItem
@@ -673,7 +673,7 @@ const NewPassword = () => {
                 },
                 {
                   label: "Passwords must match",
-                  status: password === confirmPassword,
+                  status: password === confirmPassword && password !== null,
                 },
               ].map((item, index) => (
                 <ListItem
