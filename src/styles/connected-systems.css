@@ -894,7 +894,7 @@
         padding-right: 0;
         padding-bottom: 0;
         width: 100%;
-        height: auto; /* Optional: specify if parent container should have a height */
+        height: auto;
     }
     
     .connected-systems .row {
@@ -914,7 +914,7 @@
     }
     
     .connected-systems .card {
-        height: 82px !important; /* Fixed height */
+        height: 82px !important;
         width: 100%;
         align-items: start;
         gap: var(--value-12px);
@@ -925,9 +925,9 @@
         border-radius: var(--value-12px);
         box-shadow: 0 var(--value-4px) var(--value-24px) 0 #0d0d0d0f;
         transition: transform .25s ease;
-        flex-grow: 0; /* Prevents stretching */
-        flex-shrink: 0; /* Prevents shrinking */
-        align-self: flex-start; /* Prevents stretching within flex parent */
+        flex-grow: 0;
+        flex-shrink: 0;
+        align-self: flex-start;
     }
     
 
