@@ -39,6 +39,18 @@ const NewPassword = () => {
 
   const [loading, setLoading] = useState(false);
 
+  const validatePassword = () => {
+    const validations = [
+      password?.length >= 8, // At least 8 characters
+      /[A-Z]/.test(password), // At least one uppercase letter
+      /\d/.test(password), // At least one number
+      password?.length > 0 && !/\s/.test(password), // No spaces
+      /[!@#$%^&*(),.?":{}|<>]/.test(password), // At least one special character
+    ];
+
+    return validations.every(Boolean); // Returns true if all validations pass
+  };
+
   function submit(e) {
     e.preventDefault();
     setLoading(true);
@@ -382,6 +394,10 @@ const NewPassword = () => {
                     label: "Cannot include spaces",
                     status: password?.length > 0 && !/\s/.test(password),
                   },
+                  {
+                    label: "Must include at least one special character",
+                    status: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+                  },
                 ].map((item, index) => (
                   <ListItem
                     key={index}
@@ -485,7 +501,9 @@ const NewPassword = () => {
               }}
               disabled={
                 loading ||
-                !(password === confirmPassword && authorizationPin?.length > 0)
+                (!(password === confirmPassword) &&
+                  authorizationPin?.length > 0) ||
+                !validatePassword()
               }
               startIcon={
                 loading ? <CircularProgress size={20} color="inherit" /> : null
@@ -645,6 +663,10 @@ const NewPassword = () => {
                   label: "Cannot include spaces",
                   status: password?.length > 0 && !/\s/.test(password),
                 },
+                {
+                  label: "Must include at least one special character",
+                  status: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+                },
               ].map((item, index) => (
                 <ListItem
                   key={index}
@@ -682,7 +704,9 @@ const NewPassword = () => {
               },
               fontFamily: "var(--roboto-font-family)",
             }}
-            disabled={loading || !(password === confirmPassword)}
+            disabled={
+              loading || !(password === confirmPassword) || !validatePassword()
+            }
             startIcon={
               loading ? <CircularProgress size={20} color="inherit" /> : null
             }

@@ -41,6 +41,18 @@ const NewAccount = ({ open, handleClose, action, setAction, children }) => {
 
   const [loading, setLoading] = useState(false);
 
+  const validatePassword = () => {
+    const validations = [
+      password?.length >= 8, // At least 8 characters
+      /[A-Z]/.test(password), // At least one uppercase letter
+      /\d/.test(password), // At least one number
+      password?.length > 0 && !/\s/.test(password), // No spaces
+      /[!@#$%^&*(),.?":{}|<>]/.test(password), // At least one special character
+    ];
+
+    return validations.every(Boolean); // Returns true if all validations pass
+  };
+
   function handleSkip() {
     skipForNow((status, message) => {
       if (!(status >= 200 && status < 300)) {
@@ -350,7 +362,8 @@ const NewAccount = ({ open, handleClose, action, setAction, children }) => {
           }}
           disabled={
             loading ||
-            !(password === confirmPassword && authorizationPin?.length > 0)
+            !(password === confirmPassword && authorizationPin?.length > 0) ||
+            !validatePassword()
           }
           startIcon={
             loading ? <CircularProgress size={20} color="inherit" /> : null
