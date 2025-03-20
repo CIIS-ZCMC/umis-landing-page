@@ -32,9 +32,9 @@ const StartPageContainer = () => {
 
           <div className="cta-container">
             <Link to="http://192.168.5.1:8080/login" className='CTA start-page-CTA' rel="noopener noreferrer" >
-              Go to UMIS
+              Go to HRIS
               <br />
-              User Management Information System
+              Human Resource Information System
             </Link>
             {/* <button className="secondary-CTA" id="read-announcement" onClick={handleReadAnnouncement}>
               Read announcements

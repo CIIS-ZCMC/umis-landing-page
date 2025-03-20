@@ -331,7 +331,7 @@
         text-align: center;
         top: 50%;
         transform: translate(-50%, -50%);
-        width: fit-content !important
+        width: 160px
     }
 
     .connected-systems-heading,

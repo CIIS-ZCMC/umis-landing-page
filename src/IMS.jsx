@@ -28,7 +28,7 @@ const IMS = () => {
           <div className="loader-container">
             <div className="loader-logo-container">
               <img className="loader-logo zcmc" src={zcmc} alt="ZCMC Logo" />
-              {/* <img className="loader-logo dpo" src={dpo} alt="DPO Logo" /> */}
+              <img className="loader-logo dpo" src={dpo} alt="DPO Logo" />
             </div>
             <div className="custom-loader"></div>
           </div>

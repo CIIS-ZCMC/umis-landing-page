@@ -56,7 +56,8 @@
 .header-link-1,
 .header-link-2,
 .header-link-2-sm,
-.header-link-3 {
+.header-link-3,
+.header-link-4 {
     align-items: center;
     color: var(--color-systembase-colorsbg-white-100-ffffff);
     display: inline-flex;
@@ -1716,7 +1717,8 @@
     .header-link-1,
     .header-link-2,
     .header-link-2-sm,
-    .header-link-3 {
+    .header-link-3,
+    .header-link-4 {
         font-size: var(--value-14px);
         font-weight: 400;
         gap: var(--value-4px);
@@ -1737,7 +1739,8 @@
     .header-link:hover,
     .header-link-1:hover,
     .header-link-2:hover,
-    .header-link-3:hover {
+    .header-link-3:hover,
+    .header-link-4:hover {
         border-bottom: 2px solid var(--color-systembase-colorsbg-white-100-ffffff)
     }
 
@@ -1749,7 +1752,8 @@
     .header-link-1:hover .header-link-icon,
     .header-link-2:hover .header-link-icon,
     .header-link-2-sm:hover .header-link-icon,
-    .header-link-3:hover .header-link-icon {
+    .header-link-3:hover .header-link-icon,
+    .header-link-4:hover .header-link-icon {
         cursor: pointer;
         transform: rotate(180deg)
     }

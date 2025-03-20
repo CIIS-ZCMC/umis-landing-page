@@ -15,7 +15,7 @@ const images = [
     '../../assets/slideshow/hero.png',
     '../../assets/slideshow/hero-bg.png',
     '../../assets/slideshow/lp-bg.jpg',
-    // Add more image URLs here
+    '../../assets/slideshow/hero-bg-1.png',
 ];
 
 let currentIndex = 0;

@@ -6,6 +6,7 @@ import Paragraph from "../Paragraph/Paragraph";
 import SegmentedButton from '../SegmentedButton/SegmentedButton.jsx';
 import MemoAnnouncement from '../MemoAnnouncement/MemoAnnouncement.jsx';
 import ContactUs from './ContactUs.jsx';
+import UserManual from './UserManual.jsx';
 import StartPageFooterSm from './StartPageFooterSm.jsx';
 
 const StartPage = () => {
@@ -104,8 +105,6 @@ const StartPage = () => {
 
         <div className='start-page-body start-page-body-sm'>
           <MemoAnnouncement />
-
-
           <div className="connected-systems">
             <div className='connected-systems-heading connected-systems-heading-sm'>
               <h5 className="label">
@@ -163,13 +162,11 @@ const StartPage = () => {
               </div>
             </div>
           </div>
-
-
-          {/* <hr className="start-page-divider section-divider" /> */}
-          <ContactUs />
+          <UserManual />
         </div>
-        <StartPageFooterSm />
+        <ContactUs />
       </div>
+      <StartPageFooterSm />
     </div>
   );
 };

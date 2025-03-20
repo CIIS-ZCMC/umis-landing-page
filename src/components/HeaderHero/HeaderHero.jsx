@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import heroImage1 from '../../assets/slideshow/hero.png';
-import heroImage2 from '../../assets/slideshow/hero-bg.png';
+import heroImage2 from '../../assets/slideshow/hero-bg-1.png';
 import heroImage3 from '../../assets/slideshow/lp-bg.jpg';
+import heroImage4 from '../../assets/slideshow/hero-bg.png';
 
 const HeaderHero = () => {
   const [slideIndex, setSlideIndex] = useState(1);
-  const slides = [heroImage1, heroImage2, heroImage3];
+  const slides = [heroImage1, heroImage2, heroImage3, heroImage4];
 
   const plusSlides = (n) => {
     setSlideIndex((prevIndex) => {

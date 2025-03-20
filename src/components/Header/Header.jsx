@@ -8,6 +8,7 @@ import logo from '../../assets/zcmc-logo-1.png';
 import MegaMenuServices from './MegaMenuServices';
 import MegaMenuAbout from './MegaMenuAbout';
 import MegaMenuRates from './MegaMenuRates';
+import MegaMenuERB from './MegaMenuERB';
 import Accordion from "../Accordion/Accordion";
 import Paragraph from "../Paragraph/Paragraph";
 

@@ -76,9 +76,61 @@ a, link, button:hover {
     }
 }
 
-@media only screen and (min-width: 1366px),
-(min-width: 1530px),
-(min-width: 1920px) {
+@media only screen and (min-width: 769px) and (max-width: 1365px) {
+
+    .landing-page-desktop .CTA,
+    .landing-page-desktop .secondary-CTA,
+    #mcc-secondary-CTA {
+        font-size: var(--value-16px);
+        font-weight: 400;
+        margin: 0 auto !important;
+        width: fit-content
+    }
+
+    .landing-page-desktop .CTA:hover {
+        transform: scale(1.05)
+    }
+}
+
+@media only screen and (min-width: 1366px) and (max-width: 1529px) {
+
+    .landing-page-desktop .CTA,
+    .landing-page-desktop .secondary-CTA,
+    #mcc-secondary-CTA {
+        border-radius: var(--value-8px);
+        font-size: var(--value-14px);
+        font-weight: 400;
+        line-height: var(--value-14px)
+    }
+
+    .landing-page-desktop .CTA {
+        padding: var(--value-14px) var(--value-16px)
+    }
+
+    .landing-page-desktop .secondary-CTA {
+        border: 1px solid var(--color-systembase-colorsbrand-green-500-0f5721)
+    }
+
+    .start-page-header .secondary-CTA {
+        border: 1px solid #fff
+    }
+
+    #mcc-secondary-CTA {
+        border: 1px solid var(--color-systembase-colorsbg-white-100-ffffff)
+    }
+
+    .landing-page-desktop .CTA:hover {
+        transform: scale(1.015)
+    }
+
+    .secondary-CTA:hover {
+        background: var(--color-systembase-colorsbrand-green-500-0f5721);
+        border: 1px solid var(--color-systembase-colorsbrand-green-500-0f5721);
+        font-weight: 400
+    }
+}
+
+@media only screen and (min-width: 1920px) {
 
     .landing-page-desktop .CTA,
     .landing-page-desktop .secondary-CTA,

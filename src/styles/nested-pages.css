@@ -1,1 +1,113 @@
-.hero-content-container{display:var(--display-flex);flex-direction:var(--flex-direction-column);margin:0 auto}.nested-pages .container{height:fit-content}.hero-content-heading,.hero-content-date{color:#fff;text-align:center}@media only screen and (max-width: 480px){.hero-content-container{gap:var(--value-12px);padding:0;width:calc(100vw - var(--value-32px))}.nested-pages .container{padding:128px var(--value-16px) var(--value-48px)!important}.hero-content-heading{font-size:var(--value-36px);font-weight:500;line-height:120%}.hero-content-date{font-size:var(--value-12px);font-weight:400;line-height:150%}.nested-pages .arrow-down-contact{border-top:var(--value-24px) solid #f6f6f6!important}.nested-pages .contact{background:#fff!important}}@media only screen and (min-width: 481px) and (max-width: 780px){.hero-content-container{gap:var(--value-12px);padding:0;width:100vw}.nested-pages .container{padding:128px var(--value-32px) var(--value-48px) 0 !important}.hero-content-heading{font-size:var(--value-36px);font-weight:500;line-height:120%}.hero-content-date{font-size:var(--value-12px);font-weight:400;line-height:150%}.nested-pages .arrow-down-contact{border-top:var(--value-24px) solid #f6f6f6!important}.nested-pages .contact{background:#fff!important}}@media only screen and (min-width: 1530px){.hero-content-container{gap:var(--value-8px);padding:0;width:calc(100vw - var(--value-32px))}.nested-pages .container{padding:156px var(--value-16px) var()!important}.hero-content-heading{font-size:var(--value-56px);font-weight:600;line-height:120%}.hero-content-date{font-size:var(--value-14px);font-weight:400;line-height:150%}.nested-pages .arrow-down-contact{border-top:var(--value-48px) solid #fff!important}.nested-pages .contact{background:#f6f6f6;background:linear-gradient(to top,#fff 0%,#f6f6f6 100%)}}
+.hero-content-container {
+    display: var(--display-flex);
+    flex-direction: var(--flex-direction-column);
+    margin: 0 auto
+}
+
+.nested-pages .container {
+    height: fit-content
+}
+
+.hero-content-heading,
+.hero-content-date {
+    color: #fff;
+    margin: 0 auto;
+    text-align: center
+}
+
+@media only screen and (max-width: 480px) {
+    .hero-content-container {
+        gap: var(--value-12px);
+        padding: 0;
+        width: calc(100vw - var(--value-32px))
+    }
+
+    .nested-pages .container {
+        padding: 128px var(--value-16px) var(--value-48px) !important
+    }
+
+    .hero-content-heading {
+        font-size: var(--value-36px);
+        font-weight: 500;
+        line-height: 120%
+    }
+
+    .hero-content-date {
+        font-size: var(--value-12px);
+        font-weight: 400;
+        line-height: 150%
+    }
+
+    .nested-pages .arrow-down-contact {
+        border-top: var(--value-24px) solid #f6f6f6 !important
+    }
+
+    .nested-pages .contact {
+        background: #fff !important
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 780px) {
+    .hero-content-container {
+        gap: var(--value-12px);
+        padding: 0;
+        width: 100vw
+    }
+
+    .nested-pages .container {
+        padding: 128px var(--value-32px) var(--value-48px) 0 !important
+    }
+
+    .hero-content-heading {
+        font-size: var(--value-36px);
+        font-weight: 500;
+        line-height: 120%
+    }
+
+    .hero-content-date {
+        font-size: var(--value-12px);
+        font-weight: 400;
+        line-height: 150%
+    }
+
+    .nested-pages .arrow-down-contact {
+        border-top: var(--value-24px) solid #f6f6f6 !important
+    }
+
+    .nested-pages .contact {
+        background: #fff !important
+    }
+}
+
+@media only screen and (min-width: 1530px) {
+    .hero-content-container {
+        gap: var(--value-8px);
+        padding: 0;
+        width: calc(100vw - var(--width-32vw)) !important
+    }
+
+    .nested-pages .container {
+        padding: 156px var(--value-16px) var() !important
+    }
+
+    .hero-content-heading {
+        font-size: var(--value-56px);
+        font-weight: 600;
+        line-height: 120%
+    }
+
+    .hero-content-date {
+        font-size: var(--value-14px);
+        font-weight: 400;
+        line-height: 150%
+    }
+
+    .nested-pages .arrow-down-contact {
+        border-top: var(--value-48px) solid #fff !important
+    }
+
+    .nested-pages .contact {
+        background: #f6f6f6;
+        background: linear-gradient(to top, #fff 0%, #f6f6f6 100%)
+    }
+}

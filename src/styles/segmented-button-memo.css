@@ -164,7 +164,9 @@
     cursor: pointer;
 
     .memo-announcement-card-title {
-        color: #225524 !important
+        color: #225524 !important;
+        text-decoration: underline;
+        text-decoration-color: #225524;
     }
 }
 
