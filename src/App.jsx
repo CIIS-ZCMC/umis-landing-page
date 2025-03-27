@@ -10,6 +10,7 @@ import "./styles/slideshow.css";
 import "./styles/arrow.css";
 import AnimatedRoutes from "./routes/animated_routes.jsx";
 
+// Test
 const App = () => {
   return <AnimatedRoutes />;
 };
