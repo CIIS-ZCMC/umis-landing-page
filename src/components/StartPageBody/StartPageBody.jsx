@@ -203,10 +203,14 @@ const StartPage = () => {
                 ))}
               </div>
             </div>
-          </div>
-
-          {/* <hr className="start-page-divider section-divider" /> */}
-          <ContactUs />
+            
+            <BannerContainer />
+            </div>
+  
+            <div className='right-section'>
+              <UserManual />
+              <ContactUs />
+            </div>
         </div>
         <StartPageFooterSm />
       </div>
