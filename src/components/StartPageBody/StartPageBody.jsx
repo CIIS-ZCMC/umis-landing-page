@@ -8,6 +8,7 @@ import MemoAnnouncement from "../MemoAnnouncement/MemoAnnouncement.jsx";
 import ContactUs from "./ContactUs.jsx";
 import StartPageFooterSm from "./StartPageFooterSm.jsx";
 import useUserHook from "../../hooks/UserHook";
+import BannerContainer from '../../components/StartPageBody/BannerContainer.jsx'
 
 const StartPage = () => {
   const { retrieveAdminAccess, retrieveRedcapAccess } = useUserHook();
