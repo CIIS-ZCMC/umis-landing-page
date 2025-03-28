@@ -331,7 +331,7 @@
         text-align: center;
         top: 50%;
         transform: translate(-50%, -50%);
-        width: fit-content !important
+        width: 160px
     }
 
     .connected-systems-heading,
@@ -887,7 +887,7 @@
         align-items: flex-start; /* Ensures the items align to the start */
         display: var(--display-flex);
         flex-direction: var(--flex-direction-column);
-        gap: var(--value-48px);
+        gap: var(--value-24px);
         margin: 0 auto;
         padding-top: var(--value-32px);
         padding-left: 0;
