@@ -110,7 +110,6 @@ const StartPage = () => {
       <StartPageContainer />
       <div className="start-page">
         <div className="arrow-down-start-page arrow-down-start-page-sm"></div>
-
         <div className="start-page-body start-page-body-sm">
           <MemoAnnouncement />
 
