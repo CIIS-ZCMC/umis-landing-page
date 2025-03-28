@@ -31,6 +31,18 @@ const StartPageContainer = () => {
           </div>
 
           <div className="cta-container">
+            <Link to={retrieveAdminAccess("UMIS")} className='CTA start-page-CTA' rel="noopener noreferrer" >
+              Go to HRIS
+              <br />
+              Human Resource Information System
+            </Link>
+            {/* <button className="secondary-CTA" id="read-announcement" onClick={handleReadAnnouncement}>
+              Read announcements
+            </button> */}
+          </div>
+
+          {/*
+          <div className="cta-container">
             <Link
               to={retrieveAdminAccess("UMIS")}
               className="CTA start-page-CTA"
@@ -48,6 +60,7 @@ const StartPageContainer = () => {
               Read announcements
             </button>
           </div>
+          */}
 
           {/* <div className='announcement-date-container'>
             <Paragraph text="Announcements last updated on: August 10, 2023" className="announcement-date" />
