@@ -3,13 +3,13 @@ import StartPageContainer from "./StartPageContainer";
 import { Link } from "react-router-dom";
 
 import Paragraph from "../Paragraph/Paragraph";
-import SegmentedButton from "../SegmentedButton/SegmentedButton.jsx";
-import MemoAnnouncement from "../MemoAnnouncement/MemoAnnouncement.jsx";
-import ContactUs from "./ContactUs.jsx";
-import StartPageFooterSm from "./StartPageFooterSm.jsx";
+import SegmentedButton from "../SegmentedButton/SegmentedButton";
+import MemoAnnouncement from "../MemoAnnouncement/MemoAnnouncement";
+import ContactUs from "./ContactUs";
+import StartPageFooterSm from "./StartPageFooterSm";
 import useUserHook from "../../hooks/UserHook";
-import BannerContainer from "../../components/StartPageBody/BannerContainer.jsx";
-import UserManual from "../../components/StartPageBody/UserManual.jsx";
+import BannerContainer from "../../components/StartPageBody/BannerContainer";
+import UserManual from "../../components/StartPageBody/UserManual";
 
 const StartPage = () => {
   const { retrieveAdminAccess, retrieveRedcapAccess } = useUserHook();
