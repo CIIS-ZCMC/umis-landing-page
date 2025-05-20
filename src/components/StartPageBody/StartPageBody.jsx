@@ -62,7 +62,7 @@ const StartPage = () => {
 
   const adminContent = [
     {
-      title: "Supplies Requisition Tracking",
+      title: "Purchase Request Tracking",
       description:
         "See the ZCMC's current total Purchase Requests and the percentage of Purchase Request over allocated budget.",
       link: retrieveAdminAccess("PRM"),
