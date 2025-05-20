@@ -2,7 +2,7 @@ import axios from "axios";
 
 const BASE_URL = {
   production: "https://umis.zcmc.online/api/",
-  development: "http://192.168.5.1:8100/api/",
+  development: "http://192.168.9.243:8010/api/",
   local: "http://localhost:8000/api/",
 };
 
