@@ -9,7 +9,7 @@ export const config = {
   production: {
     umis: "https://portal.zcmc.online",
     prm: "https://prm.zcmc.online",
-    po_dashboard: "https://mms.zcmc.online",
+    po_dashboard: "https://po-dashboard.zcmc.online",
   },
   development: {
     umis: "http://localhost:5173",
