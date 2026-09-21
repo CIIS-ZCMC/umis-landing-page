@@ -27,7 +27,7 @@ export const config = {
 export const getPoDashboardUrl = (user) => {
   if (user?.side_bar_details?.system) {
     const sys = user.side_bar_details.system.find(
-      (s) => s.code === "MMS" || s.code === "PO" || s.code === "MMS-PO"
+      (s) => s.code === "PO"
     );
     if (sys?.url) return sys.url;
   }
