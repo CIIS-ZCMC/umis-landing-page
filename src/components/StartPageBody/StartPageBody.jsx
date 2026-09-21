@@ -55,10 +55,10 @@ const StartPage = () => {
 </svg>`,
     },
     {
-      title: "PO Dashboard",
+      title: "PO Monitoring",
       description:
         "Track Materials Management Purchase Order deliveries, delays, cancellations, and supplier scorecards.",
-      link: retrieveAdminAccess("MMS") || retrieveAdminAccess("PO") || getPoDashboardUrl(user),
+      link: retrieveAdminAccess("PO") || getPoDashboardUrl(user),
       icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM7 10H17V12H7V10ZM7 7H17V9H7V7ZM7 13H14V15H7V13ZM7 16H11V18H7V16Z" fill="#0F5721"/>
 </svg>`,
