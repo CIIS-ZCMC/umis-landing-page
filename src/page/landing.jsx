@@ -11,13 +11,14 @@ import News from "../components/News/News";
 import Auth from "../components/Auth/Auth";
 import { useState } from "react";
 
+
 const Landing = () => {
   const [open, setOpen] = useState(false);
-
   const handleOpen = () => {
     setOpen(true);
   };
   const handleClose = () => setOpen(false);
+
 
   return (
     <>

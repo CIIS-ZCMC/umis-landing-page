@@ -1,10 +1,11 @@
 import { create } from "zustand";
 import { umis } from "../services/services";
 import { handleFailedStatus, validateStatusOk } from "../utils/Validation";
+import { mockUserData } from "../../data";
 
 const useUserHook = create((set, get) => ({
-  user: null,
-  systems: [],
+  user: mockUserData?.data,
+  systems: mockUserData?.data?.side_bar_details?.system || [],
   redcap: [],
   retrieveAdminAccess: (code) => {
     const systems = get().systems;

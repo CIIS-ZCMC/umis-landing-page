@@ -27,6 +27,9 @@ import OTPVerification from "../page/Auth/OTPVerification.jsx";
 import NewPassword from "../page/Auth/NewPassword.jsx";
 
 const StartPage = React.lazy(() => import("../StartPage.jsx"));
+const UserLandingPage = React.lazy(() => import("../page/UserLandingPage.jsx"));
+
+
 
 /**
  * Protected Routes
@@ -107,11 +110,13 @@ const AnimatedRoutes = () => {
             <Route
               path="/"
               element={
-                <ProtectedRoutes>
-                  <StartPage />
-                </ProtectedRoutes>
+                // <ProtectedRoutes>
+                  <UserLandingPage />
+                // </ProtectedRoutes>
               }
             />
+            <Route path="/user-landing" element={<UserLandingPage />} />
+            <Route path="/user" element={<UserLandingPage />} />
           </Routes>
         </div>
       </Suspense>
