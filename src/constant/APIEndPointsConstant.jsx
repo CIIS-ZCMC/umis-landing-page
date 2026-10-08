@@ -9,4 +9,7 @@ export const API_END_POINTS = {
     ID: (id) => `memorandums/${id}`,
     CREATE: "memorandum",
   },
+  PR_TRACKER: {
+    FIND: (code) => `find-transaction/${code}`,
+  },
 };
