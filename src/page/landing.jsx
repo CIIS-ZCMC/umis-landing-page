@@ -11,6 +11,7 @@ import News from "../components/News/News";
 import Auth from "../components/Auth/Auth";
 import UniversalSearchModal from "../components/UniversalSearch/UniversalSearchModal";
 import PullBookmark from "../components/UniversalSearch/PullBookmark";
+import ChristmasTheme from "../components/Christmas/ChristmasTheme";
 import { useState } from "react";
 
 const Landing = () => {
@@ -23,6 +24,7 @@ const Landing = () => {
 
   return (
     <>
+      <ChristmasTheme />
       <Header onClick={handleOpen} />
       <HeaderHero />
       <News />

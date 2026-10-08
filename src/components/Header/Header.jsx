@@ -16,6 +16,8 @@ import { ACTION_SIGN_IN } from "../../utils/config";
 import useUniversalSearchHook from "../../hooks/UniversalSearchHook";
 import SearchIcon from "@mui/icons-material/Search";
 import "../UniversalSearch/universal-search.css";
+import { ENABLE_CHRISTMAS_THEME, HOLIDAY_CONFIG } from "../../config/holidayConfig";
+import SantaHat from "../Christmas/SantaHat";
 
 const Header = ({ onClick }) => {
   const [isEnabled, setisEnabled] = useState(false);
@@ -54,6 +56,7 @@ const Header = ({ onClick }) => {
   return (
     <header className="header">
       <Link to="/" className="icon" rel="noopener noreferrer">
+        {ENABLE_CHRISTMAS_THEME && HOLIDAY_CONFIG.santaHatOnLogo && <SantaHat />}
         <img className="zcmc-logo" src={logo} alt="Logo" />
         <div className="icon-label-container">
           <div className="caption"></div>
@@ -62,6 +65,11 @@ const Header = ({ onClick }) => {
           <p className="address"></p>
         </div>
       </Link>
+      {ENABLE_CHRISTMAS_THEME && HOLIDAY_CONFIG.holidayBadge && (
+        <span className="header-holiday-badge" title="Maligayang Pasko!">
+          <span className="header-holiday-sparkle">✨</span> Maligayang Pasko
+        </span>
+      )}
 
       <div className="navbar navbar-sm">
         <MegaMenuServices />
