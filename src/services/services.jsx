@@ -13,7 +13,7 @@ const currentHost = typeof window !== "undefined" ? window.location.hostname : "
 
 const PR_BASE_URL = {
   production: "https://prmonitoringapi.zcmc.online/api/v1/",
-  staging: "https://staging-prmonitoringapi.zcmc.online/api/v1/",
+  staging: "https://sandbox-prapi.zcmc.online/api/v1/",
   development: "http://192.168.11.63:8006/api/v1/",
   local: `http://${currentHost}:8006/api/v1/`,
 };
