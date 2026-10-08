@@ -19,11 +19,14 @@ import "../UniversalSearch/universal-search.css";
 import {
   ENABLE_CHRISTMAS_THEME,
   ENABLE_HALLOWEEN_THEME,
+  ENABLE_NIGHTMARE_THEME,
   HOLIDAY_CONFIG,
   HALLOWEEN_CONFIG,
+  NIGHTMARE_CONFIG,
 } from "../../config/holidayConfig";
 import SantaHat from "../Christmas/SantaHat";
 import WitchHat from "../Halloween/WitchHat";
+import JackLogoOverlay from "../Nightmare/JackLogoOverlay";
 
 const Header = ({ onClick }) => {
   const [isEnabled, setisEnabled] = useState(false);
@@ -64,6 +67,7 @@ const Header = ({ onClick }) => {
       <Link to="/" className="icon" rel="noopener noreferrer">
         {ENABLE_CHRISTMAS_THEME && HOLIDAY_CONFIG.santaHatOnLogo && <SantaHat />}
         {ENABLE_HALLOWEEN_THEME && HALLOWEEN_CONFIG.witchHatOnLogo && <WitchHat />}
+        {ENABLE_NIGHTMARE_THEME && NIGHTMARE_CONFIG.jackOnLogo && <JackLogoOverlay />}
         <img className="zcmc-logo" src={logo} alt="Logo" />
         <div className="icon-label-container">
           <div className="caption"></div>
@@ -80,6 +84,11 @@ const Header = ({ onClick }) => {
       {ENABLE_HALLOWEEN_THEME && HALLOWEEN_CONFIG.halloweenBadge && (
         <span className="header-halloween-badge" title="Happy Halloween!">
           <span className="header-halloween-ghost">🎃</span> Spooky Season
+        </span>
+      )}
+      {ENABLE_NIGHTMARE_THEME && NIGHTMARE_CONFIG.nightmareBadge && (
+        <span className="header-nightmare-badge" title="The Nightmare Before Christmas">
+          <span className="jack-icon">💀</span> What&apos;s This?! 🎄
         </span>
       )}
 

@@ -1,18 +1,40 @@
 /**
  * ============================================================================
- * 🎃 / 🎄 Seasonal & Holiday Theme Configuration
+ * 🎃 / 🎄 / 💀 Seasonal & Holiday Theme Configuration
  * ============================================================================
  *
  * Switch the active theme with a single setting:
- *   - 'halloween' : Spooky Halloween theme (Bats, Pumpkin, Spiderwebs, Witch Hat)
- *   - 'christmas' : Festive Christmas theme (Snow, Lights, Santa, Santa Hat)
+ *   - 'nightmare' : 💀 The Nightmare Before Christmas (Jack Skellington, gothic snowflakes & bats, Sandy Claws hat, pinstripes)
+ *   - 'halloween' : 🎃 Spooky Halloween theme (Bats, Pumpkin, Spiderwebs, Witch Hat)
+ *   - 'christmas' : 🎄 Festive Christmas theme (Snow, Lights, Santa, Santa Hat)
  *   - 'none'      : Standard default landing page (no seasonal overlays)
  */
-export const ACTIVE_THEME = "halloween"; // Options: 'halloween' | 'christmas' | 'none'
+export const ACTIVE_THEME = "nightmare"; // Options: 'nightmare' | 'halloween' | 'christmas' | 'none'
 
-// Backward compatibility helper
+// Backward compatibility & theme active helpers
+export const ENABLE_NIGHTMARE_THEME = ACTIVE_THEME === "nightmare";
 export const ENABLE_CHRISTMAS_THEME = ACTIVE_THEME === "christmas";
 export const ENABLE_HALLOWEEN_THEME = ACTIVE_THEME === "halloween";
+
+/**
+ * 💀 Nightmare Before Christmas Theme Fine-Grained Controls
+ */
+export const NIGHTMARE_CONFIG = {
+  // Gothic snowfall mixed with fluttering bat silhouettes and eerie moonlight motes
+  spookySnowAndBats: true,
+
+  // Tim Burton style twisted garland with eerie multi-color bulbs across header
+  gothicGarland: true,
+
+  // Peeking Jack Skellington in Sandy Claws hat with "What's this?!" speech bubble
+  peekingJack: true,
+
+  // Jack's bat-bowtie & Santa hat perched on the ZCMC logo
+  jackOnLogo: true,
+
+  // Spooky gothic header badge ("💀 What's This?! 🎄")
+  nightmareBadge: true,
+};
 
 /**
  * 🎃 Halloween Theme Fine-Grained Controls
