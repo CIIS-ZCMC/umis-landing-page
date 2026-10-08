@@ -2045,6 +2045,104 @@
   max-width: 640px;
 }
 
+/* Banner Carousel Styles */
+.banner-container-xl {
+  margin: 0 auto !important;
+  max-width: 1200px;
+  position: relative;
+}
+
+.banner-carousel {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  overflow: hidden;
+  border-radius: var(--value-16px);
+  background: transparent;
+}
+
+.banner-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: transparent;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 1;
+}
+
+.banner-image.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.banner-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  pointer-events: none;
+}
+
+.banner-dots .banner-dot {
+  pointer-events: auto;
+}
+
+.banner-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.banner-dot:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.2);
+}
+
+.banner-dot.active {
+  background: #fff;
+  border-color: #fff;
+  transform: scale(1.3);
+}
+
+/* Responsive banner carousel */
+@media only screen and (max-width: 1240px) {
+  .banner-container-xl {
+    max-width: 95vw;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .banner-carousel {
+    min-height: 350px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .banner-carousel {
+    min-height: 250px;
+  }
+  
+  .banner-dot {
+    width: 10px;
+    height: 10px;
+  }
+}
+
 @media only screen and (max-width: 480px) {
   .user-manuals-sm,
   .contact-us-sm {
@@ -2149,7 +2247,8 @@
     gap: var(--value-8px);
   }
 
-  .banner-container {
+  .banner-container,
+  .banner-container-xl {
     height: auto !important;
     width: 100% !important;
     padding: 12px;
@@ -2288,6 +2387,28 @@
   .contact-us-report-sm {
     gap: var(--value-8px);
   }
+
+  .banner-container,
+  .banner-container-xl {
+    height: auto !important;
+    width: 100% !important;
+    padding: 12px;
+    margin: 0;
+    background: #ffffff;
+  }
+
+  .banner-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .right-section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 24px;
+  }
 }
 
 @media only screen and (min-width: 541px) and (max-width: 780px) {
@@ -2394,12 +2515,8 @@
     gap: var(--value-8px);
   }
 
-  .start-page-body-sm {
-    display: var(--display-flex);
-    gap: 32px;
-  }
-
-  .banner-container {
+  .banner-container,
+  .banner-container-xl {
     height: auto !important;
     width: 100% !important;
     padding: 12px;
@@ -2526,7 +2643,8 @@
     gap: var(--value-8px);
   }
 
-  .banner-container {
+  .banner-container,
+  .banner-container-xl {
     height: auto !important;
     width: 100% !important;
     padding: 12px;
@@ -2664,7 +2782,8 @@
     gap: var(--value-8px);
   }
 
-  .banner-container {
+  .banner-container,
+  .banner-container-xl {
     height: auto !important;
     width: 100% !important;
     padding: 12px;
@@ -2683,7 +2802,8 @@
     gap: 24px;
   }
 
-  .banner-container {
+  .banner-container,
+  .banner-container-xl {
     height: auto !important;
     width: 100% !important;
     padding: 12px;
@@ -2807,7 +2927,8 @@
     gap: var(--value-8px);
   }
 
-  .banner-container {
+  .banner-container,
+  .banner-container-xl {
     height: auto !important;
     width: 100% !important;
     padding: 12px;
@@ -2929,7 +3050,8 @@
     gap: var(--value-8px);
   }
 
-  .banner-container {
+  .banner-container,
+  .banner-container-xl {
     height: auto !important;
     width: 100% !important;
     padding: 12px;
@@ -3051,7 +3173,8 @@
     gap: var(--value-8px);
   }
 
-  .banner-container {
+  .banner-container,
+  .banner-container-xl {
     height: auto !important;
     width: 100% !important;
     padding: 12px;

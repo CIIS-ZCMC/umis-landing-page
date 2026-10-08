@@ -1,5 +1,3 @@
-import React from "react";
-
 import "../styles/globals.css";
 import "../styles/style.css";
 import StartPageHeader from "../components/StartPageHeader/StartPageHeader.jsx";
