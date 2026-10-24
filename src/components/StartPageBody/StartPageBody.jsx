@@ -9,7 +9,7 @@ import StartPageFooterSm from "./StartPageFooterSm";
 import useUserHook from "../../hooks/UserHook";
 import BannerContainer from "../../components/StartPageBody/BannerContainer";
 import UserManual from "../../components/StartPageBody/UserManual";
-import { getPoDashboardUrl } from "../../utils/RetrieveSystemURL";
+import { getPoDashboardUrl, getHmbUrl } from "../../utils/RetrieveSystemURL";
 
 const StartPage = () => {
   const { user, retrieveAdminAccess, retrieveRedcapAccess } = useUserHook();
@@ -51,6 +51,21 @@ const StartPage = () => {
   };
 
   const medicalContent = [
+    {
+      title: "Human Milk Bank",
+      description:
+        "Clinical donor screening, pooling, pasteurization cycle tracking, cold-chain inventory, and neonatal recipient feeding logs.",
+      link: (() => {
+        const base = retrieveAdminAccess("HMB") || getHmbUrl(user);
+        const token = localStorage.getItem("token");
+        return token ? `${base}?token=${encodeURIComponent(token)}` : base;
+      })(),
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+<path d="M12 2.69L5.64 9.05C3.3 11.39 3.3 15.19 5.64 17.53C7.98 19.87 11.78 19.87 14.12 17.53C16.46 15.19 16.46 11.39 14.12 9.05L12 2.69Z" fill="#0E5C53"/>
+<path d="M12 7.5C10.62 7.5 9.5 8.62 9.5 10C9.5 11.38 10.62 12.5 12 12.5C13.38 12.5 14.5 11.38 14.5 10C14.5 8.62 13.38 7.5 12 7.5Z" fill="#E8F4F1"/>
+<path d="M19 14C20.1 14 21 14.9 21 16C21 17.1 20.1 18 19 18C17.9 18 17 17.1 17 16C17 14.9 17.9 14 19 14Z" fill="#0E5C53"/>
+</svg>`,
+    },
     ...(isMedicalStaff()
       ? [
           {
@@ -236,6 +251,21 @@ export default StartPage;
 
 
 //   const medicalContent = [
+    {
+      title: "Human Milk Bank",
+      description:
+        "Clinical donor screening, pooling, pasteurization cycle tracking, cold-chain inventory, and neonatal recipient feeding logs.",
+      link: (() => {
+        const base = retrieveAdminAccess("HMB") || getHmbUrl(user);
+        const token = localStorage.getItem("token");
+        return token ? `${base}?token=${encodeURIComponent(token)}` : base;
+      })(),
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+<path d="M12 2.69L5.64 9.05C3.3 11.39 3.3 15.19 5.64 17.53C7.98 19.87 11.78 19.87 14.12 17.53C16.46 15.19 16.46 11.39 14.12 9.05L12 2.69Z" fill="#0E5C53"/>
+<path d="M12 7.5C10.62 7.5 9.5 8.62 9.5 10C9.5 11.38 10.62 12.5 12 12.5C13.38 12.5 14.5 11.38 14.5 10C14.5 8.62 13.38 7.5 12 7.5Z" fill="#E8F4F1"/>
+<path d="M19 14C20.1 14 21 14.9 21 16C21 17.1 20.1 18 19 18C17.9 18 17 17.1 17 16C17 14.9 17.9 14 19 14Z" fill="#0E5C53"/>
+</svg>`,
+    },
 //     {
 //       title: "Employees Clinic",
 //       description:
