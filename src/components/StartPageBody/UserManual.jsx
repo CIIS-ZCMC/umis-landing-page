@@ -1,47 +1,46 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Paragraph from "../Paragraph/Paragraph";
 import fileArrowDown from "../../assets/file-arrow-down.svg";
 
-const UserManual = ({}) => {
+const UserManual = () => {
   const manualsContent = [
     {
-      title: "Sample User Manual 01",
-      date: "August 10, 2023",
-      time: "10:01 am",
-      link: "",
+      title: "Filing a Stock Position",
+      date: "May 16, 2025",
+      time: "2:34 pm",
+      link: "/files/user-manuals/stock-position.pdf",
     },
     {
-      title: "Sample User Manual 02",
-      date: "August 11, 2023",
-      time: "10:02 am",
-      link: "",
+      title: "Filing a Purchase Request",
+      date: "May 16, 2025",
+      time: "2:34 pm",
+      link: "/files/user-manuals/purchase-request.pdf",
     },
-    {
-      title: "Sample User Manual 03",
-      date: "August 12, 2023",
-      time: "10:03 am",
-      link: "",
-    },
-    {
-      title: "Sample User Manual 04",
-      date: "August 13, 2023",
-      time: "10:04 am",
-      link: "",
-    },
-    {
-      title: "Sample User Manual 05",
-      date: "August 14, 2023",
-      time: "10:05 am",
-      link: "",
-    },
-    {
-      title: "Sample User Manual 06",
-      date: "August 15, 2023",
-      time: "10:06 am",
-      link: "",
-    },
+    // {
+    //   title: "Sample User Manual 03",
+    //   date: "August 12, 2023",
+    //   time: "10:03 am",
+    //   link: "",
+    // },
+    // {
+    //   title: "Sample User Manual 04",
+    //   date: "August 13, 2023",
+    //   time: "10:04 am",
+    //   link: "",
+    // },
+    // {
+    //   title: "Sample User Manual 05",
+    //   date: "August 14, 2023",
+    //   time: "10:05 am",
+    //   link: "",
+    // },
+    // {
+    //   title: "Sample User Manual 06",
+    //   date: "August 15, 2023",
+    //   time: "10:06 am",
+    //   link: "",
+    // },
   ];
 
   return (
@@ -66,11 +65,11 @@ const UserManual = ({}) => {
         <div className="memo-announcement">
           <div className="memo-announcement-column">
             {manualsContent.map((item, index) => (
-              <Link
-                to={item.link}
+              <a
+                href={item.link}
+                target="_blank"
                 className="memo-announcement-card"
                 key={index}
-                rel="noopener noreferrer"
               >
                 <div className="memo-card-content">
                   <Paragraph
@@ -83,7 +82,7 @@ const UserManual = ({}) => {
                       className="memo-announcement-card-date"
                     />
                     <Paragraph
-                      text=" ·  256kb  ·  PDF"
+                      text=" · PDF"
                       className="memo-announcement-card-time"
                     />
                   </span>
@@ -91,7 +90,7 @@ const UserManual = ({}) => {
                 <div className="memo-file-icon">
                   <img src={fileArrowDown} alt="Download icon" />
                 </div>
-              </Link>
+              </a>
             ))}
           </div>
         </div>

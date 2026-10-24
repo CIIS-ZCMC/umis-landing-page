@@ -36,8 +36,8 @@ const SegmentedButton = ({ medicalContent, adminContent }) => {
         {selected === "medical" && (
           <div className="row">
             {medicalContent.map((item, index) => (
-              <Link
-                to={item.link}
+              <a
+                href={item.link || "#"}
                 className="card"
                 key={index}
                 rel="noopener noreferrer"
@@ -70,7 +70,7 @@ const SegmentedButton = ({ medicalContent, adminContent }) => {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </a>
             ))}
           </div>
         )}
@@ -78,8 +78,8 @@ const SegmentedButton = ({ medicalContent, adminContent }) => {
         {selected === "administrative" && (
           <div className="row">
             {adminContent.map((item, index) => (
-              <Link
-                to={item.link}
+              <a
+                href={item.link || "#"}
                 className="card"
                 key={index}
                 rel="noopener noreferrer"
@@ -112,7 +112,7 @@ const SegmentedButton = ({ medicalContent, adminContent }) => {
                     </div>
                   </div>
                 </div>
-              </Link>
+              </a>
             ))}
           </div>
         )}

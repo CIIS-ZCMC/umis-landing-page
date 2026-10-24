@@ -25,8 +25,8 @@ const Login = () => {
   const navigate = useNavigate();
   const { newPassword, signIn } = useUserHook();
 
-  const [employeeID, setEmployeeID] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [employeeID, setEmployeeID] = useState("");
+  const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);

@@ -22,7 +22,14 @@ const useUserHook = create((set, get) => ({
       .post("/sign-in", form)
       .then((res) => validateStatusOk(res))
       .then((res) => {
-        const { data, message } = res;
+        const { data, message, token, clinic_token } = res;
+
+        if (clinic_token) {
+          localStorage.setItem("clinic_token", clinic_token);
+        }
+        if (token) {
+          localStorage.setItem("token", token);
+        }
 
         set(() => ({
           user: data,
@@ -38,7 +45,14 @@ const useUserHook = create((set, get) => ({
       .post("/sign-in-with-otp", form)
       .then((res) => validateStatusOk(res))
       .then((res) => {
-        const { data, message } = res;
+        const { data, message, token, clinic_token } = res;
+
+        if (clinic_token) {
+          localStorage.setItem("clinic_token", clinic_token);
+        }
+        if (token) {
+          localStorage.setItem("token", token);
+        }
 
         set(() => ({
           user: data,
@@ -81,7 +95,11 @@ const useUserHook = create((set, get) => ({
       .post("re-authenticate")
       .then((res) => validateStatusOk(res))
       .then((res) => {
-        const { data, message } = res;
+        const { data, message, clinic_token } = res;
+
+        if (clinic_token) {
+          localStorage.setItem("clinic_token", clinic_token);
+        }
 
         set(() => ({
           user: data,
@@ -137,6 +155,9 @@ const useUserHook = create((set, get) => ({
       .then((res) => validateStatusOk(res))
       .then((res) => {
         const { message } = res;
+
+        localStorage.removeItem("clinic_token");
+        localStorage.removeItem("token");
 
         set(() => ({ user: null }));
         callBack(200, message);
