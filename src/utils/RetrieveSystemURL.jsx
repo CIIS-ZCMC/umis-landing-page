@@ -10,11 +10,13 @@ export const config = {
     umis: "https://portal.zcmc.online",
     prm: "https://prm.zcmc.online",
     po_dashboard: "https://po-dashboard.zcmc.online",
+    hmb: "https://hmb.zcmc.online",
   },
   development: {
     umis: "http://localhost:5173",
     prm: "http://localhost:5174",
     po_dashboard: "http://localhost:5175",
+    hmb: "http://192.168.36.164:8000",
   },
 };
 
@@ -41,6 +43,30 @@ export const getPoDashboardUrl = (user) => {
   return `http://${hostname}:5175`;
 };
 
+/**
+ * Get Human Milk Bank (HMB) URL
+ *
+ * @param {object} user : Current logged-in user object
+ * @returns {string} Target HMB URL
+ */
+export const getHmbUrl = (user) => {
+  if (user?.side_bar_details?.system) {
+    const sys = user.side_bar_details.system.find(
+      (s) => s.code === "HMB"
+    );
+    if (sys?.url) return sys.url;
+  }
+  const isProd =
+    typeof window !== "undefined" &&
+    window.location.hostname !== "localhost" &&
+    window.location.hostname !== "127.0.0.1";
+  if (isProd) return config.production.hmb;
+  const hostname =
+    typeof window !== "undefined" && window.location.hostname !== "localhost"
+      ? window.location.hostname
+      : "192.168.36.164";
+  return `http://${hostname}:8000`;
+};
 
 /**
  * Get system URL via system code
