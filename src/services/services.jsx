@@ -5,11 +5,21 @@ export const ENV = "staging";
 
 const BASE_URL = {
   production: "https://umis.zcmc.online/api/",
+  staging: "https://staging-umis.zcmc.online/api/",
   development: "http://192.168.36.49:8004/api/",
   local: "http://localhost:81/api/",
 };
 
-const baseURL = import.meta.env.VITE_API_URL || BASE_URL.development;
+const currentHost = typeof window !== "undefined" ? window.location.hostname : "localhost";
+
+const PR_BASE_URL = {
+  production: "https://prmonitoringapi.zcmc.online/api/v1/",
+  staging: "https://sandbox-prapi.zcmc.online/api/v1/",
+  development: "http://192.168.11.63:8006/api/v1/",
+  local: `http://${currentHost}:8006/api/v1/`,
+};
+
+const baseURL = BASE_URL[ENV] || import.meta.env.VITE_API_URL || BASE_URL.development;
 
 const umis = axios.create({
   baseURL,
@@ -35,4 +45,13 @@ umis.interceptors.response.use(
   }
 );
 
-export { umis };
+const prApi = axios.create({
+  baseURL: PR_BASE_URL[ENV] || PR_BASE_URL.staging,
+  withCredentials: true,
+  headers: {
+    Accept: "application/json",
+    "content-type": "application/json",
+  },
+});
+
+export { umis, prApi };
