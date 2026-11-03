@@ -7,6 +7,8 @@ const useAuthHook = create((set) => ({
   isPasswordExpired: false,
   mandatoryChangePassword: false,
   action: ACTION_SIGN_IN,
+  twoFactorType: "totp",
+  setTwoFactorType: (value) => set({ twoFactorType: value }),
   setTitle: (value) => set({ title: value }),
   setDescription: (value) => set({ description: value }),
   setIsPasswordExpired: (value) => set({ isPasswordExpired: value }),
