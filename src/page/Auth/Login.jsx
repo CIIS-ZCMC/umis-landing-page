@@ -93,6 +93,9 @@ const Login = () => {
         return console.log("Password doesn't match.");
       }
 
+      let form = new FormData();
+      form.append("password", password);
+      form.append("confirm_password", confirmPassword);
       newPassword(form, (status, message) => {
         if (!(status >= 200 && status < 300)) {
           if (status === 307) {

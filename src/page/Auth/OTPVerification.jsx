@@ -52,6 +52,7 @@ const OTPVerification = () => {
   const [loading, setLoading] = useState(false);
 
   const inputsRef = useRef([]);
+  const isSubmittingRef = useRef(false);
 
   // Auto-focus first digit box on mount
   useEffect(() => {
@@ -127,7 +128,8 @@ const OTPVerification = () => {
 
   // Unified submission
   const triggerSubmit = (codeToSubmit, isRecoveryMode) => {
-    if (loading || isLocked || !codeToSubmit) return;
+    if (loading || isSubmittingRef.current || isLocked || !codeToSubmit) return;
+    isSubmittingRef.current = true;
 
     setLoading(true);
     setErrorMessage(null);
@@ -145,6 +147,7 @@ const OTPVerification = () => {
       }
 
       signInWithOTP(form, (status, message, data) => {
+        isSubmittingRef.current = false;
         setLoading(false);
         if (status >= 200 && status < 300) {
           sessionStorage.removeItem("pending_employee_id");
@@ -183,6 +186,7 @@ const OTPVerification = () => {
 
     // Standard email OTP (Forgot Password)
     verifyOTP(form, (status, message) => {
+      isSubmittingRef.current = false;
       setLoading(false);
       if (!(status >= 200 && status < 300)) {
         setErrorMessage(message || "Invalid verification code.");

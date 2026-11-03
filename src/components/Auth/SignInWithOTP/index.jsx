@@ -40,6 +40,7 @@ const SignInWithOTP = ({ open, handleClose, action, setAction, children }) => {
   const [loading, setLoading] = useState(false);
 
   const inputsRef = useRef([]);
+  const isSubmittingRef = useRef(false);
 
   useEffect(() => {
     if (!isRecovery) {
@@ -108,7 +109,8 @@ const SignInWithOTP = ({ open, handleClose, action, setAction, children }) => {
   };
 
   const triggerSubmit = (codeToSubmit, isRecoveryMode) => {
-    if (loading || isLocked || !codeToSubmit) return;
+    if (loading || isSubmittingRef.current || isLocked || !codeToSubmit) return;
+    isSubmittingRef.current = true;
 
     setLoading(true);
     setErrorMessage(null);
@@ -124,6 +126,7 @@ const SignInWithOTP = ({ open, handleClose, action, setAction, children }) => {
     }
 
     signInWithOTP(form, (status, message, data) => {
+      isSubmittingRef.current = false;
       setLoading(false);
       if (status >= 200 && status < 300) {
         sessionStorage.removeItem("pending_employee_id");
