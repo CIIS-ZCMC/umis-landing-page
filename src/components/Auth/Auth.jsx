@@ -87,10 +87,10 @@ const Auth = (props) => {
           setTitle(AUTH_TITLE.EXPIRED_PASSWORD);
           setIsPasswordExpired(true);
           setAction(ACTION.EXPIRED_PASSWORD);
-          if (message.includes("mandatory")) {
+          if (typeof message === "string" && message.includes("mandatory")) {
             setMandatoryChangePassword(true);
           }
-          setDescription(message);
+          setDescription(typeof message === "object" ? message?.message || String(message) : message);
           setLoading(false);
           return;
         }
@@ -99,7 +99,7 @@ const Auth = (props) => {
           setConfirmPassword(null);
           setLoading(false);
           setAction(
-            message.includes("New account")
+            typeof message === "string" && message.includes("New account")
               ? ACTION.NEW_ACCOUNT
               : ACTION.EXPIRED_PASSWORD
           );
@@ -253,7 +253,7 @@ const Auth = (props) => {
           }}
         >
           {feedback !== null
-            ? feedback
+            ? (typeof feedback === "object" ? feedback?.message || String(feedback) : feedback)
             : `Protect your account by keeping your credentials private. Never share
           them with anyone.`}
         </Typography>

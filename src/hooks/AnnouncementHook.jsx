@@ -10,12 +10,21 @@ const useAnnouncementHook = create((set) => ({
       .get(API_END_POINTS.ANNOUNCEMENT.LIST)
       .then((res) => validateStatusOk(res))
       .then((res) => {
-        const { data, message } = res;
-        set({ announcements: data });
+        const { data, message } = res || {};
+        const safeData = Array.isArray(data)
+          ? data
+          : Array.isArray(res)
+          ? res
+          : [];
+        set({ announcements: safeData });
 
-        callBack(200, message);
+        if (typeof callBack === "function") callBack(200, message);
       })
-      .catch((err) => callBack(...handleFailedStatus(err)));
+      .catch((err) => {
+        if (typeof callBack === "function") {
+          callBack(...handleFailedStatus(err));
+        }
+      });
   },
 }));
 

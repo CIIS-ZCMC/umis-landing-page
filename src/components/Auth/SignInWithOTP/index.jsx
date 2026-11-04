@@ -128,7 +128,7 @@ const SignInWithOTP = ({ open, handleClose, action, setAction, children }) => {
         }}
       >
         {errorMessage !== null
-          ? errorMessage
+          ? (typeof errorMessage === "object" ? errorMessage?.message || String(errorMessage) : errorMessage)
           : `Please type in the code that we sent to your email to help us confirm
           it’s you. The code is valid for 3 minutes only.`}
       </Typography>

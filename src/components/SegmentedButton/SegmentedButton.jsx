@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 
 import Paragraph from "../Paragraph/Paragraph";
 
-const SegmentedButton = ({ medicalContent, adminContent }) => {
+const SegmentedButton = ({ medicalContent = [], adminContent = [] }) => {
   const [selected, setSelected] = useState("medical"); // Default selection: 'medical'
+
+  const safeMedicalContent = Array.isArray(medicalContent) ? medicalContent : [];
+  const safeAdminContent = Array.isArray(adminContent) ? adminContent : [];
 
   const handleClick = (option) => {
     setSelected(option);
@@ -35,7 +38,7 @@ const SegmentedButton = ({ medicalContent, adminContent }) => {
       <div className="segmented-button-body">
         {selected === "medical" && (
           <div className="row">
-            {medicalContent.map((item, index) => (
+            {safeMedicalContent.map((item, index) => (
               <a
                 href={item.link || "#"}
                 className="card"
@@ -77,7 +80,7 @@ const SegmentedButton = ({ medicalContent, adminContent }) => {
 
         {selected === "administrative" && (
           <div className="row">
-            {adminContent.map((item, index) => (
+            {safeAdminContent.map((item, index) => (
               <a
                 href={item.link || "#"}
                 className="card"

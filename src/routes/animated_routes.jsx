@@ -48,14 +48,14 @@ const ProtectedRoutes = ({ children }) => {
         setIsAuthenticated(true);
         if (location.state) {
           return navigate(
-            location.pathname.includes("login") ? redirect : location.pathname,
+            location.pathname.includes("login") ? "/" : location.pathname,
             { state: location.state }
           );
         }
 
         return setTimeout(() => {
           navigate(
-            location.pathname.includes("login") ? redirect : location.pathname
+            location.pathname.includes("login") ? "/" : location.pathname
           );
         }, 500);
       }

@@ -248,7 +248,7 @@
     padding: var(--value-24px) 0 0;
   }
 
-  .landing-page-desktop .list-group-container .agency-list-group:nth-child() {
+  .landing-page-desktop .list-group-container .agency-list-group:first-child {
     width: 100%;
   }
 
@@ -335,7 +335,7 @@
     padding: var(--value-24px) 0 0;
   }
 
-  .landing-page-desktop .list-group-container .agency-list-group:nth-child() {
+  .landing-page-desktop .list-group-container .agency-list-group:first-child {
     width: 100%;
   }
 

@@ -66,7 +66,7 @@ const ForgotPassword = ({ open, handleClose, setAction, children }) => {
         }}
       >
         {feedback !== null
-          ? feedback
+          ? (typeof feedback === "object" ? feedback?.message || String(feedback) : feedback)
           : ` Please verify your email to continue. We will send you a code with
         instructions to create a new password.`}
       </Typography>

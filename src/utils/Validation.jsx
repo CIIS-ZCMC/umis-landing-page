@@ -30,14 +30,44 @@ export function validateStatusOk(res) {
  * @returns {object}
  */
 export function handleFailedStatus(err, parametersCount = 2) {
-  if (!err || !err.response) return [500, err];
+  if (!err) {
+    const fallback = "An unexpected error occurred.";
+    return parametersCount === 3 ? [500, fallback, null] : [500, fallback];
+  }
 
-  const {
-    status,
-    data: { message },
-  } = err.response;
+  if (err.response) {
+    const status = err.response.status || 500;
+    const data = err.response.data;
+    let message = "An unexpected error occurred.";
 
-  if (parametersCount === 3) return [status, message, null];
+    if (typeof data === "string") {
+      message = data;
+    } else if (data && typeof data === "object") {
+      if (typeof data.message === "string") {
+        message = data.message;
+      } else if (typeof data.error === "string") {
+        message = data.error;
+      } else if (data.errors && typeof data.errors === "object") {
+        const firstKey = Object.keys(data.errors)[0];
+        const firstVal = data.errors[firstKey];
+        message = Array.isArray(firstVal) ? firstVal[0] : String(firstVal);
+      } else if (err.message && typeof err.message === "string") {
+        message = err.message;
+      }
+    } else if (err.message && typeof err.message === "string") {
+      message = err.message;
+    }
 
-  return [status, message];
+    if (parametersCount === 3) return [status, message, null];
+    return [status, message];
+  }
+
+  const errorMessage =
+    err.message && typeof err.message === "string"
+      ? err.message
+      : "Failed to connect to the server. Please check your connection.";
+
+  if (parametersCount === 3) return [500, errorMessage, null];
+  return [500, errorMessage];
 }
+

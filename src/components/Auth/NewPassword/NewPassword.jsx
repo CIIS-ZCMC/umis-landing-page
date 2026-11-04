@@ -265,7 +265,7 @@ const NewPassword = ({ open, handleClose, action, setAction, children }) => {
           }}
         >
           {error
-            ? errorMessage
+            ? (typeof errorMessage === "object" ? errorMessage?.message || String(errorMessage) : errorMessage)
             : `New users are required to create a strong password for first login
           attempt. Do not reuse your temporary password or other sequential
           details like “12345”.`}
@@ -528,9 +528,9 @@ const NewPassword = ({ open, handleClose, action, setAction, children }) => {
         }}
       >
         {error
-          ? errorMessage
+          ? (typeof errorMessage === "object" ? errorMessage?.message || String(errorMessage) : errorMessage)
           : description !== null
-          ? description
+          ? (typeof description === "object" ? description?.message || String(description) : description)
           : `For security reasons, you are required to create a new, strong password to continue using your account. Please avoid reusing your old or temporary password and refrain from using sequential patterns like "12345" or easily guessable details.`}
       </Typography>
 
