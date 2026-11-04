@@ -30,15 +30,27 @@ export function validateStatusOk(res) {
  * @returns {object}
  */
 export function handleFailedStatus(err, parametersCount = 2) {
-  if (!err) {
-    const fallback = "An unexpected error occurred.";
-    return parametersCount === 3 ? [500, fallback, null] : [500, fallback];
+  const status = err?.response?.status || 500;
+  let message = "An unexpected error occurred.";
+
+  if (err?.response?.data) {
+    const data = err.response.data;
+    if (typeof data === "string") {
+      message = data;
+    } else if (typeof data === "object" && data !== null) {
+      message =
+        data.message ||
+        data.error ||
+        (data.errors ? Object.values(data.errors).flat().join(", ") : null) ||
+        JSON.stringify(data);
+    }
+  } else if (err?.message && typeof err.message === "string") {
+    message = err.message;
   }
 
-  if (err.response) {
-    const status = err.response.status || 500;
-    const data = err.response.data;
-    let message = "An unexpected error occurred.";
+  if (typeof message !== "string") {
+    message = String(message || "An unexpected error occurred.");
+  } {
 
     if (typeof data === "string") {
       message = data;

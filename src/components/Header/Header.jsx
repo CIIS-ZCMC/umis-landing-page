@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import "../../styles/mega-menu.css";
@@ -13,18 +13,25 @@ import Paragraph from "../Paragraph/Paragraph";
 import { Button } from "@mui/material";
 import PropTypes from "prop-types";
 import { ACTION_SIGN_IN } from "../../utils/config";
+import useUniversalSearchHook from "../../hooks/UniversalSearchHook";
+import SearchIcon from "@mui/icons-material/Search";
+import "../UniversalSearch/universal-search.css";
 
 const Header = ({ onClick }) => {
-  const [menuVisible, setMenuVisible] = useState({
-    services: false,
-    about: false,
-    rates: false,
-  });
   const [isEnabled, setisEnabled] = useState(false);
+  const { openModal } = useUniversalSearchHook();
 
-  const toggleMenu = (menu) => {
-    setMenuVisible((prev) => ({ ...prev, [menu]: !prev[menu] }));
-  };
+  // Global Ctrl + K / Cmd + K listener
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        openModal();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [openModal]);
 
   const toggleFullScreenPanel = () => {
     setisEnabled((prev) => !prev);
@@ -60,6 +67,16 @@ const Header = ({ onClick }) => {
         <MegaMenuServices />
         <MegaMenuAbout />
         <MegaMenuRates />
+        <a
+          className="header-link"
+          href="#search"
+          onClick={(e) => {
+            e.preventDefault();
+            openModal("pr");
+          }}
+        >
+          Track Document
+        </a>
         <a className="header-link" href="#">
           Transparency seal
         </a>
@@ -68,25 +85,41 @@ const Header = ({ onClick }) => {
         </a>
       </div>
 
-      {/* Mobile menu and full screen panel - start */}
-      <button className="menu-CTA" onClick={toggleFullScreenPanel}>
-        <svg
-          className={`menu-CTA-icon ${isEnabled ? "icon-active" : ""}`}
-          xmlns="http://www.w3.org/2000/svg"
-          width="32px"
-          height="32px"
-          viewBox="0 0 24 24"
-          fill="none"
+      {/* Mobile menu and search buttons */}
+      <div className="mobile-header-actions">
+        <button
+          type="button"
+          className="mobile-search-btn"
+          onClick={() => openModal("pr")}
+          aria-label="Search or track transactions"
+          title="Search / Track (Ctrl+K)"
         >
-          <path
-            d="M3 12H21M3 6H21M3 18H21"
-            stroke=""
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </button>
+          <SearchIcon style={{ fontSize: "20px", color: "#ffffff" }} />
+        </button>
+
+        <button
+          className="menu-CTA"
+          onClick={toggleFullScreenPanel}
+          aria-label="Toggle navigation menu"
+        >
+          <svg
+            className={`menu-CTA-icon ${isEnabled ? "icon-active" : ""}`}
+            xmlns="http://www.w3.org/2000/svg"
+            width="32px"
+            height="32px"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M3 12H21M3 6H21M3 18H21"
+              stroke=""
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
 
       <div className={`nav-panel-sm ${isEnabled ? "active" : ""}`}>
         <div className="nav-panel-content-sm navigation-sm">
@@ -102,6 +135,17 @@ const Header = ({ onClick }) => {
           <div className="helpful-links-sm">
             <p className="nav-panel-label">Helpful links</p>
             <div className="list-sm">
+              <a
+                href="#search"
+                className="nav-panel-link"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setisEnabled(false);
+                  openModal("pr");
+                }}
+              >
+                Track PR / Document
+              </a>
               <Link
                 to="/StartPage"
                 className="nav-panel-link"
@@ -155,16 +199,17 @@ const Header = ({ onClick }) => {
       {/* Mobile menu and full screen panel - end */}
 
       <div className="div" id="div-sm">
-        <form id="searchForm" action="" method="GET">
-          <input
-            id="search"
-            className="search"
-            placeholder="Search"
-            type="se rch"
-            maxLength="100"
-          />
-        </form>
-        <div id="error-message" style={{ color: "red" }}></div>
+        <button
+          type="button"
+          className="header-search-btn"
+          onClick={() => openModal("pr")}
+          title="Search transactions or track Purchase Requests (Ctrl+K)"
+          aria-label="Search or track transactions"
+        >
+          <SearchIcon className="header-search-icon" />
+          <span className="header-search-label">Track / Search</span>
+          <kbd className="header-search-kbd">Ctrl K</kbd>
+        </button>
 
         <Button
           className="CTA"

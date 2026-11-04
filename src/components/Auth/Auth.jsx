@@ -48,6 +48,7 @@ const Auth = (props) => {
     setDescription,
     setIsPasswordExpired,
     setMandatoryChangePassword,
+    setTwoFactorType,
   } = useAuthHook();
   const { newPassword, signIn } = useUserHook();
   const { action, setAction } = useAuthHook();
@@ -73,13 +74,17 @@ const Auth = (props) => {
       form.append("persist_password", 1);
     }
 
-    signIn(form, (status, message) => {
+    signIn(form, (status, message, data) => {
       if (!(status >= 200 && status < 300)) {
         if (status === 302) {
+          sessionStorage.setItem("pending_employee_id", employeeID);
+          const type = data?.two_factor_type || (typeof message === "string" && message.includes("Google Authenticator") ? "totp" : "email");
+          sessionStorage.setItem("pending_2fa_type", type);
+          setTwoFactorType(type);
           setEmployeeID(null);
           setPassword(null);
           setLoading(false);
-          setTitle(AUTH_TITLE.SIGN_IN_WITH_OTP);
+          setTitle(type === "totp" ? "Google Authenticator" : AUTH_TITLE.SIGN_IN_WITH_OTP);
           return setAction(ACTION.SIGNIN_WITH_OTP);
         }
 
@@ -90,7 +95,7 @@ const Auth = (props) => {
           if (typeof message === "string" && message.includes("mandatory")) {
             setMandatoryChangePassword(true);
           }
-          setDescription(typeof message === "object" ? message?.message || String(message) : message);
+          setDescription(typeof message === "string" ? message : (message?.message || ""));
           setLoading(false);
           return;
         }
@@ -106,15 +111,20 @@ const Auth = (props) => {
           return;
         }
 
+        const safeFeedback =
+          typeof message === "string"
+            ? message
+            : (message?.message || "Invalid credentials or request failed.");
+
         if (status === 403) {
           setPassword(null);
           setLoading(false);
-          setFeedback(message);
+          setFeedback(safeFeedback);
           return setError(true);
         }
 
         setLoading(false);
-        return setFeedback(message);
+        return setFeedback(safeFeedback);
       }
 
       setLoading(false);
@@ -136,6 +146,9 @@ const Auth = (props) => {
         return console.log("Password doesn't match.");
       }
 
+      let form = new FormData();
+      form.append("password", password);
+      form.append("confirm_password", confirmPassword);
       newPassword(form, (status, message) => {
         if (!(status >= 200 && status < 300)) {
           if (status === 307) {
@@ -253,7 +266,7 @@ const Auth = (props) => {
           }}
         >
           {feedback !== null
-            ? (typeof feedback === "object" ? feedback?.message || String(feedback) : feedback)
+            ? (typeof feedback === "string" ? feedback : (feedback?.message || String(feedback)))
             : `Protect your account by keeping your credentials private. Never share
           them with anyone.`}
         </Typography>

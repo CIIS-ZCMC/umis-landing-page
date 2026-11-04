@@ -36,7 +36,11 @@ const ForgotPassword = ({ open, handleClose, setAction, children }) => {
         }
 
         setLoading(false);
-        return setFeedback(message);
+        const safeFeedback =
+          typeof message === "string"
+            ? message
+            : (message?.message || "Verification failed.");
+        return setFeedback(safeFeedback);
       }
 
       setIsPasswordExpired(false);
@@ -66,7 +70,7 @@ const ForgotPassword = ({ open, handleClose, setAction, children }) => {
         }}
       >
         {feedback !== null
-          ? (typeof feedback === "object" ? feedback?.message || String(feedback) : feedback)
+          ? (typeof feedback === "string" ? feedback : (feedback?.message || String(feedback)))
           : ` Please verify your email to continue. We will send you a code with
         instructions to create a new password.`}
       </Typography>

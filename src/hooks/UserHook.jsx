@@ -25,7 +25,14 @@ const useUserHook = create((set, get) => ({
       .post("/sign-in", form)
       .then((res) => validateStatusOk(res))
       .then((res) => {
-        const { data, message } = res;
+        const { data, message, token, clinic_token } = res;
+
+        if (clinic_token) {
+          localStorage.setItem("clinic_token", clinic_token);
+        }
+        if (token) {
+          localStorage.setItem("token", token);
+        }
 
         set(() => ({
           user: data,
@@ -34,14 +41,24 @@ const useUserHook = create((set, get) => ({
         }));
         callBack(200, message);
       })
-      .catch((err) => callBack(...handleFailedStatus(err)));
+      .catch((err) => {
+        const [status, message] = handleFailedStatus(err);
+        callBack(status, message, err.response?.data);
+      });
   },
   signInWithOTP: (form, callBack) => {
     umis
       .post("/sign-in-with-otp", form)
       .then((res) => validateStatusOk(res))
       .then((res) => {
-        const { data, message } = res;
+        const { data, message, token, clinic_token } = res;
+
+        if (clinic_token) {
+          localStorage.setItem("clinic_token", clinic_token);
+        }
+        if (token) {
+          localStorage.setItem("token", token);
+        }
 
         set(() => ({
           user: data,
@@ -50,7 +67,10 @@ const useUserHook = create((set, get) => ({
         }));
         callBack(200, message);
       })
-      .catch((err) => callBack(...handleFailedStatus(err)));
+      .catch((err) => {
+        const [status, message] = handleFailedStatus(err);
+        callBack(status, message, err.response?.data);
+      });
   },
   verifyEmailAndSendOTP: (form, callBack) => {
     umis
@@ -61,7 +81,10 @@ const useUserHook = create((set, get) => ({
 
         callBack(200, message);
       })
-      .catch((err) => callBack(...handleFailedStatus(err)));
+      .catch((err) => {
+        const [status, message] = handleFailedStatus(err);
+        callBack(status, message, err.response?.data);
+      });
   },
   newPassword: (form, callBack) => {
     umis
@@ -77,14 +100,21 @@ const useUserHook = create((set, get) => ({
         }));
         callBack(200, message);
       })
-      .catch((err) => callBack(...handleFailedStatus(err)));
+      .catch((err) => {
+        const [status, message] = handleFailedStatus(err);
+        callBack(status, message, err.response?.data);
+      });
   },
   reauthenticate: (callBack) => {
     umis
       .post("re-authenticate")
       .then((res) => validateStatusOk(res))
       .then((res) => {
-        const { data, message } = res;
+        const { data, message, clinic_token } = res;
+
+        if (clinic_token) {
+          localStorage.setItem("clinic_token", clinic_token);
+        }
 
         set(() => ({
           user: data,
@@ -93,7 +123,10 @@ const useUserHook = create((set, get) => ({
         }));
         callBack(200, message);
       })
-      .catch((err) => callBack(...handleFailedStatus(err)));
+      .catch((err) => {
+        const [status, message] = handleFailedStatus(err);
+        callBack(status, message, err.response?.data);
+      });
   },
   verifyOTP: (form, callBack) => {
     umis
@@ -103,7 +136,10 @@ const useUserHook = create((set, get) => ({
         const { user, message } = res;
         callBack(200, message);
       })
-      .catch((err) => callBack(...handleFailedStatus(err)));
+      .catch((err) => {
+        const [status, message] = handleFailedStatus(err);
+        callBack(status, message, err.response?.data);
+      });
   },
   skipForNow: (callBack) => {
     umis
@@ -120,7 +156,10 @@ const useUserHook = create((set, get) => ({
 
         callBack(200, message);
       })
-      .catch((err) => callBack(...handleFailedStatus(err)));
+      .catch((err) => {
+        const [status, message] = handleFailedStatus(err);
+        callBack(status, message, err.response?.data);
+      });
   },
   resendOTP: (callBack) => {
     umis
@@ -131,7 +170,10 @@ const useUserHook = create((set, get) => ({
 
         callBack(200, message);
       })
-      .catch((err) => callBack(...handleFailedStatus(err)));
+      .catch((err) => {
+        const [status, message] = handleFailedStatus(err);
+        callBack(status, message, err.response?.data);
+      });
   },
   redirect: () => {},
   signOut: (callBack) => {
@@ -141,10 +183,16 @@ const useUserHook = create((set, get) => ({
       .then((res) => {
         const { message } = res;
 
+        localStorage.removeItem("clinic_token");
+        localStorage.removeItem("token");
+
         set(() => ({ user: null }));
         callBack(200, message);
       })
-      .catch((err) => callBack(...handleFailedStatus(err)));
+      .catch((err) => {
+        const [status, message] = handleFailedStatus(err);
+        callBack(status, message, err.response?.data);
+      });
   },
 }));
 
