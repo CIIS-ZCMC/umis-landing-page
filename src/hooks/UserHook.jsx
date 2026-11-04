@@ -38,7 +38,10 @@ const useUserHook = create((set, get) => ({
         }));
         callBack(200, message);
       })
-      .catch((err) => callBack(...handleFailedStatus(err)));
+      .catch((err) => {
+        const [status, message] = handleFailedStatus(err);
+        callBack(status, message, err.response?.data);
+      });
   },
   signInWithOTP: (form, callBack) => {
     umis
@@ -61,7 +64,10 @@ const useUserHook = create((set, get) => ({
         }));
         callBack(200, message);
       })
-      .catch((err) => callBack(...handleFailedStatus(err)));
+      .catch((err) => {
+        const [status, message] = handleFailedStatus(err);
+        callBack(status, message, err.response?.data);
+      });
   },
   verifyEmailAndSendOTP: (form, callBack) => {
     umis
@@ -72,7 +78,10 @@ const useUserHook = create((set, get) => ({
 
         callBack(200, message);
       })
-      .catch((err) => callBack(...handleFailedStatus(err)));
+      .catch((err) => {
+        const [status, message] = handleFailedStatus(err);
+        callBack(status, message, err.response?.data);
+      });
   },
   newPassword: (form, callBack) => {
     umis
@@ -88,7 +97,10 @@ const useUserHook = create((set, get) => ({
         }));
         callBack(200, message);
       })
-      .catch((err) => callBack(...handleFailedStatus(err)));
+      .catch((err) => {
+        const [status, message] = handleFailedStatus(err);
+        callBack(status, message, err.response?.data);
+      });
   },
   reauthenticate: (callBack) => {
     umis
@@ -108,7 +120,10 @@ const useUserHook = create((set, get) => ({
         }));
         callBack(200, message);
       })
-      .catch((err) => callBack(...handleFailedStatus(err)));
+      .catch((err) => {
+        const [status, message] = handleFailedStatus(err);
+        callBack(status, message, err.response?.data);
+      });
   },
   verifyOTP: (form, callBack) => {
     umis
@@ -118,7 +133,10 @@ const useUserHook = create((set, get) => ({
         const { user, message } = res;
         callBack(200, message);
       })
-      .catch((err) => callBack(...handleFailedStatus(err)));
+      .catch((err) => {
+        const [status, message] = handleFailedStatus(err);
+        callBack(status, message, err.response?.data);
+      });
   },
   skipForNow: (callBack) => {
     umis
@@ -135,7 +153,10 @@ const useUserHook = create((set, get) => ({
 
         callBack(200, message);
       })
-      .catch((err) => callBack(...handleFailedStatus(err)));
+      .catch((err) => {
+        const [status, message] = handleFailedStatus(err);
+        callBack(status, message, err.response?.data);
+      });
   },
   resendOTP: (callBack) => {
     umis
@@ -146,7 +167,10 @@ const useUserHook = create((set, get) => ({
 
         callBack(200, message);
       })
-      .catch((err) => callBack(...handleFailedStatus(err)));
+      .catch((err) => {
+        const [status, message] = handleFailedStatus(err);
+        callBack(status, message, err.response?.data);
+      });
   },
   redirect: () => {},
   signOut: (callBack) => {
@@ -162,7 +186,10 @@ const useUserHook = create((set, get) => ({
         set(() => ({ user: null }));
         callBack(200, message);
       })
-      .catch((err) => callBack(...handleFailedStatus(err)));
+      .catch((err) => {
+        const [status, message] = handleFailedStatus(err);
+        callBack(status, message, err.response?.data);
+      });
   },
 }));
 

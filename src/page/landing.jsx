@@ -9,6 +9,8 @@ import Header from "../components/Header/Header";
 import Agency from "../components/Agency/Agency";
 import News from "../components/News/News";
 import Auth from "../components/Auth/Auth";
+import UniversalSearchModal from "../components/UniversalSearch/UniversalSearchModal";
+import PullBookmark from "../components/UniversalSearch/PullBookmark";
 import { useState } from "react";
 
 const Landing = () => {
@@ -31,6 +33,8 @@ const Landing = () => {
       <Contact />
       <Agency />
       <GovComponent />
+      <PullBookmark />
+      <UniversalSearchModal />
       <Auth open={open} setOpen={setOpen} handleClose={handleClose} />
     </>
   );

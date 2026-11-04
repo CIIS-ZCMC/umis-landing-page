@@ -46,13 +46,16 @@ const Login = () => {
       form.append("persist_password", 1);
     }
 
-    signIn(form, (status, message) => {
+    signIn(form, (status, message, data) => {
       if (!(status >= 200 && status < 300)) {
         if (status === 302) {
+          sessionStorage.setItem("pending_employee_id", employeeID);
+          const type = data?.two_factor_type || (typeof message === "string" && message.includes("Google Authenticator") ? "totp" : "email");
+          sessionStorage.setItem("pending_2fa_type", type);
           setEmployeeID(null);
           setPassword(null);
           setLoading(false);
-          return navigate(`/${ACTION_SIGNIN_OTP}`);
+          return navigate(`/${ACTION_SIGNIN_OTP}`, { state: { twoFactorType: type } });
         }
 
         if (status === 307) {
@@ -90,6 +93,9 @@ const Login = () => {
         return console.log("Password doesn't match.");
       }
 
+      let form = new FormData();
+      form.append("password", password);
+      form.append("confirm_password", confirmPassword);
       newPassword(form, (status, message) => {
         if (!(status >= 200 && status < 300)) {
           if (status === 307) {
