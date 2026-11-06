@@ -1,26 +1,25 @@
 /* ==========================================================================
-   Header Hero Fullscreen Video Background + Foreground Carousel
+   ZCMC Premier Hospital Hero Section
+   Modern Institutional UI/UX: Asymmetrical Fullscreen Video + Highlights
    ========================================================================== */
 
-.header-hero-fullscreen {
+/* 1. Viewport Hero Container */
+.hero-fullscreen-viewport {
   position: relative;
   width: 100vw;
-  height: 100vh;
-  min-height: 600px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   overflow: hidden;
   background-color: #0A3E30;
-  padding-top: 80px; /* Offset fixed header */
-  padding-bottom: 50px;
+  padding-top: 88px; /* Offset the 80px fixed header */
   box-sizing: border-box;
   z-index: 7;
 }
 
-/* 1. Edge-to-Edge Background Video Layer */
-.hero-video-bg-layer {
+/* 2. Edge-to-Edge Background Video Layer */
+.hero-video-backdrop {
   position: absolute;
   top: 0;
   left: 0;
@@ -31,7 +30,7 @@
   z-index: 1;
 }
 
-.hero-video-bg-element {
+.hero-video-backdrop video {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -41,196 +40,526 @@
   transform: translate(-50%, -50%);
 }
 
-/* Semi-transparent Dark Green Gradient + Vignette Overlay */
-.hero-video-bg-overlay {
+/* Cinematic Dual-Gradient: Deep emerald on the left for text contrast, translucent on right for video */
+.hero-video-gradient-overlay {
   position: absolute;
   inset: 0;
   background:
     linear-gradient(
-      180deg,
-      rgba(10, 62, 48, 0.40) 0%,
-      rgba(10, 62, 48, 0.60) 50%,
-      rgba(10, 62, 48, 0.90) 100%
+      90deg,
+      rgba(10, 62, 48, 0.94) 0%,
+      rgba(10, 62, 48, 0.82) 42%,
+      rgba(10, 62, 48, 0.45) 75%,
+      rgba(10, 62, 48, 0.35) 100%
     ),
-    radial-gradient(
-      circle at center,
-      transparent 35%,
-      rgba(0, 0, 0, 0.45) 100%
+    linear-gradient(
+      180deg,
+      rgba(10, 62, 48, 0.50) 0%,
+      transparent 30%,
+      rgba(10, 62, 48, 0.85) 90%,
+      #0A3E30 100%
     );
   z-index: 2;
+  pointer-events: none;
 }
 
-/* 2. Foreground Container: Carousel Floating over the Video */
-.hero-foreground-content {
+/* 3. Hero Main Two-Column Grid */
+.hero-split-grid {
   position: relative;
   z-index: 10;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 1100px;
-  padding: 0 20px;
-  box-sizing: border-box;
-}
-
-.slideshow-container-hero {
-  border-radius: var(--value-16px, 16px);
-  overflow: hidden;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.18);
-  transition: transform 0.3s ease;
-}
-
-.slideshow-container-hero:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.6), 0 0 0 1.5px rgba(255, 255, 255, 0.25);
-}
-
-/* Glassmorphic Carousel Wrapper */
-.slideshow-bg-hero {
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-  background: rgba(15, 87, 33, 0.40);
-  border-radius: var(--value-16px, 16px);
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-}
-
-/* Make sure prev/next buttons on carousel are clearly clickable */
-.slideshow-bg-hero .prev,
-.slideshow-bg-hero .next {
-  background-color: rgba(10, 62, 48, 0.7);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #ffffff;
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
-  transition: all 0.25s ease;
-}
-
-.slideshow-bg-hero .prev:hover,
-.slideshow-bg-hero .next:hover {
-  background-color: #0f5721;
-  border-color: rgba(255, 255, 255, 0.7);
-  transform: scale(1.08);
-}
-
-/* 3. Floating Bottom Info & Controls Bar */
-.hero-floating-footer {
-  position: absolute;
-  bottom: 18px;
-  left: 0;
-  width: 100%;
-  display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 32px;
+  gap: 48px;
+  width: 100%;
+  max-width: 1320px;
+  margin: auto;
+  padding: 20px 32px 30px;
   box-sizing: border-box;
-  z-index: 15;
+  flex: 1;
 }
 
-.hero-video-badge {
-  background: rgba(10, 62, 48, 0.85);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #f3f4f6;
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
+/* Left Column: Authoritative Editorial Typography & CTAs */
+.hero-left-editorial {
+  flex: 1.15;
+  max-width: 660px;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #ffffff;
+}
+
+.hero-tag-pill {
+  display: inline-flex;
   align-items: center;
   gap: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  user-select: none;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #a7f3d0;
+  padding: 6px 14px;
+  border-radius: 24px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
 
-.hero-video-badge-dot {
+.hero-pill-pulsar {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 8px #22c55e;
-  animation: liveDotPulse 2s infinite;
+  background: #34d399;
+  box-shadow: 0 0 10px #34d399;
+  animation: pulsar 2s infinite ease-in-out;
 }
 
-@keyframes liveDotPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.85); }
+@keyframes pulsar {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(0.8); opacity: 0.5; }
 }
 
-.hero-video-controls {
+.hero-main-title {
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0 0 16px 0;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.hero-gradient-text {
+  background: linear-gradient(135deg, #a7f3d0 0%, #6ee7b7 50%, #fef08a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.hero-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e2e8f0;
+  margin: 0 0 28px 0;
+  font-weight: 400;
+  max-width: 580px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Dual Call-to-Action Group */
+.hero-cta-group {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 14px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
 }
 
-.video-control-btn {
-  background: rgba(10, 62, 48, 0.85);
-  backdrop-filter: blur(10px);
+.hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #15803d 0%, #166534 100%);
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
+  padding: 13px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 24px rgba(21, 128, 61, 0.45);
+  text-decoration: none;
+}
+
+.hero-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(21, 128, 61, 0.6);
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 12px;
+  padding: 13px 22px;
+  font-size: 14px;
   font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.hero-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.55);
+  transform: translateY(-2px);
+}
+
+.hero-emergency-strip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12.5px;
+  color: #cbd5e1;
+  background: rgba(10, 62, 48, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+.hero-emergency-strip strong {
+  color: #fef08a;
+}
+
+/* 4. Right Column: Floating Highlights Carousel Card */
+.hero-right-showcase {
+  flex: 0.95;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 500px;
+  width: 100%;
+}
+
+.hero-highlights-card {
+  width: 100%;
+  background: rgba(10, 62, 48, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-highlights-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 32px 65px rgba(0, 0, 0, 0.55), 0 0 0 1.5px rgba(255, 255, 255, 0.3);
+}
+
+.card-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  background: rgba(15, 87, 33, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.card-header-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+}
+
+.card-counter {
+  font-size: 11px;
+  font-weight: 700;
+  color: #a7f3d0;
+  background: rgba(10, 62, 48, 0.8);
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(167, 243, 208, 0.3);
+}
+
+/* Card Visual Slide Container */
+.card-media-viewport {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background: #022c22;
+}
+
+.card-slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-out;
+}
+
+.card-arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(10, 62, 48, 0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+
+.card-arrow-btn:hover {
+  background: #15803d;
+  transform: translateY(-50%) scale(1.1);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.card-arrow-btn.prev {
+  left: 12px;
+}
+
+.card-arrow-btn.next {
+  right: 12px;
+}
+
+/* Card Footer Caption & Dot Navigation */
+.card-footer-info {
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(10, 62, 48, 0.5);
+}
+
+.card-slide-caption {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-slide-subcaption {
+  font-size: 11.5px;
+  color: #cbd5e1;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.card-pagination-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card-dots-cluster {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.card-dot-indicator {
+  width: 20px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.card-dot-indicator.active {
+  width: 32px;
+  background: #34d399;
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.6);
+}
+
+/* 5. Bottom Navigation Ribbon & Controls Bar */
+.hero-bottom-ribbon-bar {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(10, 62, 48, 0.8) 0%, rgba(7, 43, 33, 0.96) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 12px 32px;
+  box-sizing: border-box;
+}
+
+.hero-bottom-ribbon-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  gap: 24px;
+}
+
+/* Quick Services Quick-links in Ribbon */
+.hero-quick-shortcuts {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.hero-quick-shortcuts::-webkit-scrollbar {
+  display: none;
+}
+
+.shortcut-item-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid transparent;
+}
+
+.shortcut-item-link:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.shortcut-icon {
+  font-size: 15px;
+}
+
+/* Right-aligned Video Controls in Ribbon */
+.hero-ribbon-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.hero-video-pill-info {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  user-select: none;
+}
+
+.hero-ctrl-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 700;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   transition: all 0.2s ease;
-  user-select: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-.video-control-btn:hover {
-  background: rgba(15, 87, 33, 0.95);
-  border-color: rgba(255, 255, 255, 0.7);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+.hero-ctrl-btn:hover {
+  background: #15803d;
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
 }
 
-/* 4. Accessibility & Mobile Responsiveness */
-@media (prefers-reduced-motion: reduce) {
-  .hero-video-bg-element {
-    display: none;
+/* 6. Mobile & Tablet Responsiveness */
+@media (max-width: 1080px) {
+  .hero-main-title {
+    font-size: 38px;
+  }
+  .hero-split-grid {
+    gap: 32px;
+  }
+  .card-media-viewport {
+    height: 220px;
   }
 }
 
-@media (max-width: 900px) {
-  .header-hero-fullscreen {
+@media (max-width: 860px) {
+  .hero-fullscreen-viewport {
     height: auto;
     min-height: 100vh;
-    padding-top: 100px;
-    padding-bottom: 70px;
+    padding-top: 90px;
   }
-  .hero-floating-footer {
-    padding: 0 16px;
-    bottom: 12px;
+  .hero-split-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+    padding: 16px 20px 24px;
   }
-  .hero-video-badge {
-    font-size: 11px;
-    padding: 4px 10px;
+  .hero-left-editorial {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
   }
-  .video-control-btn {
-    padding: 4px 10px;
-    font-size: 11px;
+  .hero-main-title {
+    font-size: 32px;
+  }
+  .hero-description {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  .hero-cta-group {
+    justify-content: center;
+  }
+  .hero-right-showcase {
+    max-width: 100%;
+    align-items: center;
+  }
+  .hero-bottom-ribbon-content {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  .hero-quick-shortcuts {
+    width: 100%;
+    justify-content: center;
   }
 }
 
-@media (max-width: 600px) {
-  .hero-floating-footer {
+@media (max-width: 480px) {
+  .hero-main-title {
+    font-size: 26px;
+  }
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+  .card-media-viewport {
+    height: 180px;
+  }
+  .hero-emergency-strip {
     flex-direction: column;
-    gap: 8px;
-    align-items: center;
-    position: relative;
-    bottom: auto;
-    margin-top: 16px;
-    padding: 0;
+    text-align: center;
+    gap: 4px;
   }
 }
