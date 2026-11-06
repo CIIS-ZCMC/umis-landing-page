@@ -42,8 +42,7 @@ const ProtectedRoutes = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const checkAuthentication = async () => {
-    const redirect = "/";
-    reauthenticate((status, message) => {
+    reauthenticate((status) => {
       setLoading(false);
       if (status === 200) {
         setIsAuthenticated(true);
