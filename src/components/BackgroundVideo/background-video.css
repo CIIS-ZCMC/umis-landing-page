@@ -15,6 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
 }
 
 .hero-video-element {
@@ -29,15 +30,15 @@
   z-index: 1;
 }
 
-/* Semi-transparent dark green gradient overlay for text readability */
+/* Semi-transparent dark green gradient overlay for text and brand readability */
 .hero-video-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(10, 62, 48, 0.45) 0%,
-    rgba(10, 62, 48, 0.75) 70%,
-    rgba(10, 62, 48, 0.95) 100%
+    rgba(10, 62, 48, 0.35) 0%,
+    rgba(10, 62, 48, 0.65) 60%,
+    rgba(10, 62, 48, 0.90) 100%
   );
   z-index: 2;
   pointer-events: none;
@@ -50,12 +51,47 @@
   inset: 0;
   background: radial-gradient(
     circle at center,
-    transparent 40%,
-    rgba(0, 0, 0, 0.4) 100%
+    transparent 45%,
+    rgba(0, 0, 0, 0.45) 100%
   );
 }
 
-/* Content placed on top of video */
+/* Top Hero Badge */
+.hero-video-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 4;
+  background: rgba(10, 62, 48, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #f3f4f6;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hero-video-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  animation: pulseDot 2s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* Hero Center Content Layer */
 .hero-video-content {
   position: relative;
   z-index: 3;
@@ -63,27 +99,50 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 24px;
+  justify-content: flex-end;
+  padding: 32px;
   color: #ffffff;
 }
 
+.hero-video-heading {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0 0 8px 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+}
+
+.hero-video-subheading {
+  font-size: 15px;
+  font-weight: 500;
+  color: #e5e7eb;
+  margin: 0 0 16px 0;
+  max-width: 600px;
+  line-height: 1.45;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
 /* --------------------------------------------------------------------------
-   2. Play / Pause Control Button
+   2. Floating Bottom Controls (Play/Pause, Sound)
    -------------------------------------------------------------------------- */
-.video-control-btn {
+.hero-video-controls {
   position: absolute;
-  bottom: 16px;
-  right: 16px;
+  bottom: 20px;
+  right: 20px;
   z-index: 4;
-  background: rgba(10, 62, 48, 0.7);
-  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.video-control-btn {
+  background: rgba(10, 62, 48, 0.85);
+  backdrop-filter: blur(10px);
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
-  padding: 6px 12px;
-  font-size: 11px;
+  padding: 6px 14px;
+  font-size: 12px;
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
@@ -91,16 +150,60 @@
   gap: 6px;
   transition: all 0.2s ease;
   user-select: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .video-control-btn:hover {
-  background: rgba(15, 87, 33, 0.9);
-  border-color: rgba(255, 255, 255, 0.6);
-  transform: translateY(-1px);
+  background: rgba(15, 87, 33, 0.95);
+  border-color: rgba(255, 255, 255, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
 }
 
 /* --------------------------------------------------------------------------
-   3. Full-Page Ambient Video Background (Alternative Option)
+   3. View Switcher Tabs (Video Tour vs Photos Gallery)
+   -------------------------------------------------------------------------- */
+.hero-view-switcher {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 4;
+  display: flex;
+  background: rgba(10, 62, 48, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 24px;
+  padding: 3px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hero-switcher-tab {
+  background: transparent;
+  border: none;
+  color: #d1d5db;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.hero-switcher-tab.active {
+  background: #0f5721;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.hero-switcher-tab:hover:not(.active) {
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   4. Full-Page Ambient Video Background
    -------------------------------------------------------------------------- */
 .ambient-video-background {
   position: fixed;
@@ -127,7 +230,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   4. Accessibility & Mobile Responsiveness
+   5. Accessibility & Mobile Responsiveness
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   .hero-video-element,
@@ -140,16 +243,44 @@
   .hero-video-container {
     height: 380px;
   }
+  .hero-video-heading {
+    font-size: 24px;
+  }
+  .hero-video-subheading {
+    font-size: 13px;
+  }
+  .hero-video-badge {
+    top: 12px;
+    left: 12px;
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+  .hero-view-switcher {
+    top: 12px;
+    right: 12px;
+  }
+  .hero-video-controls {
+    bottom: 12px;
+    right: 12px;
+  }
   .video-control-btn {
-    bottom: 10px;
-    right: 10px;
-    padding: 4px 8px;
-    font-size: 10px;
+    padding: 4px 10px;
+    font-size: 11px;
   }
 }
 
 @media (max-width: 480px) {
   .hero-video-container {
-    height: 280px;
+    height: 300px;
+  }
+  .hero-video-content {
+    padding: 16px;
+  }
+  .hero-video-heading {
+    font-size: 20px;
+  }
+  .hero-video-subheading {
+    font-size: 12px;
+    margin-bottom: 8px;
   }
 }

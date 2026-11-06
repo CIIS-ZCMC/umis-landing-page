@@ -1,27 +1,35 @@
 import { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import "./background-video.css";
+import fallbackPoster from "../../assets/slideshow/hero.png";
 
 /**
  * BackgroundVideo Component
  *
- * Supports both Hero Section background video and Full-Page Ambient video.
- * Adheres to browser autoplay policies (muted, playsInline) and pauses
- * automatically when the browser tab is hidden to save power/CPU.
+ * Designed for ZCMC Landing Page video showcases (such as Tower 1).
+ * Features:
+ * - Autoplay compliance (starts muted so browsers never block it)
+ * - Sound toggle (unmute / mute on click)
+ * - Play / Pause toggle
+ * - Tab visibility listener (pauses playback when user switches tabs to save battery/CPU)
+ * - Graceful fallback poster if video is loading or unsupported
  */
 const BackgroundVideo = ({
-  src = "/videos/landing-bg.mp4",
-  webmSrc = "/videos/landing-bg.webm",
-  poster = "/videos/landing-bg-poster.jpg",
+  mp4Src = "/videos/short-tower-1.mp4",
+  movSrc = "/videos/short-tower-1.mov",
+  poster = fallbackPoster,
   mode = "hero", // 'hero' | 'ambient'
   showControls = true,
+  badgeText = "🏢 ZCMC Tower 1 Showcase",
   children,
 }) => {
   const videoRef = useRef(null);
+  const containerRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
   const [hasError, setHasError] = useState(false);
 
-  // Pause playback when tab is hidden, resume when visible
+  // Tab visibility: pause on hidden, resume on active
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -30,9 +38,7 @@ const BackgroundVideo = ({
       if (document.hidden) {
         video.pause();
       } else if (isPlaying) {
-        video.play().catch(() => {
-          // Autoplay policy fallback
-        });
+        video.play().catch(() => {});
       }
     };
 
@@ -54,8 +60,15 @@ const BackgroundVideo = ({
     }
   };
 
+  const toggleMute = () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = !video.muted;
+    setIsMuted(video.muted);
+  };
+
   const handleVideoError = () => {
-    // If video file is not yet available, suppress crash and allow graceful poster/fallback
     setHasError(true);
   };
 
@@ -76,8 +89,8 @@ const BackgroundVideo = ({
           onError={handleVideoError}
           aria-hidden="true"
         >
-          {webmSrc && <source src={webmSrc} type="video/webm" />}
-          <source src={src} type="video/mp4" />
+          <source src={mp4Src} type="video/mp4" />
+          <source src={movSrc} type="video/quicktime" />
         </video>
         <div className="ambient-video-overlay" aria-hidden="true" />
       </>
@@ -86,7 +99,7 @@ const BackgroundVideo = ({
 
   // 2. Hero Section Mode
   return (
-    <div className="hero-video-container">
+    <div className="hero-video-container" ref={containerRef}>
       {!hasError && (
         <video
           ref={videoRef}
@@ -98,42 +111,64 @@ const BackgroundVideo = ({
           preload="auto"
           poster={poster}
           onError={handleVideoError}
-          aria-hidden="true"
+          aria-label="ZCMC Tower 1 Video"
         >
-          {webmSrc && <source src={webmSrc} type="video/webm" />}
-          <source src={src} type="video/mp4" />
+          <source src={mp4Src} type="video/mp4" />
+          <source src={movSrc} type="video/quicktime" />
         </video>
       )}
 
-      {/* Dark gradient overlay for typography readability */}
+      {/* Dark gradient overlay for branding and typography contrast */}
       <div className="hero-video-overlay" aria-hidden="true" />
+
+      {/* Top Left Badge */}
+      {badgeText && (
+        <div className="hero-video-badge" role="status">
+          <span className="hero-video-badge-dot" />
+          <span>{badgeText}</span>
+        </div>
+      )}
 
       {/* Hero content layer */}
       {children && <div className="hero-video-content">{children}</div>}
 
-      {/* Optional play/pause toggle button */}
+      {/* Bottom Right Media Controls (Play/Pause & Sound) */}
       {showControls && !hasError && (
-        <button
-          type="button"
-          className="video-control-btn"
-          onClick={togglePlay}
-          aria-label={isPlaying ? "Pause background video" : "Play background video"}
-          title={isPlaying ? "Pause video" : "Play video"}
-        >
-          <span>{isPlaying ? "❚❚" : "▶"}</span>
-          <span>{isPlaying ? "Pause" : "Play"}</span>
-        </button>
+        <div className="hero-video-controls">
+          <button
+            type="button"
+            className="video-control-btn"
+            onClick={togglePlay}
+            aria-label={isPlaying ? "Pause video" : "Play video"}
+            title={isPlaying ? "Pause video" : "Play video"}
+          >
+            <span>{isPlaying ? "❚❚" : "▶"}</span>
+            <span>{isPlaying ? "Pause" : "Play"}</span>
+          </button>
+
+          <button
+            type="button"
+            className="video-control-btn"
+            onClick={toggleMute}
+            aria-label={isMuted ? "Unmute audio" : "Mute audio"}
+            title={isMuted ? "Unmute sound" : "Mute sound"}
+          >
+            <span>{isMuted ? "🔇" : "🔊"}</span>
+            <span>{isMuted ? "Unmute" : "Muted"}</span>
+          </button>
+        </div>
       )}
     </div>
   );
 };
 
 BackgroundVideo.propTypes = {
-  src: PropTypes.string,
-  webmSrc: PropTypes.string,
+  mp4Src: PropTypes.string,
+  movSrc: PropTypes.string,
   poster: PropTypes.string,
   mode: PropTypes.oneOf(["hero", "ambient"]),
   showControls: PropTypes.bool,
+  badgeText: PropTypes.string,
   children: PropTypes.node,
 };
 
