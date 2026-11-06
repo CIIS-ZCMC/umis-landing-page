@@ -9,7 +9,7 @@
  *   - 'christmas' : 🎄 Festive Christmas theme (Snow, Lights, Santa, Santa Hat)
  *   - 'none'      : Standard default landing page (no seasonal overlays)
  */
-export const ACTIVE_THEME = "nightmare"; // Options: 'nightmare' | 'halloween' | 'christmas' | 'none'
+export const ACTIVE_THEME = "christmas"; // Options: 'nightmare' | 'halloween' | 'christmas' | 'none'
 
 // Backward compatibility & theme active helpers
 export const ENABLE_NIGHTMARE_THEME = ACTIVE_THEME === "nightmare";
