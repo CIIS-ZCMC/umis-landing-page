@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import "./background-video.css";
-import fallbackPoster from "../../assets/slideshow/hero.png";
+import fallbackPoster from "../../assets/slideshow/tower-1-poster.jpg";
 
 /**
  * BackgroundVideo Component

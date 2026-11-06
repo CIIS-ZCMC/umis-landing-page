@@ -11,7 +11,7 @@
   height: 520px;
   overflow: hidden;
   border-radius: var(--value-12px, 12px);
-  background-color: #0A3E30;
+  background: #0A3E30 url("/videos/tower-1-poster.jpg") center center / cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;

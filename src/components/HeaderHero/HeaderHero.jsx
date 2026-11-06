@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import heroImage1 from "../../assets/slideshow/hero.png";
 import heroImage2 from "../../assets/slideshow/hero-bg.png";
 import heroImage3 from "../../assets/slideshow/lp-bg.jpg";
+import tower1Poster from "../../assets/slideshow/tower-1-poster.jpg";
 import useUniversalSearchHook from "../../hooks/UniversalSearchHook";
 import "./header-hero-video.css";
 
@@ -106,7 +107,7 @@ const HeaderHero = () => {
           muted
           playsInline
           preload="auto"
-          poster={heroImage1}
+          poster={tower1Poster}
         >
           <source src="/videos/short-tower-1.mp4" type="video/mp4" />
           <source src="/videos/short-tower-1.mov" type="video/quicktime" />

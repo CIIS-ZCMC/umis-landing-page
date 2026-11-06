@@ -28,6 +28,7 @@
   overflow: hidden;
   pointer-events: none;
   z-index: 1;
+  background: #0A3E30 url("/videos/tower-1-poster.jpg") center center / cover no-repeat;
 }
 
 .hero-video-backdrop video {
