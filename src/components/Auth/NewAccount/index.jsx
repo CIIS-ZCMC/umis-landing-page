@@ -141,7 +141,7 @@ const NewAccount = ({ open, handleClose, action, setAction, children }) => {
         }}
       >
         {error
-          ? errorMessage
+          ? (typeof errorMessage === "object" ? errorMessage?.message || String(errorMessage) : errorMessage)
           : `New users are required to create a strong password for first login
             attempt. Do not reuse your temporary password or other sequential
             details like “12345”.`}

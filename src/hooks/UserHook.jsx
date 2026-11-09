@@ -8,12 +8,15 @@ const useUserHook = create((set, get) => ({
   redcap: [],
   retrieveAdminAccess: (code) => {
     const systems = get().systems;
+    if (!Array.isArray(systems)) return null;
     const adminAccess = systems.find((sys) => sys.code === code);
 
     return adminAccess?.url ?? null;
   },
   retrieveRedcapAccess: (code) => {
-    const redcapForm = get().redcap?.find((form) => form.code === code);
+    const redcap = get().redcap;
+    if (!Array.isArray(redcap)) return null;
+    const redcapForm = redcap.find((form) => form.code === code);
 
     return redcapForm?.link ?? null;
   },
@@ -33,8 +36,8 @@ const useUserHook = create((set, get) => ({
 
         set(() => ({
           user: data,
-          systems: data.side_bar_details.system,
-          redcap: data.redcap_forms,
+          systems: data?.side_bar_details?.system ?? [],
+          redcap: data?.redcap_forms ?? [],
         }));
         callBack(200, message);
       })
@@ -59,8 +62,8 @@ const useUserHook = create((set, get) => ({
 
         set(() => ({
           user: data,
-          systems: data.side_bar_details.system,
-          redcap: data.redcap_forms,
+          systems: data?.side_bar_details?.system ?? [],
+          redcap: data?.redcap_forms ?? [],
         }));
         callBack(200, message);
       })
@@ -92,8 +95,8 @@ const useUserHook = create((set, get) => ({
 
         set(() => ({
           user: data,
-          systems: data.side_bar_details.system,
-          redcap: data.redcap_forms,
+          systems: data?.side_bar_details?.system ?? [],
+          redcap: data?.redcap_forms ?? [],
         }));
         callBack(200, message);
       })
@@ -115,8 +118,8 @@ const useUserHook = create((set, get) => ({
 
         set(() => ({
           user: data,
-          systems: data.side_bar_details.system,
-          redcap: data.redcap_forms,
+          systems: data?.side_bar_details?.system ?? [],
+          redcap: data?.redcap_forms ?? [],
         }));
         callBack(200, message);
       })
@@ -147,8 +150,8 @@ const useUserHook = create((set, get) => ({
 
         set(() => ({
           user: user,
-          systems: user.side_bar_details.system,
-          redcap: user.redcap_forms,
+          systems: user?.side_bar_details?.system ?? [],
+          redcap: user?.redcap_forms ?? [],
         }));
 
         callBack(200, message);

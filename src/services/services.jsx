@@ -1,7 +1,7 @@
 import axios from "axios";
 import { decryptApiResponse } from "../utils/PayloadSecurity";
 
-export const ENV = "staging";
+export const ENV = "production";
 
 const BASE_URL = {
   production: "https://umis.zcmc.online/api/",

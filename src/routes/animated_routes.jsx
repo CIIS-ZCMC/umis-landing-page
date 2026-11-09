@@ -42,21 +42,20 @@ const ProtectedRoutes = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const checkAuthentication = async () => {
-    const redirect = "/";
-    reauthenticate((status, message) => {
+    reauthenticate((status) => {
       setLoading(false);
       if (status === 200) {
         setIsAuthenticated(true);
         if (location.state) {
           return navigate(
-            location.pathname.includes("login") ? redirect : location.pathname,
+            location.pathname.includes("login") ? "/" : location.pathname,
             { state: location.state }
           );
         }
 
         return setTimeout(() => {
           navigate(
-            location.pathname.includes("login") ? redirect : location.pathname
+            location.pathname.includes("login") ? "/" : location.pathname
           );
         }, 500);
       }

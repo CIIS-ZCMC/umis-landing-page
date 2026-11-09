@@ -275,8 +275,8 @@ const OTPVerification = () => {
           {isTotp
             ? "Two-Factor Authentication"
             : is2fa
-            ? "Two-Factor Authentication (Email)"
-            : "Verify One-time Pin"}
+              ? "Two-Factor Authentication (Email)"
+              : "Verify One-time Pin"}
         </Typography>
 
         {/* SUBTITLE */}

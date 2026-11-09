@@ -7,124 +7,38 @@ import useAnnouncementHook from "../../hooks/AnnouncementHook.jsx";
 import axios from "axios";
 import useMemorandumHook from "../../hooks/MemorandumHook.jsx";
 
-const MemoAnnouncement = ({}) => {
-  const { announcements, getAnnouncement } = useAnnouncementHook();
-  const { memorandums, getMemorandum } = useMemorandumHook();
-
-  const announcementContent = [
-    {
-      title: "Sample Announcement No. 61",
-      date: "August 10, 2023",
-      time: "10:01 am",
-      link: "",
-    },
-    {
-      title: "Sample Announcement No. 62",
-      date: "August 11, 2023",
-      time: "10:02 am",
-      link: "",
-    },
-    {
-      title: "Sample Announcement No. 63",
-      date: "August 12, 2023",
-      time: "10:03 am",
-      link: "",
-    },
-    {
-      title: "Sample Announcement No. 64",
-      date: "August 13, 2023",
-      time: "10:04 am",
-      link: "",
-    },
-    {
-      title: "Sample Announcement No. 65",
-      date: "August 14, 2023",
-      time: "10:05 am",
-      link: "",
-    },
-    {
-      title: "Sample Announcement No. 61",
-      date: "August 15, 2023",
-      time: "10:06 am",
-      link: "",
-    },
-    {
-      title: "Sample Announcement No. 62",
-      date: "August 16, 2023",
-      time: "10:07 am",
-      link: "",
-    },
-    {
-      title: "Sample Announcement No. 63",
-      date: "August 17, 2023",
-      time: "10:08 am",
-      link: "",
-    },
-    {
-      title: "Sample Announcement No. 64",
-      date: "August 18, 2023",
-      time: "10:09 am",
-      link: "",
-    },
-    {
-      title: "Sample Announcement No. 65",
-      date: "August 19, 2023",
-      time: "10:10 am",
-      link: "",
-    },
-  ];
-
-  const memorandumContent = [
-    {
-      title: "Sample Memorandum No. 66",
-      date: "August 10, 2023",
-      time: "10:01 am",
-      link: "",
-    },
-    {
-      title: "Sample Memorandum No. 67",
-      date: "August 11, 2023",
-      time: "10:02 am",
-      link: "",
-    },
-    {
-      title: "Sample Memorandum No. 68",
-      date: "August 12, 2023",
-      time: "10:03 am",
-      link: "",
-    },
-    {
-      title: "Sample Memorandum No. 69",
-      date: "August 13, 2023",
-      time: "10:04 am",
-      link: "",
-    },
-    {
-      title: "Sample Memorandum No. 70",
-      date: "August 14, 2023",
-      time: "10:05 am",
-      link: "",
-    },
-  ];
-
-  const [selected, setSelected] = useState("announcement");
-
-  const handleClick = (option) => {
-    setSelected(option);
-  };
+const MemoAnnouncement = () => {
+  const { announcements = [], getAnnouncement } = useAnnouncementHook();
+  const { memorandums = [], getMemorandum } = useMemorandumHook();
 
   useEffect(() => {
     const cancelToken = axios.CancelToken.source();
 
-    if (announcements.length === 0) {
+    if (
+      Array.isArray(announcements) &&
+      announcements.length === 0 &&
+      typeof getAnnouncement === "function"
+    ) {
       getAnnouncement((status, feedback) => {
         if (!(status >= 200 && status < 300)) {
-          return console.log(feedback);
+          console.log(feedback);
         }
       });
     }
 
-    return cancelToken.cancel();
+    if (
+      Array.isArray(memorandums) &&
+      memorandums.length === 0 &&
+      typeof getMemorandum === "function"
+    ) {
+      getMemorandum((status, feedback) => {
+        if (!(status >= 200 && status < 300)) {
+          console.log(feedback);
+        }
+      });
+    }
+
+    return () => cancelToken.cancel();
   }, []);
 
   return (
@@ -149,8 +63,8 @@ const MemoAnnouncement = ({}) => {
         <div className="memo-announcement">
           <div className="memo-announcement-sm">
             <SegmentedButtonMemo
-              announcements={announcements}
-              memorandums={memorandums}
+              announcements={Array.isArray(announcements) ? announcements : []}
+              memorandums={Array.isArray(memorandums) ? memorandums : []}
             />
           </div>
         </div>

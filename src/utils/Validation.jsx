@@ -27,9 +27,15 @@ export function validateStatusOk(res) {
  * ex. Login Component Page, Sign up Component Page
  *
  * @param {Exception} err
+ * @param {number} parametersCount
  * @returns {object}
  */
 export function handleFailedStatus(err, parametersCount = 2) {
+  if (!err) {
+    const fallback = "An unexpected error occurred.";
+    return parametersCount === 3 ? [500, fallback, null] : [500, fallback];
+  }
+
   const status = err?.response?.status || 500;
   let message = "An unexpected error occurred.";
 
@@ -38,14 +44,26 @@ export function handleFailedStatus(err, parametersCount = 2) {
     if (typeof data === "string") {
       message = data;
     } else if (typeof data === "object" && data !== null) {
-      message =
-        data.message ||
-        data.error ||
-        (data.errors ? Object.values(data.errors).flat().join(", ") : null) ||
-        JSON.stringify(data);
+      if (typeof data.message === "string") {
+        message = data.message;
+      } else if (typeof data.error === "string") {
+        message = data.error;
+      } else if (data.errors && typeof data.errors === "object") {
+        const firstKey = Object.keys(data.errors)[0];
+        const firstVal = data.errors[firstKey];
+        message = Array.isArray(firstVal) ? firstVal[0] : String(firstVal);
+      } else {
+        try {
+          message = JSON.stringify(data);
+        } catch {
+          message = "An unexpected error occurred.";
+        }
+      }
     }
   } else if (err?.message && typeof err.message === "string") {
     message = err.message;
+  } else {
+    message = "Failed to connect to the server. Please check your connection.";
   }
 
   if (typeof message !== "string") {
@@ -53,6 +71,5 @@ export function handleFailedStatus(err, parametersCount = 2) {
   }
 
   if (parametersCount === 3) return [status, message, null];
-
   return [status, message];
 }

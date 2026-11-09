@@ -275,9 +275,9 @@ const NewPassword = ({ open, handleClose, action, setAction, children }) => {
         }}
       >
         {error
-          ? errorMessage
+          ? (typeof errorMessage === "object" ? errorMessage?.message || String(errorMessage) : errorMessage)
           : description !== null
-          ? description
+          ? (typeof description === "object" ? description?.message || String(description) : description)
           : `For security reasons, you are required to create a new, strong password to continue using your account. Please avoid reusing your old or temporary password and refrain from using sequential patterns like "12345" or easily guessable details.`}
       </Typography>
 
