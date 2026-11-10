@@ -64,33 +64,35 @@ const Header = ({ onClick }) => {
 
   return (
     <header className="header">
-      <Link to="/" className="icon" rel="noopener noreferrer">
-        {ENABLE_CHRISTMAS_THEME && HOLIDAY_CONFIG.santaHatOnLogo && <SantaHat />}
-        {ENABLE_HALLOWEEN_THEME && HALLOWEEN_CONFIG.witchHatOnLogo && <WitchHat />}
-        {ENABLE_NIGHTMARE_THEME && NIGHTMARE_CONFIG.jackOnLogo && <JackLogoOverlay />}
-        <img className="zcmc-logo" src={logo} alt="Logo" />
-        <div className="icon-label-container">
-          <div className="caption"></div>
-          <hr className="header-divider" />
-          <div className="title"></div>
-          <p className="address"></p>
-        </div>
-      </Link>
-      {ENABLE_CHRISTMAS_THEME && HOLIDAY_CONFIG.holidayBadge && (
-        <span className="header-holiday-badge" title="Maligayang Pasko!">
-          <span className="header-holiday-sparkle">✨</span> Maligayang Pasko
-        </span>
-      )}
-      {ENABLE_HALLOWEEN_THEME && HALLOWEEN_CONFIG.halloweenBadge && (
-        <span className="header-halloween-badge" title="Happy Halloween!">
-          <span className="header-halloween-ghost">🎃</span> Spooky Season
-        </span>
-      )}
-      {ENABLE_NIGHTMARE_THEME && NIGHTMARE_CONFIG.nightmareBadge && (
-        <span className="header-nightmare-badge" title="The Nightmare Before Christmas">
-          <span className="jack-icon">💀</span> What&apos;s This?! 🎄
-        </span>
-      )}
+      <div className="header-brand-group">
+        <Link to="/" className="icon" rel="noopener noreferrer">
+          {ENABLE_CHRISTMAS_THEME && HOLIDAY_CONFIG.santaHatOnLogo && <SantaHat />}
+          {ENABLE_HALLOWEEN_THEME && HALLOWEEN_CONFIG.witchHatOnLogo && <WitchHat />}
+          {ENABLE_NIGHTMARE_THEME && NIGHTMARE_CONFIG.jackOnLogo && <JackLogoOverlay />}
+          <img className="zcmc-logo" src={logo} alt="Logo" />
+          <div className="icon-label-container">
+            <div className="caption"></div>
+            <hr className="header-divider" />
+            <div className="title"></div>
+            <p className="address"></p>
+          </div>
+        </Link>
+        {ENABLE_CHRISTMAS_THEME && HOLIDAY_CONFIG.holidayBadge && (
+          <span className="header-holiday-badge" title="Maligayang Pasko!">
+            <span className="header-holiday-sparkle">✨</span> Maligayang Pasko
+          </span>
+        )}
+        {ENABLE_HALLOWEEN_THEME && HALLOWEEN_CONFIG.halloweenBadge && (
+          <span className="header-halloween-badge" title="Happy Halloween!">
+            <span className="header-halloween-ghost">🎃</span> Spooky Season
+          </span>
+        )}
+        {ENABLE_NIGHTMARE_THEME && NIGHTMARE_CONFIG.nightmareBadge && (
+          <span className="header-nightmare-badge" title="The Nightmare Before Christmas">
+            <span className="jack-icon">💀</span> What&apos;s This?! 🎄
+          </span>
+        )}
+      </div>
 
       <div className="navbar navbar-sm">
         <MegaMenuServices />
