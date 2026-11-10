@@ -16,7 +16,18 @@ const FilipinoParol = () => {
   );
 
   return (
-    <div className="filipino-parol-anchor" aria-hidden="true">
+    <div
+      className="filipino-parol-anchor"
+      style={{
+        position: "fixed",
+        top: 0,
+        right: "clamp(16px, 2.8vw, 48px)",
+        zIndex: 996,
+        pointerEvents: "none",
+        width: "clamp(120px, 12vw, 190px)",
+      }}
+      aria-hidden="true"
+    >
       {/* Top suspension wire dropping from screen top / ceiling */}
       <div className="filipino-parol-cord" />
 
@@ -30,6 +41,13 @@ const FilipinoParol = () => {
           src={parolImg}
           alt="Traditional Filipino Christmas Parol Lantern"
           className="filipino-parol-image"
+          width="180"
+          style={{
+            width: "100%",
+            maxWidth: "180px",
+            height: "auto",
+            display: "block",
+          }}
         />
 
         {/* Sparkling golden star motes floating around the Parol */}
