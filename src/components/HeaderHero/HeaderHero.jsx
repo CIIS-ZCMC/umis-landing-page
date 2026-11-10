@@ -109,7 +109,7 @@ const HeaderHero = () => {
           preload="auto"
           poster={tower1Poster}
         >
-          <source src="/videos/short-tower-1.mp4" type="video/mp4" />
+          <source src="/videos/short-tower-1.mp4?v=1" type="video/mp4" />
           <source src="/videos/short-tower-1.mov" type="video/quicktime" />
         </video>
         <div className="hero-video-gradient-overlay" />

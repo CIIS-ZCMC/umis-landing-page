@@ -15,7 +15,7 @@ import fallbackPoster from "../../assets/slideshow/tower-1-poster.jpg";
  * - Graceful fallback poster if video is loading or unsupported
  */
 const BackgroundVideo = ({
-  mp4Src = "/videos/short-tower-1.mp4",
+  mp4Src = "/videos/short-tower-1.mp4?v=1",
   movSrc = "/videos/short-tower-1.mov",
   poster = fallbackPoster,
   mode = "hero", // 'hero' | 'ambient'
