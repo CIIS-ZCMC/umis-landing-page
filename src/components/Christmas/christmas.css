@@ -1,5 +1,5 @@
 /* ==========================================================================
-   🎄 Christmas Theme Overlay Styles (ZCMC Holiday Season)
+   🎄 Christmas Theme Overlay Styles (ZCMC Holiday Season - GPU Optimized)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -7,16 +7,17 @@
    -------------------------------------------------------------------------- */
 .christmas-lights-container {
   position: fixed;
-  top: 76px; /* Dangling directly along the bottom trim of the 80px fixed header */
+  top: 76px;
   left: 0;
   width: 100%;
   height: 42px;
-  z-index: 995; /* Sits cleanly below dropdown menus and header buttons */
+  z-index: 995;
   pointer-events: none;
   overflow: visible;
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
+  transform: translateZ(0);
 }
 
 .christmas-lights-wire {
@@ -44,7 +45,6 @@
   height: 6px;
   background: #14532d;
   border-radius: 2px 2px 0 0;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .christmas-bulb {
@@ -52,74 +52,57 @@
   height: 18px;
   border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
   position: relative;
-  transition: all 0.3s ease;
+  will-change: opacity, transform;
+  transform: translateZ(0);
 }
 
-/* Colors & Glowing Dropshadows */
+/* Colors & Hardware-Accelerated Twinkle (Composite-Only Opacity + Scale) */
 .christmas-bulb.red {
   background: radial-gradient(circle at 35% 35%, #fca5a5 0%, #ef4444 60%, #991b1b 100%);
-  box-shadow: 0 0 10px rgba(239, 68, 68, 0.8), 0 0 20px rgba(239, 68, 68, 0.5);
-  animation: twinkleRed 1.8s ease-in-out infinite alternate;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.85);
+  animation: bulbTwinkle 1.8s ease-in-out infinite alternate;
 }
 
 .christmas-bulb.gold {
   background: radial-gradient(circle at 35% 35%, #fef08a 0%, #eab308 60%, #854d0e 100%);
-  box-shadow: 0 0 10px rgba(234, 179, 8, 0.85), 0 0 20px rgba(234, 179, 8, 0.5);
-  animation: twinkleGold 2.2s ease-in-out 0.4s infinite alternate;
+  box-shadow: 0 0 10px rgba(234, 179, 8, 0.85);
+  animation: bulbTwinkle 2.2s ease-in-out 0.4s infinite alternate;
 }
 
 .christmas-bulb.green {
   background: radial-gradient(circle at 35% 35%, #86efac 0%, #22c55e 60%, #14532d 100%);
-  box-shadow: 0 0 10px rgba(34, 197, 94, 0.8), 0 0 20px rgba(34, 197, 94, 0.5);
-  animation: twinkleGreen 1.9s ease-in-out 0.8s infinite alternate;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.85);
+  animation: bulbTwinkle 1.9s ease-in-out 0.8s infinite alternate;
 }
 
 .christmas-bulb.blue {
   background: radial-gradient(circle at 35% 35%, #93c5fd 0%, #3b82f6 60%, #1e3a8a 100%);
-  box-shadow: 0 0 10px rgba(59, 130, 246, 0.8), 0 0 20px rgba(59, 130, 246, 0.5);
-  animation: twinkleBlue 2.1s ease-in-out 0.2s infinite alternate;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.85);
+  animation: bulbTwinkle 2.1s ease-in-out 0.2s infinite alternate;
 }
 
 .christmas-bulb.cyan {
   background: radial-gradient(circle at 35% 35%, #a5f3fc 0%, #06b6d4 60%, #164e63 100%);
-  box-shadow: 0 0 10px rgba(6, 182, 212, 0.85), 0 0 20px rgba(6, 182, 212, 0.5);
-  animation: twinkleCyan 2.4s ease-in-out 0.6s infinite alternate;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.85);
+  animation: bulbTwinkle 2.4s ease-in-out 0.6s infinite alternate;
 }
 
 .christmas-bulb.pink {
   background: radial-gradient(circle at 35% 35%, #fbcfe8 0%, #ec4899 60%, #831843 100%);
-  box-shadow: 0 0 10px rgba(236, 72, 153, 0.8), 0 0 20px rgba(236, 72, 153, 0.5);
-  animation: twinklePink 2s ease-in-out 1s infinite alternate;
+  box-shadow: 0 0 10px rgba(236, 72, 153, 0.85);
+  animation: bulbTwinkle 2s ease-in-out 1s infinite alternate;
 }
 
-@keyframes twinkleRed {
-  0% { opacity: 0.5; filter: brightness(0.85) drop-shadow(0 0 4px rgba(239, 68, 68, 0.4)); }
-  100% { opacity: 1; filter: brightness(1.25) drop-shadow(0 0 16px rgba(239, 68, 68, 1)); }
-}
-
-@keyframes twinkleGold {
-  0% { opacity: 0.45; filter: brightness(0.8) drop-shadow(0 0 4px rgba(234, 179, 8, 0.4)); }
-  100% { opacity: 1; filter: brightness(1.3) drop-shadow(0 0 18px rgba(234, 179, 8, 1)); }
-}
-
-@keyframes twinkleGreen {
-  0% { opacity: 0.5; filter: brightness(0.85) drop-shadow(0 0 4px rgba(34, 197, 94, 0.4)); }
-  100% { opacity: 1; filter: brightness(1.25) drop-shadow(0 0 16px rgba(34, 197, 94, 1)); }
-}
-
-@keyframes twinkleBlue {
-  0% { opacity: 0.4; filter: brightness(0.8) drop-shadow(0 0 3px rgba(59, 130, 246, 0.4)); }
-  100% { opacity: 1; filter: brightness(1.25) drop-shadow(0 0 16px rgba(59, 130, 246, 1)); }
-}
-
-@keyframes twinkleCyan {
-  0% { opacity: 0.45; filter: brightness(0.8) drop-shadow(0 0 4px rgba(6, 182, 212, 0.4)); }
-  100% { opacity: 1; filter: brightness(1.3) drop-shadow(0 0 16px rgba(6, 182, 212, 1)); }
-}
-
-@keyframes twinklePink {
-  0% { opacity: 0.5; filter: brightness(0.85) drop-shadow(0 0 4px rgba(236, 72, 153, 0.4)); }
-  100% { opacity: 1; filter: brightness(1.25) drop-shadow(0 0 16px rgba(236, 72, 153, 1)); }
+/* Pure GPU compositor animation (zero repaint cost on mobile phones) */
+@keyframes bulbTwinkle {
+  0% {
+    opacity: 0.42;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -129,10 +112,11 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 997;
+  transform: translateZ(0);
 }
 
 /* --------------------------------------------------------------------------
@@ -148,12 +132,12 @@
   align-items: flex-end;
   pointer-events: auto;
   user-select: none;
+  transform: translateZ(0);
 }
 
 /* Friendly Holiday Speech Bubble */
 .santa-speech-bubble {
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.97);
   border: 1.5px solid #fecaca;
   border-radius: 16px 16px 4px 16px;
   padding: 10px 14px;
@@ -161,8 +145,7 @@
   margin-bottom: 8px;
   max-width: 250px;
   position: relative;
-  animation: speechBubblePop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  transition: all 0.3s ease;
+  animation: speechBubblePop 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .santa-speech-bubble::after {
@@ -174,7 +157,7 @@
   height: 0;
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
-  border-top: 8px solid rgba(255, 255, 255, 0.96);
+  border-top: 8px solid rgba(255, 255, 255, 0.97);
 }
 
 .santa-speech-header {
@@ -207,7 +190,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.15s ease;
 }
 
 .santa-close-btn:hover {
@@ -236,14 +218,14 @@
 }
 
 .santa-character-btn:hover {
-  transform: translateY(-8px) scale(1.04);
+  transform: translateY(-6px) scale(1.04);
 }
 
 .santa-svg {
-  width: 86px;
-  height: 86px;
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.25));
-  animation: santaGentleWave 3s ease-in-out infinite;
+  width: 82px;
+  height: 82px;
+  will-change: transform;
+  animation: santaGentleWave 3.2s ease-in-out infinite;
 }
 
 @keyframes santaGentleWave {
@@ -261,35 +243,12 @@
 @keyframes speechBubblePop {
   0% {
     opacity: 0;
-    transform: translateY(12px) scale(0.9);
+    transform: translateY(10px) scale(0.92);
   }
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
-}
-
-/* Collapsed Santa Re-open Pill */
-.santa-minimized-pill {
-  background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
-  color: #ffffff;
-  border: 1.5px solid rgba(255, 255, 255, 0.8);
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
-  transition: all 0.2s ease;
-  margin-bottom: 12px;
-}
-
-.santa-minimized-pill:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(220, 38, 38, 0.6);
 }
 
 /* --------------------------------------------------------------------------
@@ -304,7 +263,7 @@
   pointer-events: none;
   z-index: 10;
   transform: rotate(-15deg);
-  filter: drop-shadow(1px 2px 4px rgba(0, 0, 0, 0.35));
+  will-change: transform;
   animation: hatWiggle 3.5s ease-in-out infinite;
 }
 
@@ -346,30 +305,29 @@
   color: #fef08a;
 }
 
-
 /* --------------------------------------------------------------------------
    6. Traditional Filipino Capiz Star Lantern (Parol)
    -------------------------------------------------------------------------- */
 .filipino-parol-anchor {
   position: fixed;
   top: 0;
-  right: 42px;
+  right: 36px;
   z-index: 996;
   pointer-events: none;
-  width: 130px;
+  width: 126px;
   display: flex;
   flex-direction: column;
   align-items: center;
   transform-origin: 50% 0%;
   user-select: none;
+  transform: translateZ(0);
 }
 
 /* Golden braided cord suspending the Parol from ceiling/top of viewport */
 .filipino-parol-cord {
   width: 2px;
-  height: 58px;
+  height: 56px;
   background: linear-gradient(180deg, rgba(245, 158, 11, 0.9) 0%, rgba(217, 119, 6, 0.8) 100%);
-  box-shadow: 0 0 6px rgba(251, 191, 36, 0.6);
   border-radius: 1px;
 }
 
@@ -379,135 +337,140 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  transform-origin: 50% -58px;
+  transform-origin: 50% -56px;
+  will-change: transform;
   animation: parolSway 6.5s ease-in-out infinite alternate;
 }
 
-/* Warm ambient glowing aura behind the Capiz shell star */
+/* Warm ambient glowing aura behind the Capiz shell star (GPU composite-only) */
 .filipino-parol-aura {
   position: absolute;
-  top: 18px;
+  top: 12px;
   left: 50%;
   transform: translateX(-50%);
-  width: 130px;
-  height: 130px;
+  width: 136px;
+  height: 136px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(251, 191, 36, 0.38) 0%, rgba(245, 158, 11, 0.18) 50%, transparent 75%);
-  filter: blur(14px);
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.42) 0%, rgba(245, 158, 11, 0.16) 45%, transparent 72%);
   pointer-events: none;
+  will-change: opacity, transform;
   animation: parolAuraPulse 3.8s ease-in-out infinite alternate;
 }
 
-/* High-res authentic Capiz Parol image with luminous glow */
+/* High-res authentic Capiz Parol image (static shadow, no expensive per-frame filter repaint) */
 .filipino-parol-image {
-  width: 120px;
+  width: 118px;
   height: auto;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 0 16px rgba(251, 191, 36, 0.85)) drop-shadow(0 0 32px rgba(245, 158, 11, 0.5));
-  animation: parolLuminance 4.2s ease-in-out infinite alternate;
 }
 
 /* Golden floating star motes */
 .parol-sparkle {
   position: absolute;
   color: #fef08a;
-  text-shadow: 0 0 8px #f59e0b, 0 0 16px #fbbf24;
+  text-shadow: 0 0 6px #f59e0b;
   line-height: 1;
   pointer-events: none;
+  will-change: opacity, transform;
   animation: sparkleTwinkle 2.4s ease-in-out infinite alternate;
 }
 
-/* Parol pendulum sway keyframes */
 @keyframes parolSway {
   0% {
-    transform: rotate(-3.5deg);
-  }
-  50% {
-    transform: rotate(0.8deg);
+    transform: rotate(-3deg);
   }
   100% {
-    transform: rotate(3.5deg);
+    transform: rotate(3deg);
   }
 }
 
-/* Warm breathing luminance */
-@keyframes parolLuminance {
-  0% {
-    filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.65)) drop-shadow(0 0 24px rgba(245, 158, 11, 0.35)) brightness(0.96);
-  }
-  100% {
-    filter: drop-shadow(0 0 22px rgba(251, 191, 36, 0.95)) drop-shadow(0 0 42px rgba(245, 158, 11, 0.65)) brightness(1.1);
-  }
-}
-
-/* Background aura pulse */
 @keyframes parolAuraPulse {
   0% {
-    opacity: 0.4;
-    transform: translateX(-50%) scale(0.9);
+    opacity: 0.45;
+    transform: translateX(-50%) scale(0.92);
   }
   100% {
-    opacity: 0.85;
-    transform: translateX(-50%) scale(1.1);
+    opacity: 0.95;
+    transform: translateX(-50%) scale(1.12);
   }
 }
 
-/* Sparkle twinkle */
 @keyframes sparkleTwinkle {
   0% {
-    opacity: 0.15;
-    transform: scale(0.7) rotate(0deg);
+    opacity: 0.2;
+    transform: scale(0.75);
   }
   100% {
     opacity: 1;
-    transform: scale(1.3) rotate(45deg);
+    transform: scale(1.25);
   }
 }
 
-/* Mobile responsiveness */
+/* --------------------------------------------------------------------------
+   7. Mobile Phone Optimizations (<= 768px)
+   -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
-  .filipino-parol-anchor {
-    right: 12px;
-    width: 85px;
+  .desktop-only-bulb {
+    display: none !important;
   }
-  .filipino-parol-cord {
-    height: 42px;
-  }
-  .filipino-parol-swing {
-    transform-origin: 50% -42px;
-  }
-  .filipino-parol-image {
-    width: 78px;
-  }
-  .filipino-parol-aura {
-    width: 85px;
-    height: 85px;
-  }
-}
 
-@media (max-width: 600px) {
   .christmas-lights-container {
-    top: 76px;
-    height: 34px;
+    top: 60px;
+    height: 26px;
   }
+
   .christmas-bulb-unit {
-    max-width: 26px;
+    max-width: 28px;
   }
+
   .christmas-bulb {
-    width: 9px;
-    height: 14px;
+    width: 8px;
+    height: 12px;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.45);
   }
+
+  .filipino-parol-anchor {
+    right: 8px !important;
+    width: 68px !important;
+    max-width: 68px !important;
+  }
+
+  .filipino-parol-cord {
+    height: 46px;
+  }
+
+  .filipino-parol-swing {
+    transform-origin: 50% -46px;
+  }
+
+  .filipino-parol-image {
+    width: 64px !important;
+    max-width: 64px !important;
+  }
+
+  .filipino-parol-aura {
+    width: 76px;
+    height: 76px;
+    top: 6px;
+  }
+
+  .parol-sparkle {
+    display: none;
+  }
+
   .peeking-santa-wrapper {
-    right: 12px;
-    bottom: 0;
+    right: 10px;
+    bottom: 66px; /* Sits cleanly above the Mobile Native App Bottom Navigation Bar */
   }
+
   .santa-svg {
-    width: 68px;
-    height: 68px;
+    width: 54px;
+    height: 54px;
   }
+
   .santa-speech-bubble {
-    max-width: 210px;
+    max-width: 205px;
     padding: 8px 10px;
   }
 }

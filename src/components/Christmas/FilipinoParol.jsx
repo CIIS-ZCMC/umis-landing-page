@@ -6,11 +6,11 @@ const FilipinoParol = () => {
   // Sparkle particle offsets and animation delays
   const sparkles = useMemo(
     () => [
-      { id: 1, top: "28%", left: "-18px", delay: "0s", size: "14px" },
-      { id: 2, top: "45%", right: "-22px", delay: "1.2s", size: "18px" },
-      { id: 3, top: "62%", left: "-14px", delay: "2.4s", size: "12px" },
-      { id: 4, top: "78%", right: "-16px", delay: "0.8s", size: "15px" },
-      { id: 5, top: "15%", right: "-12px", delay: "1.8s", size: "16px" },
+      { id: 1, top: "28%", left: "-14px", delay: "0s", size: "13px" },
+      { id: 2, top: "45%", right: "-16px", delay: "1.2s", size: "16px" },
+      { id: 3, top: "62%", left: "-12px", delay: "2.4s", size: "11px" },
+      { id: 4, top: "78%", right: "-14px", delay: "0.8s", size: "14px" },
+      { id: 5, top: "15%", right: "-10px", delay: "1.8s", size: "14px" },
     ],
     []
   );
@@ -21,10 +21,9 @@ const FilipinoParol = () => {
       style={{
         position: "fixed",
         top: 0,
-        right: "clamp(16px, 2.8vw, 48px)",
         zIndex: 996,
         pointerEvents: "none",
-        width: "clamp(120px, 12vw, 190px)",
+        maxWidth: "160px",
       }}
       aria-hidden="true"
     >
@@ -41,10 +40,11 @@ const FilipinoParol = () => {
           src={parolImg}
           alt="Traditional Filipino Christmas Parol Lantern"
           className="filipino-parol-image"
-          width="180"
+          width="140"
+          decoding="async"
           style={{
             width: "100%",
-            maxWidth: "180px",
+            maxWidth: "140px",
             height: "auto",
             display: "block",
           }}

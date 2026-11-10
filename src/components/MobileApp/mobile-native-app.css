@@ -1,0 +1,333 @@
+/* ==========================================================================
+   📱 ZCMC Mobile Native Application Mode & 60FPS GPU Optimization (<= 768px)
+   ========================================================================== */
+
+/* 1. Native App Viewport & Touch Feel (Mobile Only) */
+@media (max-width: 768px) {
+  /* Hide browser scrollbars on mobile for a true native app viewport */
+  ::-webkit-scrollbar {
+    width: 0px !important;
+    height: 0px !important;
+    display: none !important;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    overscroll-behavior-y: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    background-color: #041f0d !important;
+    scrollbar-width: none !important;
+  }
+
+  .landing-page-desktop {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  /* Fix 100vw horizontal scrollbar gutter on mobile containers */
+  .news,
+  .videos,
+  .more-info,
+  .careers,
+  .mcc-corner,
+  .contact,
+  .agency,
+  .gov,
+  .hero-fullscreen-viewport,
+  .hero-video-backdrop {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  /* 2. Disable Heavy Real-Time Video Backdrop Blur Shaders on Mobile GPU */
+  .hero-tag-pill,
+  .hero-btn-secondary,
+  .hero-emergency-strip,
+  .hero-highlights-card,
+  .card-arrow-btn,
+  .hero-bottom-ribbon-bar,
+  .santa-speech-bubble,
+  .pull-bookmark-btn {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .hero-tag-pill {
+    background: rgba(8, 53, 39, 0.92) !important;
+  }
+
+  .hero-btn-secondary {
+    background: rgba(15, 75, 52, 0.88) !important;
+  }
+
+  .hero-emergency-strip {
+    background: rgba(7, 45, 34, 0.92) !important;
+  }
+
+  .hero-highlights-card {
+    background: rgba(7, 45, 34, 0.94) !important;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  /* 3. Christmas Overlay Mobile GPU & Layout Optimization */
+  .desktop-only-bulb {
+    display: none !important;
+  }
+
+  .christmas-lights-container {
+    top: 60px !important;
+    height: 24px !important;
+  }
+
+  .christmas-bulb {
+    width: 8px !important;
+    height: 12px !important;
+    filter: none !important;
+  }
+
+  .filipino-parol-anchor {
+    right: 8px !important;
+    width: 66px !important;
+    max-width: 66px !important;
+  }
+
+  .filipino-parol-cord {
+    height: 44px !important;
+  }
+
+  .filipino-parol-swing {
+    transform-origin: 50% -44px !important;
+  }
+
+  .filipino-parol-image {
+    width: 62px !important;
+    max-width: 62px !important;
+    filter: none !important;
+    animation: none !important;
+  }
+
+  .filipino-parol-aura {
+    width: 72px !important;
+    height: 72px !important;
+    top: 6px !important;
+    filter: none !important;
+  }
+
+  .parol-sparkle {
+    display: none !important;
+  }
+
+  .peeking-santa-wrapper {
+    right: 10px !important;
+    bottom: 64px !important;
+  }
+
+  .santa-svg {
+    width: 52px !important;
+    height: 52px !important;
+    filter: none !important;
+  }
+
+  /* 4. Streamline Mobile Native Top App Bar (60px sleek status header) */
+  .header {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 60px !important;
+    min-height: 60px !important;
+    padding: 0 14px !important;
+    background: linear-gradient(90deg, #062912 0%, #0a3d1c 100%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3) !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Hide desktop/cluttered floating PullBookmark on mobile (since Track PR is in the Native Bottom Dock) */
+  .pull-bookmark-wrapper {
+    display: none !important;
+  }
+
+  /* Hide redundant header search & login buttons on mobile (they live in the Native Bottom Dock) */
+  .mobile-search-btn,
+  .mobile-login-btn {
+    display: none !important;
+  }
+
+  /* Clean Native Hero Layout on Mobile */
+  .hero-fullscreen-viewport {
+    padding-top: 76px !important;
+    min-height: calc(100dvh - 60px) !important;
+  }
+
+  .hero-split-grid {
+    padding: 14px 16px 20px 16px !important;
+    gap: 18px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-left-editorial {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-main-title {
+    font-size: 27px !important;
+    line-height: 1.18 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .hero-description {
+    font-size: 13.5px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 16px !important;
+  }
+
+  .hero-tag-pill {
+    font-size: 10px !important;
+    padding: 5px 12px !important;
+    margin-bottom: 10px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .hero-cta-group {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    width: 100% !important;
+    margin-bottom: 14px !important;
+  }
+
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    justify-content: center !important;
+    padding: 12px 14px !important;
+    font-size: 13.5px !important;
+    border-radius: 12px !important;
+  }
+
+  .hero-emergency-strip {
+    font-size: 11px !important;
+    padding: 8px 12px !important;
+    border-radius: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  /* Hide desktop bottom utility ribbon on mobile since Native App Bottom Dock replaces it */
+  .hero-bottom-ribbon-bar {
+    display: none !important;
+  }
+}
+
+/* 5. Native Mobile App Bottom Navigation Dock */
+.zcmc-mobile-bottom-dock {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .zcmc-mobile-bottom-dock {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    height: calc(62px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background: linear-gradient(180deg, #072d15 0%, #041f0d 100%);
+    border-top: 1px solid rgba(52, 211, 153, 0.25);
+    box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.45);
+    z-index: 1005;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    justify-items: center;
+    user-select: none;
+    transform: translateZ(0);
+    box-sizing: border-box;
+  }
+
+  .mobile-dock-item {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    width: 100%;
+    height: 100%;
+    padding: 4px 2px;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+    transition: color 0.15s ease, transform 0.15s ease;
+  }
+
+  .mobile-dock-item:active {
+    transform: scale(0.92);
+  }
+
+  .mobile-dock-item.active {
+    color: #6ee7b7;
+  }
+
+  .mobile-dock-item.active-music-tab {
+    color: #fde047;
+  }
+
+  .mobile-dock-icon {
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .mobile-dock-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+  }
+
+  /* Center Raised One ZCMC Portal Action Button */
+  .mobile-dock-center-cta {
+    position: relative;
+    color: #ffffff;
+  }
+
+  .mobile-dock-center-circle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #16a34a 0%, #0f5721 100%);
+    border: 2px solid #86efac;
+    box-shadow: 0 4px 14px rgba(22, 163, 74, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    margin-top: -18px;
+    margin-bottom: 1px;
+  }
+
+  .mobile-dock-center-cta .mobile-dock-label {
+    color: #a7f3d0;
+    font-weight: 700;
+  }
+}

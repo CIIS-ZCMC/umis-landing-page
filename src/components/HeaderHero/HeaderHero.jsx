@@ -43,11 +43,13 @@ const HeaderHero = () => {
     };
   }, []);
   const videoRef = useRef(null);
+  const heroSectionRef = useRef(null);
   const { openModal } = useUniversalSearchHook();
 
-  // Tab visibility: pause playback when tab is hidden, resume when active
+  // Tab visibility & viewport intersection: pause playback when off-screen or hidden to save mobile GPU
   useEffect(() => {
     const video = videoRef.current;
+    const section = heroSectionRef.current;
     if (!video) return;
 
     const handleVisibilityChange = () => {
@@ -58,9 +60,26 @@ const HeaderHero = () => {
       }
     };
 
+    let observer;
+    if (section && "IntersectionObserver" in window) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+          if (!entry.isIntersecting) {
+            video.pause();
+          } else if (isPlaying && !document.hidden) {
+            video.play().catch(() => {});
+          }
+        },
+        { threshold: 0.05 }
+      );
+      observer.observe(section);
+    }
+
     document.addEventListener("visibilitychange", handleVisibilityChange);
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
+      if (observer) observer.disconnect();
     };
   }, [isPlaying]);
 
@@ -107,16 +126,16 @@ const HeaderHero = () => {
   const currentHighlight = SLIDES[slideIndex];
 
   return (
-    <section className="hero-fullscreen-viewport" aria-label="ZCMC Welcome Section">
+    <section ref={heroSectionRef} className="hero-fullscreen-viewport" aria-label="ZCMC Welcome Section">
       {/* 1. Fullscreen Background Video Layer (100vw x 100vh) */}
       <div className="hero-video-backdrop" aria-hidden="true">
         <video
           ref={videoRef}
           autoPlay
           loop
-          muted
+          muted={isMuted}
           playsInline
-          preload="auto"
+          preload="metadata"
           poster={tower1Poster}
         >
           <source src="/videos/short-tower-1.mp4?v=1" type="video/mp4" />
@@ -194,6 +213,7 @@ const HeaderHero = () => {
                 src={currentHighlight.image}
                 alt={currentHighlight.title}
                 className="card-slide-image"
+                decoding="async"
               />
 
               <button

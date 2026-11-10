@@ -9,11 +9,21 @@ const AUTO_COLLAPSE_DELAY_MS = 4000;
 
 const PullBookmark = () => {
   const { openModal } = useUniversalSearchHook();
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth <= 768 : false
+  );
   const [isAutoExpanded, setIsAutoExpanded] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const timerRef = useRef(null);
 
   useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return;
     // Display big for 4 seconds after view loads, then slide left to small peek tab
     timerRef.current = setTimeout(() => {
       setIsAutoExpanded(false);
@@ -24,7 +34,10 @@ const PullBookmark = () => {
         clearTimeout(timerRef.current);
       }
     };
-  }, []);
+  }, [isMobile]);
+
+  // On mobile phones, Track PR is integrated into the Native Bottom App Dock
+  if (isMobile) return null;
 
   const handleMouseEnter = () => {
     setIsHovered(true);

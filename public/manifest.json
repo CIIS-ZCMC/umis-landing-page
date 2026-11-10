@@ -1,0 +1,25 @@
+{
+  "short_name": "One ZCMC",
+  "name": "Zamboanga City Medical Center Portal",
+  "description": "DOH Licensed Apex Tertiary Medical Center - One ZCMC Portal",
+  "icons": [
+    {
+      "src": "/zcmc.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/zcmc.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/login",
+  "background_color": "#041f0d",
+  "theme_color": "#062912",
+  "display": "fullscreen",
+  "display_override": ["fullscreen", "standalone", "minimal-ui"],
+  "orientation": "portrait"
+}

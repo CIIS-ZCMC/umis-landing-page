@@ -2,12 +2,15 @@ import { useState } from "react";
 import "./christmas.css";
 
 const PeekingSanta = () => {
-  const [showSpeech, setShowSpeech] = useState(true);
+  // On mobile phones, start with speech bubble collapsed so it doesn't clutter the native app view
+  const [showSpeech, setShowSpeech] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth > 768 : true
+  );
   const [bounce, setBounce] = useState(false);
 
   const handleSantaClick = () => {
     setBounce(true);
-    setShowSpeech(true);
+    setShowSpeech((prev) => !prev);
     setTimeout(() => setBounce(false), 800);
   };
 
@@ -41,7 +44,7 @@ const PeekingSanta = () => {
         type="button"
         className={`santa-character-btn ${bounce ? "santa-bounce" : ""}`}
         onClick={handleSantaClick}
-        title="Merry Christmas! (Click to wave)"
+        title="Merry Christmas! (Tap to toggle greeting)"
         aria-label="Santa Claus waving"
       >
         <svg
@@ -76,7 +79,6 @@ const PeekingSanta = () => {
           <path
             d="M 28 50 C 24 64, 30 84, 50 88 C 70 84, 76 64, 72 50 C 66 58, 58 60, 50 56 C 42 60, 34 58, 28 50 Z"
             fill="#ffffff"
-            filter="drop-shadow(0 2px 3px rgba(0,0,0,0.1))"
           />
 
           {/* Mustache */}
@@ -103,11 +105,10 @@ const PeekingSanta = () => {
             height="11"
             rx="5.5"
             fill="#ffffff"
-            filter="drop-shadow(0 1px 2px rgba(0,0,0,0.15))"
           />
 
           {/* Hat Pom-pom */}
-          <circle cx="86" cy="42" r="6" fill="#ffffff" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.15))" />
+          <circle cx="86" cy="42" r="6" fill="#ffffff" />
         </svg>
       </button>
     </div>
