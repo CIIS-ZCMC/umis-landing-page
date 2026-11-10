@@ -2,6 +2,7 @@ import { ENABLE_CHRISTMAS_THEME, HOLIDAY_CONFIG } from "../../config/holidayConf
 import ChristmasLights from "./ChristmasLights";
 import SnowfallEffect from "./SnowfallEffect";
 import PeekingSanta from "./PeekingSanta";
+import FilipinoParol from "./FilipinoParol";
 
 const ChristmasTheme = () => {
   // If master toggle is disabled, zero elements or listeners are mounted
@@ -13,6 +14,7 @@ const ChristmasTheme = () => {
     <>
       {HOLIDAY_CONFIG.fairyLights && <ChristmasLights />}
       {HOLIDAY_CONFIG.snowfall && <SnowfallEffect />}
+      {HOLIDAY_CONFIG.filipinoParol && <FilipinoParol />}
       {HOLIDAY_CONFIG.peekingSanta && <PeekingSanta />}
     </>
   );

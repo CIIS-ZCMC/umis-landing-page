@@ -65,4 +65,5 @@ export const HOLIDAY_CONFIG = {
   peekingSanta: true,
   santaHatOnLogo: true,
   holidayBadge: true,
+  filipinoParol: true, // 🌟 Authentic Filipino Capiz Star Lantern (Parol)
 };
