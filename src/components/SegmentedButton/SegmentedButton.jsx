@@ -40,8 +40,10 @@ const SegmentedButton = ({ medicalContent = [], adminContent = [] }) => {
           <div className="row">
             {safeMedicalContent.map((item, index) => (
               <a
-                href={item.link || "#"}
-                className="card"
+                href={item.disabled ? undefined : item.link || "#"}
+                className={item.disabled ? "card card-disabled" : "card"}
+                aria-disabled={item.disabled || undefined}
+                onClick={item.disabled ? (e) => e.preventDefault() : undefined}
                 key={index}
                 rel="noopener noreferrer"
               >
@@ -54,6 +56,9 @@ const SegmentedButton = ({ medicalContent = [], adminContent = [] }) => {
                 <div className="card-content">
                   <div className="card-heading">
                     <Paragraph text={item.title} className="card-title" />
+                    {item.disabled && (
+                      <span className="card-note">No access</span>
+                    )}
 
                     <div className="tooltip">
                       <svg
@@ -82,8 +87,10 @@ const SegmentedButton = ({ medicalContent = [], adminContent = [] }) => {
           <div className="row">
             {safeAdminContent.map((item, index) => (
               <a
-                href={item.link || "#"}
-                className="card"
+                href={item.disabled ? undefined : item.link || "#"}
+                className={item.disabled ? "card card-disabled" : "card"}
+                aria-disabled={item.disabled || undefined}
+                onClick={item.disabled ? (e) => e.preventDefault() : undefined}
                 key={index}
                 rel="noopener noreferrer"
               >
@@ -96,6 +103,9 @@ const SegmentedButton = ({ medicalContent = [], adminContent = [] }) => {
                 <div className="card-content">
                   <div className="card-heading">
                     <Paragraph text={item.title} className="card-title" />
+                    {item.disabled && (
+                      <span className="card-note">No access</span>
+                    )}
 
                     <div className="tooltip">
                       <svg

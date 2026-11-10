@@ -1034,3 +1034,22 @@
         transform: scale(1.025)
     }
 }
+
+/* A system the user has no access to: shown, greyed out, inert. */
+.connected-systems .card.card-disabled {
+    cursor: not-allowed;
+    filter: grayscale(1);
+    opacity: .6
+}
+
+.connected-systems .card.card-disabled:hover {
+    border: 1px solid var(--color-system-neutrals-neutrals-200-f-0-f-0-f-0, #F0F0F0) !important;
+    transform: none
+}
+
+.connected-systems .card-note {
+    color: #6B6B6B;
+    font-size: 12px;
+    line-height: 120%;
+    white-space: nowrap
+}
