@@ -24,6 +24,6 @@ dist-ssr
 *.sw?
 
 # Large media assets (served statically from public/)
-public/videos/*.mp4
 public/videos/*.mov
 public/videos/*.webm
+!public/videos/short-tower-1.mp4
