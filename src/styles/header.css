@@ -2077,7 +2077,7 @@
     }
 }
 /* ==========================================================================
-   Header Alignment & Spacious Navigation Enhancements
+   Header Alignment, Spacious Desktop Navigation & Mobile UX Enhancements
    ========================================================================== */
 .header .address {
     display: none !important;
@@ -2088,7 +2088,6 @@
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
-    padding: 0 10px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
@@ -2098,17 +2097,16 @@
 .header-brand-group {
     display: inline-flex !important;
     align-items: center !important;
-    gap: 8px !important;
+    gap: 10px !important;
     flex-shrink: 0 !important;
 }
 
-.navbar {
+.header-caption-row {
     display: inline-flex !important;
     align-items: center !important;
-    justify-content: center !important;
-    gap: 6px !important;
-    margin: 0 auto !important;
-    flex-shrink: 0 !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    width: 100% !important;
 }
 
 .header-link,
@@ -2120,78 +2118,192 @@
     white-space: nowrap !important;
 }
 
-.header-link,
-.header-link-1,
-.header-link-2,
-.header-link-3 {
-    font-size: 12.5px !important;
-    font-weight: 500 !important;
-    letter-spacing: 0.15px !important;
-    padding: 5px 8px !important;
-    border-radius: 6px !important;
-    transition: all 0.2s ease !important;
-    text-decoration: none !important;
-}
+/* Mobile & Tablet View (<= 1240px) */
+@media only screen and (max-width: 1240px) {
+    .header {
+        padding: 0 16px !important;
+    }
 
-.navbar .header-link:hover,
-.navbar .header-link-1:hover,
-.navbar .header-link-2:hover,
-.navbar .header-link-3:hover {
-    background: rgba(255, 255, 255, 0.12) !important;
-    color: #ffffff !important;
-    border-bottom: none !important;
-}
+    .navbar,
+    .navbar-sm,
+    #div-sm,
+    .landing-page-desktop .div {
+        display: none !important;
+    }
 
-.menu-title {
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 3px !important;
-    font-size: 12.5px !important;
-    font-weight: 500 !important;
-    color: #ffffff !important;
-}
+    .header-caption-row {
+        display: none !important;
+    }
 
-.landing-page-desktop .div {
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 6px !important;
-    flex-shrink: 0 !important;
-    margin-right: 0 !important;
-}
-
-.landing-page-desktop .div .CTA {
-    white-space: nowrap !important;
-    height: 36px !important;
-    padding: 0 10px !important;
-    font-size: 11.5px !important;
-    font-weight: 600 !important;
-    border-radius: 6px !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-}
-
-.header-search-btn {
-    height: 36px !important;
-    padding: 0 7px !important;
-    font-size: 11.5px !important;
-    gap: 6px !important;
-    white-space: nowrap !important;
-}
-
-.header-search-kbd {
-    padding: 1px 4px !important;
-    font-size: 10px !important;
-}
-
-.mobile-header-actions {
-    display: none !important;
-}
-
-@media only screen and (max-width: 996px) {
     .mobile-header-actions {
         display: inline-flex !important;
         align-items: center !important;
         gap: 8px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .mobile-login-btn {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 36px !important;
+        padding: 0 14px !important;
+        border-radius: 8px !important;
+        background: #0f5721 !important;
+        border: 1px solid rgba(255, 255, 255, 0.28) !important;
+        color: #ffffff !important;
+        font-family: var(--inter-font-family), sans-serif !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.2px !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
+        white-space: nowrap !important;
+    }
+
+    .mobile-login-btn:hover,
+    .mobile-login-btn:active {
+        background: #146c2a !important;
+        transform: translateY(-1px) !important;
+    }
+}
+
+/* Desktop View (>= 1241px) */
+@media only screen and (min-width: 1241px) {
+    .header {
+        padding: 0 clamp(24px, 3.33vw, 80px) !important;
+    }
+
+    .mobile-header-actions,
+    .navbar .mega-menu-sm,
+    .navbar .header-link-2-sm {
+        display: none !important;
+    }
+
+    .header-brand-group {
+        gap: 10px !important;
+    }
+
+    .header-brand-group .zcmc-logo {
+        height: 48px !important;
+        width: 36.3px !important;
+        object-fit: contain !important;
+    }
+
+    .icon-label-container {
+        gap: 3px !important;
+    }
+
+    .icon-label-container .caption {
+        height: auto !important;
+        font-size: 8px !important;
+        line-height: 1.2 !important;
+    }
+
+    .icon-label-container .title {
+        font-size: 14.5px !important;
+        height: auto !important;
+        line-height: 1.2 !important;
+        letter-spacing: 0.3px !important;
+    }
+
+    .header-holiday-badge,
+    .header-halloween-badge,
+    .header-nightmare-badge {
+        margin-left: 0 !important;
+        padding: 2px 7px !important;
+        font-size: 8.5px !important;
+        line-height: 1.2 !important;
+        border-radius: 999px !important;
+    }
+
+    .navbar {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: clamp(6px, 0.8vw, 18px) !important;
+        margin: 0 auto !important;
+        flex-shrink: 0 !important;
+    }
+
+    .navbar .header-link,
+    .navbar .header-link-1,
+    .navbar .header-link-2,
+    .navbar .header-link-3 {
+        font-size: 13px !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.1px !important;
+        padding: 6px 8px !important;
+        height: auto !important;
+        border-radius: 8px !important;
+        transition: all 0.2s ease !important;
+        text-decoration: none !important;
+    }
+
+    .navbar .header-link:hover,
+    .navbar .header-link-1:hover,
+    .navbar .header-link-2:hover,
+    .navbar .header-link-3:hover {
+        background: rgba(255, 255, 255, 0.12) !important;
+        color: #ffffff !important;
+        border-bottom: none !important;
+    }
+
+    .navbar .menu-title {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 3px !important;
+        font-size: 13px !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.1px !important;
+        color: #ffffff !important;
+    }
+
+    .navbar .header-link-icon {
+        width: 16px !important;
+        height: 16px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .landing-page-desktop .div,
+    #div-sm {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        flex-shrink: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .landing-page-desktop .div .CTA,
+    #div-sm .CTA {
+        white-space: nowrap !important;
+        height: 36px !important;
+        width: auto !important;
+        min-width: 0 !important;
+        padding: 0 14px !important;
+        font-size: 12.5px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.15px !important;
+        border-radius: 8px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .header-search-btn {
+        height: 36px !important;
+        width: auto !important;
+        padding: 0 10px !important;
+        font-size: 12.5px !important;
+        gap: 6px !important;
+        border-radius: 8px !important;
+        white-space: nowrap !important;
+    }
+
+    .header-search-kbd {
+        padding: 2px 5px !important;
+        font-size: 10px !important;
+        margin-left: 2px !important;
     }
 }

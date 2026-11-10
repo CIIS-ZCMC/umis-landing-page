@@ -221,24 +221,26 @@ const OTPVerification = () => {
   return (
     <Box
       sx={{
-        width: "100%",
+        width: "100vw",
         minHeight: "100vh",
+        boxSizing: "border-box",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        bgcolor: "#f8fafc",
-        p: 2,
+        background: "linear-gradient(135deg, #f3f8f5 0%, #e4f0ea 100%)",
+        p: { xs: "16px", sm: "24px" },
       }}
     >
       <Box
         sx={{
           width: "100%",
           maxWidth: 440,
+          boxSizing: "border-box",
           bgcolor: "#fff",
-          borderRadius: "24px",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-          border: "1px solid #e2e8f0",
-          p: { xs: 3, sm: 4 },
+          borderRadius: "20px",
+          boxShadow: "0 16px 48px rgba(10, 62, 48, 0.12)",
+          border: "1px solid rgba(15, 87, 33, 0.1)",
+          p: { xs: "28px 20px", sm: "36px 32px" },
           textAlign: "center",
         }}
       >

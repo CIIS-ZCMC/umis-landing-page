@@ -1,4 +1,4 @@
-import { CheckBox, Visibility, VisibilityOff } from "@mui/icons-material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -17,10 +17,32 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useUserHook from "../../hooks/UserHook";
 import { useState } from "react";
 
+const outerBoxSx = {
+  width: "100vw",
+  minHeight: "100vh",
+  boxSizing: "border-box",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  padding: { xs: "16px", sm: "24px" },
+  background: "linear-gradient(135deg, #f3f8f5 0%, #e4f0ea 100%)",
+};
+
+const cardBoxSx = {
+  width: "100%",
+  maxWidth: "440px",
+  boxSizing: "border-box",
+  backgroundColor: "#ffffff",
+  borderRadius: "20px",
+  boxShadow: "0 16px 48px rgba(10, 62, 48, 0.12)",
+  border: "1px solid rgba(15, 87, 33, 0.1)",
+  padding: { xs: "28px 20px", sm: "36px 32px" },
+};
+
 const NewPassword = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { newPassword, signIn } = useUserHook();
+  const { newPassword } = useUserHook();
 
   const [authorizationPin, setAuthorizationPin] = useState(null);
   const [password, setPassword] = useState(null);
@@ -35,7 +57,7 @@ const NewPassword = () => {
   const [errorConfirmPassword, setErrorConfirmPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
 
-  const [changePassword, setChangePassword] = useState(false);
+  const [, setChangePassword] = useState(false);
 
   const [loading, setLoading] = useState(false);
 
@@ -111,15 +133,8 @@ const NewPassword = () => {
 
   if (isNewPasswordRegistered) {
     return (
-      <Box
-        sx={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Box sx={{ height: "40%", padding: "15px 2rem" }}>
+      <Box sx={outerBoxSx}>
+        <Box sx={cardBoxSx}>
           <Box
             sx={{
               display: "flex",
@@ -152,7 +167,7 @@ const NewPassword = () => {
           <Typography
             sx={{
               marginTop: "1.5rem",
-              fontWeight: 500,
+              fontWeight: 600,
               fontFamily: "var(--roboto-font-family)",
               textAlign: "center",
             }}
@@ -161,15 +176,15 @@ const NewPassword = () => {
           </Typography>
           <Box
             sx={{
-              display: "flex", // Make the container a flexbox
-              justifyContent: "center", // Center horizontally
-              alignItems: "center", // Center vertically (if needed)
-              width: "100%", // Ensure the parent container takes full width
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
             }}
           >
             <Typography
               sx={{
-                width: "75%",
+                width: "85%",
                 marginTop: "5px",
                 textAlign: "center",
                 mb: 2,
@@ -198,7 +213,7 @@ const NewPassword = () => {
             type="submit"
             fullWidth
             sx={{
-              mt: 4,
+              mt: 3,
               backgroundColor: "rgba(15, 87, 33, 1)",
               height: "3rem",
               textTransform: "none",
@@ -221,7 +236,7 @@ const NewPassword = () => {
             fullWidth
             sx={{
               color: "rgba(15,87,33,1)",
-              mt: 2,
+              mt: 1.5,
               boxShadow: "none",
               textTransform: "none",
               backgroundColor: "rgba(15,87,33,0.08)",
@@ -243,23 +258,15 @@ const NewPassword = () => {
 
   if (location?.pathname.includes(ACTION_NEW_ACCOUNT)) {
     return (
-      <Box
-        sx={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Box sx={{ height: "70%", padding: "15px 2rem" }}>
+      <Box sx={outerBoxSx}>
+        <Box sx={cardBoxSx}>
           <Typography
             variant="h5"
             component="h2"
             color="rgba(15, 87, 33, 1)"
-            fontWeight="500"
+            fontWeight="700"
             sx={{
               fontFamily: "var(--roboto-font-family)",
-              fontWeight: 500,
             }}
             gutterBottom
           >
@@ -269,12 +276,15 @@ const NewPassword = () => {
           <Typography
             sx={{
               mb: 2,
-              fontSize: 12,
-              color: error ? "darkred" : "rgba(128,128,128,1)",
+              fontSize: 12.5,
+              lineHeight: 1.5,
+              color: error ? "darkred" : "#4b5563",
             }}
           >
             {error
-              ? (typeof errorMessage === "object" ? errorMessage?.message || String(errorMessage) : errorMessage)
+              ? typeof errorMessage === "object"
+                ? errorMessage?.message || String(errorMessage)
+                : errorMessage
               : `New users are required to create a strong password for first login
           attempt. Do not reuse your temporary password or other sequential
           details like “12345”.`}
@@ -374,7 +384,7 @@ const NewPassword = () => {
               <List
                 sx={{
                   listStyleType: "disc",
-                  pl: 1, // Padding for proper alignment
+                  pl: 1,
                 }}
               >
                 {[
@@ -408,15 +418,15 @@ const NewPassword = () => {
                     sx={{
                       fontSize: 11,
                       display: "list-item",
-                      listStylePosition: "inside", // Positions bullet closer to text
-                      padding: 0, // Removes extra padding
+                      listStylePosition: "inside",
+                      padding: 0,
                       margin: 0,
                       marginBottom: "5px",
                       fontFamily: "var(--roboto-font-family)",
                       color: item.status
                         ? "rgba(15, 87, 33, 1)"
                         : "rgba(38,38,38,0.6)",
-                      fontWeight: 300,
+                      fontWeight: 400,
                     }}
                   >
                     {item.label}
@@ -451,8 +461,8 @@ const NewPassword = () => {
                 sx={{
                   fontSize: 12,
                   color: "rgba(38,38,38,0.8)",
-                  fontWeight: 300,
-                  marginTop: "10px",
+                  fontWeight: 400,
+                  marginTop: "6px",
                   marginLeft: "12px",
                 }}
               >
@@ -476,12 +486,12 @@ const NewPassword = () => {
                     color: "rgba(15, 87, 33, 1)",
                   },
                 }}
-                onChange={(_) => setIs2faActive(!is2faActive)}
+                onChange={() => setIs2faActive(!is2faActive)}
               />
               <Typography
                 sx={{
                   fontSize: 12,
-                  fontWeight: 300,
+                  fontWeight: 400,
                   color: "rgba(38,38,38,0.8)",
                 }}
               >
@@ -493,7 +503,7 @@ const NewPassword = () => {
               type="submit"
               fullWidth
               sx={{
-                mt: 4,
+                mt: 3,
                 backgroundColor: "rgba(15, 87, 33, 1)",
                 height: "3rem",
                 textTransform: "none",
@@ -522,23 +532,15 @@ const NewPassword = () => {
   }
 
   return (
-    <Box
-      sx={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Box sx={{ height: "70%", padding: "15px 2rem" }}>
+    <Box sx={outerBoxSx}>
+      <Box sx={cardBoxSx}>
         <Typography
           variant="h5"
           component="h2"
           color="rgba(15, 87, 33, 1)"
-          fontWeight="500"
+          fontWeight="700"
           sx={{
             fontFamily: "var(--roboto-font-family)",
-            fontWeight: 500,
           }}
           gutterBottom
         >
@@ -548,12 +550,15 @@ const NewPassword = () => {
         <Typography
           sx={{
             mb: 2,
-            fontSize: 12,
-            color: error ? "darkred" : "rgba(128,128,128,1)",
+            fontSize: 12.5,
+            lineHeight: 1.5,
+            color: error ? "darkred" : "#4b5563",
           }}
         >
           {error
-            ? (typeof errorMessage === "object" ? errorMessage?.message || String(errorMessage) : errorMessage)
+            ? typeof errorMessage === "object"
+              ? errorMessage?.message || String(errorMessage)
+              : errorMessage
             : `New users are required to create a strong password for first login
           attempt. Do not reuse your temporary password or other sequential
           details like “12345”.`}
@@ -647,7 +652,7 @@ const NewPassword = () => {
             <List
               sx={{
                 listStyleType: "disc",
-                pl: 1, // Padding for proper alignment
+                pl: 1,
               }}
             >
               {[
@@ -681,15 +686,15 @@ const NewPassword = () => {
                   sx={{
                     fontSize: 11,
                     display: "list-item",
-                    listStylePosition: "inside", // Positions bullet closer to text
-                    padding: 0, // Removes extra padding
+                    listStylePosition: "inside",
+                    padding: 0,
                     margin: 0,
                     marginBottom: "5px",
                     fontFamily: "var(--roboto-font-family)",
                     color: item.status
                       ? "rgba(15, 87, 33, 1)"
                       : "rgba(38,38,38,0.6)",
-                    fontWeight: 300,
+                    fontWeight: 400,
                   }}
                 >
                   {item.label}
@@ -702,7 +707,7 @@ const NewPassword = () => {
             type="submit"
             fullWidth
             sx={{
-              mt: 4,
+              mt: 3,
               backgroundColor: "rgba(15, 87, 33, 1)",
               height: "3rem",
               textTransform: "none",

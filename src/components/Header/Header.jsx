@@ -71,27 +71,29 @@ const Header = ({ onClick }) => {
           {ENABLE_NIGHTMARE_THEME && NIGHTMARE_CONFIG.jackOnLogo && <JackLogoOverlay />}
           <img className="zcmc-logo" src={logo} alt="Logo" />
           <div className="icon-label-container">
-            <div className="caption"></div>
+            <div className="header-caption-row">
+              <div className="caption"></div>
+              {ENABLE_CHRISTMAS_THEME && HOLIDAY_CONFIG.holidayBadge && (
+                <span className="header-holiday-badge" title="Maligayang Pasko!">
+                  <span className="header-holiday-sparkle">✨</span> Maligayang Pasko
+                </span>
+              )}
+              {ENABLE_HALLOWEEN_THEME && HALLOWEEN_CONFIG.halloweenBadge && (
+                <span className="header-halloween-badge" title="Happy Halloween!">
+                  <span className="header-halloween-ghost">🎃</span> Spooky Season
+                </span>
+              )}
+              {ENABLE_NIGHTMARE_THEME && NIGHTMARE_CONFIG.nightmareBadge && (
+                <span className="header-nightmare-badge" title="The Nightmare Before Christmas">
+                  <span className="jack-icon">💀</span> What&apos;s This?! 🎄
+                </span>
+              )}
+            </div>
             <hr className="header-divider" />
             <div className="title"></div>
             <p className="address"></p>
           </div>
         </Link>
-        {ENABLE_CHRISTMAS_THEME && HOLIDAY_CONFIG.holidayBadge && (
-          <span className="header-holiday-badge" title="Maligayang Pasko!">
-            <span className="header-holiday-sparkle">✨</span> Maligayang Pasko
-          </span>
-        )}
-        {ENABLE_HALLOWEEN_THEME && HALLOWEEN_CONFIG.halloweenBadge && (
-          <span className="header-halloween-badge" title="Happy Halloween!">
-            <span className="header-halloween-ghost">🎃</span> Spooky Season
-          </span>
-        )}
-        {ENABLE_NIGHTMARE_THEME && NIGHTMARE_CONFIG.nightmareBadge && (
-          <span className="header-nightmare-badge" title="The Nightmare Before Christmas">
-            <span className="jack-icon">💀</span> What&apos;s This?! 🎄
-          </span>
-        )}
       </div>
 
       <div className="navbar navbar-sm">
@@ -116,7 +118,7 @@ const Header = ({ onClick }) => {
         </a>
       </div>
 
-      {/* Mobile menu and search buttons */}
+      {/* Mobile menu, login, and search buttons */}
       <div className="mobile-header-actions">
         <button
           type="button"
@@ -126,6 +128,18 @@ const Header = ({ onClick }) => {
           title="Search / Track (Ctrl+K)"
         >
           <SearchIcon style={{ fontSize: "20px", color: "#ffffff" }} />
+        </button>
+
+        <button
+          type="button"
+          className="mobile-login-btn"
+          onClick={() => {
+            setisEnabled(false);
+            if (onClick) onClick();
+          }}
+          aria-label="Log on to One ZCMC"
+        >
+          Login
         </button>
 
         <button
@@ -181,6 +195,7 @@ const Header = ({ onClick }) => {
                 to="/StartPage"
                 className="nav-panel-link"
                 rel="noopener noreferrer"
+                onClick={() => setisEnabled(false)}
               >
                 Transparency Seal
               </Link>
@@ -188,6 +203,7 @@ const Header = ({ onClick }) => {
                 to="/StartPage"
                 className="nav-panel-link"
                 rel="noopener noreferrer"
+                onClick={() => setisEnabled(false)}
               >
                 Privacy notice
               </Link>
@@ -202,6 +218,13 @@ const Header = ({ onClick }) => {
                 to={`/${ACTION_SIGN_IN}`}
                 className="CTA"
                 rel="noopener noreferrer"
+                onClick={(e) => {
+                  setisEnabled(false);
+                  if (onClick) {
+                    e.preventDefault();
+                    onClick();
+                  }
+                }}
               >
                 Log on to One ZCMC
               </Link>
@@ -238,7 +261,7 @@ const Header = ({ onClick }) => {
           aria-label="Search or track transactions"
         >
           <SearchIcon className="header-search-icon" />
-          <span className="header-search-label">Track / Search</span>
+          <span className="header-search-label">Search</span>
           <kbd className="header-search-kbd">Ctrl K</kbd>
         </button>
 
