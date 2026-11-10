@@ -1,0 +1,4 @@
+/* Christmas audio runs in background; UI controller is hidden per user request */
+.christmas-music-widget {
+  display: none !important;
+}

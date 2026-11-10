@@ -5,6 +5,7 @@ import heroImage3 from "../../assets/slideshow/lp-bg.jpg";
 import tower1Poster from "../../assets/slideshow/tower-1-poster.jpg";
 import useUniversalSearchHook from "../../hooks/UniversalSearchHook";
 import "./header-hero-video.css";
+import { ENABLE_CHRISTMAS_THEME, HOLIDAY_CONFIG } from "../../config/holidayConfig.jsx";
 
 const SLIDES = [
   {
@@ -27,7 +28,20 @@ const SLIDES = [
 const HeaderHero = () => {
   const [slideIndex, setSlideIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted] = useState(true); // Background video is permanently muted
+  const [christmasMusicState, setChristmasMusicState] = useState({ isPlaying: false, isMuted: false, trackTitle: "" });
+
+  useEffect(() => {
+    const handleMusicState = (e) => {
+      if (e.detail) {
+        setChristmasMusicState(e.detail);
+      }
+    };
+    window.addEventListener("zcmc-christmas-music-state", handleMusicState);
+    return () => {
+      window.removeEventListener("zcmc-christmas-music-state", handleMusicState);
+    };
+  }, []);
   const videoRef = useRef(null);
   const { openModal } = useUniversalSearchHook();
 
@@ -70,12 +84,8 @@ const HeaderHero = () => {
     }
   };
 
-  const toggleMute = () => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.muted = !video.muted;
-    setIsMuted(video.muted);
+  const toggleMusic = () => {
+    window.dispatchEvent(new CustomEvent("zcmc-toggle-christmas-music"));
   };
 
   const nextSlide = () => {
@@ -298,16 +308,18 @@ const HeaderHero = () => {
               <span>{isPlaying ? "Pause" : "Play"}</span>
             </button>
 
-            <button
-              type="button"
-              className="hero-ctrl-btn"
-              onClick={toggleMute}
-              aria-label={isMuted ? "Unmute audio" : "Mute audio"}
-              title={isMuted ? "Unmute audio" : "Mute audio"}
-            >
-              <span>{isMuted ? "🔇" : "🔊"}</span>
-              <span>{isMuted ? "Unmute" : "Muted"}</span>
-            </button>
+            {ENABLE_CHRISTMAS_THEME && HOLIDAY_CONFIG.christmasSoundtrack && (
+              <button
+                type="button"
+                className={`hero-ctrl-btn ${christmasMusicState.isPlaying ? "active-music" : ""}`}
+                onClick={toggleMusic}
+                aria-label="Toggle 90s Christmas Soundtrack"
+                title={christmasMusicState.isPlaying ? "Pause Christmas Soundtrack" : "Play 90s Christmas Soundtrack"}
+              >
+                <span>{christmasMusicState.isPlaying ? "🎵" : "🔇"}</span>
+                <span>{christmasMusicState.isPlaying ? "Music Playing" : "Play Music"}</span>
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -66,4 +66,5 @@ export const HOLIDAY_CONFIG = {
   santaHatOnLogo: true,
   holidayBadge: true,
   filipinoParol: true, // 🌟 Authentic Filipino Capiz Star Lantern (Parol)
+  christmasSoundtrack: true, // 🎶 Nostalgic 90s Christmas decoration music-box carols
 };

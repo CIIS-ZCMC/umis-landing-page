@@ -490,6 +490,13 @@
   transform: translateY(-1px);
 }
 
+.hero-ctrl-btn.active-music {
+  background: linear-gradient(135deg, #1b7a37 0%, #0f5721 100%);
+  border-color: #ffd700;
+  color: #ffd700;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.45);
+}
+
 /* 6. Mobile & Tablet Responsiveness */
 @media (max-width: 1080px) {
   .hero-main-title {
