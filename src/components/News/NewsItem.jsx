@@ -1,55 +1,111 @@
-import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
 
 import Paragraph from "../Paragraph/Paragraph";
 import newsImg from '../../assets/news/sample-news-img.png';
 
-const newsItems = [
-    { date: 'August 10, 2023', title: 'Don’t: Passive income in 5 ways', image: newsImg },
-    { date: 'August 12, 2023', title: 'Don’t: Passive income in 5 ways', image: newsImg },
-    { date: 'August 15, 2023', title: 'Do: 5 ways for passive income', image: newsImg },
-    { date: 'August 20, 2023', title: 'Do: 5 ways for passive income', image: newsImg },
-    { date: 'August 22, 2023', title: 'Don’t: Passive income in 5 ways', image: newsImg },
-    { date: 'August 24, 2023', title: 'Do: 5 ways for passive income', image: newsImg },
-    { date: 'August 26, 2023', title: 'Do: 5 ways for passive income', image: newsImg },
+export const STATIC_NEWS_ITEMS = [
+    { date: 'August 10, 2023', title: 'Don’t: Passive income in 5 ways', image: newsImg, link: '' },
+    { date: 'August 12, 2023', title: 'Don’t: Passive income in 5 ways', image: newsImg, link: '' },
+    { date: 'August 15, 2023', title: 'Do: 5 ways for passive income', image: newsImg, link: '' },
+    { date: 'August 20, 2023', title: 'Do: 5 ways for passive income', image: newsImg, link: '' },
+    { date: 'August 22, 2023', title: 'Don’t: Passive income in 5 ways', image: newsImg, link: '' },
+    { date: 'August 24, 2023', title: 'Do: 5 ways for passive income', image: newsImg, link: '' },
+    { date: 'August 26, 2023', title: 'Do: 5 ways for passive income', image: newsImg, link: '' },
 ];
 
-const NewsItem = () => {
+const NewsItem = ({ items }) => {
+    const activeItems = Array.isArray(items) && items.length > 0 ? items : STATIC_NEWS_ITEMS;
+
     const [currentIndex, setCurrentIndex] = useState(0);
     const itemsPerPage = 4;
+
+    const [currentIndexSm, setCurrentIndexSm] = useState(0);
+    const itemsPerPageSm = 3;
+
+    useEffect(() => {
+        setCurrentIndex(0);
+        setCurrentIndexSm(0);
+    }, [activeItems]);
 
     const handlePrevious = () => {
         setCurrentIndex(prevIndex => Math.max(prevIndex - itemsPerPage, 0));
     };
 
     const handleNext = () => {
-        setCurrentIndex(prevIndex => Math.min(prevIndex + itemsPerPage, newsItems.length - itemsPerPage));
+        setCurrentIndex(prevIndex => Math.min(prevIndex + itemsPerPage, Math.max(activeItems.length - itemsPerPage, 0)));
     };
 
-    const displayedItems = newsItems.slice(currentIndex, currentIndex + itemsPerPage);
+    const displayedItems = activeItems.slice(currentIndex, currentIndex + itemsPerPage);
 
     const isPreviousDisabled = currentIndex === 0;
-    const isNextDisabled = currentIndex + itemsPerPage >= newsItems.length;
-
-
-
-    const [currentIndexSm, setCurrentIndexSm] = useState(0);
-    const itemsPerPageSm = 3;
+    const isNextDisabled = currentIndex + itemsPerPage >= activeItems.length;
 
     const handlePreviousSm = () => {
         setCurrentIndexSm(prevIndex => Math.max(prevIndex - itemsPerPageSm, 0));
     };
 
     const handleNextSm = () => {
-        setCurrentIndexSm(prevIndex => Math.min(prevIndex + itemsPerPageSm, newsItems.length - itemsPerPageSm));
+        setCurrentIndexSm(prevIndex => Math.min(prevIndex + itemsPerPageSm, Math.max(activeItems.length - itemsPerPageSm, 0)));
     };
 
-    const displayedItemsSm = newsItems.slice(currentIndexSm, currentIndexSm + itemsPerPageSm);
+    const displayedItemsSm = activeItems.slice(currentIndexSm, currentIndexSm + itemsPerPageSm);
 
     const isPreviousDisabledSm = currentIndexSm === 0;
-    const isNextDisabledSm = currentIndexSm + itemsPerPageSm >= newsItems.length;
+    const isNextDisabledSm = currentIndexSm + itemsPerPageSm >= activeItems.length;
 
+    const remainingLg = Math.max(activeItems.length - (currentIndex + itemsPerPage), 0);
+    const remainingSm = Math.max(activeItems.length - (currentIndexSm + itemsPerPageSm), 0);
 
+    const handleImgError = (e) => {
+        if (e.currentTarget.src !== newsImg) {
+            e.currentTarget.src = newsImg;
+        }
+    };
+
+    const renderListItem = (item, key) => {
+        const inner = (
+            <>
+                <img
+                    className="recent-news-list-item"
+                    src={item.image || newsImg}
+                    alt={item.title || "ZCMC News"}
+                    loading="lazy"
+                    onError={handleImgError}
+                    style={{ objectFit: "cover", flexShrink: 0 }}
+                />
+                <div className="list-item-content">
+                    <div className="div-4">
+                        <div className="publish-date-container news-item">
+                            <Paragraph text="Published" className="publish-date-text" />
+                            <Paragraph text={item.date} className="publish-date-text" />
+                        </div>
+                        <Paragraph text={item.title} className="news-item-name news-item-name-md" />
+                    </div>
+                </div>
+            </>
+        );
+
+        if (item.link) {
+            return (
+                <a
+                    className="list-item"
+                    key={key}
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
+                >
+                    {inner}
+                </a>
+            );
+        }
+
+        return (
+            <div className="list-item" key={key}>
+                {inner}
+            </div>
+        );
+    };
 
     return (
         <>
@@ -72,24 +128,16 @@ const NewsItem = () => {
                 <hr className="divider" />
                 <div className="list-container">
                     <div className="list-group">
-                        {displayedItems.map((item, index) => (
-                            <div className="list-item" key={currentIndex + index}>
-                                <img className="recent-news-list-item" src={item.image} alt="" />
-                                <div className="list-item-content">
-                                    <div className="div-4">
-                                        <div className="publish-date-container news-item">
-                                            <Paragraph text="Published" className="publish-date-text" />
-                                            <Paragraph text={item.date} className="publish-date-text" />
-                                        </div>
-                                        <Paragraph text={item.title} className="news-item-name news-item-name-md" />
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                        {displayedItems.map((item, index) => renderListItem(item, currentIndex + index))}
                     </div>
-                    <Link to="/" className="secondary-CTA" rel="noopener noreferrer" >
-                        All recent news (+{newsItems.length - (currentIndex + itemsPerPage)} more)
-                    </Link>
+                    <a
+                        href="https://zcmc.doh.gov.ph/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="secondary-CTA"
+                    >
+                        All recent news (+{remainingLg} more)
+                    </a>
                 </div>
             </div>
 
@@ -113,24 +161,16 @@ const NewsItem = () => {
                 <hr className="divider" />
                 <div className="list-container">
                     <div className="list-group">
-                        {displayedItemsSm.map((item, index) => (
-                            <div className="list-item" key={currentIndexSm + index}>
-                                <img className="recent-news-list-item" src={item.image} alt="" />
-                                <div className="list-item-content">
-                                    <div className="div-4">
-                                        <div className="publish-date-container news-item">
-                                            <Paragraph text="Published" className="publish-date-text" />
-                                            <Paragraph text={item.date} className="publish-date-text" />
-                                        </div>
-                                        <Paragraph text={item.title} className="news-item-name news-item-name-md" />
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                        {displayedItemsSm.map((item, index) => renderListItem(item, currentIndexSm + index))}
                     </div>
-                    <Link to="/" className="secondary-CTA" rel="noopener noreferrer" >
-                        All recent news (+{newsItems.length - (currentIndexSm + itemsPerPageSm)} more)
-                    </Link>
+                    <a
+                        href="https://zcmc.doh.gov.ph/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="secondary-CTA"
+                    >
+                        All recent news (+{remainingSm} more)
+                    </a>
                 </div>
             </div>
         </>

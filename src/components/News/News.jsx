@@ -1,13 +1,126 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import Paragraph from "../Paragraph/Paragraph";
 
 import env from "../../assets/news/env.jpg";
 import HealthNewsItem from "./HealthNewsItem";
-import NewsItem from "./NewsItem";
+import NewsItem, { STATIC_NEWS_ITEMS } from "./NewsItem";
+import { fetchZcmcDohLiveFeed } from "../../utils/zcmcDohScraper";
 import "../../styles/news.css";
 
+const STATIC_FEATURED_NEWS = {
+  date: "August 10, 2023",
+  title:
+    "Strategic and Environment Unit achieves 100% of the target strategic deliverables for 2023!",
+  description:
+    "ZCMC Hospital Week 2024 Opening Salvo! The excitement kicked off in grand style...",
+  image: env,
+  highResImage: env,
+  link: "",
+};
+
 const News = () => {
+  const [featuredNews, setFeaturedNews] = useState(STATIC_FEATURED_NEWS);
+  const [recentNews, setRecentNews] = useState(STATIC_NEWS_ITEMS);
+
+  useEffect(() => {
+    let isMounted = true;
+    fetchZcmcDohLiveFeed()
+      .then((feed) => {
+        if (!isMounted) return;
+        if (feed?.newsPosts && feed.newsPosts.length > 0) {
+          const [firstPost, ...restPosts] = feed.newsPosts;
+          setFeaturedNews({
+            date: firstPost.date || STATIC_FEATURED_NEWS.date,
+            title: firstPost.title || STATIC_FEATURED_NEWS.title,
+            description:
+              firstPost.description ||
+              firstPost.title ||
+              STATIC_FEATURED_NEWS.description,
+            image: firstPost.image || env,
+            highResImage: firstPost.highResImage || firstPost.image || env,
+            link: firstPost.link || "https://zcmc.doh.gov.ph/",
+          });
+          if (restPosts.length > 0) {
+            setRecentNews(restPosts);
+          }
+        }
+      })
+      .catch(() => {
+        // Safe fallback to static news
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const handleFeaturedImgError = (e) => {
+    const imgEl = e.currentTarget;
+    if (
+      featuredNews.image &&
+      imgEl.src !== featuredNews.image &&
+      imgEl.src !== env
+    ) {
+      imgEl.src = featuredNews.image;
+    } else if (imgEl.src !== env) {
+      imgEl.src = env;
+    }
+  };
+
+  const renderHighlightedCard = (titleClassName, includeExtraMobileDescription = false) => {
+    const cardInner = (
+      <>
+        <img
+          className="highlighted-item-image"
+          src={featuredNews.highResImage || featuredNews.image || env}
+          alt={featuredNews.title}
+          onError={handleFeaturedImgError}
+          style={{
+            objectFit: "cover",
+            maxHeight: "400px",
+            width: "100%",
+          }}
+        />
+        <div className="content">
+          <div className="div-2">
+            <div className="publish-date-container">
+              <Paragraph text="Published" className="publish-date-text" />
+              <Paragraph
+                text={featuredNews.date}
+                className="publish-date-text"
+              />
+            </div>
+            <Paragraph text={featuredNews.title} className={titleClassName} />
+          </div>
+          <Paragraph
+            text={featuredNews.description}
+            className="description"
+          />
+        </div>
+        {includeExtraMobileDescription && (
+          <p className="description">{featuredNews.description}</p>
+        )}
+      </>
+    );
+
+    if (featuredNews.link) {
+      return (
+        <a
+          className="highlighted-item"
+          href={featuredNews.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ textDecoration: "none", color: "inherit", cursor: "pointer" }}
+        >
+          {cardInner}
+        </a>
+      );
+    }
+
+    return <div className="highlighted-item">{cardInner}</div>;
+  };
+
   return (
     <div className="news">
       <div>
@@ -27,32 +140,8 @@ const News = () => {
             </div>
 
             <div className="news-container">
-              <div className="highlighted-item">
-                <img className="highlighted-item-image" src={env} alt="" />
-                <div className="content">
-                  <div className="div-2">
-                    <div className="publish-date-container">
-                      <Paragraph
-                        text="Published"
-                        className="publish-date-text"
-                      />
-                      <Paragraph
-                        text="August 10, 2023"
-                        className="publish-date-text"
-                      />
-                    </div>
-                    <Paragraph
-                      text="Strategic and Environment Unit achieves 100% of the target strategic deliverables for 2023!"
-                      className="news-item-name"
-                    />
-                  </div>
-                  <Paragraph
-                    text="ZCMC Hospital Week 2024 Opening Salvo! The excitement kicked off in grand style..."
-                    className="description"
-                  />
-                </div>
-              </div>
-              <NewsItem />
+              {renderHighlightedCard("news-item-name", false)}
+              <NewsItem items={recentNews} />
             </div>
           </div>
 
@@ -72,34 +161,9 @@ const News = () => {
         </div>
 
         <div className="news-container">
-          <div className="highlighted-item">
-            <img className="highlighted-item-image" src={env} alt="" />
-            <div className="content">
-              <div className="div-2">
-                <div className="publish-date-container">
-                  <Paragraph text="Published" className="publish-date-text" />
-                  <Paragraph
-                    text="August 10, 2023"
-                    className="publish-date-text"
-                  />
-                </div>
-                <Paragraph
-                  text="Strategic and Environment Unit achieves 100% of the target strategic deliverables for 2023!"
-                  className="text-wrapper-8"
-                />
-              </div>
-              <Paragraph
-                text="ZCMC Hospital Week 2024 Opening Salvo! The excitement kicked off in grand style..."
-                className="description"
-              />
-            </div>
-            <p className="description">
-              ZCMC Hospital Week 2024 Opening Salvo! The excitement kicked off
-              in grand style...
-            </p>
-          </div>
+          {renderHighlightedCard("text-wrapper-8", true)}
         </div>
-        <NewsItem />
+        <NewsItem items={recentNews} />
       </div>
 
       <div className="health-news">

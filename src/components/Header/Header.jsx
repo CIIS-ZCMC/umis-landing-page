@@ -73,11 +73,6 @@ const Header = ({ onClick }) => {
           <div className="icon-label-container">
             <div className="header-caption-row">
               <div className="caption"></div>
-              {ENABLE_CHRISTMAS_THEME && HOLIDAY_CONFIG.holidayBadge && (
-                <span className="header-holiday-badge" title="Maligayang Pasko!">
-                  <span className="header-holiday-sparkle">✨</span> Maligayang Pasko
-                </span>
-              )}
               {ENABLE_HALLOWEEN_THEME && HALLOWEEN_CONFIG.halloweenBadge && (
                 <span className="header-halloween-badge" title="Happy Halloween!">
                   <span className="header-halloween-ghost">🎃</span> Spooky Season
@@ -137,9 +132,9 @@ const Header = ({ onClick }) => {
             setisEnabled(false);
             if (onClick) onClick();
           }}
-          aria-label="Log on to One ZCMC"
+          aria-label="Log In"
         >
-          Login
+          Log In
         </button>
 
         <button
@@ -226,7 +221,7 @@ const Header = ({ onClick }) => {
                   }
                 }}
               >
-                Log on to One ZCMC
+                Log In
               </Link>
               <Link
                 to="tel:09155365583"
@@ -265,14 +260,14 @@ const Header = ({ onClick }) => {
           <kbd className="header-search-kbd">Ctrl K</kbd>
         </button>
 
-        <Button
-          className="CTA"
-          rel="noopener noreferrer"
-          style={{ color: "white", textTransform: "none" }}
+        <button
+          type="button"
+          className="CTA header-login-cta"
           onClick={() => onClick()}
+          aria-label="Log In"
         >
-          Log on to One ZCMC
-        </Button>
+          Log In
+        </button>
       </div>
     </header>
   );

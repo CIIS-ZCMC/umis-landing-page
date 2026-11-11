@@ -6,8 +6,10 @@ import tower1Poster from "../../assets/slideshow/tower-1-poster.jpg";
 import useUniversalSearchHook from "../../hooks/UniversalSearchHook";
 import "./header-hero-video.css";
 import { ENABLE_CHRISTMAS_THEME, HOLIDAY_CONFIG } from "../../config/holidayConfig.jsx";
+import { fetchZcmcDohLiveFeed } from "../../utils/zcmcDohScraper";
 
-const SLIDES = [
+// Saved static slides (100% safe fallback if live zcmc.doh.gov.ph feed is unreachable in the future)
+export const STATIC_SLIDES = [
   {
     image: heroImage1,
     title: "ZCMC Main Hospital Complex",
@@ -26,10 +28,29 @@ const SLIDES = [
 ];
 
 const HeaderHero = () => {
+  const [slides, setSlides] = useState(STATIC_SLIDES);
   const [slideIndex, setSlideIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted] = useState(true); // Background video is permanently muted
   const [christmasMusicState, setChristmasMusicState] = useState({ isPlaying: false, isMuted: false, trackTitle: "" });
+
+  // Fetch live carousel pictures from https://zcmc.doh.gov.ph/ with automatic static fallback
+  useEffect(() => {
+    let isMounted = true;
+    fetchZcmcDohLiveFeed()
+      .then((feed) => {
+        if (isMounted && feed && Array.isArray(feed.slides) && feed.slides.length > 0) {
+          setSlides(feed.slides);
+          setSlideIndex(0);
+        }
+      })
+      .catch(() => {
+        // Keep STATIC_SLIDES on any error
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   useEffect(() => {
     const handleMusicState = (e) => {
@@ -83,13 +104,14 @@ const HeaderHero = () => {
     };
   }, [isPlaying]);
 
-  // Auto-advance card slideshow every 5 seconds
+  // Auto-advance card slideshow every 5.5 seconds
   useEffect(() => {
+    if (!slides || slides.length <= 1) return;
     const timer = setInterval(() => {
-      setSlideIndex((prev) => (prev + 1) % SLIDES.length);
+      setSlideIndex((prev) => (prev + 1) % slides.length);
     }, 5500);
     return () => clearInterval(timer);
-  }, []);
+  }, [slides]);
 
   const togglePlay = () => {
     const video = videoRef.current;
@@ -108,11 +130,11 @@ const HeaderHero = () => {
   };
 
   const nextSlide = () => {
-    setSlideIndex((prev) => (prev + 1) % SLIDES.length);
+    setSlideIndex((prev) => (prev + 1) % slides.length);
   };
 
   const prevSlide = () => {
-    setSlideIndex((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
+    setSlideIndex((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
   const scrollToSection = (e, sectionId) => {
@@ -123,7 +145,23 @@ const HeaderHero = () => {
     }
   };
 
-  const currentHighlight = SLIDES[slideIndex];
+  const currentHighlight = slides[slideIndex] || STATIC_SLIDES[0];
+
+  const handleSlideImageError = (e) => {
+    const target = e.currentTarget;
+    if (
+      currentHighlight.fallbackOriginalImage &&
+      target.src !== currentHighlight.fallbackOriginalImage
+    ) {
+      target.src = currentHighlight.fallbackOriginalImage;
+    } else {
+      // Fallback to saved static hospital image if remote image fails
+      const fallbackStatic = STATIC_SLIDES[slideIndex % STATIC_SLIDES.length];
+      if (target.src !== fallbackStatic.image) {
+        target.src = fallbackStatic.image;
+      }
+    }
+  };
 
   return (
     <section ref={heroSectionRef} className="hero-fullscreen-viewport" aria-label="ZCMC Welcome Section">
@@ -203,7 +241,7 @@ const HeaderHero = () => {
                 <span>📸</span> Hospital Highlights
               </span>
               <span className="card-counter">
-                {slideIndex + 1} / {SLIDES.length}
+                {slideIndex + 1} / {slides.length}
               </span>
             </div>
 
@@ -214,6 +252,21 @@ const HeaderHero = () => {
                 alt={currentHighlight.title}
                 className="card-slide-image"
                 decoding="async"
+                onError={handleSlideImageError}
+                onClick={() => {
+                  if (currentHighlight.link) {
+                    window.open(currentHighlight.link, "_blank", "noopener,noreferrer");
+                  }
+                }}
+                style={
+                  currentHighlight.isDynamic
+                    ? {
+                        objectFit: "contain",
+                        background: "#032216",
+                        cursor: currentHighlight.link ? "pointer" : "default",
+                      }
+                    : undefined
+                }
               />
 
               <button
@@ -242,7 +295,7 @@ const HeaderHero = () => {
 
               <div className="card-pagination-strip">
                 <div className="card-dots-cluster">
-                  {SLIDES.map((_, idx) => (
+                  {slides.map((_, idx) => (
                     <span
                       key={idx}
                       className={`card-dot-indicator ${slideIndex === idx ? "active" : ""}`}

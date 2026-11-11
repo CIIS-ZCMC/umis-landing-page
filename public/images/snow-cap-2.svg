@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 36" fill="none">
+  <defs>
+    <linearGradient id="snowGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.98"/>
+      <stop offset="50%" stop-color="#eff6fc" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#c2def5" stop-opacity="0.92"/>
+    </linearGradient>
+  </defs>
+  <!-- Snow cap body (edge at y=20) with drip extending down to y=33 at x=43 -->
+  <path d="M3,20 C10,14 20,8 34,9 C46,10 56,7 72,8 C84,9 92,14 97,20 L62,20 C56,20 54,22 51,27 C49,31 46,33 43,33 C41,33 39,29 38,24 C37,21 34,20 28,20 Z" fill="url(#snowGrad2)"/>
+  <!-- Shiny highlight on top crest -->
+  <path d="M8,16 C18,10 28,9 42,10 C56,11 68,9 86,13" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.95"/>
+  <!-- Drip glossy highlight -->
+  <path d="M41,23 C42,27 43,30 43,32" stroke="#ffffff" stroke-width="1.1" stroke-linecap="round" fill="none" opacity="0.9"/>
+</svg>

@@ -64,7 +64,7 @@ export const HOLIDAY_CONFIG = {
   fairyLights: true,
   peekingSanta: true,
   santaHatOnLogo: true,
-  holidayBadge: true,
+  holidayBadge: false, // Turned off per user request
   filipinoParol: true, // 🌟 Authentic Filipino Capiz Star Lantern (Parol)
   christmasSoundtrack: true, // 🎶 Nostalgic 90s Christmas decoration music-box carols
 };

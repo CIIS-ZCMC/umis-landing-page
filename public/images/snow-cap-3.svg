@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 36" fill="none">
+  <defs>
+    <linearGradient id="snowGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.98"/>
+      <stop offset="50%" stop-color="#edf5fc" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#bcdbf3" stop-opacity="0.92"/>
+    </linearGradient>
+  </defs>
+  <!-- Snow body with 2 rounded drips (left drip at x=29 down to y=29, right drip at x=66 down to y=32) -->
+  <path d="M2,20 C12,13 22,7 38,8 C52,9 64,6 80,8 C90,10 96,15 98,20 L80,20 C76,20 74,23 72,28 C70,31 68,32 66,32 C64,32 63,28 61,23 C60,20 56,20 44,20 C38,20 36,22 34,26 C33,28 31,29 29,29 C27,29 26,26 25,23 C24,20 18,20 2,20 Z" fill="url(#snowGrad3)"/>
+  <!-- Highlight on top -->
+  <path d="M6,16 C18,10 32,8 50,9 C66,10 78,8 92,13" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.95"/>
+  <!-- Tiny water sheen on drips -->
+  <circle cx="29" cy="28" r="1.1" fill="#ffffff" opacity="0.95"/>
+  <circle cx="66" cy="31" r="1.2" fill="#ffffff" opacity="0.95"/>
+</svg>
