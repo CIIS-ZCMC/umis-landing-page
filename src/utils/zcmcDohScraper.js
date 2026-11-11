@@ -205,11 +205,11 @@ export const fetchZcmcDohLiveFeed = async () => {
     const endpoints = import.meta.env.DEV
       ? [
           "/api/zcmc-doh-proxy",
-          "/zcmc-feed.php",
+          "/zcmc-feed.php?v=2",
           "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://zcmc.doh.gov.ph/"),
         ]
       : [
-          "/zcmc-feed.php",
+          "/zcmc-feed.php?v=2",
           "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://zcmc.doh.gov.ph/"),
         ];
 
