@@ -207,12 +207,10 @@ export const fetchZcmcDohLiveFeed = async () => {
           "/api/zcmc-doh-proxy",
           "/zcmc-feed.php",
           "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://zcmc.doh.gov.ph/"),
-          "https://corsproxy.io/?url=" + encodeURIComponent("https://zcmc.doh.gov.ph/"),
         ]
       : [
           "/zcmc-feed.php",
           "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://zcmc.doh.gov.ph/"),
-          "https://corsproxy.io/?url=" + encodeURIComponent("https://zcmc.doh.gov.ph/"),
         ];
 
     for (const endpoint of endpoints) {
