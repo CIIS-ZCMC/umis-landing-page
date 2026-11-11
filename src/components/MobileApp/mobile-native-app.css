@@ -2,36 +2,63 @@
    📱 ZCMC Mobile Native Application Mode & 60FPS GPU Optimization (<= 768px)
    ========================================================================== */
 
-/* 1. Native App Viewport & Touch Feel (Mobile Only) */
+/* 1. Native App Viewport & Smooth Touch Scrolling (Mobile Only) */
 @media (max-width: 768px) {
-  /* Hide browser scrollbars on mobile for a true native app viewport */
+  /* Hide browser scrollbars on mobile for a clean native app look while keeping scrolling active */
   ::-webkit-scrollbar {
     width: 0px !important;
     height: 0px !important;
     display: none !important;
   }
 
+  /* CRITICAL: Ensure html & body are ALWAYS vertically scrollable on mobile, including in :fullscreen mode */
   html,
-  body,
-  #root {
+  html:fullscreen,
+  html:-webkit-full-screen {
     width: 100% !important;
     max-width: 100% !important;
+    height: 100% !important;
     overflow-x: hidden !important;
-    overscroll-behavior-y: none;
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-y pinch-zoom !important;
     background-color: #041f0d !important;
     scrollbar-width: none !important;
   }
 
+  body,
+  body:fullscreen,
+  body:-webkit-full-screen {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-x: clip !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch !important;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: pan-y pinch-zoom !important;
+    background-color: #041f0d !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Keep body lock only when the mobile hamburger navigation drawer is open */
+  body.active {
+    overflow: hidden !important;
+  }
+
+  #root,
   .landing-page-desktop {
     width: 100% !important;
     max-width: 100% !important;
-    overflow-x: hidden !important;
-    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)) !important;
+    height: auto !important;
+    overflow-x: clip !important;
+    overflow-y: visible !important;
+    padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)) !important;
   }
 
-  /* Fix 100vw horizontal scrollbar gutter on mobile containers */
+  /* Prevent nested scroll containers on page sections using overflow-x: clip instead of hidden */
   .news,
   .videos,
   .more-info,
@@ -45,7 +72,8 @@
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
-    overflow-x: hidden !important;
+    overflow-x: clip !important;
+    overflow-y: visible !important;
   }
 
   /* 2. Disable Heavy Real-Time Video Backdrop Blur Shaders on Mobile GPU */
@@ -164,6 +192,7 @@
   /* Clean Native Hero Layout on Mobile */
   .hero-fullscreen-viewport {
     padding-top: 76px !important;
+    height: auto !important;
     min-height: calc(100dvh - 60px) !important;
   }
 

@@ -54,15 +54,16 @@ const MobileAppShell = ({ onLoginClick }) => {
     const docEl = document.documentElement;
     try {
       if (docEl.requestFullscreen) {
-        docEl.requestFullscreen({ navigationUI: "hide" }).catch(() => {});
+        return docEl.requestFullscreen({ navigationUI: "hide" });
       } else if (docEl.webkitRequestFullscreen) {
-        docEl.webkitRequestFullscreen();
+        return Promise.resolve(docEl.webkitRequestFullscreen());
       } else if (docEl.msRequestFullscreen) {
-        docEl.msRequestFullscreen();
+        return Promise.resolve(docEl.msRequestFullscreen());
       }
     } catch {
-      // Ignore if unsupported by browser (e.g., iOS Safari uses standalone meta tags)
+      // Ignore if unsupported by browser
     }
+    return Promise.reject();
   }, []);
 
   const toggleFullscreen = useCallback(() => {
@@ -72,7 +73,7 @@ const MobileAppShell = ({ onLoginClick }) => {
     );
 
     if (!isCurrentlyFull) {
-      requestNativeFullscreen();
+      requestNativeFullscreen().catch(() => {});
     } else {
       try {
         if (doc.exitFullscreen) {
@@ -86,21 +87,40 @@ const MobileAppShell = ({ onLoginClick }) => {
     }
   }, [requestNativeFullscreen]);
 
-  // Automatically trigger native fullscreen on first user tap on mobile phones
+  // Automatically trigger native fullscreen on any valid user touch/tap on mobile phones
   useEffect(() => {
     if (!isMobile) return;
 
-    let hasTriggeredAutoFullscreen = false;
+    let autoFullscreenSucceeded = false;
 
-    const handleFirstMobileTap = (e) => {
-      if (hasTriggeredAutoFullscreen) return;
+    // Attempt immediately on load (works if launched from home screen / WebView / allowed context)
+    requestNativeFullscreen()
+      .then(() => {
+        autoFullscreenSucceeded = true;
+      })
+      .catch(() => {});
+
+    const handleMobileGesture = (e) => {
+      if (autoFullscreenSucceeded) return;
+      const isCurrentlyFull = Boolean(
+        document.fullscreenElement || document.webkitFullscreenElement
+      );
+      if (isCurrentlyFull) {
+        autoFullscreenSucceeded = true;
+        return;
+      }
 
       // Do not force fullscreen if tapping directly into a text input
       const tag = e.target?.tagName?.toLowerCase();
       if (tag === "input" || tag === "textarea" || tag === "select") return;
 
-      hasTriggeredAutoFullscreen = true;
-      requestNativeFullscreen();
+      requestNativeFullscreen()
+        .then(() => {
+          autoFullscreenSucceeded = true;
+        })
+        .catch(() => {
+          // Browser rejected this gesture (e.g. passive scroll); keep listening for next tap
+        });
     };
 
     const handleFullscreenChange = () => {
@@ -108,14 +128,21 @@ const MobileAppShell = ({ onLoginClick }) => {
         document.fullscreenElement || document.webkitFullscreenElement
       );
       setIsFullscreen(full);
+      if (full) {
+        autoFullscreenSucceeded = true;
+      }
     };
 
-    window.addEventListener("click", handleFirstMobileTap, { passive: true });
+    window.addEventListener("touchend", handleMobileGesture, { passive: true });
+    window.addEventListener("pointerup", handleMobileGesture, { passive: true });
+    window.addEventListener("click", handleMobileGesture, { passive: true });
     document.addEventListener("fullscreenchange", handleFullscreenChange);
     document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
 
     return () => {
-      window.removeEventListener("click", handleFirstMobileTap);
+      window.removeEventListener("touchend", handleMobileGesture);
+      window.removeEventListener("pointerup", handleMobileGesture);
+      window.removeEventListener("click", handleMobileGesture);
       document.removeEventListener("fullscreenchange", handleFullscreenChange);
       document.removeEventListener("webkitfullscreenchange", handleFullscreenChange);
     };
@@ -127,6 +154,8 @@ const MobileAppShell = ({ onLoginClick }) => {
     setActiveTab(tabName);
     if (sectionId === "top") {
       window.scrollTo({ top: 0, behavior: "smooth" });
+      document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
+      document.body.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
     const el = document.getElementById(sectionId) || document.querySelector(`.${sectionId}`);
