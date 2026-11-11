@@ -21,6 +21,12 @@ export const config = {
 };
 
 /**
+ * System code MSWD (Medical Social Services) is registered under in UMIS.
+ * Must match UMIS_SYSTEM_CODE on the MSWD server.
+ */
+export const MSWD_SYSTEM_CODE = "MSWD";
+
+/**
  * Get PO Dashboard URL
  *
  * @param {object} user : Current logged-in user object

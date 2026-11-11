@@ -9,10 +9,18 @@ import StartPageFooterSm from "./StartPageFooterSm";
 import useUserHook from "../../hooks/UserHook";
 import BannerContainer from "../../components/StartPageBody/BannerContainer";
 import UserManual from "../../components/StartPageBody/UserManual";
-import { getPoDashboardUrl, getHmbUrl } from "../../utils/RetrieveSystemURL";
+import {
+  getPoDashboardUrl,
+  getHmbUrl,
+  MSWD_SYSTEM_CODE,
+} from "../../utils/RetrieveSystemURL";
 
 const StartPage = () => {
   const { user, retrieveAdminAccess, retrieveRedcapAccess } = useUserHook();
+
+  // UMIS lists MSWD (with a fresh /signing-in/{session_id} link) only for
+  // people who hold an MSWD role; everyone else sees the tile greyed out.
+  const mswdLink = retrieveAdminAccess(MSWD_SYSTEM_CODE);
 
   // Check if current user has the role/position of Nurse or Physician
   const isMedicalStaff = () => {
@@ -78,6 +86,20 @@ const StartPage = () => {
           },
         ]
       : []),
+    {
+      title: "Medical Social Services",
+      description: mswdLink
+        ? "MSWD Patient Safety Net Portal: patient intake and classification, social case studies, guarantees, queue and daily accomplishment reports."
+        : "You don't have access to MSWD yet. Ask an administrator for an MSWD role in UMIS.",
+      link: mswdLink,
+      // Shown to everyone; greyed out and inert without MSWD access.
+      disabled: !mswdLink,
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+<circle cx="9" cy="7.5" r="3.25" stroke="#0F5721" stroke-width="1.5"/>
+<path d="M3 19.5C3 16.46 5.69 14 9 14C12.31 14 15 16.46 15 19.5" stroke="#0F5721" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M18 11.4L17.55 10.99C15.95 9.54 14.9 8.58 14.9 7.42C14.9 6.46 15.65 5.7 16.62 5.7C17.16 5.7 17.68 5.95 18 6.35C18.32 5.95 18.84 5.7 19.38 5.7C20.35 5.7 21.1 6.46 21.1 7.42C21.1 8.58 20.05 9.54 18.45 10.99L18 11.4Z" fill="#0F5721"/>
+</svg>`,
+    },
     {
       title: "Supplies Inventory Management",
       description:
@@ -159,8 +181,10 @@ const StartPage = () => {
               <div className="column column-1">
                 {medicalContent.map((item, index) => (
                   <a
-                    href={item.link || "#"}
-                    className="card"
+                    href={item.disabled ? undefined : item.link || "#"}
+                    className={item.disabled ? "card card-disabled" : "card"}
+                    aria-disabled={item.disabled || undefined}
+                    onClick={item.disabled ? (e) => e.preventDefault() : undefined}
                     key={index}
                     rel="noopener noreferrer"
                   >
@@ -172,6 +196,9 @@ const StartPage = () => {
                     </span>
                     <div className="card-content">
                       <Paragraph text={item.title} className="card-title" />
+                      {item.disabled && (
+                        <span className="card-note">No access</span>
+                      )}
 
                       <div className="tooltip">
                         <svg
@@ -197,8 +224,10 @@ const StartPage = () => {
               <div className="column column-2">
                 {adminContent.map((item, index) => (
                   <a
-                    href={item.link || "#"}
-                    className="card"
+                    href={item.disabled ? undefined : item.link || "#"}
+                    className={item.disabled ? "card card-disabled" : "card"}
+                    aria-disabled={item.disabled || undefined}
+                    onClick={item.disabled ? (e) => e.preventDefault() : undefined}
                     key={index}
                     rel="noopener noreferrer"
                   >
@@ -210,6 +239,9 @@ const StartPage = () => {
                     </span>
                     <div className="card-content">
                       <Paragraph text={item.title} className="card-title" />
+                      {item.disabled && (
+                        <span className="card-note">No access</span>
+                      )}
 
                       <div className="tooltip">
                         <svg
